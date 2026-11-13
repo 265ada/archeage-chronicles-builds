@@ -25,7 +25,7 @@ Open `docs/index.html` in a browser, or enable GitHub Pages for the `docs/` fold
 
 ## Editing
 
-The build data lives in `src/*.json`, and all three pages share `src/template.html`. To rebuild the site:
+The build data lives in `src/*.json`, and all four pages share `src/template.html`. To rebuild the site:
 
 ```bash
 python src/build.py docs site
