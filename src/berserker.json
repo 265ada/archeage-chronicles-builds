@@ -4,16 +4,16 @@
  "out": "berserker-warhammer.html",
  "eyebrow": "ArcheAge Chronicles · Berserker · Early Access",
  "h1": "<span class='hot'>Fire</span> &amp; <span class='zap'>Thunder</span> Warhammer",
- "lede": "A build from level 1 to endgame. You level with Axe &amp; Shield, carry the Warhammer as your second weapon, and switch to a Warhammer-led build once Pantheon's Wrath is in hand.",
+ "lede": "A build from level 1 to 40. You level on Axe & Shield (the Berserker's default weapon), add the Warhammer in Gylden Ruins, and finish with both trees complete.",
  "notice": {
-  "title": "Not verified in-game yet.",
-  "text": "Early Access opened on November 3, 2026, and fan sites are still mapping out skills and traits. I cross-checked every guide I could find and tagged each claim by how well it's supported. The trait tree below matches your Traits screenshot node for node. I haven't played any of this myself. Before you spend points, check the in-game tooltips. Your trait screen has Reset and Reset All buttons, so you can respec traits too."
+  "title": "Checked against your Traits screen. Not tested in-game.",
+  "text": "The Warhammer tree matches your Traits screen node for node. Costs follow the in-game markers: \"3\" nodes cost 3, all others 1, and granted skills (✓) are free. Where branches split and rejoin you take one side, and the other turns red [me]. The plan spends 93 of the 94 Early Access points. Build choices and stat numbers are my recommendations, tagged as such."
  },
  "stages": [
   {
    "id": "level",
    "name": "Leveling",
-   "sub": "Lv 1 → 40",
+   "sub": "Lv 1 → 20 · Diamond Shores",
    "goal": "Level quickly and safely with Axe &amp; Shield. Carry the Warhammer so you can practice its charge timing on armored mobs.",
    "weapons": [
     "<span class='w-alt'>Axe &amp; Shield</span> as your main weapon [ok]",
@@ -26,24 +26,24 @@
     "On the hammer: Power Surge, then Tempered Blow (hold block, then release) [ok]"
    ],
    "traits": [
-    "Trait points come from Raeven's Coilstones, not from leveling, so collect them as you pass bosses [ok]",
-    "Pulverize, Power Surge, Tempered and Devastating Blow, Shattering Blow and Evade are granted free. Your first 4 points go to Meteor Hammer and Meteor Hammer II [me]"
+    "Diamond Shores has 11 Coilstones = 22 points. All 22 go to Axe & Shield: Death Ward, Battle Cry upgrades, Shield Slam, Twin Pulse, Reel In, Brutal Crash [me]",
+    "Pulverize, Power Surge, Tempered and Devastating Blow are granted free on the Warhammer, so you can practice it with 0 points [ok]"
    ],
    "stats": [
     [
      "Strength",
      100,
-     "1st"
-    ],
-    [
-     "Constitution",
-     60,
-     "2nd"
+     "+28"
     ],
     [
      "Endurance",
      60,
-     "2nd"
+     "+17"
+    ],
+    [
+     "Constitution",
+     43,
+     "+12"
     ],
     [
      "Talent",
@@ -53,12 +53,12 @@
     [
      "Agility",
      0,
-     "none"
+     "—"
     ],
     [
      "Intelligence",
      0,
-     "none"
+     "—"
     ]
    ],
    "gear": [
@@ -67,15 +67,15 @@
    ],
    "check": [
     "Put Axe & Shield and Warhammer on Q swap",
-    "Learn Battle Cry and Death Ward for emergencies",
-    "Pick up every Raeven's Coilstone you pass",
-    "Spend your first 4 points on Meteor Hammer and Meteor Hammer II"
+    "Unlock Death Ward and Shield Slam",
+    "Get all 11 Diamond Shores Coilstones (22 points)",
+    "Reach Brutal Crash and Steadfast"
    ]
   },
   {
    "id": "mid",
    "name": "Gearing",
-   "sub": "Lv 40, first bosses",
+   "sub": "Lv 21 → 35 · Gylden Ruins",
    "goal": "Upgrade your hammer and get the Meteor Hammer chain working.",
    "weapons": [
     "<span class='w-main'>Gatekeeper Harrod</span> as your starter hammer [one]",
@@ -87,39 +87,39 @@
     "Pulverize → Unstoppable Force refreshes Lv. 3 [ok]"
    ],
    "traits": [
-    "Trait order steps 5 to 13 (about 28 points total) [me]",
-    "Pulverize branch: take Unstoppable Force, not Bursting or Rupturing, for the Lv. 3 refresh and shield [one]"
+    "Gylden Ruins has 14 Coilstones = +28, for 50 total. The Warhammer gets 18 (Meteor Hammer → Galactic Impact → Lightning Collision) and Axe & Shield 10 more [me]",
+    "Fork picks: the Meteor Hammer line, Unstoppable Force, Lightning Collision [me]"
    ],
    "stats": [
     [
      "Strength",
      100,
-     "1st"
-    ],
-    [
-     "Constitution",
-     60,
-     "2nd"
+     "+44"
     ],
     [
      "Endurance",
-     60,
-     "2nd"
+     68,
+     "+30"
+    ],
+    [
+     "Constitution",
+     36,
+     "+16"
     ],
     [
      "Talent",
-     40,
-     "14"
+     27,
+     "+12 → 23"
     ],
     [
      "Agility",
      0,
-     "none"
+     "—"
     ],
     [
      "Intelligence",
      0,
-     "none"
+     "—"
     ]
    ],
    "gear": [
@@ -128,15 +128,15 @@
    ],
    "check": [
     "Get Tarnished Ancient Crusher",
-    "Raise Talent to 14",
-    "Unlock Masterpiece",
-    "Unlock Galactic Impact"
+    "Raise Talent toward 23",
+    "Unlock Galactic Impact",
+    "Unlock Lightning Collision"
    ]
   },
   {
    "id": "end",
    "name": "Endgame",
-   "sub": "Thunderclap",
+   "sub": "Lv 36 → 40 · Astron Plains",
    "goal": "Lead with the Warhammer for burst damage, and keep Axe &amp; Shield for escapes and survival.",
    "weapons": [
     "<span class='w-main'>Pantheon's Wrath</span> (Epic Great Hammer) [ok]",
@@ -150,39 +150,39 @@
     "Reconstruction restores HP while you hold Power Surge Lv. 1 at low HP [one]"
    ],
    "traits": [
-    "49 Warhammer and 43 Axe &amp; Shield uses all 92 Early Access points [me]",
-    "Lower-tree picks: Lightning Collision, Reforge, Reconstruction [one]"
+    "Astron Plains has 22 Coilstones = +44, for 94. Both trees finish: Warhammer 28, Axe & Shield 45, and 20 points in the Axe stat cluster [me]",
+    "Lower line: Thunder (Tough Skin → Compression) with Reconstruction for healing [me]"
    ],
    "stats": [
     [
      "Strength",
      100,
-     "1st"
-    ],
-    [
-     "Constitution",
-     60,
-     "2nd"
+     "+50"
     ],
     [
      "Endurance",
-     60,
-     "2nd"
+     70,
+     "+35"
+    ],
+    [
+     "Constitution",
+     40,
+     "+20"
     ],
     [
      "Talent",
-     65,
-     "23"
+     24,
+     "+12 → 23"
     ],
     [
      "Agility",
      0,
-     "none"
+     "—"
     ],
     [
      "Intelligence",
      0,
-     "none"
+     "—"
     ]
    ],
    "gear": [
@@ -195,7 +195,7 @@
     "Get Pantheon's Wrath",
     "Raise Talent to 23",
     "Socket Thunder Dash Lunastone",
-    "Finish the 49-point trait path",
+    "Spend 93 of 94 trait points",
     "Land Thundering Hurl in a boss fight"
    ]
   }
@@ -247,29 +247,6 @@
   ],
   "after": "<b>Don't</b> sprint or swap mid-chain, because either one ends Meteor Hammer. Swap to Axe &amp; Shield with {Q} only to escape or survive. You get five HP potions per fight [one]."
  },
- "split": {
-  "main": "Warhammer",
-  "alt": "Axe & Shield",
-  "mainMin": 49,
-  "intro": "Trait points come from <b>Raeven's Coilstones</b> near powerful bosses, not from leveling [ok]. Guides put the Early Access total at 92 or about 95, so enter how many you actually have.",
-  "presets": [
-   {
-    "label": "Thunderclap, adjusted (49 / 43)",
-    "m": 49,
-    "a": 43
-   },
-   {
-    "label": "Thunderclap as written (49 / 51)",
-    "m": 49,
-    "a": 51
-   },
-   {
-    "label": "Frenzy split (46 / 46)",
-    "m": 46,
-    "a": 46
-   }
-  ]
- },
  "disputes": [
   [
    "Is the Warhammer any good?",
@@ -277,19 +254,19 @@
    "Level with Axe &amp; Shield and lead with the Warhammer at endgame, ideally in a group that stuns for you."
   ],
   [
-   "Trait split",
-   "Thunderclap lists 49 + 51, which is 100 points, but also says to leave 8 unspent because Early Access only has 92.",
-   "Keep 49 on the Warhammer and cut Axe &amp; Shield to 43 [me]."
+   "Trait point costs",
+   "Wikily lists Meteor Hammer and Meteor Hammer II at 2 each. Your screen had 4 points pending on Meteor Hammer, Meteor Hammer II, Evasive Assault and Fire ATK.",
+   "Unmarked nodes cost 1 [me]."
+  ],
+  [
+   "Total trait points",
+   "Older guides say 92 or 100. RaidDex's Coilstone list: 47 × 2 = 94.",
+   "94. RaidDex's 49 / 51 split predates the Coilstone count."
   ],
   [
    "Stat order",
-   "RaidDex: STR, then CON and END, then Talent. Auroria: STR, AGI, END, CON, which it calls a framework, not a measured result.",
-   "Follow RaidDex and put nothing into AGI or INT."
-  ],
-  [
-   "Node positions",
-   "Wikily lists names and costs but not left-to-right order inside a row.",
-   "Placed in list order. Check tooltips for the same-row pairs [me]."
+   "RaidDex: STR, then CON and END tied. AAC Tools' demo values per point: END +6.6 SP and +4.2 defense, CON +7.2 HP.",
+   "STR first, Endurance second (charged swings and dodges drain SP), CON third, Talent 23 [me]."
   ]
  ],
  "sources": [
@@ -325,6 +302,19 @@
   {
    "t": "GameTruth: Axe or Warhammer",
    "u": "https://www.gametruth.com/guides/archeage-chronicles-berserker-weapons-guide/"
+  },
+  {
+   "t": "AAC Tools: stat calculator (per-point values, demo)",
+   "u": "https://aac-tools.com/en/tools/stats/"
+  },
+  {
+   "t": "RaidDex: Coilstones (47 × 2 points)",
+   "u": "https://raiddex.com/en/archeage-chronicles/collectibles",
+   "n": "read via search summary; the site blocks direct reading"
+  },
+  {
+   "t": "archeagechroniclesdata: leveling (Lv 40 cap, region levels)",
+   "u": "https://archeagechroniclesdata.com/leveling"
   }
  ],
  "footer": "Sources checked November 12, 2026, during Early Access. The first content update is planned for December, so recheck this build after it ships.",
@@ -333,7 +323,7 @@
    "weapon": "Warhammer",
    "defaultPoints": 4,
    "pad": 80,
-   "intro": "This tree matches your Traits screen node for node. Your screenshot has 41 nodes and Wikily's Warhammer list has 41, and every node marked \"3\" on your screen costs 3 on Wikily [me]. Nodes marked ✓ are granted free: Proficiency plus every skill that doesn't branch from it (the lit cluster on the left of the in-game screen). They aren't counted in your points or in the path totals [ok]. When two nodes share a row (Planar Fracture and Lightning Collision, for example), I placed them left to right in Wikily's list order, so hover them in-game before you buy.",
+   "intro": "Matches your Warhammer screen: 9 granted skills on the left and Proficiency at the top. Costs follow the in-game markers: \"3\" nodes cost 3, all others 1, and granted skills (✓) are free. Where branches split and rejoin you take one side, and the other turns red [me]. On your screen, the 4 points pending were Meteor Hammer, Meteor Hammer II, Evasive Assault and Fire ATK. Forks: Fire (Surging Heat) or Meteor Hammer line, one of the three Pulverize lines, Planar Fracture or Lightning Collision, the Burn or Thunder lower line, and one leaf at the bottom. Full tree with choices made: 28–31 points.",
    "groups": [
     {
      "x": 946,
@@ -828,44 +818,9 @@
      "e": "Spends all Thunder stacks on a heavy hammer throw that builds Shock. Resonating Strike grants Thunder."
     }
    ],
-   "presets": [
-    {
-     "name": "Thunderclap (RaidDex)",
-     "note": "Granted skills are left out. Your first 4 points buy Meteor Hammer and Meteor Hammer II. RaidDex picks the skills; the order and the Surging Heat → Forged → Canned Heat add-on (Forged feeds Electro Release and Reforge) are mine [me].",
-     "order": [
-      "prof",
-      "surge",
-      "temp",
-      "pulv",
-      "mh",
-      "devast",
-      "mh2",
-      "evas",
-      "fire",
-      "master",
-      "uf",
-      "uf2",
-      "gal",
-      "light",
-      "reson",
-      "tough",
-      "ecl",
-      "comp",
-      "recon",
-      "surg",
-      "forged",
-      "canned",
-      "electro",
-      "rapid",
-      "crack",
-      "reforge",
-      "ruin",
-      "hurl"
-     ]
-    }
-   ],
    "role": "Main weapon",
-   "key": "warhammer"
+   "key": "warhammer",
+   "short": "WH"
   },
   {
    "file": "axe",
@@ -875,40 +830,253 @@
    "defaultPoints": 43,
    "wrap": 16,
    "pad": 95,
-   "intro": "All 52 Axe nodes from Wikily, with costs and requirements. The layout is approximate: rows follow Wikily, granted skills are grouped on the left and stat nodes on the right, as in-game [me]. Nodes marked ✓ are granted free: Proficiency plus every skill that doesn't branch from it (the lit cluster on the left of the in-game screen). They aren't counted in your points or in the path totals [ok].",
-   "presets": [
-    {
-     "name": "Shield sustain (43-point swap)",
-     "note": "Built around the skills the guides use on the swap: Battle Cry and Shield Up (both free), Death Ward, Shield Slam, Twin Pulse, Reel In and Brutal Crash, plus the poison line. The picks and order are mine [me].",
-     "order": [
-      "Death Ward",
-      "Giant's Bellow",
-      "Triumphant Cry",
-      "Rally",
-      "Resounding Roar",
-      "Shield Slam",
-      "Shield Crash",
-      "Twin Pulse",
-      "Reel In",
-      "Physical Crit",
-      "Brutal Crash",
-      "Steadfast",
-      "Rousing Call",
-      "Fearsome Might",
-      "Battleborn",
-      "Ridge Shatter",
-      "Reckless Destroyer",
-      "Overpower",
-      "Perseverance",
-      "Clash",
-      "Brutality",
-      "Shield Slam - Stun",
-      "Heavy Hitter",
-      "Battle Cry - Poison"
-     ]
-    }
-   ]
+   "intro": "All 52 Axe nodes from Wikily. The layout is approximate: granted skills on the left, the stat cluster on the right [me]. Costs follow the in-game markers: \"3\" nodes cost 3, all others 1, and granted skills (✓) are free. Where branches split and rejoin you take one side, and the other turns red [me]. The stat cluster keeps Wikily's 10 and 5 point costs, which aren't confirmed in-game.",
+   "short": "Axe"
   }
  ],
- "treeHelp": "Click a node to read it. Double-click it, or press Space, to unlock or refund it. Nodes marked ✓ are granted free: default skills that cost no trait points. <b>Fill with my points</b> buys the build path in order until your points run out. Each weapon's tree is saved in this browser."
+ "treeHelp": "Click a node to read it. Double-click it, or press Space, to unlock or refund it. ✓ = granted free. Red = locked because you took the other side of that fork. <b>Fill with my points</b> follows the leveling plan across both weapons until your points run out. Saved in this browser.",
+ "budgetIntro": "Early Access has 47 Raeven's Coilstones at 2 trait points each, 94 in total [one]. Region counts are RaidDex's [one] and level bands are archeagechroniclesdata's [one]. You only reach these totals if you take every Coilstone as you go. Both weapons spend from the same pool.",
+ "defaultPoints": 4,
+ "weaponGuide": {
+  "intro": "Every Berserker starts with Axe & Shield, the class's default weapon [ok]. Start your trait points there. It keeps you alive while you level, and the Warhammer's core combo (Pulverize, Power Surge, Tempered and Devastating Blow) is already free.",
+  "items": [
+   {
+    "weapon": "Axe & Shield",
+    "when": "First · first 22 points",
+    "pros": [
+     "Sustain: Battle Cry heals and staggers bosses, Shield Up blocks, and Death Ward gives 15 s of immortality [ok]",
+     "Rated highest of the Berserker weapons: AOEAH 10/10 PvE, 9/10 PvP [ok]",
+     "Reel In and Brutal Crash pull and pin targets [one]"
+    ],
+    "cons": [
+     "Lower burst than the Warhammer [ok]",
+     "Weak against highly evasive PvP targets [one]"
+    ],
+    "skip": "Leveling on the Warhammer alone means slow, missable charged swings with long recovery and no heal. Guides call that tricky solo and in boss fights [ok]."
+   },
+   {
+    "weapon": "Warhammer",
+    "when": "Second · from Gylden Ruins",
+    "pros": [
+     "The biggest burst: Galactic Impact, Lightning Collision, Thundering Hurl [ok]",
+     "Damage reduction and stagger immunity while charging Power Surge [ok]",
+     "The core combo is free, so the 28 points all add power [me]"
+    ],
+    "cons": [
+     "Slowest weapon. A missed charge leaves you exposed [ok]",
+     "Rated 5/10 by AOEAH, with mixed tier lists [ok]",
+     "Meteor Hammer ends if you sprint or swap weapons [ok]"
+    ],
+    "skip": "You give up the class's burst finisher. Fine for leveling, but bosses take longer."
+   }
+  ]
+ },
+ "plans": [
+  {
+   "name": "Axe first, Warhammer second",
+   "note": "93 of 94 points. Steps 1–16 are Diamond Shores (all Axe). The Warhammer starts in Gylden Ruins. The last 20 points go into the Axe stat cluster at Wikily's listed cost [me].",
+   "steps": [
+    [
+     1,
+     "Death Ward"
+    ],
+    [
+     1,
+     "Giant's Bellow"
+    ],
+    [
+     1,
+     "Triumphant Cry"
+    ],
+    [
+     1,
+     "Brutality"
+    ],
+    [
+     1,
+     "Resounding Roar"
+    ],
+    [
+     1,
+     "Shield Slam"
+    ],
+    [
+     1,
+     "Shield Crash"
+    ],
+    [
+     1,
+     "Twin Pulse"
+    ],
+    [
+     1,
+     "Reel In"
+    ],
+    [
+     1,
+     "Physical Crit"
+    ],
+    [
+     1,
+     "Brutal Crash"
+    ],
+    [
+     1,
+     "Reckless Destroyer"
+    ],
+    [
+     1,
+     "Overpower"
+    ],
+    [
+     1,
+     "Perseverance"
+    ],
+    [
+     1,
+     "Clash"
+    ],
+    [
+     1,
+     "Steadfast"
+    ],
+    [
+     0,
+     "Meteor Hammer"
+    ],
+    [
+     0,
+     "Meteor Hammer II"
+    ],
+    [
+     0,
+     "Evasive Assault"
+    ],
+    [
+     0,
+     "Fire ATK"
+    ],
+    [
+     0,
+     "Masterpiece"
+    ],
+    [
+     0,
+     "Unstoppable Force"
+    ],
+    [
+     0,
+     "Unstoppable Force II"
+    ],
+    [
+     0,
+     "Galactic Impact"
+    ],
+    [
+     0,
+     "Lightning Collision"
+    ],
+    [
+     0,
+     "Resonating Strike"
+    ],
+    [
+     0,
+     "Tough Skin"
+    ],
+    [
+     0,
+     "Electric Cluster"
+    ],
+    [
+     1,
+     "Heavy Hitter"
+    ],
+    [
+     1,
+     "Battle Cry - Poison"
+    ],
+    [
+     1,
+     "Ruthless Force"
+    ],
+    [
+     1,
+     "Fog ATK"
+    ],
+    [
+     1,
+     "Relentless Drive"
+    ],
+    [
+     1,
+     "Fearsome Might"
+    ],
+    [
+     1,
+     "Battleborn"
+    ],
+    [
+     1,
+     "Dominance"
+    ],
+    [
+     0,
+     "Compression"
+    ],
+    [
+     0,
+     "Reconstruction"
+    ],
+    [
+     0,
+     "Assured Ruin"
+    ],
+    [
+     0,
+     "Thundering Hurl"
+    ],
+    [
+     1,
+     "Ridge Shatter"
+    ],
+    [
+     1,
+     "Assured Blow"
+    ],
+    [
+     1,
+     "Final Act"
+    ],
+    [
+     1,
+     "Unbound Might"
+    ],
+    [
+     1,
+     "Doombringer"
+    ],
+    [
+     1,
+     "Fierce Breakthrough"
+    ],
+    [
+     1,
+     "Battle Echo"
+    ],
+    [
+     1,
+     "Damage ↑ at HP ≥70%"
+    ],
+    [
+     1,
+     "Weapon Physical ATK ↑"
+    ],
+    [
+     1,
+     "Damage ↑ vs HP ≤40%"
+    ]
+   ]
+  }
+ ]
 }

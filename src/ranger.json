@@ -6,14 +6,14 @@
  "h1": "<span class='zap'>Storm</span> <span class='hot'>Hatchets</span>",
  "lede": "A lightning Hatchet build from level 1 to endgame. The guides rate Hatchets as the Ranger's strongest weapon and tag this build for solo leveling, dungeons and PvP. The Longbow is your second weapon, used to open fights from range.",
  "notice": {
-  "title": "Not verified in-game yet.",
-  "text": "Early Access opened on November 3, 2026. I cross-checked every Ranger guide I could find and tagged each claim by how well it's supported. The trait tree below matches the in-game Hatchet Traits screen node for node. I haven't played any of this myself, so check the in-game tooltips before you spend points."
+  "title": "Checked against your Traits screen. Not tested in-game.",
+  "text": "The Hatchet tree matches your Traits screen node for node, including the red (locked) sides of each fork. Costs follow the in-game markers: \"3\" nodes cost 3, all others 1, and granted skills (✓) are free. Where branches split and rejoin you take one side, and the other turns red [me]. The plan spends 89 of the 94 Early Access points. The remaining 5 can't buy the 10-point stat node. Build choices and stat numbers are my recommendations."
  },
  "stages": [
   {
    "id": "level",
    "name": "Leveling",
-   "sub": "Lv 1 → 40",
+   "sub": "Lv 1 → 20 · Diamond Shores",
    "goal": "Level in melee with Hatchets, which keep you alive better than the bow. Add the Longbow opener once you have points to spare.",
    "weapons": [
     "<span class='w-main'>Hatchets</span> as your main weapon [ok]",
@@ -26,39 +26,39 @@
     "Thrill of the Hunt restores SP at 10 stacks [one]"
    ],
    "traits": [
-    "Trait points come from Raeven's Coilstones, not from leveling [ok]",
-    "Follow the trait order below. The first 11 points cover your core combo and SP sustain [me]"
+    "Diamond Shores has 11 Coilstones = 22 points. All 22 go to Hatchets: Thrill → Discharge → Overload → Lightning Rush, then Stormguard [me]",
+    "Flurry, Lunge, Axe Flurry, Windscreamer, Spinning Kick and Parry are granted free [ok]"
    ],
    "stats": [
     [
      "Agility",
      100,
-     "1st"
-    ],
-    [
-     "Talent",
-     95,
-     "1st"
-    ],
-    [
-     "Constitution",
-     60,
-     "2nd"
+     "+28"
     ],
     [
      "Endurance",
      60,
-     "2nd"
+     "+17"
+    ],
+    [
+     "Constitution",
+     43,
+     "+12"
+    ],
+    [
+     "Talent",
+     0,
+     "later"
     ],
     [
      "Strength",
      0,
-     "none"
+     "—"
     ],
     [
      "Intelligence",
      0,
-     "none"
+     "—"
     ]
    ],
    "gear": [
@@ -75,7 +75,7 @@
   {
    "id": "mid",
    "name": "Gearing",
-   "sub": "Lv 40, first bosses",
+   "sub": "Lv 21 → 35 · Gylden Ruins",
    "goal": "Turn on the lightning loop: Discharge → Rebounding Thunder → Shocking Kick → Overload.",
    "weapons": [
     "<span class='w-main'>Centurion's Hatchet</span> for midgame [ok]",
@@ -87,39 +87,38 @@
     "Thunder Slash combos from Shocking Kick [ok]"
    ],
    "traits": [
-    "Trait order steps 11 to 17 [me]",
-    "Shocking Kick needs Lightning ATK, which needs Rebounding Thunder [one]"
+    "Gylden Ruins has 14 Coilstones = +28, for 50 total. Hatchets finish at 39, and the Longbow gets its Fire Arrow opener line (11) [me]"
    ],
    "stats": [
     [
      "Agility",
      100,
-     "1st"
-    ],
-    [
-     "Talent",
-     60,
-     "20"
-    ],
-    [
-     "Constitution",
-     60,
-     "2nd"
+     "+50"
     ],
     [
      "Endurance",
-     60,
-     "2nd"
+     62,
+     "+31"
+    ],
+    [
+     "Constitution",
+     36,
+     "+18"
+    ],
+    [
+     "Talent",
+     10,
+     "+3 → 20"
     ],
     [
      "Strength",
      0,
-     "none"
+     "—"
     ],
     [
      "Intelligence",
      0,
-     "none"
+     "—"
     ]
    ],
    "gear": [
@@ -136,7 +135,7 @@
   {
    "id": "end",
    "name": "Endgame",
-   "sub": "Storm Hatchet",
+   "sub": "Lv 36 → 40 · Astron Plains",
    "goal": "Run the full shock chain and finish targets with the wind branch below 40% HP.",
    "weapons": [
     "<span class='w-main'>Wrathful Tyrant's Claw</span> [ok]",
@@ -150,39 +149,38 @@
     "Eye of the Storm boosts damage, crit and Stagger after Stormsplitter [one]"
    ],
    "traits": [
-    "49 Hatchets and 43 Longbow uses all 92 Early Access points [me]",
-    "RaidDex calls the split \"roughly even\". Thunder Hunt uses 53 / 47 [one]"
+    "Astron Plains has 22 Coilstones = +44, for 94. The Longbow reaches 50 (its maximum with choices made), for 89 spent and 5 left [me]"
    ],
    "stats": [
     [
      "Agility",
      100,
-     "1st"
-    ],
-    [
-     "Talent",
-     90,
-     "35"
-    ],
-    [
-     "Constitution",
-     60,
-     "2nd"
+     "+50"
     ],
     [
      "Endurance",
-     50,
-     "2nd"
+     64,
+     "+32"
+    ],
+    [
+     "Constitution",
+     34,
+     "+17"
+    ],
+    [
+     "Talent",
+     36,
+     "+18 → 35"
     ],
     [
      "Strength",
      0,
-     "none"
+     "—"
     ],
     [
      "Intelligence",
      0,
-     "none"
+     "—"
     ]
    ],
    "gear": [
@@ -229,35 +227,7 @@
   ],
   "after": "Use Shadowcatch (no SP) to get behind a boss's swing. If your SP runs dry, Rapid Throw costs nothing too."
  },
- "split": {
-  "main": "Hatchets",
-  "alt": "Longbow",
-  "mainMin": 49,
-  "intro": "Trait points come from <b>Raeven's Coilstones</b> near powerful bosses [ok]. RaidDex's Storm Hatchet splits points about evenly. Its Thunder Hunt build goes 53 / 47, and its Ember Arrow longbow build goes 41 / 59.",
-  "presets": [
-   {
-    "label": "Storm Hatchet, adjusted (49 / 43)",
-    "m": 49,
-    "a": 43
-   },
-   {
-    "label": "Thunder Hunt as written (53 / 47)",
-    "m": 53,
-    "a": 47
-   },
-   {
-    "label": "Ember Arrow longbow (33 / 59)",
-    "m": 33,
-    "a": 59
-   }
-  ]
- },
  "disputes": [
-  [
-   "Stat order",
-   "RaidDex: AGI and Talent first, then CON and END. DeityVengy (Nov 9): END, then Talent, then INT, and calls AGI and crit worthless right now.",
-   "Follow RaidDex while leveling. Stats respec free, so try END-heavy if your crits feel weak."
-  ],
   [
    "Is the Longbow worth it?",
    "RaidDex and Kybuza use it as an opener, and AOEAH rates it 8/10 for PvE. DeityVengy calls it \"a dead weapon\" in Early Access.",
@@ -272,6 +242,16 @@
    "Hatchet stats",
    "Centurion's Hatchet had wrong Temper stats until the Nov 10 fix.",
    "Ignore Hatchet numbers from before Nov 10."
+  ],
+  [
+   "Stat order",
+   "RaidDex: AGI and Talent, then CON and END. DeityVengy: END, then Talent, then INT, and says AGI crit is weak right now. AAC Tools' demo values per point: END +6.6 SP and +4.2 defense, CON +7.2 HP, AGI +29 crit rating.",
+   "AGI first, Endurance a strong second (dodges and Rapid Throw spam drain SP), CON third, Talent to the weapon requirement [me]."
+  ],
+  [
+   "Total trait points",
+   "Older guides say 92 or 100. RaidDex's Coilstone list: 47 × 2 = 94.",
+   "94."
   ]
  ],
  "sources": [
@@ -303,6 +283,19 @@
   {
    "t": "AOEAH tier list (Nov 4, 2026)",
    "u": "https://www.aoeah.com/news/4897--archeage-chronicles-best-classesweaponsbuilds-tier-list-pve--pvp"
+  },
+  {
+   "t": "AAC Tools: stat calculator (per-point values, demo)",
+   "u": "https://aac-tools.com/en/tools/stats/"
+  },
+  {
+   "t": "RaidDex: Coilstones (47 × 2 points)",
+   "u": "https://raiddex.com/en/archeage-chronicles/collectibles",
+   "n": "read via search summary; the site blocks direct reading"
+  },
+  {
+   "t": "archeagechroniclesdata: leveling (Lv 40 cap, region levels)",
+   "u": "https://archeagechroniclesdata.com/leveling"
   }
  ],
  "footer": "Sources checked November 12, 2026, during Early Access. Recheck after the December update.",
@@ -311,7 +304,7 @@
    "weapon": "Hatchets",
    "defaultPoints": 10,
    "pad": 95,
-   "intro": "This tree matches the in-game Hatchet Traits screen node for node. The screenshot has 55 nodes and Wikily's Hatchet list has 55. The connections line up, and every node that shows a \"3\" in-game costs 3 on Wikily [me]. Nodes marked ✓ are granted free: Proficiency plus every skill that doesn't branch from it (the lit cluster on the left of the in-game screen). They aren't counted in your points or in the path totals [ok]. When two nodes share a row (Stormburst and Eye of the Storm, for example), I placed them left to right in Wikily's list order, so hover them in-game before you buy.",
+   "intro": "Matches your Hatchet screen: 13 granted skills on the left and Proficiency at the top. Costs follow the in-game markers: \"3\" nodes cost 3, all others 1, and granted skills (✓) are free. Where branches split and rejoin you take one side, and the other turns red [me]. Your screen shows the same picks as this plan: Momentum, Stormguard and Overload, with the other sides red. Full tree with choices made: 39 points.",
    "nodes": [
     {
      "id": "prof",
@@ -964,46 +957,6 @@
      "y": 1050
     }
    ],
-   "presets": [
-    {
-     "name": "Storm Hatchet (RaidDex skills)",
-     "note": "RaidDex names the skills (Overload, Relentless Hunt, Shocking Kick, Thunder Slash, Lightning Rush, Gale Sever). Granted skills are left out. The order, Airslice (so you don't depend on Parry) and the Stormguard shield are my picks [me].",
-     "order": [
-      "prof",
-      "flurry",
-      "lunge",
-      "aflurry",
-      "ssplit",
-      "rthrow",
-      "wscream",
-      "thrill",
-      "shadow",
-      "skm",
-      "moment",
-      "disch",
-      "rhunt",
-      "rthunder",
-      "latk",
-      "shkick",
-      "overload",
-      "tslash",
-      "eff",
-      "swake",
-      "sguard",
-      "astorm",
-      "wcleave",
-      "wblade",
-      "aslice",
-      "ripper",
-      "bloody",
-      "eye",
-      "gale",
-      "schase",
-      "lrush",
-      "evade"
-     ]
-    }
-   ],
    "groups": [
     {
      "x": 362,
@@ -1012,7 +965,8 @@
     }
    ],
    "role": "Main weapon",
-   "key": "hatchet"
+   "key": "hatchet",
+   "short": "Hatchet"
   },
   {
    "file": "longbow",
@@ -1022,38 +976,281 @@
    "defaultPoints": 43,
    "wrap": 16,
    "pad": 95,
-   "intro": "All 58 Longbow nodes from Wikily. The layout is approximate: granted skills are grouped on the left, as in-game [me]. Nodes marked ✓ are granted free: Proficiency plus every skill that doesn't branch from it (the lit cluster on the left of the in-game screen). They aren't counted in your points or in the path totals [ok].",
-   "presets": [
-    {
-     "name": "Fire opener + crit Aimed Shot (43-point swap)",
-     "note": "Scarlet Arrow and Fire Arrow come from RaidDex's openers, Friction from Kybuza's Burn Longbow, and the Sniper/Fervor crit line from Ember Arrow. Aimed Shot is granted free. The path is mine [me].",
-     "order": [
-      "Rapid Fire",
-      "Deft Hands",
-      "Fire Arrow",
-      "Rapid Shot Mastery",
-      "Rapid Shot Mastery II",
-      "Rapid Shot Mastery III",
-      "Fire ATK",
-      "Scarlet Arrow",
-      "Balanced Aim",
-      "Ice Arrow",
-      "Crashing Waves",
-      "Tidal ATK",
-      "Sniper",
-      "Preemptive Strike",
-      "Physical ATK",
-      "Beastly Fervor",
-      "Beastly Fervor II",
-      "Marksman",
-      "Withdrawing Shot Combo",
-      "Deadly Opening",
-      "Friction",
-      "Rapid Fire - Burst"
-     ]
-    }
-   ]
+   "intro": "All 58 Longbow nodes from Wikily. The layout is approximate: granted skills are on the left [me]. Costs follow the in-game markers: \"3\" nodes cost 3, all others 1, and granted skills (✓) are free. Where branches split and rejoin you take one side, and the other turns red [me]. Full tree with choices made: 50 points.",
+   "short": "Bow"
   }
  ],
- "treeHelp": "Click a node to read it. Double-click it, or press Space, to unlock or refund it. Nodes marked ✓ are granted free: default skills that cost no trait points. <b>Fill with my points</b> buys the build path in order until your points run out. Each weapon's tree is saved in this browser."
+ "treeHelp": "Click a node to read it. Double-click it, or press Space, to unlock or refund it. ✓ = granted free. Red = locked because you took the other side of that fork. <b>Fill with my points</b> follows the leveling plan across both weapons until your points run out. Saved in this browser.",
+ "budgetIntro": "Early Access has 47 Raeven's Coilstones at 2 trait points each, 94 in total [one]. Region counts are RaidDex's [one] and level bands are archeagechroniclesdata's [one]. You only reach these totals if you take every Coilstone as you go. Both weapons spend from the same pool.",
+ "defaultPoints": 22,
+ "weaponGuide": {
+  "intro": "Every Ranger starts with Hatchets, the class's default weapon [ok]. Put your first points there. The guides rate Hatchets the Ranger's strongest weapon, and the Longbow's opener skills (Rapid Shot, Piercing Shot, Aimed Shot) are free anyway.",
+  "items": [
+   {
+    "weapon": "Hatchets",
+    "when": "First · first 22 points",
+    "pros": [
+     "Rated 9.5/10 PvE and PvP by AOEAH, and S by a creator tier list [ok]",
+     "Self-sustain: Thrill restores SP, Stormguard shields, Gale Sever heals [one]",
+     "Overload makes Lunge stagger-immune [one]"
+    ],
+    "cons": [
+     "Melee, so you take hits [ok]",
+     "Hardest weapon to master, per several creators [ok]",
+     "Hatchet stats before the Nov 10 Temper fix were wrong [ok]"
+    ],
+    "skip": "A Longbow-only Ranger levels slowly. Arrows have travel time and can be parried, and one creator calls the bow \"a dead weapon\" right now [one]."
+   },
+   {
+    "weapon": "Longbow",
+    "when": "Second · from Gylden Ruins",
+    "pros": [
+     "Opens fights from range: Aimed Shot, then Scarlet Arrow [ok]",
+     "Fire Arrow and Friction add Burn and SP [one]",
+     "Aimed Shot crit line (Sniper, Fervor, Marksman) [one]"
+    ],
+    "cons": [
+     "Rated lower: AOEAH 8/10 PvE, a creator tier list B [ok]",
+     "Scarlet Arrow costs HP [ok]"
+    ],
+    "skip": "You lose ranged openers and ranged boss phases. Your damage comes almost all from melee."
+   }
+  ]
+ },
+ "plans": [
+  {
+   "name": "Storm Hatchets, then Longbow",
+   "note": "89 of 94 points. Hatchets fill first (Diamond Shores and most of Gylden Ruins) and finish at 39. The Longbow gets 50 [me].",
+   "steps": [
+    [
+     0,
+     "Thrill of the Hunt"
+    ],
+    [
+     0,
+     "Shadowcatch"
+    ],
+    [
+     0,
+     "Spinning Kick Mastery"
+    ],
+    [
+     0,
+     "Momentum"
+    ],
+    [
+     0,
+     "Discharge"
+    ],
+    [
+     0,
+     "Relentless Hunt"
+    ],
+    [
+     0,
+     "Rebounding Thunder"
+    ],
+    [
+     0,
+     "Lightning ATK"
+    ],
+    [
+     0,
+     "Shocking Kick"
+    ],
+    [
+     0,
+     "Overload"
+    ],
+    [
+     0,
+     "Thunder Slash"
+    ],
+    [
+     0,
+     "Lightning Rush"
+    ],
+    [
+     0,
+     "Stormsplitter"
+    ],
+    [
+     0,
+     "Storm's Wake"
+    ],
+    [
+     0,
+     "Stormguard"
+    ],
+    [
+     0,
+     "Rapid Throw"
+    ],
+    [
+     0,
+     "Windcleaver"
+    ],
+    [
+     0,
+     "Wind Blade"
+    ],
+    [
+     0,
+     "Airslice"
+    ],
+    [
+     0,
+     "Ripper Edge"
+    ],
+    [
+     0,
+     "Bloodied Edge"
+    ],
+    [
+     0,
+     "Eye of the Storm"
+    ],
+    [
+     0,
+     "Gale Sever"
+    ],
+    [
+     0,
+     "Storm Chaser"
+    ],
+    [
+     0,
+     "Rapid Throw - Shock"
+    ],
+    [
+     0,
+     "Battle Tonic"
+    ],
+    [
+     0,
+     "Flurry of Axes Combo"
+    ],
+    [
+     1,
+     "Rapid Fire"
+    ],
+    [
+     1,
+     "Deft Hands"
+    ],
+    [
+     1,
+     "Fire Arrow"
+    ],
+    [
+     1,
+     "Rapid Shot Mastery"
+    ],
+    [
+     1,
+     "Rapid Shot Mastery II"
+    ],
+    [
+     1,
+     "Rapid Shot Mastery III"
+    ],
+    [
+     1,
+     "Fire ATK"
+    ],
+    [
+     1,
+     "Scarlet Arrow"
+    ],
+    [
+     1,
+     "Balanced Aim"
+    ],
+    [
+     1,
+     "Ice Arrow"
+    ],
+    [
+     1,
+     "Crashing Waves"
+    ],
+    [
+     1,
+     "Tidal ATK"
+    ],
+    [
+     1,
+     "Sniper"
+    ],
+    [
+     1,
+     "Preemptive Strike"
+    ],
+    [
+     1,
+     "Physical ATK"
+    ],
+    [
+     1,
+     "Beastly Fervor"
+    ],
+    [
+     1,
+     "Beastly Fervor II"
+    ],
+    [
+     1,
+     "Marksman"
+    ],
+    [
+     1,
+     "Withdrawing Shot Combo"
+    ],
+    [
+     1,
+     "Deadly Opening"
+    ],
+    [
+     1,
+     "Friction"
+    ],
+    [
+     1,
+     "Rapid Fire - Burst"
+    ],
+    [
+     1,
+     "Tahyang's Raging Flames"
+    ],
+    [
+     1,
+     "Arrow Stab"
+    ],
+    [
+     1,
+     "Arrow Stab - Bleed"
+    ],
+    [
+     1,
+     "Counterattack Maneuver"
+    ],
+    [
+     1,
+     "Crescent Kick"
+    ],
+    [
+     1,
+     "Hidden Blade"
+    ],
+    [
+     1,
+     "Hawk Talon"
+    ],
+    [
+     1,
+     "Acrobatic Momentum"
+    ]
+   ]
+  }
+ ]
 }

@@ -122,6 +122,22 @@ select{font:500 14px var(--body);padding:7px 10px;border-radius:6px;border:1px s
 .state.s-free{color:var(--volt);background:var(--volt-soft)}
 .wbtn[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 .wbtn[aria-pressed="true"] small{color:var(--bg);opacity:.75}
+.node.excl .shape{fill:var(--bad-soft);stroke:var(--bad)}
+.node.excl .cost,.node.excl .label{fill:var(--bad)}
+.state.s-excl{color:var(--bad);background:var(--bad-soft)}
+ol.steps li.ms{grid-column:1/-1;display:block;counter-increment:none;font:600 15px var(--display);text-transform:uppercase;letter-spacing:.05em;color:var(--fg);border-bottom:1px solid var(--line);border-radius:0;margin-top:10px;padding:6px 2px;cursor:default}
+ol.steps li.ms::before{content:none}
+ol.steps li.ms:hover{background:none}
+ol.steps li{grid-template-columns:28px auto 1fr auto}
+.wchip{font:500 10px var(--mono);text-transform:uppercase;letter-spacing:.05em;padding:1px 6px;border-radius:3px;white-space:nowrap}
+.wchip.w0{background:var(--ember-soft);color:var(--ember)} .wchip.w1{background:var(--volt-soft);color:var(--volt)}
+.wgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.wcard{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.wcard h4,.skip h4{margin:0 0 6px;font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.wcols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.skip{border-top:1px solid var(--line);padding-top:10px}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+@media (max-width:520px){.wcols{grid-template-columns:1fr}}
 .glabel{font:500 11px var(--mono);fill:var(--muted);letter-spacing:.08em;text-transform:uppercase}
 .tpanel{position:sticky;top:12px;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
 .tpanel h3{font-size:22px}
@@ -192,6 +208,12 @@ footer{font-size:13px;color:var(--muted)}
   <div id="stage" class="stage" role="tabpanel"></div>
 </section>
 
+<section aria-labelledby="wg-h">
+  <h2 id="wg-h">Which weapon first</h2>
+  <p id="wg-intro"></p>
+  <div class="wgrid" id="wg"></div>
+</section>
+
 <section aria-labelledby="tree-h">
   <h2 id="tree-h"></h2>
   <div class="tabs" id="wswitch" aria-label="Weapon"></div>
@@ -199,8 +221,8 @@ footer{font-size:13px;color:var(--muted)}
   <div class="treebox">
     <div class="tree-controls">
       <div class="row">
-        <div class="avail"><label for="tpts">Trait points you have</label><input id="tpts" type="number" min="0" max="120"></div>
-        <label for="tpreset" class="sr">Build path</label><select id="tpreset"></select>
+        <div class="avail"><label for="tpts">Trait points you have (both weapons)</label><input id="tpts" type="number" min="0" max="120"></div>
+        <label for="tpreset" class="sr">Leveling plan</label><select id="tpreset"></select>
       </div>
       <div class="row">
         <button class="btn primary" id="tfill" type="button">Fill with my points</button>
@@ -215,6 +237,7 @@ footer{font-size:13px;color:var(--muted)}
         <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="none" stroke="var(--muted)"/><rect x="-3" y="-3" width="6" height="6" transform="rotate(45)" fill="none" stroke="var(--muted)"/></svg>Skill</span>
         <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="none" stroke="var(--muted)"/></svg>Passive</span>
         <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><circle r="7" fill="none" stroke="var(--muted)"/></svg>Stat</span>
+        <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="var(--bad-soft)" stroke="var(--bad)" stroke-width="2"/></svg>Locked by a fork choice</span>
         <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="var(--volt-soft)" stroke="var(--volt)" stroke-width="2"/></svg>Granted free (✓)</span>
         <span>Number inside = point cost</span>
       </div>
@@ -223,7 +246,7 @@ footer{font-size:13px;color:var(--muted)}
       <div class="tree-scroll" id="tscroll"><svg id="tsvg" role="group"></svg></div>
       <aside class="tpanel" id="tpanel" aria-live="polite"></aside>
     </div>
-    <div class="stage-head"><h3 id="steps-h">Trait order</h3><p class="progress" id="steps-sub"></p></div>
+    <div class="stage-head"><h3 id="steps-h">Leveling plan</h3><p class="progress" id="steps-sub"></p></div>
     <ol class="steps" id="tsteps"></ol>
   </div>
 </section>
@@ -235,18 +258,10 @@ footer{font-size:13px;color:var(--muted)}
   <p id="rot-after"></p>
 </section>
 
-<section aria-labelledby="plan-h">
-  <h2 id="plan-h">Weapon point split</h2>
-  <p id="plan-intro"></p>
-  <div class="planner">
-    <div class="avail"><label for="avail">Coilstone points you have</label><input id="avail" type="number" min="0" max="120" value="92"><span>EA regions hold 92 by most counts</span></div>
-    <div class="row" id="splitpresets"></div>
-    <div class="slider"><label for="sh" class="w-main" id="lh"></label><input id="sh" type="range" min="0" max="100"><output id="oh">0</output></div>
-    <div class="slider alt"><label for="sa" class="w-alt" id="la"></label><input id="sa" type="range" min="0" max="100"><output id="oa">0</output></div>
-    <div class="poolbar" aria-hidden="true"><div class="h" id="bh"></div><div class="a" id="ba"></div><div class="over" id="bo"></div></div>
-    <div class="mtxt" id="ptxt"></div>
-    <div class="verdict" id="verdict" aria-live="polite"></div>
-  </div>
+<section aria-labelledby="bud-h">
+  <h2 id="bud-h">Trait points by region</h2>
+  <p id="bud-intro"></p>
+  <div class="tablewrap"><table><thead id="bud-head"></thead><tbody id="bud"></tbody></table></div>
 </section>
 
 <section aria-labelledby="dis-h">
@@ -304,146 +319,129 @@ $('tabs').addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight'].includes
 $('stage').addEventListener('change',e=>{const k=e.target.dataset.k;if(!k)return;checks[k]=e.target.checked;store.set('checks',checks);renderStage();const el=$(e.target.id);if(el)el.focus()});
 renderStage();
 
-/* trait tree */
-const TREES=D.trees, TYPE={S:'Skill',P:'Passive',T:'Stat'};
-let curTree=Math.min(+(store.get('wtree')||0),TREES.length-1);
+/* trait trees: both weapons share one point pool and one leveling plan */
+const TREES=D.trees, PLANS=D.plans, MS=D.milestones, TYPE={S:'Skill',P:'Passive',T:'Stat'};
 const NS='http://www.w3.org/2000/svg';
 const mk=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
 function wrapLabel(t,max){if(!max||t.length<=max)return[t];const w=t.split(' ');const out=[''];w.forEach(x=>{const c=out[out.length-1];if(c&&(c+' '+x).length>max)out.push(x);else out[out.length-1]=c?c+' '+x:x});return out.slice(0,2)}
+const TS=TREES.map(TR=>{const BY={};TR.nodes.forEach(n=>{n.p=n.p||[];n.kids=[];BY[n.id]=n});TR.nodes.forEach(n=>n.p.forEach(p=>BY[p].kids.push(n.id)));
+  return {TR,BY,FREE:TR.nodes.filter(n=>n.f).map(n=>n.id),u:new Set()}});
+const saved=store.get('plan2')||{};
+TS.forEach((t,i)=>{t.u=new Set([...t.FREE,...((saved.u||[])[i]||[]).filter(id=>t.BY[id])])});
+let curT=Math.min(+(saved.tree||0),TS.length-1), sel=null, planIdx=Math.min(+(saved.plan||0),PLANS.length-1);
+const ptsIn=$('tpts'); ptsIn.value=saved.pts!=null?saved.pts:D.defaultPoints;
+const short=i=>TREES[i].short||TREES[i].weapon;
+const planCost=P=>P.steps.reduce((a,[ti,id])=>a+TS[ti].BY[id].c,0);
+$('tpreset').innerHTML=PLANS.map((p,i)=>`<option value="${i}">${esc(p.name)} · ${planCost(p)} pts</option>`).join('');
+$('tpreset').value=planIdx;
+const save=()=>store.set('plan2',{u:TS.map(t=>[...t.u].filter(id=>!t.BY[id].f)),pts:+ptsIn.value,plan:planIdx,tree:curT});
+const spentIn=t=>[...t.u].reduce((a,id)=>a+(t.BY[id].f?0:t.BY[id].c),0);
+const spentAll=()=>TS.reduce((a,t)=>a+spentIn(t),0);
+function choiceBlock(t,id){for(const [A,B] of (t.TR.ex||[])){if(A.includes(id)){const hit=B.filter(x=>t.u.has(x));if(hit.length)return hit}if(B.includes(id)){const hit=A.filter(x=>t.u.has(x));if(hit.length)return hit}}return null}
+const parentsOk=(t,id)=>t.BY[id].p.length===0||t.BY[id].p.some(p=>t.u.has(p));
+const isOpen=(t,id)=>parentsOk(t,id)&&!choiceBlock(t,id);
+function validSet(t,s){const ok=new Set();let ch=true;while(ch){ch=false;s.forEach(id=>{if(!ok.has(id)&&(t.BY[id].p.length===0||t.BY[id].p.some(p=>ok.has(p)))){ok.add(id);ch=true}})}return ok.size===s.size}
+function blockers(t,id){const s=new Set(t.u);s.delete(id);if(validSet(t,s))return[];return t.BY[id].kids.filter(k=>t.u.has(k)&&!t.BY[k].p.some(p=>p!==id&&t.u.has(p)))}
+function toggle(ti,id){const t=TS[ti],n=t.BY[id];if(n.f)return;
+  if(t.u.has(id)){if(blockers(t,id).length)return;t.u.delete(id)}else{if(!isOpen(t,id))return;t.u.add(id)}
+  save();renderTree()}
+let gN=null;
 function mountTree(ti){
-const TR=TREES[ti], NODES=TR.nodes, BY={};
-NODES.forEach(n=>{n.p=n.p||[];n.kids=[];BY[n.id]=n});
-NODES.forEach(n=>n.p.forEach(p=>BY[p].kids.push(n.id)));
-const FREE=NODES.filter(n=>n.f).map(n=>n.id);
-$('wswitch').hidden=TREES.length<2;
-$('wswitch').innerHTML=TREES.map((t,i)=>`<button type="button" class="tab wbtn" aria-pressed="${i===ti}" data-i="${i}">${esc(t.weapon)}<small>${esc(t.role||'')}</small></button>`).join('');
-$('wswitch').onclick=e=>{const b=e.target.closest('.wbtn');if(!b)return;curTree=+b.dataset.i;store.set('wtree',curTree);mountTree(curTree)};
-$('tree-h').textContent='Trait tree: '+TR.weapon;
-$('tree-intro').innerHTML=fmt(TR.intro);
-const svg=$('tsvg'); svg.innerHTML=''; svg.setAttribute('aria-label',TR.weapon+' trait tree');
-if(NODES.some(n=>n.x==null)){
-  const GAP=150,ROWH=104,rows={};
-  NODES.forEach((n,i)=>{n._i=i;(rows[n.r]=rows[n.r]||[]).push(n)});
-  const keys=Object.keys(rows).map(Number).sort((a,b)=>a-b);
-  keys.forEach(r=>{
-    const L=rows[r].filter(n=>!n.f&&!n.sc);
-    L.forEach((n,i)=>{const px=n.p.map(id=>BY[id]).filter(q=>q.x!=null&&!q.f&&!q.sc).map(q=>q.x);n._k=px.length?px.reduce((a,b)=>a+b,0)/px.length:(i-(L.length-1)/2)*GAP});
-    L.sort((a,b)=>a._k-b._k||a._i-b._i);
-    L.forEach((n,i)=>{n.x=(i-(L.length-1)/2)*GAP;n.y=r*ROWH});
-  });
-  const mid=NODES.filter(n=>!n.f&&!n.sc), minP=Math.min(...mid.map(n=>n.x)), maxP=Math.max(...mid.map(n=>n.x));
-  keys.forEach(r=>{
-    const F=rows[r].filter(n=>n.f), S=rows[r].filter(n=>n.sc);
-    F.forEach((n,i)=>{n.x=minP-190-(F.length-1-i)*GAP;n.y=r*ROWH});
-    S.forEach((n,i)=>{n.x=maxP+190+i*GAP;n.y=r*ROWH});
-  });
-}
-const PAD=TR.pad||90, xs=NODES.map(n=>n.x), ys=NODES.map(n=>n.y);
-const vb=[Math.min(...xs)-PAD,Math.min(...ys)-46,Math.max(...xs)-Math.min(...xs)+PAD*2,Math.max(...ys)-Math.min(...ys)+46+66];
-svg.setAttribute('viewBox',vb.join(' ')); svg.style.minWidth=Math.round(vb[2]*0.82)+'px';
-const gE=mk('g',{},svg), gL=mk('g',{},svg), gN=mk('g',{},svg);
-const groups=TR.groups||(TR.auto!==false&&FREE.length>1?[{x:Math.min(...NODES.filter(n=>n.f&&!/Proficiency$/.test(n.n)).map(n=>n.x)),y:Math.min(...ys)-16,text:'Granted skills'}]:[]);
-groups.forEach(g=>{const t=mk('text',{x:g.x,y:g.y,class:'glabel','text-anchor':'middle'},gL);t.textContent=g.text});
-const edges=[];
-NODES.forEach(n=>n.p.forEach(pid=>{const p=BY[pid];edges.push({a:pid,b:n.id,el:mk('line',{x1:p.x,y1:p.y,x2:n.x,y2:n.y,class:'edge'},gE)})}));
-NODES.forEach(n=>{
-  const g=mk('g',{class:'node',transform:`translate(${n.x},${n.y})`,tabindex:0,role:'button','data-id':n.id},gN);
-  n.el=g;
-  if(n.t==='T'){mk('circle',{r:31,class:'ring'},g);mk('circle',{r:20,class:'shape'},g)}
-  else{mk('rect',{x:-23,y:-23,width:46,height:46,transform:'rotate(45)',class:'ring'},g);mk('rect',{x:-17,y:-17,width:34,height:34,transform:'rotate(45)',class:'shape'},g);
-    if(n.t==='S')mk('rect',{x:-12,y:-12,width:24,height:24,transform:'rotate(45)',class:'inner'},g)}
-  const c=mk('text',{class:'cost',y:5},g);c.textContent=n.f?'✓':n.c;
-  const lab=mk('text',{class:'label',y:40},g);
-  wrapLabel(n.n,TR.wrap).forEach((l,i)=>{const s=mk('tspan',{x:0,dy:i?13:0},lab);s.textContent=l});
-  mk('title',{},g).textContent=n.f?`${n.n} (${TYPE[n.t]}, granted free)`:`${n.n} (${TYPE[n.t]}, ${n.c} pt)`;
-});
-const KEY='tree-'+(TR.key||ti), saved=store.get(KEY)||{};
-let unlocked=new Set([...FREE,...(saved.u||[]).filter(id=>BY[id])]);
-let sel=null, presetIdx=Math.min(saved.preset||0,TR.presets.length-1);
-const ptsIn=$('tpts'); ptsIn.value=saved.pts!=null?saved.pts:TR.defaultPoints;
-const pathCost=P=>P.order.reduce((a,id)=>a+BY[id].c,0);
-$('tpreset').innerHTML=TR.presets.map((p,i)=>`<option value="${i}">${esc(p.name)} · ${pathCost(p)} pts</option>`).join('');
-$('tpreset').value=presetIdx;
-const isOpen=id=>BY[id].p.length===0||BY[id].p.some(p=>unlocked.has(p));
-function validSet(s){const ok=new Set();let ch=true;while(ch){ch=false;s.forEach(id=>{if(!ok.has(id)&&(BY[id].p.length===0||BY[id].p.some(p=>ok.has(p)))){ok.add(id);ch=true}})}return ok.size===s.size}
-function blockers(id){const s=new Set(unlocked);s.delete(id);if(validSet(s))return[];return BY[id].kids.filter(k=>unlocked.has(k)&&!BY[k].p.some(p=>p!==id&&unlocked.has(p)))}
-const spent=()=>[...unlocked].reduce((a,id)=>a+(BY[id].f?0:BY[id].c),0);
-const save=()=>store.set(KEY,{u:[...unlocked].filter(id=>!BY[id].f),pts:+ptsIn.value,preset:presetIdx});
-function toggle(id){
-  if(BY[id].f)return;
-  if(unlocked.has(id)){if(blockers(id).length)return;unlocked.delete(id)}
-  else{if(!isOpen(id))return;unlocked.add(id)}
+  curT=ti; const t=TS[ti], TR=t.TR, NODES=TR.nodes, BY=t.BY;
+  $('wswitch').innerHTML=TREES.map((x,i)=>`<button type="button" class="tab wbtn" aria-pressed="${i===ti}" data-i="${i}">${esc(x.weapon)}<small>${esc(x.role||'')}</small></button>`).join('');
+  $('tree-h').textContent='Trait trees: '+TREES.map(x=>x.weapon).join(' + ');
+  $('tree-intro').innerHTML=fmt(TR.intro);
+  const svg=$('tsvg'); svg.innerHTML=''; svg.setAttribute('aria-label',TR.weapon+' trait tree');
+  if(NODES.some(n=>n.x==null)){
+    const GAP=150,ROWH=104,rows={};NODES.forEach((n,i)=>{n._i=i;(rows[n.r]=rows[n.r]||[]).push(n)});
+    const keys=Object.keys(rows).map(Number).sort((a,b)=>a-b);
+    keys.forEach(r=>{const L=rows[r].filter(n=>!n.f&&!n.sc);
+      L.forEach((n,i)=>{const px=n.p.map(id=>BY[id]).filter(q=>q.x!=null&&!q.f&&!q.sc).map(q=>q.x);n._k=px.length?px.reduce((a,b)=>a+b,0)/px.length:(i-(L.length-1)/2)*GAP});
+      L.sort((a,b)=>a._k-b._k||a._i-b._i);L.forEach((n,i)=>{n.x=(i-(L.length-1)/2)*GAP;n.y=r*ROWH})});
+    const mid=NODES.filter(n=>!n.f&&!n.sc),minP=Math.min(...mid.map(n=>n.x)),maxP=Math.max(...mid.map(n=>n.x));
+    keys.forEach(r=>{rows[r].filter(n=>n.f).forEach((n,i,F)=>{n.x=minP-190-(F.length-1-i)*GAP;n.y=r*ROWH});rows[r].filter(n=>n.sc).forEach((n,i)=>{n.x=maxP+190+i*GAP;n.y=r*ROWH})});
+  }
+  const PAD=TR.pad||90,xs=NODES.map(n=>n.x),ys=NODES.map(n=>n.y);
+  const vb=[Math.min(...xs)-PAD,Math.min(...ys)-46,Math.max(...xs)-Math.min(...xs)+PAD*2,Math.max(...ys)-Math.min(...ys)+46+66];
+  svg.setAttribute('viewBox',vb.join(' '));svg.style.minWidth=Math.round(vb[2]*(TR.scale||0.82))+'px';
+  const gE=mk('g',{},svg),gL=mk('g',{},svg);gN=mk('g',{},svg);
+  (TR.groups||[]).forEach(g=>{const x=mk('text',{x:g.x,y:g.y,class:'glabel','text-anchor':'middle'},gL);x.textContent=g.text});
+  t.edges=[];NODES.forEach(n=>n.p.forEach(pid=>{const p=BY[pid];t.edges.push({a:pid,b:n.id,el:mk('line',{x1:p.x,y1:p.y,x2:n.x,y2:n.y,class:'edge'},gE)})}));
+  NODES.forEach(n=>{const g=mk('g',{class:'node',transform:`translate(${n.x},${n.y})`,tabindex:0,role:'button','data-id':n.id},gN);n.el=g;
+    if(n.t==='T'){mk('circle',{r:31,class:'ring'},g);mk('circle',{r:20,class:'shape'},g)}
+    else{mk('rect',{x:-23,y:-23,width:46,height:46,transform:'rotate(45)',class:'ring'},g);mk('rect',{x:-17,y:-17,width:34,height:34,transform:'rotate(45)',class:'shape'},g);if(n.t==='S')mk('rect',{x:-12,y:-12,width:24,height:24,transform:'rotate(45)',class:'inner'},g)}
+    mk('text',{class:'cost',y:5},g).textContent=n.f?'✓':n.c;
+    const lab=mk('text',{class:'label',y:40},g);wrapLabel(n.n,TR.wrap).forEach((l,i)=>{mk('tspan',{x:0,dy:i?13:0},lab).textContent=l});
+    mk('title',{},g).textContent=n.f?`${n.n} (${TYPE[n.t]}, granted free)`:`${n.n} (${TYPE[n.t]}, ${n.c} pt)`});
+  gN.addEventListener('click',e=>{const g=e.target.closest('.node');if(g){sel=[curT,g.dataset.id];renderTree()}});
+  gN.addEventListener('dblclick',e=>{const g=e.target.closest('.node');if(g)toggle(curT,g.dataset.id)});
+  gN.addEventListener('keydown',e=>{const g=e.target.closest('.node');if(!g)return;if(e.key==='Enter'){e.preventDefault();sel=[curT,g.dataset.id];renderTree()}else if(e.key===' '){e.preventDefault();sel=[curT,g.dataset.id];toggle(curT,g.dataset.id)}});
   save();renderTree();
 }
-function select(id){sel=id;renderTree()}
+$('wswitch').onclick=e=>{const b=e.target.closest('.wbtn');if(b){sel=null;mountTree(+b.dataset.i)}};
 function renderTree(){
-  const P=TR.presets[presetIdx], inP=new Set(P.order), have=Math.max(0,+ptsIn.value||0), sp=spent();
-  NODES.forEach(n=>{const on=unlocked.has(n.id);n.el.setAttribute('class','node '+(n.f?'on free':on?'on':isOpen(n.id)?'open':'locked')+(inP.has(n.id)&&!on?' rec':'')+(sel===n.id?' sel':''));
-    n.el.setAttribute('aria-pressed',on);n.el.setAttribute('aria-label',`${n.n}, ${TYPE[n.t]}, ${n.f?'granted free':n.c+' points, '+(on?'unlocked':isOpen(n.id)?'can unlock':'locked')}`)});
-  edges.forEach(e=>e.el.setAttribute('class','edge'+(unlocked.has(e.a)&&unlocked.has(e.b)&&!(BY[e.a].f&&BY[e.b].f)?' on':'')));
+  const t=TS[curT],P=PLANS[planIdx],inP=new Set(P.steps.filter(s=>s[0]===curT).map(s=>s[1])),have=Math.max(0,+ptsIn.value||0),sp=spentAll();
+  t.TR.nodes.forEach(n=>{const on=t.u.has(n.id),ex=!on&&choiceBlock(t,n.id);
+    n.el.setAttribute('class','node '+(n.f?'on free':on?'on':ex?'excl':isOpen(t,n.id)?'open':'locked')+(inP.has(n.id)&&!on&&!ex?' rec':'')+(sel&&sel[0]===curT&&sel[1]===n.id?' sel':''));
+    n.el.setAttribute('aria-pressed',on);n.el.setAttribute('aria-label',`${n.n}, ${TYPE[n.t]}, ${n.f?'granted free':n.c+' points, '+(on?'unlocked':ex?'locked by your choice':isOpen(t,n.id)?'can unlock':'locked')}`)});
+  t.edges.forEach(e=>e.el.setAttribute('class','edge'+(t.u.has(e.a)&&t.u.has(e.b)&&!(t.BY[e.a].f&&t.BY[e.b].f)?' on':'')));
   const over=sp>have;
   $('tbar').className='meterbar'+(over?' over':'');$('tbari').style.width=Math.min(100,have?sp/have*100:(sp?100:0))+'%';
   $('tmtxt').className='mtxt'+(over?' over':'');
-  $('tmtxt').textContent=`${sp} of ${have} points spent · ${over?(sp-have)+' over budget':(have-sp)+' left'} · path costs ${pathCost(P)} · ${FREE.length} skills granted free`;
+  $('tmtxt').textContent=`${sp} of ${have} points spent (${TS.map((x,i)=>short(i)+' '+spentIn(x)).join(' · ')}) · ${over?(sp-have)+' over':(have-sp)+' left'} · plan uses ${planCost(P)} of 94`;
   const pn=$('tpanel');
-  if(!sel){pn.innerHTML=`<span class="eyebrow">How to use</span><h3>Pick a node</h3><p>${fmt(TR.help||D.treeHelp)}</p>`;}
-  else{
-    const n=BY[sel],on=unlocked.has(sel),op=isOpen(sel),bl=on&&!n.f?blockers(sel):[],step=P.order.indexOf(sel);
-    const req=n.p.length?(n.p.length>1?'Needs any one of: ':'Needs: ')+n.p.map(p=>BY[p].n).join(', '):'Starting node, no prerequisite';
+  if(!sel){pn.innerHTML=`<span class="eyebrow">How to use</span><h3>Pick a node</h3><p>${fmt(D.treeHelp)}</p>`}
+  else{const st0=TS[sel[0]],n=st0.BY[sel[1]],on=st0.u.has(n.id),ex=!on&&choiceBlock(st0,n.id),bl=on&&!n.f?blockers(st0,n.id):[];
+    const stepNo=P.steps.findIndex(s=>s[0]===sel[0]&&s[1]===n.id);
+    const req=n.p.length?(n.p.length>1?'Needs any one of: ':'Needs: ')+n.p.map(p=>st0.BY[p].n).join(', '):'Starting node, no prerequisite';
     let st,cls,btn,dis=false;
-    if(n.f){cls='s-free';st='Granted free. This is a default skill and costs no trait points.';btn='Granted';dis=true}
-    else if(on){cls='s-on';st=bl.length?'Unlocked. Remove '+bl.map(k=>BY[k].n).join(', ')+' first to refund it.':'Unlocked.';btn=`Remove (refund ${n.c})`;dis=!!bl.length}
-    else if(op){cls='s-open';st=(sp+n.c>have?`Can unlock, but it puts you ${sp+n.c-have} over your points.`:'Can unlock now.');btn=`Unlock for ${n.c} pt${n.c>1?'s':''}`}
+    if(n.f){cls='s-free';st='Granted free. A default skill, no trait points needed.';btn='Granted';dis=true}
+    else if(on){cls='s-on';st=bl.length?'Unlocked. Remove '+bl.map(k=>st0.BY[k].n).join(', ')+' first to refund it.':'Unlocked.';btn=`Remove (refund ${n.c})`;dis=!!bl.length}
+    else if(ex){cls='s-excl';st='Locked by your choice: you took '+ex.map(k=>st0.BY[k].n).join(', ')+' on the other side of this fork. Refund that side to switch.';btn='Locked';dis=true}
+    else if(isOpen(st0,n.id)){cls='s-open';st=sp+n.c>have?`Can unlock, but it puts you ${sp+n.c-have} over your points.`:'Can unlock now.';btn=`Unlock for ${n.c} pt${n.c>1?'s':''}`}
     else{cls='s-locked';st='Locked. Unlock a node it needs first.';btn='Locked';dis=true}
-    pn.innerHTML=`<span class="eyebrow">${TYPE[n.t]} · ${n.f?'free':n.c+' pt'+(n.c>1?'s':'')}${step>=0?' · step '+(step+1)+' of path':''}</span><h3>${esc(n.n)}</h3>
-    <p class="req">${esc(req)}</p><p>${esc(n.e)}</p><div class="state ${cls}">${st}</div>
+    pn.innerHTML=`<span class="eyebrow">${esc(short(sel[0]))} · ${TYPE[n.t]} · ${n.f?'free':n.c+' pt'+(n.c>1?'s':'')}${stepNo>=0?' · plan step '+(stepNo+1):''}</span><h3>${esc(n.n)}</h3>
+    <p class="req">${esc(req)}</p><p>${esc(n.e)}</p>${n.wc&&n.wc!==n.c&&!n.f?`<p class="req">Wikily lists ${n.wc} points. The in-game screen shows no "3" marker, so it costs 1.</p>`:''}<div class="state ${cls}">${st}</div>
     <button class="btn primary" id="ttoggle" type="button" ${dis?'disabled':''}>${btn}</button>`;
-    $('ttoggle').onclick=()=>toggle(sel);
+    $('ttoggle').onclick=()=>toggle(sel[0],sel[1]);
   }
-  let run=0,nextMarked=false;
-  $('steps-h').textContent='Trait order: '+P.name;
-  $('steps-sub').innerHTML=fmt(P.note||'');
-  $('tsteps').innerHTML=P.order.map(id=>{const n=BY[id];run+=n.c;const d=unlocked.has(id);let c=d?'done':'';if(!d&&!nextMarked){c='next';nextMarked=true}
-    return `<li class="${c}" data-id="${id}"><span class="nm">${esc(n.n)}</span><span class="pts">+${n.c} → ${run}</span></li>`}).join('');
+  let run=0,m=0,nextMarked=false,html='';
+  $('steps-h').textContent='Leveling plan: '+P.name;$('steps-sub').innerHTML=fmt(P.note||'');
+  html+=`<li class="ms">${esc(MS[0].region)} · ${esc(MS[0].levels)} · up to ${MS[0].pts} pts</li>`;
+  P.steps.forEach(([ti,id])=>{const n=TS[ti].BY[id];
+    while(m<MS.length-1&&run+n.c>MS[m].pts){m++;html+=`<li class="ms">${esc(MS[m].region)} · ${esc(MS[m].levels)} · up to ${MS[m].pts} pts</li>`}
+    run+=n.c;const d=TS[ti].u.has(id);let c=d?'done':'';if(!d&&!nextMarked){c='next';nextMarked=true}
+    html+=`<li class="${c}" data-t="${ti}" data-id="${id}"><span class="wchip w${ti}">${esc(short(ti))}</span><span class="nm">${esc(n.n)}</span><span class="pts">+${n.c} → ${run}</span></li>`});
+  $('tsteps').innerHTML=html;
 }
-gN.addEventListener('click',e=>{const g=e.target.closest('.node');if(g)select(g.dataset.id)});
-gN.addEventListener('dblclick',e=>{const g=e.target.closest('.node');if(g)toggle(g.dataset.id)});
-gN.addEventListener('keydown',e=>{const g=e.target.closest('.node');if(!g)return;if(e.key==='Enter'){e.preventDefault();select(g.dataset.id)}else if(e.key===' '){e.preventDefault();sel=g.dataset.id;toggle(g.dataset.id)}});
-$('tsteps').onclick=e=>{const l=e.target.closest('li');if(!l)return;select(l.dataset.id);BY[l.dataset.id].el.scrollIntoView({block:'center',inline:'center',behavior:'smooth'})};
-$('tpreset').onchange=e=>{presetIdx=+e.target.value;save();renderTree()};
+$('tsteps').onclick=e=>{const l=e.target.closest('li[data-id]');if(!l)return;const ti=+l.dataset.t;sel=[ti,l.dataset.id];if(ti!==curT)mountTree(ti);else renderTree();const n=TS[ti].BY[l.dataset.id];n.el.scrollIntoView({block:'center',inline:'center',behavior:'smooth'})};
+$('tpreset').onchange=e=>{planIdx=+e.target.value;save();renderTree()};
 ptsIn.oninput=()=>{save();renderTree()};
-$('tfill').onclick=()=>{const have=Math.max(0,+ptsIn.value||0);unlocked=new Set(FREE);let s=0;for(const id of TR.presets[presetIdx].order){if(s+BY[id].c>have)break;s+=BY[id].c;unlocked.add(id)}save();renderTree()};
-$('tall').onclick=()=>{unlocked=new Set([...FREE,...TR.presets[presetIdx].order]);save();renderTree()};
-$('treset').onclick=()=>{unlocked=new Set(FREE);save();renderTree()};
-renderTree();
-}
-mountTree(curTree);
+$('tfill').onclick=()=>{const have=Math.max(0,+ptsIn.value||0);TS.forEach(t=>t.u=new Set(t.FREE));let s=0;for(const [ti,id] of PLANS[planIdx].steps){const c=TS[ti].BY[id].c;if(s+c>have)break;s+=c;TS[ti].u.add(id)}save();renderTree()};
+$('tall').onclick=()=>{ptsIn.value=94;TS.forEach(t=>t.u=new Set(t.FREE));PLANS[planIdx].steps.forEach(([ti,id])=>TS[ti].u.add(id));save();renderTree()};
+$('treset').onclick=()=>{TS.forEach(t=>t.u=new Set(t.FREE));save();renderTree()};
+mountTree(curT);
+
+/* weapon guide */
+$('wg-intro').innerHTML=fmt(D.weaponGuide.intro);
+$('wg').innerHTML=D.weaponGuide.items.map(w=>`<article class="wcard"><span class="eyebrow">${esc(w.when)}</span><h3>${esc(w.weapon)}</h3>
+<div class="wcols"><div><h4>Pros</h4>${li(w.pros)}</div><div><h4>Cons</h4>${li(w.cons)}</div></div><div class="skip"><h4>If you skip it</h4><p>${fmt(w.skip)}</p></div></article>`).join('');
+
+/* point budget by region, from the first plan */
+(()=>{const P=PLANS[0];let run=0;const per=MS.map(()=>TREES.map(()=>0));
+  P.steps.forEach(([ti,id])=>{const c=TS[ti].BY[id].c;run+=c;const k=MS.findIndex(x=>run<=x.pts);per[k<0?MS.length-1:k][ti]+=c});
+  const cum=TREES.map(()=>0);
+  $('bud-head').innerHTML=`<tr><th>Region</th><th>Levels</th><th>Coilstones</th><th>Points by the end</th>${TREES.map(x=>`<th>${esc(x.weapon)}</th>`).join('')}<th>Unspent</th></tr>`;
+  $('bud').innerHTML=MS.map((x,k)=>{per[k].forEach((v,i)=>cum[i]+=v);const used=cum.reduce((a,b)=>a+b,0);
+    return `<tr><td>${esc(x.region)}</td><td>${esc(x.levels)}</td><td class="num">${x.stones}</td><td class="num">${x.pts}</td>${cum.map(v=>`<td class="num">${v}</td>`).join('')}<td class="num">${x.pts-used}</td></tr>`}).join('');
+  $('bud-intro').innerHTML=fmt(D.budgetIntro);
+})();
 
 /* rotation */
 $('rot-h').textContent=D.rotation.title;
 $('rot-intro').innerHTML=fmt(D.rotation.intro);
 $('rot').innerHTML=D.rotation.steps.map(s=>`<li><div><b>${s.t}</b>${s.d?'<br>'+fmt(s.d):''}${s.k?'<div class="keys">'+s.k.map(k=>'<kbd>'+k+'</kbd>').join('')+'</div>':''}</div></li>`).join('');
 $('rot-after').innerHTML=fmt(D.rotation.after);
-
-/* split planner */
-const SP=D.split, sh=$('sh'), sa=$('sa'), av=$('avail');
-$('plan-intro').innerHTML=fmt(SP.intro);
-$('lh').textContent=SP.main;$('la').textContent=SP.alt;
-sh.value=SP.presets[0].m;sa.value=SP.presets[0].a;
-$('splitpresets').innerHTML=SP.presets.map((p,i)=>`<button class="btn" type="button" data-i="${i}">${esc(p.label)}</button>`).join('');
-$('splitpresets').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const p=SP.presets[+b.dataset.i];sh.value=p.m;sa.value=p.a;plan()});
-function plan(){
-  const h=+sh.value,a=+sa.value,A=Math.max(0,Math.min(120,+av.value||0)),used=h+a,over=Math.max(0,used-A),scale=Math.max(A,used)||1;
-  $('oh').value=h;$('oa').value=a;
-  $('bh').style.width=(Math.min(h,A)/scale*100)+'%';$('ba').style.width=(Math.max(0,Math.min(a,A-h))/scale*100)+'%';$('bo').style.width=(over/scale*100)+'%';
-  $('ptxt').textContent=`${used} spent · ${Math.max(0,A-used)} left · ${A} available`;
-  let c,m;
-  if(over>0){c='v-bad';m=`You're ${over} points over what you have. Take them out of ${SP.alt} first, because ${SP.main} carries the build.`}
-  else if(h>=SP.mainMin){c='v-ok';m=`${SP.main} has enough for the full path (${SP.mainMin} points). ${A-used>0?`${A-used} unspent. RaidDex suggests holding spares until more Coilstone regions open.`:'Every point you have is spent.'}`}
-  else{c='v-warn';m=`${SP.main} is below the ${SP.mainMin} points the full path in the tree above costs. That's fine while leveling. Follow the trait order and add points as you find Coilstones.`}
-  const v=$('verdict');v.className='verdict '+c;v.textContent=m;
-}
-[sh,sa,av].forEach(x=>x.addEventListener('input',plan));plan();
 
 /* disputes, sources, footer */
 $('dis').innerHTML=D.disputes.map(r=>'<tr>'+r.map(c=>'<td>'+fmt(c)+'</td>').join('')+'</tr>').join('');

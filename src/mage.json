@@ -6,14 +6,14 @@
  "h1": "<span class='hot'>Fire</span> to <span class='zap'>Thunderbolt</span> Staff",
  "lede": "An Elemental Staff build from level 1 to endgame. You level on the fire path, which is the only Mage build tagged for solo leveling, then respec into RaidDex's lightning Thunderbolt build for endgame. The Wavesword is your emergency weapon.",
  "notice": {
-  "title": "Not verified in-game yet.",
-  "text": "Early Access opened on November 3, 2026. I cross-checked every Mage guide I could find and tagged each claim by how well it's supported. The trait tree below is built from Wikily's 59-node Elemental Staff list, so names, costs and connections come from there, but where the nodes sit on screen is my approximation. I searched for the real layout, but no public planner or screenshot shows it yet (as of Nov 12). A screenshot of your Staff trait screen would let me match it exactly."
+  "title": "Built from Wikily's node lists. Not tested in-game.",
+  "text": "Both trees use Wikily's nodes and requirements with an approximate layout. Costs follow the in-game markers: \"3\" nodes cost 3, all others 1, and granted skills (✓) are free. Where branches split and rejoin you take one side, and the other turns red [me]. Both plans spend exactly 94 points. A screenshot of your Staff and Wavesword trait screens would let me match the layouts."
  },
  "stages": [
   {
    "id": "level",
    "name": "Leveling",
-   "sub": "Lv 1 → 40 · Fire",
+   "sub": "Lv 1 → 20 · Diamond Shores · Fire",
    "goal": "Level with fire. Wall of Fire and Flaming Blossom clear packs, and Retain chains spells together.",
    "weapons": [
     "<span class='w-main'>Elemental Staff</span> as your main weapon [ok]",
@@ -26,29 +26,29 @@
     "XLGAMES cut Wall of Fire's damage for launch [one]"
    ],
    "traits": [
-    "Pick \"Fire leveling\" in the tree below [me]",
-    "RaidDex adds Max HP and Untouchable Veil for survival [one]"
+    "Diamond Shores has 11 Coilstones = 22 points. All 22 go to the Staff on the fire side of each fork: Retain → Wall of Fire → Elemental Overload → Blossom line → Arcane Fount [me]",
+    "Ignition, Fire/Lightning Incantation, Flaming Blossom, Flamethrower, Fire Blast, Lightning Pillar, Spear, Blast, Mana Blast and Blink are granted free [ok]"
    ],
    "stats": [
     [
      "Intelligence",
      100,
-     "64"
+     "+32"
+    ],
+    [
+     "Endurance",
+     41,
+     "+13"
     ],
     [
      "Constitution",
-     80,
-     "50"
+     38,
+     "+12"
     ],
     [
      "Talent",
      0,
      "later"
-    ],
-    [
-     "Endurance",
-     0,
-     "—"
     ],
     [
      "Agility",
@@ -58,7 +58,7 @@
     [
      "Strength",
      0,
-     "none"
+     "—"
     ]
    ],
    "gear": [
@@ -75,7 +75,7 @@
   {
    "id": "mid",
    "name": "Gearing",
-   "sub": "Lv 40 · respec",
+   "sub": "Lv 21 → 35 · Gylden Ruins",
    "goal": "Get your midgame staff, then respec traits from fire to the lightning path.",
    "weapons": [
     "<span class='w-main'>Thunderstruck Staff</span> for midgame [ok]",
@@ -87,29 +87,29 @@
     "Elemental Celerity makes you stagger-immune while casting incantations [one]"
    ],
    "traits": [
-    "Respec with Reset All in the Traits menu, then pick \"Thunderbolt\" in the tree [me]",
-    "Hey Jensen's Thunderstruck +12 setup needs Talent 40 [one]"
+    "Gylden Ruins has 14 Coilstones = +28, for 50 total. The Staff reaches 40 (Shooting Star, Flame Shower, Untouchable Veil, Hellfire) and the Wavesword gets its Ice Crystal defense line (10) [me]",
+    "Switching to Thunderbolt means a trait reset. The cost is unknown, so check in-game [me]"
    ],
    "stats": [
     [
      "Intelligence",
      100,
-     "1st"
-    ],
-    [
-     "Constitution",
-     60,
-     "2nd"
-    ],
-    [
-     "Talent",
-     60,
-     "→ 33"
+     "+52"
     ],
     [
      "Endurance",
-     0,
-     "—"
+     46,
+     "+24"
+    ],
+    [
+     "Constitution",
+     31,
+     "+16"
+    ],
+    [
+     "Talent",
+     19,
+     "+10"
     ],
     [
      "Agility",
@@ -119,7 +119,7 @@
     [
      "Strength",
      0,
-     "none"
+     "—"
     ]
    ],
    "gear": [
@@ -135,7 +135,7 @@
   {
    "id": "end",
    "name": "Endgame",
-   "sub": "Thunderbolt",
+   "sub": "Lv 36 → 40 · Astron Plains",
    "goal": "Lightning burst from range, with Shooting Star on demand and Ice Crystal as your emergency shield.",
    "weapons": [
     "<span class='w-main'>Wrathful Tyrant's Scale</span> (Legendary staff) [ok]",
@@ -148,29 +148,28 @@
     "Arcane Fount fully restores SP on Burn or Shock, once every 5 s [ok]"
    ],
    "traits": [
-    "53 Staff and 39 Wavesword uses all 92 Early Access points [me]",
-    "RaidDex lists 53 / 46 [one]"
+    "Astron Plains has 22 Coilstones = +44, for 94. The Staff finishes at 48, the Wavesword at 36, and the last 10 buy the Staff's Damage ↑ at HP ≥70% node (Wikily's cost) [me]"
    ],
    "stats": [
     [
      "Intelligence",
      100,
-     "rest"
-    ],
-    [
-     "Talent",
-     70,
-     "33"
-    ],
-    [
-     "Constitution",
-     60,
-     "buffer"
+     "+55"
     ],
     [
      "Endurance",
-     0,
-     "—"
+     45,
+     "+25"
+    ],
+    [
+     "Constitution",
+     29,
+     "+16"
+    ],
+    [
+     "Talent",
+     38,
+     "+21 → 33"
     ],
     [
      "Agility",
@@ -180,7 +179,7 @@
     [
      "Strength",
      0,
-     "none"
+     "—"
     ]
    ],
    "gear": [
@@ -236,35 +235,7 @@
   ],
   "after": "Arcane Fount refills your SP whenever you Shock a target (once every 5 s). If something lands on you, swap to the Wavesword with {Q} and hold {R} for Ice Crystal."
  },
- "split": {
-  "main": "Elemental Staff",
-  "alt": "Wavesword",
-  "mainMin": 53,
-  "intro": "Trait points come from <b>Raeven's Coilstones</b> near powerful bosses [ok]. Most guides put the Early Access total at 92. RaidDex's Frost Moon page says 112, so enter the number you actually have.",
-  "presets": [
-   {
-    "label": "Thunderbolt, adjusted (53 / 39)",
-    "m": 53,
-    "a": 39
-   },
-   {
-    "label": "Thunderbolt as written (53 / 46)",
-    "m": 53,
-    "a": 46
-   },
-   {
-    "label": "Staff only (92 / 0)",
-    "m": 92,
-    "a": 0
-   }
-  ]
- },
  "disputes": [
-  [
-   "Stat spread",
-   "RaidDex: mostly INT plus CON. Kybuza: about 2:1:1 INT / AGI / Talent. FrozenCloud: 2 stamina for each INT.",
-   "Follow RaidDex. Stats respec free, so test Kybuza's spread if you need more crit."
-  ],
   [
    "Staff in solo bosses",
    "Nerd Bird calls it weak because casts get interrupted during ramp-up. AOEAH rates it 9/10 for PvE.",
@@ -276,9 +247,14 @@
    "The fire leveling path still uses it. Endgame switches to lightning."
   ],
   [
+   "Stat spread",
+   "RaidDex: mostly INT plus CON. Kybuza: about 2:1:1 INT / AGI / Talent. FrozenCloud: 2 stamina for each INT. AAC Tools' demo values per point: END +6.6 SP and +4.2 defense, CON +7.2 HP.",
+   "INT first, Endurance second (Blink and Overloaded casts cost a lot of SP), CON third, Talent 33 [me]."
+  ],
+  [
    "Total trait points",
-   "Most guides say 92 of 100. RaidDex's Frost Moon page says all 112 are available.",
-   "Plan for 92. Enter your real total in the tree and the planner."
+   "Most guides say 92. RaidDex's Frost Moon page says 112. RaidDex's Coilstone list: 47 × 2 = 94.",
+   "94."
   ]
  ],
  "sources": [
@@ -310,6 +286,19 @@
   {
    "t": "AOEAH tier list (Nov 4, 2026)",
    "u": "https://www.aoeah.com/news/4897--archeage-chronicles-best-classesweaponsbuilds-tier-list-pve--pvp"
+  },
+  {
+   "t": "AAC Tools: stat calculator (per-point values, demo)",
+   "u": "https://aac-tools.com/en/tools/stats/"
+  },
+  {
+   "t": "RaidDex: Coilstones (47 × 2 points)",
+   "u": "https://raiddex.com/en/archeage-chronicles/collectibles",
+   "n": "read via search summary; the site blocks direct reading"
+  },
+  {
+   "t": "archeagechroniclesdata: leveling (Lv 40 cap, region levels)",
+   "u": "https://archeagechroniclesdata.com/leveling"
   }
  ],
  "footer": "Sources checked November 12, 2026, during Early Access. Recheck after the December update.",
@@ -319,7 +308,7 @@
    "defaultPoints": 10,
    "wrap": 16,
    "pad": 95,
-   "intro": "All 59 Elemental Staff nodes from Wikily. The layout is approximate: granted spells are grouped on the left and stat nodes on the right [me]. Pick <b>Fire leveling</b> or <b>Thunderbolt</b> from the menu. Nodes marked ✓ are granted free: Proficiency plus every skill that doesn't branch from it (the lit cluster on the left of the in-game screen). They aren't counted in your points or in the path totals [ok].",
+   "intro": "All 59 Elemental Staff nodes from Wikily. The layout is approximate [me]. Costs follow the in-game markers: \"3\" nodes cost 3, all others 1, and granted skills (✓) are free. Where branches split and rejoin you take one side, and the other turns red [me]. Three forks decide fire or lightning: Wall of Fire or Lightning Storm, the Flamethrower or Lightning Spear overload, and the Blossom or Pillar line. Full tree with choices made: 48 points, plus a stat cluster.",
    "nodes": [
     {
      "id": "prof",
@@ -951,101 +940,9 @@
      "e": "After Blink, casts Lightning Pillar for more SP."
     }
    ],
-   "presets": [
-    {
-     "name": "Fire leveling",
-     "note": "Uses the skills RaidDex's fire leveling build names, plus Immolation and Hellfire from Hey Jensen's Wall of Fire raid setup. Granted spells are left out. The order is mine [me].",
-     "order": [
-      "prof",
-      "ign",
-      "retain",
-      "wof",
-      "finc",
-      "fblos",
-      "fblast",
-      "eover",
-      "lbolt",
-      "bseq",
-      "dres",
-      "lsurge",
-      "mfire",
-      "fatk",
-      "fbc",
-      "pblaze",
-      "afount",
-      "rek",
-      "cwof",
-      "cls",
-      "oft",
-      "fthrow",
-      "mamp",
-      "vflame",
-      "sthunder",
-      "sstar",
-      "ashes",
-      "bts",
-      "immo",
-      "hellfire",
-      "icross",
-      "titan",
-      "ecel",
-      "lvol",
-      "fshower",
-      "veil",
-      "evade",
-      "blink",
-      "frev"
-     ]
-    },
-    {
-     "name": "Thunderbolt (endgame)",
-     "note": "Uses the skills RaidDex's Thunderbolt build names. Granted spells (Ignition, Lightning Pillar, Spear, Blast and Mana Blast) are left out. Elemental Celerity, Lightning Speed, Thunderflash and the Mana Blast line are my picks [me].",
-     "order": [
-      "prof",
-      "ign",
-      "retain",
-      "lstorm",
-      "wof",
-      "eover",
-      "lbolt",
-      "bseq",
-      "dres",
-      "lsurge",
-      "linc",
-      "lpil",
-      "lspear",
-      "lblast",
-      "rek",
-      "cls",
-      "ols",
-      "mamp",
-      "vflame",
-      "sthunder",
-      "sstar",
-      "mfire",
-      "fatk",
-      "lpf",
-      "lpa",
-      "afount",
-      "icross",
-      "titan",
-      "ecel",
-      "lvol",
-      "ocmb",
-      "tsig",
-      "ashes",
-      "bts",
-      "lspeed",
-      "tflash",
-      "evade",
-      "blink",
-      "lrev",
-      "mblast"
-     ]
-    }
-   ],
    "role": "Main weapon",
-   "key": "staff"
+   "key": "staff",
+   "short": "Staff"
   },
   {
    "file": "wavesword",
@@ -1055,38 +952,514 @@
    "defaultPoints": 39,
    "wrap": 16,
    "pad": 95,
-   "intro": "All 40 Wavesword nodes from Wikily. The layout is approximate [me]. Nodes marked ✓ are granted free: Proficiency plus every skill that doesn't branch from it (the lit cluster on the left of the in-game screen). They aren't counted in your points or in the path totals [ok].",
-   "presets": [
-    {
-     "name": "Frost guard (39-point swap)",
-     "note": "Ice Crystal, your emergency shield, is granted free. Thundersnow, Frost Shard - Breakthrough, Phantom Wave and Tidal Slash II come from RaidDex's Frost Moon build. The path is mine [me].",
-     "order": [
-      "Frost Shard",
-      "Swift Bloom",
-      "Fortification",
-      "Frost Blossom Flurry",
-      "Arcane Elevation",
-      "Tidal ATK",
-      "Flowing Dew",
-      "Rapid Freeze",
-      "Tidal Rush",
-      "Glacial Burst",
-      "Frost Shard - Siphon",
-      "Frost Shard - Breakthrough",
-      "Thundersnow",
-      "Shatter",
-      "Nebe's Might",
-      "Lunar Eclipse",
-      "Rushing Tide",
-      "Tidal Rend",
-      "Phantom Wave",
-      "High Tide",
-      "Magic Amplification",
-      "Raging Tide"
-     ]
-    }
-   ]
+   "intro": "All 40 Wavesword nodes from Wikily. The layout is approximate [me]. Costs follow the in-game markers: \"3\" nodes cost 3, all others 1, and granted skills (✓) are free. Where branches split and rejoin you take one side, and the other turns red [me]. Full tree with choices made: 37 points.",
+   "short": "Sword"
   }
  ],
- "treeHelp": "Click a node to read it. Double-click it, or press Space, to unlock or refund it. Nodes marked ✓ are granted free: default skills that cost no trait points. <b>Fill with my points</b> buys the build path in order until your points run out. Each weapon's tree is saved in this browser."
+ "treeHelp": "Click a node to read it. Double-click it, or press Space, to unlock or refund it. ✓ = granted free. Red = locked because you took the other side of that fork. <b>Fill with my points</b> follows the leveling plan across both weapons until your points run out. Saved in this browser.",
+ "budgetIntro": "Early Access has 47 Raeven's Coilstones at 2 trait points each, 94 in total [one]. Region counts are RaidDex's [one] and level bands are archeagechroniclesdata's [one]. You only reach these totals if you take every Coilstone as you go. Both weapons spend from the same pool.",
+ "defaultPoints": 22,
+ "weaponGuide": {
+  "intro": "Every Mage starts with the Elemental Staff, the class's default weapon [ok]. Put your first points there. It's the only Mage build tagged for solo leveling, and most of its spells are already free.",
+  "items": [
+   {
+    "weapon": "Elemental Staff",
+    "when": "First · first 22 points",
+    "pros": [
+     "Ranged area damage. AOEAH rates it 9/10 PvE, 9.5/10 PvP [ok]",
+     "Most spells are granted free, so points go into upgrades [ok]",
+     "Arcane Fount refills SP when you Burn or Shock [ok]"
+    ],
+    "cons": [
+     "Fragile, and casts get interrupted during ramp-up in solo boss fights [ok]",
+     "Wall of Fire was nerfed for launch [one]"
+    ],
+    "skip": "A Wavesword-only Mage is a melee caster with B-tier PvE ratings. It's harder to level, and you lose ranged area damage."
+   },
+   {
+    "weapon": "Wavesword",
+    "when": "Second · from Gylden Ruins",
+    "pros": [
+     "Ice Crystal (free) is an emergency shield that scales with Max HP [ok]",
+     "Freeze control: Rapid Freeze, Thundersnow [one]",
+     "Rated 9/10 for PvP by AOEAH [ok]"
+    ],
+    "cons": [
+     "Melee on a fragile class [ok]",
+     "PvE rated B or 8/10 [ok]"
+    ],
+    "skip": "You have no shield when a boss closes in. With only the Staff, Untouchable Veil and Blink are your only defenses."
+   }
+  ]
+ },
+ "plans": [
+  {
+   "name": "Fire (leveling and endgame)",
+   "note": "Exactly 94 points. The Staff fills first on the fire side of each fork, the Wavesword joins at about 40 points, and the last 10 buy the Staff's Damage ↑ stat node [me].",
+   "steps": [
+    [
+     0,
+     "Retain"
+    ],
+    [
+     0,
+     "Wall of Fire"
+    ],
+    [
+     0,
+     "Elemental Overload"
+    ],
+    [
+     0,
+     "Bolt Sequence"
+    ],
+    [
+     0,
+     "Dual Resonance"
+    ],
+    [
+     0,
+     "Lightning Surge"
+    ],
+    [
+     0,
+     "Molten Fireball"
+    ],
+    [
+     0,
+     "Fire ATK"
+    ],
+    [
+     0,
+     "Flaming Blossom - Channel"
+    ],
+    [
+     0,
+     "Piercing Blaze"
+    ],
+    [
+     0,
+     "Arcane Fount"
+    ],
+    [
+     0,
+     "Rekindled Ember"
+    ],
+    [
+     0,
+     "Control - Wall of Fire"
+    ],
+    [
+     0,
+     "Overload - Flamethrower"
+    ],
+    [
+     0,
+     "Magic Amplification"
+    ],
+    [
+     0,
+     "Volatile Flame"
+    ],
+    [
+     0,
+     "Swift Thunder"
+    ],
+    [
+     0,
+     "Infernal Cross"
+    ],
+    [
+     0,
+     "Shooting Star"
+    ],
+    [
+     0,
+     "Titan Thunder"
+    ],
+    [
+     0,
+     "Elemental Celerity"
+    ],
+    [
+     0,
+     "Lightning Volley"
+    ],
+    [
+     0,
+     "Flame Shower"
+    ],
+    [
+     0,
+     "Untouchable Veil"
+    ],
+    [
+     0,
+     "Ashes to Ashes"
+    ],
+    [
+     0,
+     "Blazing Thunderstorm"
+    ],
+    [
+     0,
+     "Immolation"
+    ],
+    [
+     0,
+     "Hellfire"
+    ],
+    [
+     1,
+     "Frost Shard"
+    ],
+    [
+     1,
+     "Swift Bloom"
+    ],
+    [
+     1,
+     "Fortification"
+    ],
+    [
+     1,
+     "Tidal ATK"
+    ],
+    [
+     1,
+     "Flowing Dew"
+    ],
+    [
+     1,
+     "Rapid Freeze"
+    ],
+    [
+     1,
+     "Tidal Rush"
+    ],
+    [
+     1,
+     "Glacial Burst"
+    ],
+    [
+     1,
+     "Frost Shard - Siphon"
+    ],
+    [
+     1,
+     "Thundersnow"
+    ],
+    [
+     1,
+     "Shatter"
+    ],
+    [
+     1,
+     "Nebe's Might"
+    ],
+    [
+     0,
+     "Lightning Speed"
+    ],
+    [
+     0,
+     "Thunderflash"
+    ],
+    [
+     0,
+     "Overcharged Mana Blast"
+    ],
+    [
+     0,
+     "Trigger Signal"
+    ],
+    [
+     1,
+     "Lunar Eclipse"
+    ],
+    [
+     1,
+     "Rushing Tide"
+    ],
+    [
+     1,
+     "Tidal Rend"
+    ],
+    [
+     1,
+     "Phantom Wave"
+    ],
+    [
+     1,
+     "High Tide"
+    ],
+    [
+     1,
+     "Magic Amplification"
+    ],
+    [
+     1,
+     "Raging Tide"
+    ],
+    [
+     1,
+     "Tidal Slash II"
+    ],
+    [
+     1,
+     "Aerial Wrath"
+    ],
+    [
+     1,
+     "Cruel Reckoning"
+    ],
+    [
+     1,
+     "Full Moon Cleave"
+    ],
+    [
+     1,
+     "Frozen Oath"
+    ],
+    [
+     0,
+     "Damage ↑ at HP ≥70%"
+    ]
+   ]
+  },
+  {
+   "name": "Thunderbolt (lightning endgame)",
+   "note": "Exactly 94 points, taking the lightning side of all three forks (RaidDex's Thunderbolt). Switching from Fire means resetting the Staff tree [me].",
+   "steps": [
+    [
+     0,
+     "Retain"
+    ],
+    [
+     0,
+     "Lightning Storm"
+    ],
+    [
+     0,
+     "Elemental Overload"
+    ],
+    [
+     0,
+     "Bolt Sequence"
+    ],
+    [
+     0,
+     "Dual Resonance"
+    ],
+    [
+     0,
+     "Lightning Surge"
+    ],
+    [
+     0,
+     "Molten Fireball"
+    ],
+    [
+     0,
+     "Fire ATK"
+    ],
+    [
+     0,
+     "Lightning Pillar - Flurry"
+    ],
+    [
+     0,
+     "Lightning Pillar - Amplify"
+    ],
+    [
+     0,
+     "Arcane Fount"
+    ],
+    [
+     0,
+     "Rekindled Ember"
+    ],
+    [
+     0,
+     "Control - Lightning Storm"
+    ],
+    [
+     0,
+     "Overload - Lightning Spear"
+    ],
+    [
+     0,
+     "Magic Amplification"
+    ],
+    [
+     0,
+     "Volatile Flame"
+    ],
+    [
+     0,
+     "Swift Thunder"
+    ],
+    [
+     0,
+     "Infernal Cross"
+    ],
+    [
+     0,
+     "Shooting Star"
+    ],
+    [
+     0,
+     "Titan Thunder"
+    ],
+    [
+     0,
+     "Elemental Celerity"
+    ],
+    [
+     0,
+     "Lightning Volley"
+    ],
+    [
+     0,
+     "Ashes to Ashes"
+    ],
+    [
+     0,
+     "Blazing Thunderstorm"
+    ],
+    [
+     0,
+     "Lightning Speed"
+    ],
+    [
+     0,
+     "Thunderflash"
+    ],
+    [
+     0,
+     "Flame Shower"
+    ],
+    [
+     0,
+     "Untouchable Veil"
+    ],
+    [
+     1,
+     "Frost Shard"
+    ],
+    [
+     1,
+     "Swift Bloom"
+    ],
+    [
+     1,
+     "Fortification"
+    ],
+    [
+     1,
+     "Tidal ATK"
+    ],
+    [
+     1,
+     "Flowing Dew"
+    ],
+    [
+     1,
+     "Rapid Freeze"
+    ],
+    [
+     1,
+     "Tidal Rush"
+    ],
+    [
+     1,
+     "Glacial Burst"
+    ],
+    [
+     1,
+     "Frost Shard - Siphon"
+    ],
+    [
+     1,
+     "Thundersnow"
+    ],
+    [
+     1,
+     "Shatter"
+    ],
+    [
+     1,
+     "Nebe's Might"
+    ],
+    [
+     0,
+     "Immolation"
+    ],
+    [
+     0,
+     "Hellfire"
+    ],
+    [
+     0,
+     "Overcharged Mana Blast"
+    ],
+    [
+     0,
+     "Trigger Signal"
+    ],
+    [
+     1,
+     "Lunar Eclipse"
+    ],
+    [
+     1,
+     "Rushing Tide"
+    ],
+    [
+     1,
+     "Tidal Rend"
+    ],
+    [
+     1,
+     "Phantom Wave"
+    ],
+    [
+     1,
+     "High Tide"
+    ],
+    [
+     1,
+     "Magic Amplification"
+    ],
+    [
+     1,
+     "Raging Tide"
+    ],
+    [
+     1,
+     "Tidal Slash II"
+    ],
+    [
+     1,
+     "Aerial Wrath"
+    ],
+    [
+     1,
+     "Cruel Reckoning"
+    ],
+    [
+     1,
+     "Full Moon Cleave"
+    ],
+    [
+     1,
+     "Frozen Oath"
+    ],
+    [
+     0,
+     "Damage ↑ at HP ≥70%"
+    ]
+   ]
+  }
+ ]
 }
