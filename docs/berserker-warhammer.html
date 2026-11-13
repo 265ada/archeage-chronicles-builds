@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}[hidden]{display:none!important}</style>
+<title>Berserker Warhammer Build</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: one column; stage switcher, then a trait tree that mirrors the in-game Traits screen with a side panel, then rotation, split planner, disputes, sources. */
+:root{
+  --bg:#eef0f3; --surface:#ffffff; --surface-2:#e3e7ec; --line:#cdd3db;
+  --fg:#1b2027; --muted:#58616d;
+  --ember:#c24e12; --ember-soft:#fbe6da;
+  --volt:#2a5fd6; --volt-soft:#dfe8fb;
+  --ok:#23824a; --ok-soft:#dcf1e4; --warn:#a46a00; --warn-soft:#fbefd2; --bad:#b3261e; --bad-soft:#f9dedb;
+  --on-accent:#ffffff;
+  --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#13161b; --surface:#1b1f26; --surface-2:#232832; --line:#323946;
+  --fg:#e8ebf0; --muted:#9aa3b1;
+  --ember:#ff8a4c; --ember-soft:#3a2216; --volt:#7aa5ff; --volt-soft:#1c2a47;
+  --ok:#5fd08d; --ok-soft:#173826; --warn:#f0b543; --warn-soft:#3a2d10; --bad:#ff8a80; --bad-soft:#3d1a18;
+  --on-accent:#1b1209;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#13161b; --surface:#1b1f26; --surface-2:#232832; --line:#323946;
+  --fg:#e8ebf0; --muted:#9aa3b1;
+  --ember:#ff8a4c; --ember-soft:#3a2216; --volt:#7aa5ff; --volt-soft:#1c2a47;
+  --ok:#5fd08d; --ok-soft:#173826; --warn:#f0b543; --warn-soft:#3a2d10; --bad:#ff8a80; --bad-soft:#3d1a18;
+  --on-accent:#1b1209;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px}
+.wrap{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:44px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.05}
+h1{font-size:clamp(40px,7vw,64px);font-weight:700;letter-spacing:.01em;text-transform:uppercase}
+h1 .hot{color:var(--ember)} h1 .zap{color:var(--volt)}
+h2{font-size:30px;font-weight:600;text-transform:uppercase;letter-spacing:.02em}
+h3{font-size:20px;font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+p{margin:0;max-width:72ch}
+a{color:var(--volt)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:16px}
+header{display:flex;flex-direction:column;gap:14px}
+.lede{font-size:17px;color:var(--muted)}
+.notice{border:1px solid var(--warn);background:var(--warn-soft);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.notice strong{color:var(--warn)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--muted)}
+.tag{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;
+  padding:2px 7px;border-radius:4px;white-space:nowrap;vertical-align:1px}
+.t-ok{background:var(--ok-soft);color:var(--ok)} .t-one{background:var(--warn-soft);color:var(--warn)} .t-me{background:var(--volt-soft);color:var(--volt)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{font:600 17px var(--display);text-transform:uppercase;letter-spacing:.04em;padding:10px 16px;border-radius:6px;border:1px solid var(--line);
+  background:var(--surface);color:var(--fg);cursor:pointer;display:flex;flex-direction:column;align-items:flex-start}
+.tab small{font:500 11px var(--mono);color:var(--muted);letter-spacing:.04em}
+.tab[aria-selected="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.tab[aria-selected="true"] small{color:var(--bg);opacity:.75}
+.tab:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--volt);outline-offset:2px}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:22px}
+.stage-head{display:flex;flex-direction:column;gap:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.block{display:flex;flex-direction:column;gap:8px;min-width:0}
+.block h4{margin:0;font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+ul.clean{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+ul.clean li{display:block}
+.w-main{color:var(--ember);font-weight:600} .w-alt{color:var(--volt);font-weight:600}
+.statbar{display:flex;flex-direction:column;gap:6px}
+.stat{display:grid;grid-template-columns:110px 1fr 56px;gap:10px;align-items:center;font-size:14px}
+.stat .bar{height:8px;background:var(--surface-2);border-radius:4px;overflow:hidden}
+.stat .bar i{display:block;height:100%;background:var(--ember)}
+.stat .val{font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;text-align:right}
+.checklist{display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--line);padding-top:16px}
+.checklist label{display:flex;gap:10px;align-items:flex-start;padding:6px 4px;border-radius:5px;cursor:pointer}
+.checklist label:hover{background:var(--surface-2)}
+.checklist input{margin-top:4px;accent-color:var(--ember);width:16px;height:16px;flex:none}
+.checklist input:checked + span{color:var(--muted);text-decoration:line-through}
+.progress{font-family:var(--mono);font-size:12px;color:var(--muted)}
+kbd{font:500 12px var(--mono);background:var(--surface-2);border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:1px 7px;color:var(--fg)}
+/* trait tree */
+.treebox{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:16px}
+.tree-controls{display:flex;flex-direction:column;gap:12px}
+.row{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.avail{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.avail input{width:76px;font:500 15px var(--mono);padding:6px 8px;border-radius:5px;border:1px solid var(--line);background:var(--surface-2);color:var(--fg)}
+select{font:500 14px var(--body);padding:7px 10px;border-radius:6px;border:1px solid var(--line);background:var(--surface-2);color:var(--fg);max-width:100%}
+.btn{font:600 14px var(--body);padding:8px 14px;border-radius:6px;border:1px solid var(--line);background:var(--surface-2);color:var(--fg);cursor:pointer}
+.btn:hover{border-color:var(--fg)}
+.btn.primary{background:var(--ember);border-color:var(--ember);color:var(--on-accent)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.meter{display:flex;flex-direction:column;gap:6px}
+.meterbar{height:10px;border-radius:5px;background:var(--surface-2);overflow:hidden;border:1px solid var(--line)}
+.meterbar i{display:block;height:100%;background:var(--ember)}
+.meterbar.over i{background:var(--bad)}
+.mtxt{font:500 13px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.mtxt.over{color:var(--bad)}
+.tlegend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--muted);align-items:center}
+.tlegend svg{vertical-align:middle;margin-right:4px}
+.treegrid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:16px;align-items:start}
+.tree-scroll{overflow:auto;border:1px solid var(--line);border-radius:8px;background:var(--bg);max-height:900px;min-width:0}
+#tsvg{display:block;width:100%;height:auto}
+.edge{stroke:var(--line);stroke-width:2}
+.edge.on{stroke:var(--ember);stroke-width:3}
+.node{cursor:pointer;outline:none}
+.node .shape{fill:var(--surface);stroke:var(--muted);stroke-width:1.5}
+.node .inner{fill:none;stroke:var(--muted);stroke-width:1}
+.node .cost{font:600 13px var(--mono);fill:var(--fg);text-anchor:middle}
+.node .label{font:500 11.5px var(--body);fill:var(--fg);text-anchor:middle}
+.node .ring{fill:none;stroke:none}
+.node.locked .shape,.node.locked .inner{stroke:var(--line)}
+.node.locked .cost,.node.locked .label{fill:var(--muted)}
+.node.open .shape{stroke:var(--fg);stroke-width:2}
+.node.on .shape{fill:var(--ember);stroke:var(--ember)}
+.node.on .inner{stroke:var(--on-accent)}
+.node.on .cost{fill:var(--on-accent)}
+.node.rec .ring{stroke:var(--volt);stroke-width:2;stroke-dasharray:5 4}
+.node.sel .shape{stroke:var(--volt);stroke-width:3.5}
+.node:focus-visible .shape{stroke:var(--volt);stroke-width:3.5}
+.glabel{font:500 11px var(--mono);fill:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.tpanel{position:sticky;top:12px;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.tpanel h3{font-size:22px}
+.tpanel .req{font-size:13px;color:var(--muted)}
+.tpanel .state{font-size:13px;padding:8px 10px;border-radius:6px;background:var(--surface)}
+.state.s-on{color:var(--ok);background:var(--ok-soft)} .state.s-open{color:var(--volt);background:var(--volt-soft)} .state.s-locked{color:var(--warn);background:var(--warn-soft)}
+ol.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:4px 16px;counter-reset:s}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:28px 1fr auto;gap:8px;align-items:baseline;padding:6px 8px;border-radius:5px;cursor:pointer;font-size:14px}
+ol.steps li::before{content:counter(s);font:500 12px var(--mono);color:var(--muted)}
+ol.steps li:hover{background:var(--surface-2)}
+ol.steps li.done{color:var(--muted)}
+ol.steps li.done .nm{text-decoration:line-through}
+ol.steps li.next{background:var(--ember-soft)}
+ol.steps .pts{font:500 12px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+/* rotation */
+ol.rot{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;counter-reset:r}
+ol.rot li{counter-increment:r;display:grid;grid-template-columns:44px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+ol.rot li::before{content:counter(r);font:700 30px var(--display);color:var(--ember);line-height:1}
+ol.rot li:last-child{border-bottom:0}
+.keys{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+/* split planner */
+.planner{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:18px}
+.slider{display:grid;grid-template-columns:150px 1fr 56px;gap:12px;align-items:center}
+.slider input[type=range]{width:100%;accent-color:var(--ember)}
+.slider.alt input[type=range]{accent-color:var(--volt)}
+.slider output{font:500 16px var(--mono);text-align:right;font-variant-numeric:tabular-nums}
+.poolbar{display:flex;height:22px;border-radius:5px;overflow:hidden;background:var(--surface-2);border:1px solid var(--line)}
+.poolbar .h{background:var(--ember)} .poolbar .a{background:var(--volt)} .poolbar .over{background:repeating-linear-gradient(45deg,var(--bad) 0 6px,transparent 6px 12px)}
+.verdict{padding:12px 14px;border-radius:7px;font-size:14px}
+.v-ok{background:var(--ok-soft);color:var(--ok)} .v-warn{background:var(--warn-soft);color:var(--warn)} .v-bad{background:var(--bad-soft);color:var(--bad)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:600px;font-size:14px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted);background:var(--surface-2)}
+tr:last-child td{border-bottom:0}
+.sources{display:flex;flex-direction:column;gap:6px;font-size:14px;padding-left:18px;margin:0}
+.classnav{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.classnav .eyebrow{margin-right:6px}
+.cls{display:flex;flex-direction:column;padding:8px 14px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--fg);text-decoration:none;line-height:1.2}
+.cls b{font:600 18px var(--display);text-transform:uppercase;letter-spacing:.04em}
+.cls small{font:500 11px var(--mono);color:var(--muted)}
+a.cls:hover{border-color:var(--fg)}
+a.cls:focus-visible{outline:2px solid var(--volt);outline-offset:2px}
+.cls.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.cls.on small{color:var(--bg);opacity:.75}
+footer{font-size:13px;color:var(--muted)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:860px){
+  .treegrid{grid-template-columns:1fr}
+  .tpanel{position:sticky;top:auto;bottom:max(8px,env(safe-area-inset-bottom,0px));max-height:42vh;overflow:auto;box-shadow:0 -4px 18px rgba(0,0,0,.18);order:2}
+  .tree-scroll{max-height:none}
+}
+@media (max-width:520px){
+  .stage,.planner,.treebox{padding:14px}
+  .slider{grid-template-columns:1fr 48px}.slider label{grid-column:1/-1}
+  .stat{grid-template-columns:96px 1fr 48px}
+}
+@media (prefers-reduced-motion:no-preference){.poolbar div,.meterbar i{transition:width .2s ease}}
+</style>
+
+<div class="wrap">
+<nav class="classnav" id="classnav" aria-label="Class builds"></nav>
+<header id="hdr"></header>
+
+<section aria-labelledby="stages-h">
+  <h2 id="stages-h">The build, stage by stage</h2>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div id="stage" class="stage" role="tabpanel"></div>
+</section>
+
+<section aria-labelledby="tree-h">
+  <h2 id="tree-h"></h2>
+  <p id="tree-intro"></p>
+  <div class="treebox">
+    <div class="tree-controls">
+      <div class="row">
+        <div class="avail"><label for="tpts">Trait points you have</label><input id="tpts" type="number" min="0" max="120"></div>
+        <label for="tpreset" class="sr">Build path</label><select id="tpreset"></select>
+      </div>
+      <div class="row">
+        <button class="btn primary" id="tfill" type="button">Fill with my points</button>
+        <button class="btn" id="tall" type="button">Show the full path</button>
+        <button class="btn" id="treset" type="button">Clear tree</button>
+      </div>
+      <div class="meter"><div class="meterbar" id="tbar"><i id="tbari"></i></div><div class="mtxt" id="tmtxt"></div></div>
+      <div class="tlegend">
+        <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="var(--ember)"/></svg>Unlocked</span>
+        <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="var(--surface)" stroke="var(--fg)" stroke-width="2"/></svg>Can unlock now</span>
+        <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="none" stroke="var(--volt)" stroke-width="2" stroke-dasharray="3 2"/></svg>On the build path</span>
+        <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="none" stroke="var(--muted)"/><rect x="-3" y="-3" width="6" height="6" transform="rotate(45)" fill="none" stroke="var(--muted)"/></svg>Skill</span>
+        <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="none" stroke="var(--muted)"/></svg>Passive</span>
+        <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><circle r="7" fill="none" stroke="var(--muted)"/></svg>Stat</span>
+        <span>Number inside = point cost</span>
+      </div>
+    </div>
+    <div class="treegrid">
+      <div class="tree-scroll" id="tscroll"><svg id="tsvg" role="group"></svg></div>
+      <aside class="tpanel" id="tpanel" aria-live="polite"></aside>
+    </div>
+    <div class="stage-head"><h3 id="steps-h">Trait order</h3><p class="progress" id="steps-sub"></p></div>
+    <ol class="steps" id="tsteps"></ol>
+  </div>
+</section>
+
+<section aria-labelledby="rot-h">
+  <h2 id="rot-h"></h2>
+  <p id="rot-intro"></p>
+  <ol class="rot" id="rot"></ol>
+  <p id="rot-after"></p>
+</section>
+
+<section aria-labelledby="plan-h">
+  <h2 id="plan-h">Weapon point split</h2>
+  <p id="plan-intro"></p>
+  <div class="planner">
+    <div class="avail"><label for="avail">Coilstone points you have</label><input id="avail" type="number" min="0" max="120" value="92"><span>EA regions hold 92 by most counts</span></div>
+    <div class="row" id="splitpresets"></div>
+    <div class="slider"><label for="sh" class="w-main" id="lh"></label><input id="sh" type="range" min="0" max="100"><output id="oh">0</output></div>
+    <div class="slider alt"><label for="sa" class="w-alt" id="la"></label><input id="sa" type="range" min="0" max="100"><output id="oa">0</output></div>
+    <div class="poolbar" aria-hidden="true"><div class="h" id="bh"></div><div class="a" id="ba"></div><div class="over" id="bo"></div></div>
+    <div class="mtxt" id="ptxt"></div>
+    <div class="verdict" id="verdict" aria-live="polite"></div>
+  </div>
+</section>
+
+<section aria-labelledby="dis-h">
+  <h2 id="dis-h">Where the guides disagree</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Question</th><th>What sources say</th><th>What this build does</th></tr></thead>
+    <tbody id="dis"></tbody>
+  </table></div>
+</section>
+
+<section aria-labelledby="src-h">
+  <h2 id="src-h">Sources</h2>
+  <ol class="sources" id="src"></ol>
+</section>
+<footer id="foot"></footer>
+</div>
+
+<script>
+const D={"id": "berserker-wh", "title": "Berserker Warhammer Build", "out": "berserker-warhammer.html", "eyebrow": "ArcheAge Chronicles · Berserker · Early Access", "h1": "<span class='hot'>Fire<\/span> &amp; <span class='zap'>Thunder<\/span> Warhammer", "lede": "A build from level 1 to endgame. You level with Axe &amp; Shield, carry the Warhammer as your second weapon, and switch to a Warhammer-led build once Pantheon's Wrath is in hand.", "notice": {"title": "Not verified in-game yet.", "text": "Early Access opened on November 3, 2026, and fan sites are still mapping out skills and traits. I cross-checked every guide I could find and tagged each claim by how well it's supported. The trait tree below matches your Traits screenshot node for node. I haven't played any of this myself. Before you spend points, check the in-game tooltips. Your trait screen has Reset and Reset All buttons, so you can respec traits too."}, "stages": [{"id": "level", "name": "Leveling", "sub": "Lv 1 → 40", "goal": "Level quickly and safely with Axe &amp; Shield. Carry the Warhammer so you can practice its charge timing on armored mobs.", "weapons": ["<span class='w-alt'>Axe &amp; Shield<\/span> as your main weapon [ok]", "<span class='w-main'>Warhammer<\/span> on {Q} for armored targets [ok]"], "skills": ["Brutal Crash staggers enemies and reduces the damage they deal [one]", "Battle Cry heals you and staggers enemies, bosses included [one]", "Shield Up plus Death Ward gives a 15 s window where you can't die [one]", "On the hammer: Power Surge, then Tempered Blow (hold block, then release) [ok]"], "traits": ["Trait points come from Raeven's Coilstones, not from leveling, so collect them as you pass bosses [ok]", "Your first 4 Warhammer points: Proficiency, Power Surge, Tempered Blow, Pulverize (see the trait order below) [me]"], "stats": [["Strength", 100, "1st"], ["Constitution", 60, "2nd"], ["Endurance", 60, "2nd"], ["Talent", 0, "later"], ["Agility", 0, "none"], ["Intelligence", 0, "none"]], "gear": ["Royal Army Warhammer and Gatekeeper Harrod are early hammer drops [one]", "You can respec stats for free at major towns or regional camps [one]"], "check": ["Put Axe & Shield and Warhammer on Q swap", "Learn Battle Cry and Death Ward for emergencies", "Pick up every Raeven's Coilstone you pass", "Spend your first 4 Warhammer trait points"]}, {"id": "mid", "name": "Gearing", "sub": "Lv 40, first bosses", "goal": "Upgrade your hammer and get the Meteor Hammer chain working.", "weapons": ["<span class='w-main'>Gatekeeper Harrod<\/span> as your starter hammer [one]", "<span class='w-main'>Tarnished Ancient Crusher<\/span> for midgame [ok]"], "skills": ["Meteor Hammer → Meteor Hammer II, so Tempered and Devastating Blow stack levels [ok]", "Masterpiece takes Meteor Hammer to Lv. 3 [one]", "Pulverize → Unstoppable Force refreshes Lv. 3 [ok]"], "traits": ["Trait order steps 5 to 13 (about 28 points total) [me]", "Pulverize branch: take Unstoppable Force, not Bursting or Rupturing, for the Lv. 3 refresh and shield [one]"], "stats": [["Strength", 100, "1st"], ["Constitution", 60, "2nd"], ["Endurance", 60, "2nd"], ["Talent", 40, "14"], ["Agility", 0, "none"], ["Intelligence", 0, "none"]], "gear": ["Raise Talent to 14 for midgame [one]", "Galactic Impact (3 pts) is the first big damage spike [one]"], "check": ["Get Tarnished Ancient Crusher", "Raise Talent to 14", "Unlock Masterpiece", "Unlock Galactic Impact"]}, {"id": "end", "name": "Endgame", "sub": "Thunderclap", "goal": "Lead with the Warhammer for burst damage, and keep Axe &amp; Shield for escapes and survival.", "weapons": ["<span class='w-main'>Pantheon's Wrath<\/span> (Epic Great Hammer) [ok]", "Thunder Dash Lunastone for Lightning ATK [one]", "Unyielding Resolve [one]", "<span class='w-alt'>Axe &amp; Shield<\/span> as your emergency swap [ok]"], "skills": ["Full rotation in the section below [one]", "Thundering Hurl throws your stored Thunder stacks (12 stacks in RaidDex's guide) [ok]", "Reconstruction restores HP while you hold Power Surge Lv. 1 at low HP [one]"], "traits": ["49 Warhammer and 43 Axe &amp; Shield uses all 92 Early Access points [me]", "Lower-tree picks: Lightning Collision, Reforge, Reconstruction [one]"], "stats": [["Strength", 100, "1st"], ["Constitution", 60, "2nd"], ["Endurance", 60, "2nd"], ["Talent", 65, "23"], ["Agility", 0, "none"], ["Intelligence", 0, "none"]], "gear": ["Ruthless High Priest Hood (Epic) [one]", "Hereafter Constellations Necklace [one]", "Wavewyrm Tide Ring (Epic) [one]", "Talent 23 for Pantheon's Wrath [one]"], "check": ["Get Pantheon's Wrath", "Raise Talent to 23", "Socket Thunder Dash Lunastone", "Finish the 49-point trait path", "Land Thundering Hurl in a boss fight"]}], "tree": {"weapon": "Warhammer", "defaultPoints": 4, "pad": 80, "intro": "This tree matches your Traits screen node for node. Your screenshot has 41 nodes and Wikily's Warhammer list has 41. Every node marked \"3\" on your screen costs 3 on Wikily, and the Thunderclap path adds up to exactly RaidDex's 49 points [me]. When two nodes share a row (Planar Fracture and Lightning Collision, for example), I placed them left to right in Wikily's list order, so hover the node in-game before you buy it. One mismatch: Wikily says Rapid Casting costs 3, but your screen shows no \"3\" on it.", "help": "Click a node to read it. Double-click it, or press Space, to unlock or refund it. <b>Fill with my points<\/b> buys the build path in order until your points run out. Your tree is saved in this browser. In your screenshot the Skills column on the left is already lit, so those nodes may come free in-game. If they do, add 4 to your points here.", "groups": [{"x": 946, "y": 112, "text": "Skills"}], "nodes": [{"id": "shatter", "n": "Shattering Blow", "t": "S", "c": 1, "x": 873, "y": 162, "e": "Two-hit light combo. The first hit knocks back and the second knocks down."}, {"id": "pulv", "n": "Pulverize", "t": "S", "c": 1, "x": 873, "y": 310, "e": "Three-hit heavy combo: a leap with Guard Break, area damage with Slow, then area damage with Knockdown. Brief Stagger immunity."}, {"id": "crush", "n": "Crushing Slam", "t": "S", "c": 1, "x": 1020, "y": 310, "p": ["shatter", "pulv"], "e": "Leap and slam down."}, {"id": "surge", "n": "Power Surge", "t": "S", "c": 1, "x": 873, "y": 458, "e": "Ready stance that charges an attack up to Lv. 2. Reduces damage taken while held and grants Stagger immunity."}, {"id": "rash", "n": "Rash Defense", "t": "S", "c": 1, "x": 1020, "y": 458, "p": ["surge"], "e": "Blocking without charging Power Surge triggers a quick Stagger attack."}, {"id": "temp", "n": "Tempered Blow", "t": "S", "c": 1, "x": 1020, "y": 531, "p": ["surge"], "e": "Follows a Lv. 1 Power Surge charge. Reduces damage taken and grants Stagger immunity. On hit, damages nearby enemies and knocks them down."}, {"id": "devast", "n": "Devastating Blow", "t": "S", "c": 1, "x": 1020, "y": 605, "p": ["surge"], "e": "Follows a Lv. 2 Power Surge charge. Same defense as Tempered Blow, and hits harder."}, {"id": "evade", "n": "Evade", "t": "S", "c": 1, "x": 873, "y": 752, "e": "Dodge in the chosen direction."}, {"id": "earth", "n": "Earth Shatter", "t": "S", "c": 1, "x": 1020, "y": 752, "p": ["evade"], "e": "Strikes down after a dodge. The second hit knocks back."}, {"id": "prof", "n": "Warhammer Proficiency", "t": "P", "c": 1, "x": 1315, "y": 90, "e": "Lets you equip warhammers."}, {"id": "surg", "n": "Surging Heat", "t": "S", "c": 1, "x": 1168, "y": 162, "p": ["prof"], "e": "Follows Shattering Blow, builds Burn, and grants brief Stagger immunity."}, {"id": "forged", "n": "Forged", "t": "P", "c": 1, "x": 1168, "y": 236, "p": ["surg"], "e": "Surging Heat grants Forged (more Fire ATK). Shattering Blow adds a Burn hit while it's active."}, {"id": "canned", "n": "Canned Heat", "t": "S", "c": 2, "x": 1168, "y": 310, "p": ["forged"], "e": "After Surging Heat, a chain of explosions that grows with each blast."}, {"id": "blue", "n": "Blue Flame", "t": "P", "c": 2, "x": 1168, "y": 383, "p": ["canned"], "e": "At 5 Forged stacks, the next light attack fires Surging Heat with two extra Canned Heat blasts."}, {"id": "mh", "n": "Meteor Hammer", "t": "P", "c": 2, "x": 1462, "y": 162, "p": ["prof"], "e": "Tempered Blow grants Meteor Hammer (more Physical PEN and Exhaust). Lost when you sprint or swap weapons."}, {"id": "mh2", "n": "Meteor Hammer II", "t": "P", "c": 2, "x": 1462, "y": 236, "p": ["mh"], "e": "Tempered or Devastating Blow during Meteor Hammer raises it to Lv. 2."}, {"id": "evas", "n": "Evasive Assault", "t": "P", "c": 1, "x": 1462, "y": 310, "p": ["mh2"], "e": "After a dodge, follow up with Pulverize's second attack. Costs extra SP."}, {"id": "fire", "n": "Fire ATK", "t": "T", "c": 1, "x": 1315, "y": 458, "p": ["blue", "evas"], "e": "+20 Fire ATK."}, {"id": "master", "n": "Masterpiece", "t": "P", "c": 3, "x": 1315, "y": 530, "p": ["fire"], "e": "Burn hits or Devastating Blow during Meteor Hammer Lv. 2 raise it to Lv. 3."}, {"id": "uf", "n": "Unstoppable Force", "t": "P", "c": 1, "x": 1168, "y": 603, "p": ["master"], "e": "Pulverize's first attack refreshes Meteor Hammer Lv. 3."}, {"id": "bf", "n": "Bursting Force", "t": "P", "c": 1, "x": 1315, "y": 603, "p": ["master"], "e": "Pulverize's second attack adds a Burn hit."}, {"id": "rf", "n": "Rupturing Force", "t": "P", "c": 1, "x": 1462, "y": 603, "p": ["master"], "e": "Pulverize's third attack leaves a fissure that erupts after a delay."}, {"id": "uf2", "n": "Unstoppable Force II", "t": "P", "c": 2, "x": 1168, "y": 678, "p": ["uf"], "e": "Pulverize's first attack grants a temporary shield."}, {"id": "bf2", "n": "Bursting Force II", "t": "S", "c": 2, "x": 1315, "y": 678, "p": ["bf"], "e": "Repeats Pulverize's second attack."}, {"id": "rf2", "n": "Rupturing Force II", "t": "P", "c": 2, "x": 1462, "y": 678, "p": ["rf"], "e": "Pulverize's third attack costs no SP."}, {"id": "gal", "n": "Galactic Impact", "t": "S", "c": 3, "x": 1315, "y": 750, "p": ["uf2", "bf2", "rf2"], "e": "Fast, high-damage attack that can combo. Disables Tempered and Devastating Blow while active. Reduces damage taken and grants Stagger immunity."}, {"id": "planar", "n": "Planar Fracture", "t": "S", "c": 3, "x": 1241, "y": 825, "p": ["gal"], "e": "Area damage that builds Burn."}, {"id": "light", "n": "Lightning Collision", "t": "S", "c": 3, "x": 1388, "y": 825, "p": ["gal"], "e": "Charges an enemy and builds Shock. Reduces damage taken and grants Stagger immunity."}, {"id": "reson", "n": "Resonating Strike", "t": "S", "c": 2, "x": 1315, "y": 898, "p": ["planar", "light"], "e": "Usable only during Meteor Hammer. Consumes it and adds hits based on its level."}, {"id": "electro", "n": "Electro Release", "t": "P", "c": 2, "x": 1168, "y": 970, "p": ["reson"], "e": "While Forged, Crushing Slam consumes it for continuous area damage and Shock."}, {"id": "tough", "n": "Tough Skin", "t": "P", "c": 1, "x": 1462, "y": 970, "p": ["reson"], "e": "Inflicting Shock briefly raises Physical and Magic DEF."}, {"id": "rapid", "n": "Rapid Casting", "t": "S", "c": 3, "x": 1168, "y": 1045, "p": ["electro"], "e": "Earth Shatter's second hit combos into Surging Heat."}, {"id": "ecl", "n": "Electric Cluster", "t": "P", "c": 2, "x": 1462, "y": 1045, "p": ["tough"], "e": "Devastating Blow greatly raises Lightning ATK for a short time."}, {"id": "crack", "n": "Crackling Flame", "t": "S", "c": 3, "x": 1168, "y": 1118, "p": ["rapid"], "e": "Low-damage combo skill that builds Burn."}, {"id": "comp", "n": "Compression", "t": "P", "c": 3, "x": 1462, "y": 1118, "p": ["ecl"], "e": "Power Surge charges to Lv. 1 faster."}, {"id": "undying", "n": "Undying Flame", "t": "P", "c": 2, "x": 1095, "y": 1192, "p": ["crack"], "e": "Surging Heat keeps Blue Flame and can repeat while it's active."}, {"id": "reforge", "n": "Reforge", "t": "P", "c": 2, "x": 1241, "y": 1192, "p": ["crack"], "e": "Crackling Flame adds a hit and grants Forged."}, {"id": "entomb", "n": "Entomb", "t": "S", "c": 2, "x": 1388, "y": 1192, "p": ["comp"], "e": "Instantly uses Pulverize's third attack on a downed target."}, {"id": "recon", "n": "Reconstruction", "t": "P", "c": 2, "x": 1535, "y": 1192, "p": ["comp"], "e": "At low HP, holding Power Surge Lv. 1 restores HP every second."}, {"id": "ruin", "n": "Assured Ruin", "t": "S", "c": 3, "x": 1315, "y": 1265, "p": ["undying", "reforge", "entomb", "recon"], "e": "After Pulverize's third attack, Devastating Blow can cost HP instead of SP."}, {"id": "hurl", "n": "Thundering Hurl", "t": "S", "c": 3, "x": 1315, "y": 1338, "p": ["ruin"], "e": "Spends all Thunder stacks on a heavy hammer throw that builds Shock. Resonating Strike grants Thunder."}], "presets": [{"name": "Thunderclap (RaidDex)", "note": "Steps 1–4 are your 4 points now. The order is mine: it front-loads defense and the Meteor Hammer chain while you level [me].", "order": ["prof", "surge", "temp", "pulv", "mh", "devast", "mh2", "evas", "fire", "master", "uf", "uf2", "gal", "light", "reson", "tough", "ecl", "comp", "recon", "electro", "rapid", "crack", "reforge", "ruin", "hurl"]}]}, "rotation": {"title": "Endgame Warhammer rotation", "intro": "RaidDex's Thunderclap chain [one]. Holding block puts you in <b>Power Surge<\/b>, which cuts the damage you take and makes you stagger-immune while you charge [ok]. Each charge level pushes Meteor Hammer up a stage.", "steps": [{"t": "Tempered Blow to Lv. 1", "d": "Hold block to Lv. 1, then release. This turns on Meteor Hammer.", "k": ["Hold Block", "Release"]}, {"t": "Second Tempered Blow to Lv. 2", "d": "Meteor Hammer II raises it to Lv. 2.", "k": ["Hold Block", "Release"]}, {"t": "Charged Devastating Blow to Lv. 3", "d": "Masterpiece raises it to Lv. 3. Commit only once the boss's swing is over or a teammate has it stunned."}, {"t": "Galactic Impact, then Lightning Collision", "d": "Use both right after Devastating Blow.", "k": ["Hold Block", "Heavy Attack"]}, {"t": "Pulverize, then Galactic Impact again", "d": "Unstoppable Force refreshes Lv. 3 and gives you a shield. Skilled PvP players can sidestep Pulverize."}, {"t": "Resonating Strike to cash out", "d": "Consumes Meteor Hammer and builds Thunder. At 12 stacks, throw <b>Thundering Hurl<\/b>.", "k": ["Tap Block", "Heavy Attack"]}], "after": "<b>Don't<\/b> sprint or swap mid-chain, because either one ends Meteor Hammer. Swap to Axe &amp; Shield with {Q} only to escape or survive. You get five HP potions per fight [one]."}, "split": {"main": "Warhammer", "alt": "Axe & Shield", "mainMin": 49, "intro": "Trait points come from <b>Raeven's Coilstones<\/b> near powerful bosses, not from leveling [ok]. Guides put the Early Access total at 92 or about 95, so enter how many you actually have.", "presets": [{"label": "Thunderclap, adjusted (49 / 43)", "m": 49, "a": 43}, {"label": "Thunderclap as written (49 / 51)", "m": 49, "a": 51}, {"label": "Frenzy split (46 / 46)", "m": 46, "a": 46}]}, "disputes": [["Is the Warhammer any good?", "AOEAH gives it 5/10 and ranks it last. A creator tier list puts it at D for PvE. ArcheAge Builds rates it C for solo play. RaidDex lists its Warhammer build at S tier (Nov 12).", "Level with Axe &amp; Shield and lead with the Warhammer at endgame, ideally in a group that stuns for you."], ["Trait split", "Thunderclap lists 49 + 51, which is 100 points, but also says to leave 8 unspent because Early Access only has 92.", "Keep 49 on the Warhammer and cut Axe &amp; Shield to 43 [me]."], ["Stat order", "RaidDex: STR, then CON and END, then Talent. Auroria: STR, AGI, END, CON, which it calls a framework, not a measured result.", "Follow RaidDex and put nothing into AGI or INT."], ["Node positions", "Wikily lists names and costs but not left-to-right order inside a row.", "Placed in list order. Check tooltips for the same-row pairs [me]."]], "sources": [{"t": "Wikily: Warhammer skill tree (41 nodes, costs, effects)", "u": "https://wikily.gg/archeage-chronicles/weapons/warhammer"}, {"t": "RaidDex builds (Thunderclap, Frenzy)", "u": "https://raiddex.com/en/archeage-chronicles/builds", "n": "the site blocked direct reading, so I took its details from ArcheAge Builds' summary"}, {"t": "ArcheAge Builds: Berserker", "u": "https://archeagebuilds.com/classes/berserker/"}, {"t": "ArcheAge Builds: Warhammer", "u": "https://archeagebuilds.com/weapons/warhammer/"}, {"t": "AOEAH tier list (Nov 4, 2026)", "u": "https://www.aoeah.com/news/4897--archeage-chronicles-best-classesweaponsbuilds-tier-list-pve--pvp"}, {"t": "ArcheAgeDB build #6 by Koz", "u": "https://archeagedb.cc/builds/6/"}, {"t": "herom76 Berserker guide", "u": "https://www.herom76.de/en/archeage-chronicles/klassen/berserker"}, {"t": "GameTruth: Axe or Warhammer", "u": "https://www.gametruth.com/guides/archeage-chronicles-berserker-weapons-guide/"}], "footer": "Sources checked November 12, 2026, during Early Access. The first content update is planned for December, so recheck this build after it ships."}, LINKS=[{"id": "berserker-wh", "cls": "Berserker", "build": "Warhammer", "url": "berserker-warhammer.html"}, {"id": "ranger-sh", "cls": "Ranger", "build": "Storm Hatchets", "url": "ranger-storm-hatchet.html"}, {"id": "mage-tb", "cls": "Mage", "build": "Thunderbolt Staff", "url": "mage-thunderbolt.html"}];
+function boot(){
+document.getElementById('classnav').innerHTML='<span class="eyebrow">Class builds</span>'+LINKS.map(c=>c.id===D.id?`<span class="cls on" aria-current="page"><b>${c.cls}</b><small>${c.build}</small></span>`:`<a class="cls" href="${c.url}"><b>${c.cls}</b><small>${c.build}</small></a>`).join('');
+const TAGS={ok:'<span class="tag t-ok">2+ sources</span>',one:'<span class="tag t-one">1 source</span>',me:'<span class="tag t-me">inferred</span>'};
+const fmt=s=>String(s).replace(/\[(ok|one|me)\]/g,(m,k)=>TAGS[k]).replace(/\{(.+?)\}/g,'<kbd>$1</kbd>');
+const $=id=>document.getElementById(id);
+const store={get(k){try{return JSON.parse(localStorage.getItem('aac-'+D.id+'-'+k))}catch(e){return null}},set(k,v){try{localStorage.setItem('aac-'+D.id+'-'+k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* header */
+$('hdr').innerHTML=`<span class="eyebrow">${D.eyebrow}</span><h1>${D.h1}</h1><p class="lede">${fmt(D.lede)}</p>
+<div class="notice" role="note"><strong>${D.notice.title}</strong><p>${fmt(D.notice.text)}</p></div>
+<div class="legend"><span>${TAGS.ok} guides agree</span><span>${TAGS.one} only one guide says so</span><span>${TAGS.me} my reasoning, not from a guide</span></div>`;
+
+/* stages */
+let cur=store.get('tab')||D.stages[0].id; if(!D.stages.some(s=>s.id===cur))cur=D.stages[0].id;
+const checks=store.get('checks')||{};
+const li=a=>'<ul class="clean">'+a.map(x=>'<li>'+fmt(x)+'</li>').join('')+'</ul>';
+function renderStage(){
+  $('tabs').innerHTML=D.stages.map(s=>`<button class="tab" role="tab" id="tab-${s.id}" aria-selected="${s.id===cur}" tabindex="${s.id===cur?0:-1}" data-id="${s.id}">${s.name}<small>${s.sub}</small></button>`).join('');
+  const s=D.stages.find(x=>x.id===cur), done=s.check.filter((_,i)=>checks[s.id+i]).length;
+  $('stage').setAttribute('aria-labelledby','tab-'+s.id);
+  $('stage').innerHTML=`<div class="stage-head"><span class="eyebrow">${s.sub}</span><h3>${s.name}</h3><p>${fmt(s.goal)}</p></div>
+  <div class="grid">
+    <div class="block"><h4>Weapons</h4>${li(s.weapons)}</div>
+    <div class="block"><h4>Key skills</h4>${li(s.skills)}</div>
+    <div class="block"><h4>Traits</h4>${li(s.traits)}</div>
+    <div class="block"><h4>Stat priority</h4><div class="statbar">${s.stats.map(([n,w,v])=>`<div class="stat"><span>${n}</span><span class="bar"><i style="width:${w}%"></i></span><span class="val">${v}</span></div>`).join('')}</div></div>
+    <div class="block"><h4>Gear and notes</h4>${li(s.gear)}</div>
+  </div>
+  <div class="checklist"><div class="progress">${done} / ${s.check.length} done · saved in this browser</div>
+  ${s.check.map((c,i)=>`<label><input type="checkbox" id="ck-${s.id}-${i}" data-k="${s.id+i}" ${checks[s.id+i]?'checked':''}><span>${esc(c)}</span></label>`).join('')}</div>`;
+}
+function goTab(id){cur=id;store.set('tab',cur);renderStage();$('tab-'+cur).focus()}
+$('tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(b)goTab(b.dataset.id)});
+$('tabs').addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight'].includes(e.key))return;const i=D.stages.findIndex(s=>s.id===cur);goTab(D.stages[(i+(e.key==='ArrowRight'?1:-1)+D.stages.length)%D.stages.length].id)});
+$('stage').addEventListener('change',e=>{const k=e.target.dataset.k;if(!k)return;checks[k]=e.target.checked;store.set('checks',checks);renderStage();const el=$(e.target.id);if(el)el.focus()});
+renderStage();
+
+/* trait tree */
+const TR=D.tree, NODES=TR.nodes, BY={};
+NODES.forEach(n=>{n.p=n.p||[];n.kids=[];BY[n.id]=n});
+NODES.forEach(n=>n.p.forEach(p=>BY[p].kids.push(n.id)));
+const TYPE={S:'Skill',P:'Passive',T:'Stat'};
+$('tree-h').textContent='Trait tree: '+TR.weapon;
+$('tree-intro').innerHTML=fmt(TR.intro);
+$('tsvg').setAttribute('aria-label',TR.weapon+' trait tree');
+if(NODES.some(n=>n.x==null)){
+  const rows={},GAP=150,ROWH=104;
+  NODES.forEach((n,i)=>{n._i=i;(rows[n.r]=rows[n.r]||[]).push(n)});
+  Object.keys(rows).map(Number).sort((a,b)=>a-b).forEach(r=>{
+    const L=rows[r];
+    L.forEach((n,i)=>{const px=n.p.map(id=>BY[id]).filter(q=>q.x!=null).map(q=>q.x);n._k=px.length?px.reduce((a,b)=>a+b,0)/px.length:(i-(L.length-1)/2)*GAP});
+    L.sort((a,b)=>a._k-b._k||a._i-b._i);
+    L.forEach((n,i)=>{n.x=(i-(L.length-1)/2)*GAP;n.y=r*ROWH});
+  });
+}
+const PAD=TR.pad||90;
+const xs=NODES.map(n=>n.x), ys=NODES.map(n=>n.y);
+const vb=[Math.min(...xs)-PAD,Math.min(...ys)-46,Math.max(...xs)-Math.min(...xs)+PAD*2,Math.max(...ys)-Math.min(...ys)+46+66];
+const svg=$('tsvg'); svg.setAttribute('viewBox',vb.join(' ')); svg.style.minWidth=Math.round(vb[2]*0.82)+'px';
+const NS='http://www.w3.org/2000/svg';
+const mk=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const gE=mk('g',{},svg), gL=mk('g',{},svg), gN=mk('g',{},svg);
+(TR.groups||[]).forEach(g=>{const t=mk('text',{x:g.x,y:g.y,class:'glabel','text-anchor':'middle'},gL);t.textContent=g.text});
+const edges=[];
+NODES.forEach(n=>n.p.forEach(pid=>{const p=BY[pid];edges.push({a:pid,b:n.id,el:mk('line',{x1:p.x,y1:p.y,x2:n.x,y2:n.y,class:'edge'},gE)})}));
+function wrapLabel(t,max){if(!max||t.length<=max)return[t];const w=t.split(' ');const out=[''];w.forEach(x=>{const c=out[out.length-1];if(c&&(c+' '+x).length>max)out.push(x);else out[out.length-1]=c?c+' '+x:x});return out.slice(0,2)}
+NODES.forEach(n=>{
+  const g=mk('g',{class:'node',transform:`translate(${n.x},${n.y})`,tabindex:0,role:'button','data-id':n.id},gN);
+  n.el=g;
+  if(n.t==='T'){mk('circle',{r:31,class:'ring'},g);mk('circle',{r:20,class:'shape'},g)}
+  else{mk('rect',{x:-23,y:-23,width:46,height:46,transform:'rotate(45)',class:'ring'},g);mk('rect',{x:-17,y:-17,width:34,height:34,transform:'rotate(45)',class:'shape'},g);
+    if(n.t==='S')mk('rect',{x:-12,y:-12,width:24,height:24,transform:'rotate(45)',class:'inner'},g)}
+  const c=mk('text',{class:'cost',y:5},g);c.textContent=n.c;
+  const lines=wrapLabel(n.n,TR.wrap);const lab=mk('text',{class:'label',y:40},g);
+  lines.forEach((l,i)=>{const s=mk('tspan',{x:0,dy:i?13:0},lab);s.textContent=l});
+  const ti=mk('title',{},g);ti.textContent=`${n.n} (${TYPE[n.t]}, ${n.c} pt)`;
+});
+const saved=store.get('tree')||{};
+let unlocked=new Set((saved.u||[]).filter(id=>BY[id]));
+let sel=null;
+let presetIdx=Math.min(saved.preset||0,TR.presets.length-1);
+const ptsIn=$('tpts'); ptsIn.value=saved.pts!=null?saved.pts:TR.defaultPoints;
+$('tpreset').innerHTML=TR.presets.map((p,i)=>`<option value="${i}">${esc(p.name)} · ${p.order.reduce((a,id)=>a+BY[id].c,0)} pts</option>`).join('');
+$('tpreset').value=presetIdx;
+const isOpen=(id,set=unlocked)=>BY[id].p.length===0||BY[id].p.some(p=>set.has(p));
+function validSet(s){const ok=new Set();let ch=true;while(ch){ch=false;s.forEach(id=>{if(!ok.has(id)&&(BY[id].p.length===0||BY[id].p.some(p=>ok.has(p)))){ok.add(id);ch=true}})}return ok.size===s.size}
+function blockers(id){const s=new Set(unlocked);s.delete(id);if(validSet(s))return[];return BY[id].kids.filter(k=>unlocked.has(k)&&!BY[k].p.some(p=>p!==id&&unlocked.has(p)))}
+const spent=()=>[...unlocked].reduce((a,id)=>a+BY[id].c,0);
+function save(){store.set('tree',{u:[...unlocked],pts:+ptsIn.value,preset:presetIdx})}
+function toggle(id){
+  if(unlocked.has(id)){if(blockers(id).length)return;unlocked.delete(id)}
+  else{if(!isOpen(id))return;unlocked.add(id)}
+  save();renderTree();
+}
+function select(id){sel=id;renderTree()}
+function renderTree(){
+  const P=TR.presets[presetIdx], inP=new Set(P.order), have=Math.max(0,+ptsIn.value||0), sp=spent();
+  NODES.forEach(n=>{const on=unlocked.has(n.id);n.el.setAttribute('class','node '+(on?'on':isOpen(n.id)?'open':'locked')+(inP.has(n.id)&&!on?' rec':'')+(sel===n.id?' sel':''));n.el.setAttribute('aria-pressed',on);n.el.setAttribute('aria-label',`${n.n}, ${TYPE[n.t]}, ${n.c} points, ${on?'unlocked':isOpen(n.id)?'can unlock':'locked'}`)});
+  edges.forEach(e=>e.el.setAttribute('class','edge'+(unlocked.has(e.a)&&unlocked.has(e.b)?' on':'')));
+  const over=sp>have;
+  $('tbar').className='meterbar'+(over?' over':'');$('tbari').style.width=Math.min(100,have?sp/have*100:(sp?100:0))+'%';
+  $('tmtxt').className='mtxt'+(over?' over':'');
+  $('tmtxt').textContent=`${sp} of ${have} points spent · ${over?(sp-have)+' over budget':(have-sp)+' left'} · full path costs ${P.order.reduce((a,id)=>a+BY[id].c,0)}`;
+  // panel
+  const pn=$('tpanel');
+  if(!sel){pn.innerHTML=`<span class="eyebrow">How to use</span><h3>Pick a node</h3><p>${fmt(TR.help)}</p>`;}
+  else{
+    const n=BY[sel],on=unlocked.has(sel),op=isOpen(sel),bl=on?blockers(sel):[],step=P.order.indexOf(sel);
+    const req=n.p.length?(n.p.length>1?'Needs any one of: ':'Needs: ')+n.p.map(p=>BY[p].n).join(', '):'Starting node, no prerequisite';
+    let st,cls,btn,dis=false;
+    if(on){cls='s-on';st=bl.length?'Unlocked. Remove '+bl.map(k=>BY[k].n).join(', ')+' first to refund it.':'Unlocked.';btn=`Remove (refund ${n.c})`;dis=!!bl.length}
+    else if(op){cls='s-open';st=(sp+n.c>have?`Can unlock, but it puts you ${sp+n.c-have} over your points.`:'Can unlock now.');btn=`Unlock for ${n.c} pt${n.c>1?'s':''}`}
+    else{cls='s-locked';st='Locked. Unlock a node it needs first.';btn='Locked';dis=true}
+    pn.innerHTML=`<span class="eyebrow">${TYPE[n.t]} · ${n.c} pt${n.c>1?'s':''}${step>=0?' · step '+(step+1)+' of path':''}</span><h3>${esc(n.n)}</h3>
+    <p class="req">${esc(req)}</p><p>${esc(n.e)}</p><div class="state ${cls}">${st}</div>
+    <button class="btn primary" id="ttoggle" type="button" ${dis?'disabled':''}>${btn}</button>`;
+    $('ttoggle').onclick=()=>toggle(sel);
+  }
+  // steps
+  let run=0,nextMarked=false;
+  $('steps-h').textContent='Trait order: '+P.name;
+  $('steps-sub').innerHTML=fmt(P.note||'');
+  $('tsteps').innerHTML=P.order.map(id=>{const n=BY[id];run+=n.c;const d=unlocked.has(id);let c=d?'done':'';if(!d&&!nextMarked){c='next';nextMarked=true}
+    return `<li class="${c}" data-id="${id}"><span class="nm">${esc(n.n)}</span><span class="pts">+${n.c} → ${run}</span></li>`}).join('');
+}
+gN.addEventListener('click',e=>{const g=e.target.closest('.node');if(g)select(g.dataset.id)});
+gN.addEventListener('dblclick',e=>{const g=e.target.closest('.node');if(g)toggle(g.dataset.id)});
+gN.addEventListener('keydown',e=>{const g=e.target.closest('.node');if(!g)return;if(e.key==='Enter'){e.preventDefault();select(g.dataset.id)}else if(e.key===' '){e.preventDefault();sel=g.dataset.id;toggle(g.dataset.id)}});
+$('tsteps').addEventListener('click',e=>{const l=e.target.closest('li');if(!l)return;select(l.dataset.id);BY[l.dataset.id].el.scrollIntoView({block:'center',inline:'center',behavior:'smooth'})});
+$('tpreset').addEventListener('change',e=>{presetIdx=+e.target.value;save();renderTree()});
+ptsIn.addEventListener('input',()=>{save();renderTree()});
+$('tfill').onclick=()=>{const have=Math.max(0,+ptsIn.value||0);unlocked=new Set();let s=0;for(const id of TR.presets[presetIdx].order){if(s+BY[id].c>have)break;s+=BY[id].c;unlocked.add(id)}save();renderTree()};
+$('tall').onclick=()=>{unlocked=new Set(TR.presets[presetIdx].order);save();renderTree()};
+$('treset').onclick=()=>{unlocked=new Set();save();renderTree()};
+renderTree();
+
+/* rotation */
+$('rot-h').textContent=D.rotation.title;
+$('rot-intro').innerHTML=fmt(D.rotation.intro);
+$('rot').innerHTML=D.rotation.steps.map(s=>`<li><div><b>${s.t}</b>${s.d?'<br>'+fmt(s.d):''}${s.k?'<div class="keys">'+s.k.map(k=>'<kbd>'+k+'</kbd>').join('')+'</div>':''}</div></li>`).join('');
+$('rot-after').innerHTML=fmt(D.rotation.after);
+
+/* split planner */
+const SP=D.split, sh=$('sh'), sa=$('sa'), av=$('avail');
+$('plan-intro').innerHTML=fmt(SP.intro);
+$('lh').textContent=SP.main;$('la').textContent=SP.alt;
+sh.value=SP.presets[0].m;sa.value=SP.presets[0].a;
+$('splitpresets').innerHTML=SP.presets.map((p,i)=>`<button class="btn" type="button" data-i="${i}">${esc(p.label)}</button>`).join('');
+$('splitpresets').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const p=SP.presets[+b.dataset.i];sh.value=p.m;sa.value=p.a;plan()});
+function plan(){
+  const h=+sh.value,a=+sa.value,A=Math.max(0,Math.min(120,+av.value||0)),used=h+a,over=Math.max(0,used-A),scale=Math.max(A,used)||1;
+  $('oh').value=h;$('oa').value=a;
+  $('bh').style.width=(Math.min(h,A)/scale*100)+'%';$('ba').style.width=(Math.max(0,Math.min(a,A-h))/scale*100)+'%';$('bo').style.width=(over/scale*100)+'%';
+  $('ptxt').textContent=`${used} spent · ${Math.max(0,A-used)} left · ${A} available`;
+  let c,m;
+  if(over>0){c='v-bad';m=`You're ${over} points over what you have. Take them out of ${SP.alt} first, because ${SP.main} carries the build.`}
+  else if(h>=SP.mainMin){c='v-ok';m=`${SP.main} has enough for the full path (${SP.mainMin} points). ${A-used>0?`${A-used} unspent. RaidDex suggests holding spares until more Coilstone regions open.`:'Every point you have is spent.'}`}
+  else{c='v-warn';m=`${SP.main} is below the ${SP.mainMin} points the full path in the tree above costs. That's fine while leveling. Follow the trait order and add points as you find Coilstones.`}
+  const v=$('verdict');v.className='verdict '+c;v.textContent=m;
+}
+[sh,sa,av].forEach(x=>x.addEventListener('input',plan));plan();
+
+/* disputes, sources, footer */
+$('dis').innerHTML=D.disputes.map(r=>'<tr>'+r.map(c=>'<td>'+fmt(c)+'</td>').join('')+'</tr>').join('');
+$('src').innerHTML=D.sources.map(s=>`<li><a href="${s.u}" target="_blank" rel="noopener">${esc(s.t)}</a>${s.n?': '+esc(s.n):''}</li>`).join('');
+$('foot').innerHTML=fmt(D.footer);
+}
+boot();
+</script>
+
+</html>

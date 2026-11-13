@@ -1,0 +1,1011 @@
+{
+ "id": "ranger-sh",
+ "title": "Ranger Storm Hatchet Build",
+ "out": "ranger-storm-hatchet.html",
+ "eyebrow": "ArcheAge Chronicles · Ranger · Early Access",
+ "h1": "<span class='zap'>Storm</span> <span class='hot'>Hatchets</span>",
+ "lede": "A lightning Hatchet build from level 1 to endgame. The guides rate Hatchets as the Ranger's strongest weapon and tag this build for solo leveling, dungeons and PvP. The Longbow is your second weapon, used to open fights from range.",
+ "notice": {
+  "title": "Not verified in-game yet.",
+  "text": "Early Access opened on November 3, 2026. I cross-checked every Ranger guide I could find and tagged each claim by how well it's supported. The trait tree below matches the in-game Hatchet Traits screen node for node. I haven't played any of this myself, so check the in-game tooltips before you spend points."
+ },
+ "stages": [
+  {
+   "id": "level",
+   "name": "Leveling",
+   "sub": "Lv 1 → 40",
+   "goal": "Level in melee with Hatchets, which keep you alive better than the bow. Add the Longbow opener once you have points to spare.",
+   "weapons": [
+    "<span class='w-main'>Hatchets</span> as your main weapon [ok]",
+    "<span class='w-alt'>Longbow</span> on {Q} for openers [ok]"
+   ],
+   "skills": [
+    "Flurry → Lunge → Axe Flurry is your starter chain [one]",
+    "Stormsplitter is a ground slam that adds Shock [ok]",
+    "Shadowcatch dodges behind the target and costs no SP [ok]",
+    "Thrill of the Hunt restores SP at 10 stacks [one]"
+   ],
+   "traits": [
+    "Trait points come from Raeven's Coilstones, not from leveling [ok]",
+    "Follow the trait order below. The first 11 points cover your core combo and SP sustain [me]"
+   ],
+   "stats": [
+    [
+     "Agility",
+     100,
+     "1st"
+    ],
+    [
+     "Talent",
+     95,
+     "1st"
+    ],
+    [
+     "Constitution",
+     60,
+     "2nd"
+    ],
+    [
+     "Endurance",
+     60,
+     "2nd"
+    ],
+    [
+     "Strength",
+     0,
+     "none"
+    ],
+    [
+     "Intelligence",
+     0,
+     "none"
+    ]
+   ],
+   "gear": [
+    "City Guard Hatchet to start [one]",
+    "You can respec stats for free at major towns or regional camps [one]"
+   ],
+   "check": [
+    "Put Hatchets and Longbow on Q swap",
+    "Unlock Flurry, Lunge, Axe Flurry and Stormsplitter",
+    "Pick up every Raeven's Coilstone you pass",
+    "Reach Discharge in the trait order"
+   ]
+  },
+  {
+   "id": "mid",
+   "name": "Gearing",
+   "sub": "Lv 40, first bosses",
+   "goal": "Turn on the lightning loop: Discharge → Rebounding Thunder → Shocking Kick → Overload.",
+   "weapons": [
+    "<span class='w-main'>Centurion's Hatchet</span> for midgame [ok]",
+    "XLGAMES corrected its Temper stats on Nov 10, so check the current numbers before you temper it [ok]"
+   ],
+   "skills": [
+    "Shocking Kick and Rebounding Thunder open right after Discharge [one]",
+    "Overload makes Lunge stagger-immune and triggers Discharge [ok]",
+    "Thunder Slash combos from Shocking Kick [ok]"
+   ],
+   "traits": [
+    "Trait order steps 11 to 17 [me]",
+    "Shocking Kick needs Lightning ATK, which needs Rebounding Thunder [one]"
+   ],
+   "stats": [
+    [
+     "Agility",
+     100,
+     "1st"
+    ],
+    [
+     "Talent",
+     60,
+     "20"
+    ],
+    [
+     "Constitution",
+     60,
+     "2nd"
+    ],
+    [
+     "Endurance",
+     60,
+     "2nd"
+    ],
+    [
+     "Strength",
+     0,
+     "none"
+    ],
+    [
+     "Intelligence",
+     0,
+     "none"
+    ]
+   ],
+   "gear": [
+    "Talent 20 for midgame [one]",
+    "Use the Longbow's Aimed Shot → Scarlet Arrow to open on elites [ok]"
+   ],
+   "check": [
+    "Get Centurion's Hatchet (check post-fix stats)",
+    "Raise Talent to 20",
+    "Unlock Overload",
+    "Unlock Thunder Slash"
+   ]
+  },
+  {
+   "id": "end",
+   "name": "Endgame",
+   "sub": "Storm Hatchet",
+   "goal": "Run the full shock chain and finish targets with the wind branch below 40% HP.",
+   "weapons": [
+    "<span class='w-main'>Wrathful Tyrant's Claw</span> [ok]",
+    "Thunder Dash Lunastone for Lightning ATK [ok]",
+    "Gyldenlord's Cleaver if you don't have the Claw yet [one]",
+    "<span class='w-alt'>Longbow</span> for openers and ranged phases [ok]"
+   ],
+   "skills": [
+    "Lightning Rush: a staggering charge that evades while moving [one]",
+    "Gale Sever: 3 strikes plus 3 Wind Blades that heal you, for enemies below 40% [ok]",
+    "Eye of the Storm boosts damage, crit and Stagger after Stormsplitter [one]"
+   ],
+   "traits": [
+    "49 Hatchets and 43 Longbow uses all 92 Early Access points [me]",
+    "RaidDex calls the split \"roughly even\". Thunder Hunt uses 53 / 47 [one]"
+   ],
+   "stats": [
+    [
+     "Agility",
+     100,
+     "1st"
+    ],
+    [
+     "Talent",
+     90,
+     "35"
+    ],
+    [
+     "Constitution",
+     60,
+     "2nd"
+    ],
+    [
+     "Endurance",
+     50,
+     "2nd"
+    ],
+    [
+     "Strength",
+     0,
+     "none"
+    ],
+    [
+     "Intelligence",
+     0,
+     "none"
+    ]
+   ],
+   "gear": [
+    "Talent 35 for Thunder Dash [one]",
+    "RaidDex's Talent numbers vary from page to page (12 to 35), so check your weapon's requirement [ok]"
+   ],
+   "check": [
+    "Get Wrathful Tyrant's Claw",
+    "Socket Thunder Dash Lunastone",
+    "Raise Talent to the weapon requirement",
+    "Finish the 49-point trait path",
+    "Land Gale Sever on a boss below 40%"
+   ]
+  }
+ ],
+ "tree": {
+  "weapon": "Hatchets",
+  "defaultPoints": 10,
+  "pad": 95,
+  "intro": "This tree matches the in-game Hatchet Traits screen node for node. The screenshot has 55 nodes and Wikily's Hatchet list has 55. The connections line up, and every node that shows a \"3\" in-game costs 3 on Wikily [me]. When two nodes share a row (Stormburst and Eye of the Storm, for example), I placed them left to right in Wikily's list order, so hover them in-game before you buy. The stat cluster on the right costs 5 to 10 points per node, and the build path skips it.",
+  "help": "Click a node to read it. Double-click it, or press Space, to unlock or refund it. <b>Fill with my points</b> buys the build path in order until your points run out. Your tree is saved in this browser.",
+  "nodes": [
+   {
+    "id": "prof",
+    "n": "Hatchet Proficiency",
+    "t": "P",
+    "c": 1,
+    "e": "Lets you equip hatchets.",
+    "x": 1056,
+    "y": 84
+   },
+   {
+    "id": "flurry",
+    "n": "Flurry",
+    "t": "S",
+    "c": 1,
+    "e": "Two quick attacks that deal damage and Stagger.",
+    "x": 207,
+    "y": 159
+   },
+   {
+    "id": "wscream",
+    "n": "Windscreamer",
+    "t": "S",
+    "c": 1,
+    "p": [
+     "flurry"
+    ],
+    "e": "Powerful slash that knocks back.",
+    "x": 362,
+    "y": 159
+   },
+   {
+    "id": "thrill",
+    "n": "Thrill of the Hunt",
+    "t": "P",
+    "c": 1,
+    "p": [
+     "prof"
+    ],
+    "e": "Hatchet skills build stacks. At 10 stacks you restore SP.",
+    "x": 747,
+    "y": 159
+   },
+   {
+    "id": "ssplit",
+    "n": "Stormsplitter",
+    "t": "S",
+    "c": 1,
+    "p": [
+     "prof"
+    ],
+    "e": "Ground slam after Axe Flurry. Adds Shock, knocks back, and reduces damage taken.",
+    "x": 1056,
+    "y": 159
+   },
+   {
+    "id": "rthrow",
+    "n": "Rapid Throw",
+    "t": "S",
+    "c": 1,
+    "p": [
+     "prof"
+    ],
+    "e": "Hold to throw up to 5 axes. 15 s cooldown.",
+    "x": 1364,
+    "y": 159
+   },
+   {
+    "id": "lunge",
+    "n": "Lunge",
+    "t": "S",
+    "c": 1,
+    "p": [
+     "flurry"
+    ],
+    "e": "Charge and strike. Can follow with a two-hit Flurry.",
+    "x": 362,
+    "y": 234
+   },
+   {
+    "id": "aflurry",
+    "n": "Axe Flurry",
+    "t": "S",
+    "c": 1,
+    "p": [
+     "lunge"
+    ],
+    "e": "Aerial axe throw that knocks back. You evade while in the air.",
+    "x": 517,
+    "y": 234
+   },
+   {
+    "id": "shadow",
+    "n": "Shadowcatch",
+    "t": "S",
+    "c": 1,
+    "p": [
+     "thrill"
+    ],
+    "e": "Dodge behind the target for no SP. 10 s cooldown.",
+    "x": 747,
+    "y": 234
+   },
+   {
+    "id": "swake",
+    "n": "Storm's Wake",
+    "t": "P",
+    "c": 1,
+    "p": [
+     "ssplit"
+    ],
+    "e": "Stormsplitter explodes for damage, Stagger and Shock.",
+    "x": 979,
+    "y": 234
+   },
+   {
+    "id": "eff",
+    "n": "Effortless Flurry",
+    "t": "P",
+    "c": 1,
+    "p": [
+     "ssplit"
+    ],
+    "e": "Axe Flurry costs no SP.",
+    "x": 1131,
+    "y": 234
+   },
+   {
+    "id": "rtb",
+    "n": "Rapid Throw - Bleed",
+    "t": "P",
+    "c": 2,
+    "p": [
+     "rthrow"
+    ],
+    "e": "Throws 2 extra axes at reduced damage and adds Bleed.",
+    "x": 1289,
+    "y": 234
+   },
+   {
+    "id": "rts",
+    "n": "Rapid Throw - Shock",
+    "t": "P",
+    "c": 2,
+    "p": [
+     "rthrow"
+    ],
+    "e": "Costs no SP, homes in on the target, and adds Shock.",
+    "x": 1442,
+    "y": 234
+   },
+   {
+    "id": "ambush",
+    "n": "Ambush",
+    "t": "S",
+    "c": 1,
+    "p": [
+     "lunge"
+    ],
+    "e": "Stagger strike that combos into Axe Flurry.",
+    "x": 517,
+    "y": 307
+   },
+   {
+    "id": "skm",
+    "n": "Spinning Kick Mastery",
+    "t": "P",
+    "c": 1,
+    "p": [
+     "shadow"
+    ],
+    "e": "More Spinning Kick damage and Stagger.",
+    "x": 671,
+    "y": 307
+   },
+   {
+    "id": "ihung",
+    "n": "Impatient Hunger",
+    "t": "P",
+    "c": 1,
+    "p": [
+     "shadow"
+    ],
+    "e": "Thrill triggers at 5 stacks, with a shorter duration and less SP.",
+    "x": 824,
+    "y": 307
+   },
+   {
+    "id": "sguard",
+    "n": "Stormguard",
+    "t": "P",
+    "c": 2,
+    "p": [
+     "swake"
+    ],
+    "e": "Stormsplitter grants a 5 s shield that scales with Max HP.",
+    "x": 979,
+    "y": 307
+   },
+   {
+    "id": "astorm",
+    "n": "Axe Storm",
+    "t": "S",
+    "c": 2,
+    "p": [
+     "eff"
+    ],
+    "e": "Rapid axes after Axe Flurry that add Bleed.",
+    "x": 1131,
+    "y": 307
+   },
+   {
+    "id": "tonic",
+    "n": "Battle Tonic",
+    "t": "S",
+    "c": 3,
+    "p": [
+     "rtb",
+     "rts"
+    ],
+    "e": "Drink a healing potion after Axe Throw. 30 s cooldown.",
+    "x": 1364,
+    "y": 307
+   },
+   {
+    "id": "jolt",
+    "n": "Jolt Kick",
+    "t": "S",
+    "c": 1,
+    "p": [
+     "flurry"
+    ],
+    "e": "Heavy kick on a downed target. 15 s cooldown.",
+    "x": 362,
+    "y": 381
+   },
+   {
+    "id": "moment",
+    "n": "Momentum",
+    "t": "S",
+    "c": 2,
+    "p": [
+     "skm"
+    ],
+    "e": "Extends Spinning Kick's range and adds a free knockback attack.",
+    "x": 671,
+    "y": 381
+   },
+   {
+    "id": "twin",
+    "n": "Twin Splitter",
+    "t": "P",
+    "c": 2,
+    "p": [
+     "ihung"
+    ],
+    "e": "Double Hatchet Strike hits twice at reduced damage.",
+    "x": 824,
+    "y": 381
+   },
+   {
+    "id": "wcleave",
+    "n": "Windcleaver",
+    "t": "S",
+    "c": 3,
+    "p": [
+     "sguard",
+     "astorm"
+    ],
+    "e": "Upward strike after Windscreamer that knocks back.",
+    "x": 1056,
+    "y": 381
+   },
+   {
+    "id": "foac",
+    "n": "Flurry of Axes Combo",
+    "t": "P",
+    "c": 2,
+    "p": [
+     "tonic"
+    ],
+    "e": "Rapid Throw's 5th throw combos into Axe Flurry.",
+    "x": 1364,
+    "y": 381
+   },
+   {
+    "id": "slam",
+    "n": "Slam",
+    "t": "S",
+    "c": 1,
+    "p": [
+     "flurry"
+    ],
+    "e": "Jump and strike down.",
+    "x": 362,
+    "y": 455
+   },
+   {
+    "id": "disch",
+    "n": "Discharge",
+    "t": "P",
+    "c": 3,
+    "p": [
+     "moment",
+     "twin"
+    ],
+    "e": "Each Thrill trigger damages nearby enemies and adds Shock.",
+    "x": 747,
+    "y": 455
+   },
+   {
+    "id": "wblade",
+    "n": "Wind Blade",
+    "t": "P",
+    "c": 2,
+    "p": [
+     "wcleave"
+    ],
+    "e": "Piercing blade that adds Bleed. Doesn't build Thrill stacks.",
+    "x": 1056,
+    "y": 455
+   },
+   {
+    "id": "rhunt",
+    "n": "Relentless Hunt",
+    "t": "P",
+    "c": 2,
+    "p": [
+     "disch"
+    ],
+    "e": "Critical hits grant 1 extra Thrill stack.",
+    "x": 747,
+    "y": 529
+   },
+   {
+    "id": "cwind",
+    "n": "Counterattack - Windscreamer",
+    "t": "P",
+    "c": 2,
+    "p": [
+     "wblade"
+    ],
+    "e": "Windscreamer becomes available after a successful Parry.",
+    "x": 979,
+    "y": 529
+   },
+   {
+    "id": "aslice",
+    "n": "Airslice",
+    "t": "P",
+    "c": 2,
+    "p": [
+     "wblade"
+    ],
+    "e": "Flurry's second attack fires a Wind Blade.",
+    "x": 1131,
+    "y": 529
+   },
+   {
+    "id": "skick",
+    "n": "Spinning Kick",
+    "t": "S",
+    "c": 1,
+    "e": "Spinning kick that deals damage, staggers and breaks guard.",
+    "x": 207,
+    "y": 604
+   },
+   {
+    "id": "dhs",
+    "n": "Double Hatchet Strike",
+    "t": "S",
+    "c": 1,
+    "p": [
+     "skick"
+    ],
+    "e": "Two-handed strike that staggers.",
+    "x": 362,
+    "y": 604
+   },
+   {
+    "id": "rthunder",
+    "n": "Rebounding Thunder",
+    "t": "S",
+    "c": 2,
+    "p": [
+     "rhunt"
+    ],
+    "e": "Briefly available after Discharge. Adds Shock.",
+    "x": 747,
+    "y": 604
+   },
+   {
+    "id": "ripper",
+    "n": "Ripper Edge",
+    "t": "P",
+    "c": 2,
+    "p": [
+     "cwind",
+     "aslice"
+    ],
+    "e": "After Bleed, Windscreamer hits 2 extra times.",
+    "x": 1056,
+    "y": 604
+   },
+   {
+    "id": "dmg70",
+    "n": "Damage ↑ at HP ≥70%",
+    "t": "T",
+    "c": 10,
+    "e": "+2.5% damage while your HP is at 70% or higher.",
+    "x": 1442,
+    "y": 604
+   },
+   {
+    "id": "stepb",
+    "n": "Step Back",
+    "t": "S",
+    "c": 1,
+    "p": [
+     "skick",
+     "dhs"
+    ],
+    "e": "Kick, then leap back while throwing an axe. Brief evade.",
+    "x": 362,
+    "y": 679
+   },
+   {
+    "id": "latk",
+    "n": "Lightning ATK",
+    "t": "T",
+    "c": 1,
+    "p": [
+     "rthunder"
+    ],
+    "e": "+20 Lightning ATK.",
+    "x": 747,
+    "y": 679
+   },
+   {
+    "id": "bloody",
+    "n": "Bloodied Edge",
+    "t": "P",
+    "c": 2,
+    "p": [
+     "ripper"
+    ],
+    "e": "Ripper Edge always triggers Windscreamer on targets at 40% HP or less.",
+    "x": 1056,
+    "y": 679
+   },
+   {
+    "id": "wpatk",
+    "n": "Weapon Physical ATK ↑",
+    "t": "T",
+    "c": 5,
+    "p": [
+     "dmg70"
+    ],
+    "e": "+10% weapon Physical ATK.",
+    "x": 1366,
+    "y": 679
+   },
+   {
+    "id": "wmatk",
+    "n": "Weapon Magic ATK ↑",
+    "t": "T",
+    "c": 5,
+    "p": [
+     "dmg70"
+    ],
+    "e": "+10% weapon Magic ATK.",
+    "x": 1519,
+    "y": 679
+   },
+   {
+    "id": "athrow",
+    "n": "Axe Throw",
+    "t": "S",
+    "c": 1,
+    "p": [
+     "skick",
+     "stepb"
+    ],
+    "e": "Two axe hits. The second one staggers.",
+    "x": 362,
+    "y": 754
+   },
+   {
+    "id": "shkick",
+    "n": "Shocking Kick",
+    "t": "S",
+    "c": 2,
+    "p": [
+     "latk"
+    ],
+    "e": "Briefly available after Discharge. Adds Shock.",
+    "x": 747,
+    "y": 754
+   },
+   {
+    "id": "sburst",
+    "n": "Stormburst",
+    "t": "P",
+    "c": 2,
+    "p": [
+     "bloody"
+    ],
+    "e": "Stormsplitter fires three lightning bolts that add Shock.",
+    "x": 979,
+    "y": 754
+   },
+   {
+    "id": "eye",
+    "n": "Eye of the Storm",
+    "t": "P",
+    "c": 2,
+    "p": [
+     "bloody"
+    ],
+    "e": "Stormsplitter briefly boosts your damage, crit and Stagger power.",
+    "x": 1131,
+    "y": 754
+   },
+   {
+    "id": "dmgh",
+    "n": "Damage ↑ vs HP ≥70%",
+    "t": "T",
+    "c": 5,
+    "p": [
+     "dmg70"
+    ],
+    "e": "+5% damage against targets at 70% HP or higher.",
+    "x": 1366,
+    "y": 754
+   },
+   {
+    "id": "dmgl",
+    "n": "Damage ↑ vs HP ≤40%",
+    "t": "T",
+    "c": 5,
+    "p": [
+     "dmg70"
+    ],
+    "e": "+5% damage against targets at 40% HP or less.",
+    "x": 1519,
+    "y": 754
+   },
+   {
+    "id": "parry",
+    "n": "Parry",
+    "t": "S",
+    "c": 1,
+    "e": "Short defensive stance that parries blockable attacks.",
+    "x": 207,
+    "y": 828
+   },
+   {
+    "id": "ttrail",
+    "n": "Thunder Trail",
+    "t": "S",
+    "c": 3,
+    "p": [
+     "shkick"
+    ],
+    "e": "A charge window after Rebounding Thunder or Shocking Kick lands.",
+    "x": 671,
+    "y": 828
+   },
+   {
+    "id": "overload",
+    "n": "Overload",
+    "t": "P",
+    "c": 3,
+    "p": [
+     "shkick"
+    ],
+    "e": "Stagger-immune during Lunge, and Lunge triggers Discharge. 5 s cooldown.",
+    "x": 824,
+    "y": 828
+   },
+   {
+    "id": "gale",
+    "n": "Gale Sever",
+    "t": "S",
+    "c": 3,
+    "p": [
+     "sburst",
+     "eye"
+    ],
+    "e": "After Windcleaver: 3 strikes and 3 Wind Blades that heal you.",
+    "x": 1056,
+    "y": 828
+   },
+   {
+    "id": "ecurr",
+    "n": "Electric Current",
+    "t": "S",
+    "c": 2,
+    "p": [
+     "ttrail"
+    ],
+    "e": "Thunder Trail can be reused within its window.",
+    "x": 671,
+    "y": 901
+   },
+   {
+    "id": "tslash",
+    "n": "Thunder Slash",
+    "t": "S",
+    "c": 2,
+    "p": [
+     "overload"
+    ],
+    "e": "Combos from Shocking Kick, knocks back, and evades.",
+    "x": 824,
+    "y": 901
+   },
+   {
+    "id": "schase",
+    "n": "Storm Chaser",
+    "t": "P",
+    "c": 2,
+    "p": [
+     "gale"
+    ],
+    "e": "A Wind Blade crit lets you use Stormsplitter for no SP.",
+    "x": 1056,
+    "y": 901
+   },
+   {
+    "id": "lrush",
+    "n": "Lightning Rush",
+    "t": "S",
+    "c": 3,
+    "p": [
+     "ecurr",
+     "tslash"
+    ],
+    "e": "Staggering charge that evades while you move.",
+    "x": 747,
+    "y": 975
+   },
+   {
+    "id": "evade",
+    "n": "Evade",
+    "t": "S",
+    "c": 1,
+    "e": "Quick dodge in the chosen direction.",
+    "x": 207,
+    "y": 1050
+   }
+  ],
+  "presets": [
+   {
+    "name": "Storm Hatchet (RaidDex skills)",
+    "note": "RaidDex names the skills (Overload, Relentless Hunt, Shocking Kick, Thunder Slash, Lightning Rush, Gale Sever). The order and the Airslice pick are mine. Airslice avoids depending on Parry [me].",
+    "order": [
+     "prof",
+     "flurry",
+     "lunge",
+     "aflurry",
+     "ssplit",
+     "wscream",
+     "thrill",
+     "shadow",
+     "skm",
+     "moment",
+     "disch",
+     "rhunt",
+     "rthunder",
+     "latk",
+     "shkick",
+     "overload",
+     "tslash",
+     "eff",
+     "astorm",
+     "wcleave",
+     "wblade",
+     "aslice",
+     "ripper",
+     "bloody",
+     "eye",
+     "gale",
+     "lrush",
+     "evade"
+    ]
+   }
+  ],
+  "groups": [
+   {
+    "x": 362,
+    "y": 112,
+    "text": "Skills"
+   }
+  ]
+ },
+ "rotation": {
+  "title": "Storm Hatchet rotation",
+  "intro": "Combined from RaidDex's Storm Hatchet build and the node effects in the tree [ok]. Swap weapons with {Q}.",
+  "steps": [
+   {
+    "t": "Open with the Longbow",
+    "d": "Aimed Shot, then Scarlet Arrow. Scarlet Arrow costs HP, so skip it when you're low."
+   },
+   {
+    "t": "Swap and Lunge in",
+    "d": "Lunge, then Shocking Kick, then Thunder Slash. With Overload, Lunge is stagger-immune and sets off Discharge."
+   },
+   {
+    "t": "Keep the Shock loop going",
+    "d": "Rebounding Thunder and Shocking Kick open after Discharge. Relentless Hunt crits feed Thrill, which restores SP."
+   },
+   {
+    "t": "Axe Flurry into Stormsplitter",
+    "d": "Axe Flurry is free with Effortless Flurry. Stormsplitter adds Shock and cuts the damage you take."
+   },
+   {
+    "t": "Lightning Rush to reposition",
+    "d": "A staggering charge that evades while you move. Use it to chase kiting targets."
+   },
+   {
+    "t": "Execute below 40% HP",
+    "d": "Flurry, Windscreamer, Windcleaver, then Gale Sever, which also heals you."
+   }
+  ],
+  "after": "Use Shadowcatch (no SP) to get behind a boss's swing. If your SP runs dry, Rapid Throw costs nothing too."
+ },
+ "split": {
+  "main": "Hatchets",
+  "alt": "Longbow",
+  "mainMin": 49,
+  "intro": "Trait points come from <b>Raeven's Coilstones</b> near powerful bosses [ok]. RaidDex's Storm Hatchet splits points about evenly. Its Thunder Hunt build goes 53 / 47, and its Ember Arrow longbow build goes 41 / 59.",
+  "presets": [
+   {
+    "label": "Storm Hatchet, adjusted (49 / 43)",
+    "m": 49,
+    "a": 43
+   },
+   {
+    "label": "Thunder Hunt as written (53 / 47)",
+    "m": 53,
+    "a": 47
+   },
+   {
+    "label": "Ember Arrow longbow (33 / 59)",
+    "m": 33,
+    "a": 59
+   }
+  ]
+ },
+ "disputes": [
+  [
+   "Stat order",
+   "RaidDex: AGI and Talent first, then CON and END. DeityVengy (Nov 9): END, then Talent, then INT, and calls AGI and crit worthless right now.",
+   "Follow RaidDex while leveling. Stats respec free, so try END-heavy if your crits feel weak."
+  ],
+  [
+   "Is the Longbow worth it?",
+   "RaidDex and Kybuza use it as an opener, and AOEAH rates it 8/10 for PvE. DeityVengy calls it \"a dead weapon\" in Early Access.",
+   "Use it only as the opener. Swap the split toward Hatchets if it underperforms."
+  ],
+  [
+   "Talent target",
+   "RaidDex pages give 12, 18, 20, 29 and 35.",
+   "Match your weapon's Talent requirement."
+  ],
+  [
+   "Hatchet stats",
+   "Centurion's Hatchet had wrong Temper stats until the Nov 10 fix.",
+   "Ignore Hatchet numbers from before Nov 10."
+  ]
+ ],
+ "sources": [
+  {
+   "t": "Wikily: Hatchet skill tree (55 nodes)",
+   "u": "https://wikily.gg/archeage-chronicles/weapons/hatchet"
+  },
+  {
+   "t": "ArcheAge Builds: Ranger",
+   "u": "https://archeagebuilds.com/classes/ranger/"
+  },
+  {
+   "t": "ArcheAge Builds: all builds (Storm Hatchet, Thunder Hunt, Ember Arrow)",
+   "u": "https://archeagebuilds.com/builds/"
+  },
+  {
+   "t": "ArcheAge Builds: Ranger builds",
+   "u": "https://archeagebuilds.com/builds/ranger/"
+  },
+  {
+   "t": "RaidDex builds",
+   "u": "https://raiddex.com/en/archeage-chronicles/builds",
+   "n": "the site blocked direct reading, so I took its details from ArcheAge Builds' summary"
+  },
+  {
+   "t": "Games.gg: ranged build for beginners",
+   "u": "https://games.gg/archeage-chronicles/guides/best-archeage-chronicles-ranged-build-for-beginners/"
+  },
+  {
+   "t": "AOEAH tier list (Nov 4, 2026)",
+   "u": "https://www.aoeah.com/news/4897--archeage-chronicles-best-classesweaponsbuilds-tier-list-pve--pvp"
+  }
+ ],
+ "footer": "Sources checked November 12, 2026, during Early Access. Recheck after the December update."
+}

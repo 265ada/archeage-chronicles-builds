@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}[hidden]{display:none!important}</style>
+<title>Ranger Storm Hatchet Build</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: one column; stage switcher, then a trait tree that mirrors the in-game Traits screen with a side panel, then rotation, split planner, disputes, sources. */
+:root{
+  --bg:#eef0f3; --surface:#ffffff; --surface-2:#e3e7ec; --line:#cdd3db;
+  --fg:#1b2027; --muted:#58616d;
+  --ember:#c24e12; --ember-soft:#fbe6da;
+  --volt:#2a5fd6; --volt-soft:#dfe8fb;
+  --ok:#23824a; --ok-soft:#dcf1e4; --warn:#a46a00; --warn-soft:#fbefd2; --bad:#b3261e; --bad-soft:#f9dedb;
+  --on-accent:#ffffff;
+  --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#13161b; --surface:#1b1f26; --surface-2:#232832; --line:#323946;
+  --fg:#e8ebf0; --muted:#9aa3b1;
+  --ember:#ff8a4c; --ember-soft:#3a2216; --volt:#7aa5ff; --volt-soft:#1c2a47;
+  --ok:#5fd08d; --ok-soft:#173826; --warn:#f0b543; --warn-soft:#3a2d10; --bad:#ff8a80; --bad-soft:#3d1a18;
+  --on-accent:#1b1209;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#13161b; --surface:#1b1f26; --surface-2:#232832; --line:#323946;
+  --fg:#e8ebf0; --muted:#9aa3b1;
+  --ember:#ff8a4c; --ember-soft:#3a2216; --volt:#7aa5ff; --volt-soft:#1c2a47;
+  --ok:#5fd08d; --ok-soft:#173826; --warn:#f0b543; --warn-soft:#3a2d10; --bad:#ff8a80; --bad-soft:#3d1a18;
+  --on-accent:#1b1209;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px}
+.wrap{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:44px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.05}
+h1{font-size:clamp(40px,7vw,64px);font-weight:700;letter-spacing:.01em;text-transform:uppercase}
+h1 .hot{color:var(--ember)} h1 .zap{color:var(--volt)}
+h2{font-size:30px;font-weight:600;text-transform:uppercase;letter-spacing:.02em}
+h3{font-size:20px;font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+p{margin:0;max-width:72ch}
+a{color:var(--volt)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:16px}
+header{display:flex;flex-direction:column;gap:14px}
+.lede{font-size:17px;color:var(--muted)}
+.notice{border:1px solid var(--warn);background:var(--warn-soft);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.notice strong{color:var(--warn)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--muted)}
+.tag{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;
+  padding:2px 7px;border-radius:4px;white-space:nowrap;vertical-align:1px}
+.t-ok{background:var(--ok-soft);color:var(--ok)} .t-one{background:var(--warn-soft);color:var(--warn)} .t-me{background:var(--volt-soft);color:var(--volt)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{font:600 17px var(--display);text-transform:uppercase;letter-spacing:.04em;padding:10px 16px;border-radius:6px;border:1px solid var(--line);
+  background:var(--surface);color:var(--fg);cursor:pointer;display:flex;flex-direction:column;align-items:flex-start}
+.tab small{font:500 11px var(--mono);color:var(--muted);letter-spacing:.04em}
+.tab[aria-selected="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.tab[aria-selected="true"] small{color:var(--bg);opacity:.75}
+.tab:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--volt);outline-offset:2px}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:22px}
+.stage-head{display:flex;flex-direction:column;gap:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.block{display:flex;flex-direction:column;gap:8px;min-width:0}
+.block h4{margin:0;font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+ul.clean{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+ul.clean li{display:block}
+.w-main{color:var(--ember);font-weight:600} .w-alt{color:var(--volt);font-weight:600}
+.statbar{display:flex;flex-direction:column;gap:6px}
+.stat{display:grid;grid-template-columns:110px 1fr 56px;gap:10px;align-items:center;font-size:14px}
+.stat .bar{height:8px;background:var(--surface-2);border-radius:4px;overflow:hidden}
+.stat .bar i{display:block;height:100%;background:var(--ember)}
+.stat .val{font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;text-align:right}
+.checklist{display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--line);padding-top:16px}
+.checklist label{display:flex;gap:10px;align-items:flex-start;padding:6px 4px;border-radius:5px;cursor:pointer}
+.checklist label:hover{background:var(--surface-2)}
+.checklist input{margin-top:4px;accent-color:var(--ember);width:16px;height:16px;flex:none}
+.checklist input:checked + span{color:var(--muted);text-decoration:line-through}
+.progress{font-family:var(--mono);font-size:12px;color:var(--muted)}
+kbd{font:500 12px var(--mono);background:var(--surface-2);border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:1px 7px;color:var(--fg)}
+/* trait tree */
+.treebox{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:16px}
+.tree-controls{display:flex;flex-direction:column;gap:12px}
+.row{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.avail{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.avail input{width:76px;font:500 15px var(--mono);padding:6px 8px;border-radius:5px;border:1px solid var(--line);background:var(--surface-2);color:var(--fg)}
+select{font:500 14px var(--body);padding:7px 10px;border-radius:6px;border:1px solid var(--line);background:var(--surface-2);color:var(--fg);max-width:100%}
+.btn{font:600 14px var(--body);padding:8px 14px;border-radius:6px;border:1px solid var(--line);background:var(--surface-2);color:var(--fg);cursor:pointer}
+.btn:hover{border-color:var(--fg)}
+.btn.primary{background:var(--ember);border-color:var(--ember);color:var(--on-accent)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.meter{display:flex;flex-direction:column;gap:6px}
+.meterbar{height:10px;border-radius:5px;background:var(--surface-2);overflow:hidden;border:1px solid var(--line)}
+.meterbar i{display:block;height:100%;background:var(--ember)}
+.meterbar.over i{background:var(--bad)}
+.mtxt{font:500 13px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.mtxt.over{color:var(--bad)}
+.tlegend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--muted);align-items:center}
+.tlegend svg{vertical-align:middle;margin-right:4px}
+.treegrid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:16px;align-items:start}
+.tree-scroll{overflow:auto;border:1px solid var(--line);border-radius:8px;background:var(--bg);max-height:900px;min-width:0}
+#tsvg{display:block;width:100%;height:auto}
+.edge{stroke:var(--line);stroke-width:2}
+.edge.on{stroke:var(--ember);stroke-width:3}
+.node{cursor:pointer;outline:none}
+.node .shape{fill:var(--surface);stroke:var(--muted);stroke-width:1.5}
+.node .inner{fill:none;stroke:var(--muted);stroke-width:1}
+.node .cost{font:600 13px var(--mono);fill:var(--fg);text-anchor:middle}
+.node .label{font:500 11.5px var(--body);fill:var(--fg);text-anchor:middle}
+.node .ring{fill:none;stroke:none}
+.node.locked .shape,.node.locked .inner{stroke:var(--line)}
+.node.locked .cost,.node.locked .label{fill:var(--muted)}
+.node.open .shape{stroke:var(--fg);stroke-width:2}
+.node.on .shape{fill:var(--ember);stroke:var(--ember)}
+.node.on .inner{stroke:var(--on-accent)}
+.node.on .cost{fill:var(--on-accent)}
+.node.rec .ring{stroke:var(--volt);stroke-width:2;stroke-dasharray:5 4}
+.node.sel .shape{stroke:var(--volt);stroke-width:3.5}
+.node:focus-visible .shape{stroke:var(--volt);stroke-width:3.5}
+.glabel{font:500 11px var(--mono);fill:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.tpanel{position:sticky;top:12px;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.tpanel h3{font-size:22px}
+.tpanel .req{font-size:13px;color:var(--muted)}
+.tpanel .state{font-size:13px;padding:8px 10px;border-radius:6px;background:var(--surface)}
+.state.s-on{color:var(--ok);background:var(--ok-soft)} .state.s-open{color:var(--volt);background:var(--volt-soft)} .state.s-locked{color:var(--warn);background:var(--warn-soft)}
+ol.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:4px 16px;counter-reset:s}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:28px 1fr auto;gap:8px;align-items:baseline;padding:6px 8px;border-radius:5px;cursor:pointer;font-size:14px}
+ol.steps li::before{content:counter(s);font:500 12px var(--mono);color:var(--muted)}
+ol.steps li:hover{background:var(--surface-2)}
+ol.steps li.done{color:var(--muted)}
+ol.steps li.done .nm{text-decoration:line-through}
+ol.steps li.next{background:var(--ember-soft)}
+ol.steps .pts{font:500 12px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+/* rotation */
+ol.rot{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;counter-reset:r}
+ol.rot li{counter-increment:r;display:grid;grid-template-columns:44px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+ol.rot li::before{content:counter(r);font:700 30px var(--display);color:var(--ember);line-height:1}
+ol.rot li:last-child{border-bottom:0}
+.keys{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+/* split planner */
+.planner{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:18px}
+.slider{display:grid;grid-template-columns:150px 1fr 56px;gap:12px;align-items:center}
+.slider input[type=range]{width:100%;accent-color:var(--ember)}
+.slider.alt input[type=range]{accent-color:var(--volt)}
+.slider output{font:500 16px var(--mono);text-align:right;font-variant-numeric:tabular-nums}
+.poolbar{display:flex;height:22px;border-radius:5px;overflow:hidden;background:var(--surface-2);border:1px solid var(--line)}
+.poolbar .h{background:var(--ember)} .poolbar .a{background:var(--volt)} .poolbar .over{background:repeating-linear-gradient(45deg,var(--bad) 0 6px,transparent 6px 12px)}
+.verdict{padding:12px 14px;border-radius:7px;font-size:14px}
+.v-ok{background:var(--ok-soft);color:var(--ok)} .v-warn{background:var(--warn-soft);color:var(--warn)} .v-bad{background:var(--bad-soft);color:var(--bad)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:600px;font-size:14px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted);background:var(--surface-2)}
+tr:last-child td{border-bottom:0}
+.sources{display:flex;flex-direction:column;gap:6px;font-size:14px;padding-left:18px;margin:0}
+.classnav{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.classnav .eyebrow{margin-right:6px}
+.cls{display:flex;flex-direction:column;padding:8px 14px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--fg);text-decoration:none;line-height:1.2}
+.cls b{font:600 18px var(--display);text-transform:uppercase;letter-spacing:.04em}
+.cls small{font:500 11px var(--mono);color:var(--muted)}
+a.cls:hover{border-color:var(--fg)}
+a.cls:focus-visible{outline:2px solid var(--volt);outline-offset:2px}
+.cls.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.cls.on small{color:var(--bg);opacity:.75}
+footer{font-size:13px;color:var(--muted)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:860px){
+  .treegrid{grid-template-columns:1fr}
+  .tpanel{position:sticky;top:auto;bottom:max(8px,env(safe-area-inset-bottom,0px));max-height:42vh;overflow:auto;box-shadow:0 -4px 18px rgba(0,0,0,.18);order:2}
+  .tree-scroll{max-height:none}
+}
+@media (max-width:520px){
+  .stage,.planner,.treebox{padding:14px}
+  .slider{grid-template-columns:1fr 48px}.slider label{grid-column:1/-1}
+  .stat{grid-template-columns:96px 1fr 48px}
+}
+@media (prefers-reduced-motion:no-preference){.poolbar div,.meterbar i{transition:width .2s ease}}
+</style>
+
+<div class="wrap">
+<nav class="classnav" id="classnav" aria-label="Class builds"></nav>
+<header id="hdr"></header>
+
+<section aria-labelledby="stages-h">
+  <h2 id="stages-h">The build, stage by stage</h2>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div id="stage" class="stage" role="tabpanel"></div>
+</section>
+
+<section aria-labelledby="tree-h">
+  <h2 id="tree-h"></h2>
+  <p id="tree-intro"></p>
+  <div class="treebox">
+    <div class="tree-controls">
+      <div class="row">
+        <div class="avail"><label for="tpts">Trait points you have</label><input id="tpts" type="number" min="0" max="120"></div>
+        <label for="tpreset" class="sr">Build path</label><select id="tpreset"></select>
+      </div>
+      <div class="row">
+        <button class="btn primary" id="tfill" type="button">Fill with my points</button>
+        <button class="btn" id="tall" type="button">Show the full path</button>
+        <button class="btn" id="treset" type="button">Clear tree</button>
+      </div>
+      <div class="meter"><div class="meterbar" id="tbar"><i id="tbari"></i></div><div class="mtxt" id="tmtxt"></div></div>
+      <div class="tlegend">
+        <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="var(--ember)"/></svg>Unlocked</span>
+        <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="var(--surface)" stroke="var(--fg)" stroke-width="2"/></svg>Can unlock now</span>
+        <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="none" stroke="var(--volt)" stroke-width="2" stroke-dasharray="3 2"/></svg>On the build path</span>
+        <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="none" stroke="var(--muted)"/><rect x="-3" y="-3" width="6" height="6" transform="rotate(45)" fill="none" stroke="var(--muted)"/></svg>Skill</span>
+        <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="none" stroke="var(--muted)"/></svg>Passive</span>
+        <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><circle r="7" fill="none" stroke="var(--muted)"/></svg>Stat</span>
+        <span>Number inside = point cost</span>
+      </div>
+    </div>
+    <div class="treegrid">
+      <div class="tree-scroll" id="tscroll"><svg id="tsvg" role="group"></svg></div>
+      <aside class="tpanel" id="tpanel" aria-live="polite"></aside>
+    </div>
+    <div class="stage-head"><h3 id="steps-h">Trait order</h3><p class="progress" id="steps-sub"></p></div>
+    <ol class="steps" id="tsteps"></ol>
+  </div>
+</section>
+
+<section aria-labelledby="rot-h">
+  <h2 id="rot-h"></h2>
+  <p id="rot-intro"></p>
+  <ol class="rot" id="rot"></ol>
+  <p id="rot-after"></p>
+</section>
+
+<section aria-labelledby="plan-h">
+  <h2 id="plan-h">Weapon point split</h2>
+  <p id="plan-intro"></p>
+  <div class="planner">
+    <div class="avail"><label for="avail">Coilstone points you have</label><input id="avail" type="number" min="0" max="120" value="92"><span>EA regions hold 92 by most counts</span></div>
+    <div class="row" id="splitpresets"></div>
+    <div class="slider"><label for="sh" class="w-main" id="lh"></label><input id="sh" type="range" min="0" max="100"><output id="oh">0</output></div>
+    <div class="slider alt"><label for="sa" class="w-alt" id="la"></label><input id="sa" type="range" min="0" max="100"><output id="oa">0</output></div>
+    <div class="poolbar" aria-hidden="true"><div class="h" id="bh"></div><div class="a" id="ba"></div><div class="over" id="bo"></div></div>
+    <div class="mtxt" id="ptxt"></div>
+    <div class="verdict" id="verdict" aria-live="polite"></div>
+  </div>
+</section>
+
+<section aria-labelledby="dis-h">
+  <h2 id="dis-h">Where the guides disagree</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Question</th><th>What sources say</th><th>What this build does</th></tr></thead>
+    <tbody id="dis"></tbody>
+  </table></div>
+</section>
+
+<section aria-labelledby="src-h">
+  <h2 id="src-h">Sources</h2>
+  <ol class="sources" id="src"></ol>
+</section>
+<footer id="foot"></footer>
+</div>
+
+<script>
+const D={"id": "ranger-sh", "title": "Ranger Storm Hatchet Build", "out": "ranger-storm-hatchet.html", "eyebrow": "ArcheAge Chronicles · Ranger · Early Access", "h1": "<span class='zap'>Storm<\/span> <span class='hot'>Hatchets<\/span>", "lede": "A lightning Hatchet build from level 1 to endgame. The guides rate Hatchets as the Ranger's strongest weapon and tag this build for solo leveling, dungeons and PvP. The Longbow is your second weapon, used to open fights from range.", "notice": {"title": "Not verified in-game yet.", "text": "Early Access opened on November 3, 2026. I cross-checked every Ranger guide I could find and tagged each claim by how well it's supported. The trait tree below matches the in-game Hatchet Traits screen node for node. I haven't played any of this myself, so check the in-game tooltips before you spend points."}, "stages": [{"id": "level", "name": "Leveling", "sub": "Lv 1 → 40", "goal": "Level in melee with Hatchets, which keep you alive better than the bow. Add the Longbow opener once you have points to spare.", "weapons": ["<span class='w-main'>Hatchets<\/span> as your main weapon [ok]", "<span class='w-alt'>Longbow<\/span> on {Q} for openers [ok]"], "skills": ["Flurry → Lunge → Axe Flurry is your starter chain [one]", "Stormsplitter is a ground slam that adds Shock [ok]", "Shadowcatch dodges behind the target and costs no SP [ok]", "Thrill of the Hunt restores SP at 10 stacks [one]"], "traits": ["Trait points come from Raeven's Coilstones, not from leveling [ok]", "Follow the trait order below. The first 11 points cover your core combo and SP sustain [me]"], "stats": [["Agility", 100, "1st"], ["Talent", 95, "1st"], ["Constitution", 60, "2nd"], ["Endurance", 60, "2nd"], ["Strength", 0, "none"], ["Intelligence", 0, "none"]], "gear": ["City Guard Hatchet to start [one]", "You can respec stats for free at major towns or regional camps [one]"], "check": ["Put Hatchets and Longbow on Q swap", "Unlock Flurry, Lunge, Axe Flurry and Stormsplitter", "Pick up every Raeven's Coilstone you pass", "Reach Discharge in the trait order"]}, {"id": "mid", "name": "Gearing", "sub": "Lv 40, first bosses", "goal": "Turn on the lightning loop: Discharge → Rebounding Thunder → Shocking Kick → Overload.", "weapons": ["<span class='w-main'>Centurion's Hatchet<\/span> for midgame [ok]", "XLGAMES corrected its Temper stats on Nov 10, so check the current numbers before you temper it [ok]"], "skills": ["Shocking Kick and Rebounding Thunder open right after Discharge [one]", "Overload makes Lunge stagger-immune and triggers Discharge [ok]", "Thunder Slash combos from Shocking Kick [ok]"], "traits": ["Trait order steps 11 to 17 [me]", "Shocking Kick needs Lightning ATK, which needs Rebounding Thunder [one]"], "stats": [["Agility", 100, "1st"], ["Talent", 60, "20"], ["Constitution", 60, "2nd"], ["Endurance", 60, "2nd"], ["Strength", 0, "none"], ["Intelligence", 0, "none"]], "gear": ["Talent 20 for midgame [one]", "Use the Longbow's Aimed Shot → Scarlet Arrow to open on elites [ok]"], "check": ["Get Centurion's Hatchet (check post-fix stats)", "Raise Talent to 20", "Unlock Overload", "Unlock Thunder Slash"]}, {"id": "end", "name": "Endgame", "sub": "Storm Hatchet", "goal": "Run the full shock chain and finish targets with the wind branch below 40% HP.", "weapons": ["<span class='w-main'>Wrathful Tyrant's Claw<\/span> [ok]", "Thunder Dash Lunastone for Lightning ATK [ok]", "Gyldenlord's Cleaver if you don't have the Claw yet [one]", "<span class='w-alt'>Longbow<\/span> for openers and ranged phases [ok]"], "skills": ["Lightning Rush: a staggering charge that evades while moving [one]", "Gale Sever: 3 strikes plus 3 Wind Blades that heal you, for enemies below 40% [ok]", "Eye of the Storm boosts damage, crit and Stagger after Stormsplitter [one]"], "traits": ["49 Hatchets and 43 Longbow uses all 92 Early Access points [me]", "RaidDex calls the split \"roughly even\". Thunder Hunt uses 53 / 47 [one]"], "stats": [["Agility", 100, "1st"], ["Talent", 90, "35"], ["Constitution", 60, "2nd"], ["Endurance", 50, "2nd"], ["Strength", 0, "none"], ["Intelligence", 0, "none"]], "gear": ["Talent 35 for Thunder Dash [one]", "RaidDex's Talent numbers vary from page to page (12 to 35), so check your weapon's requirement [ok]"], "check": ["Get Wrathful Tyrant's Claw", "Socket Thunder Dash Lunastone", "Raise Talent to the weapon requirement", "Finish the 49-point trait path", "Land Gale Sever on a boss below 40%"]}], "tree": {"weapon": "Hatchets", "defaultPoints": 10, "pad": 95, "intro": "This tree matches the in-game Hatchet Traits screen node for node. The screenshot has 55 nodes and Wikily's Hatchet list has 55. The connections line up, and every node that shows a \"3\" in-game costs 3 on Wikily [me]. When two nodes share a row (Stormburst and Eye of the Storm, for example), I placed them left to right in Wikily's list order, so hover them in-game before you buy. The stat cluster on the right costs 5 to 10 points per node, and the build path skips it.", "help": "Click a node to read it. Double-click it, or press Space, to unlock or refund it. <b>Fill with my points<\/b> buys the build path in order until your points run out. Your tree is saved in this browser.", "nodes": [{"id": "prof", "n": "Hatchet Proficiency", "t": "P", "c": 1, "e": "Lets you equip hatchets.", "x": 1056, "y": 84}, {"id": "flurry", "n": "Flurry", "t": "S", "c": 1, "e": "Two quick attacks that deal damage and Stagger.", "x": 207, "y": 159}, {"id": "wscream", "n": "Windscreamer", "t": "S", "c": 1, "p": ["flurry"], "e": "Powerful slash that knocks back.", "x": 362, "y": 159}, {"id": "thrill", "n": "Thrill of the Hunt", "t": "P", "c": 1, "p": ["prof"], "e": "Hatchet skills build stacks. At 10 stacks you restore SP.", "x": 747, "y": 159}, {"id": "ssplit", "n": "Stormsplitter", "t": "S", "c": 1, "p": ["prof"], "e": "Ground slam after Axe Flurry. Adds Shock, knocks back, and reduces damage taken.", "x": 1056, "y": 159}, {"id": "rthrow", "n": "Rapid Throw", "t": "S", "c": 1, "p": ["prof"], "e": "Hold to throw up to 5 axes. 15 s cooldown.", "x": 1364, "y": 159}, {"id": "lunge", "n": "Lunge", "t": "S", "c": 1, "p": ["flurry"], "e": "Charge and strike. Can follow with a two-hit Flurry.", "x": 362, "y": 234}, {"id": "aflurry", "n": "Axe Flurry", "t": "S", "c": 1, "p": ["lunge"], "e": "Aerial axe throw that knocks back. You evade while in the air.", "x": 517, "y": 234}, {"id": "shadow", "n": "Shadowcatch", "t": "S", "c": 1, "p": ["thrill"], "e": "Dodge behind the target for no SP. 10 s cooldown.", "x": 747, "y": 234}, {"id": "swake", "n": "Storm's Wake", "t": "P", "c": 1, "p": ["ssplit"], "e": "Stormsplitter explodes for damage, Stagger and Shock.", "x": 979, "y": 234}, {"id": "eff", "n": "Effortless Flurry", "t": "P", "c": 1, "p": ["ssplit"], "e": "Axe Flurry costs no SP.", "x": 1131, "y": 234}, {"id": "rtb", "n": "Rapid Throw - Bleed", "t": "P", "c": 2, "p": ["rthrow"], "e": "Throws 2 extra axes at reduced damage and adds Bleed.", "x": 1289, "y": 234}, {"id": "rts", "n": "Rapid Throw - Shock", "t": "P", "c": 2, "p": ["rthrow"], "e": "Costs no SP, homes in on the target, and adds Shock.", "x": 1442, "y": 234}, {"id": "ambush", "n": "Ambush", "t": "S", "c": 1, "p": ["lunge"], "e": "Stagger strike that combos into Axe Flurry.", "x": 517, "y": 307}, {"id": "skm", "n": "Spinning Kick Mastery", "t": "P", "c": 1, "p": ["shadow"], "e": "More Spinning Kick damage and Stagger.", "x": 671, "y": 307}, {"id": "ihung", "n": "Impatient Hunger", "t": "P", "c": 1, "p": ["shadow"], "e": "Thrill triggers at 5 stacks, with a shorter duration and less SP.", "x": 824, "y": 307}, {"id": "sguard", "n": "Stormguard", "t": "P", "c": 2, "p": ["swake"], "e": "Stormsplitter grants a 5 s shield that scales with Max HP.", "x": 979, "y": 307}, {"id": "astorm", "n": "Axe Storm", "t": "S", "c": 2, "p": ["eff"], "e": "Rapid axes after Axe Flurry that add Bleed.", "x": 1131, "y": 307}, {"id": "tonic", "n": "Battle Tonic", "t": "S", "c": 3, "p": ["rtb", "rts"], "e": "Drink a healing potion after Axe Throw. 30 s cooldown.", "x": 1364, "y": 307}, {"id": "jolt", "n": "Jolt Kick", "t": "S", "c": 1, "p": ["flurry"], "e": "Heavy kick on a downed target. 15 s cooldown.", "x": 362, "y": 381}, {"id": "moment", "n": "Momentum", "t": "S", "c": 2, "p": ["skm"], "e": "Extends Spinning Kick's range and adds a free knockback attack.", "x": 671, "y": 381}, {"id": "twin", "n": "Twin Splitter", "t": "P", "c": 2, "p": ["ihung"], "e": "Double Hatchet Strike hits twice at reduced damage.", "x": 824, "y": 381}, {"id": "wcleave", "n": "Windcleaver", "t": "S", "c": 3, "p": ["sguard", "astorm"], "e": "Upward strike after Windscreamer that knocks back.", "x": 1056, "y": 381}, {"id": "foac", "n": "Flurry of Axes Combo", "t": "P", "c": 2, "p": ["tonic"], "e": "Rapid Throw's 5th throw combos into Axe Flurry.", "x": 1364, "y": 381}, {"id": "slam", "n": "Slam", "t": "S", "c": 1, "p": ["flurry"], "e": "Jump and strike down.", "x": 362, "y": 455}, {"id": "disch", "n": "Discharge", "t": "P", "c": 3, "p": ["moment", "twin"], "e": "Each Thrill trigger damages nearby enemies and adds Shock.", "x": 747, "y": 455}, {"id": "wblade", "n": "Wind Blade", "t": "P", "c": 2, "p": ["wcleave"], "e": "Piercing blade that adds Bleed. Doesn't build Thrill stacks.", "x": 1056, "y": 455}, {"id": "rhunt", "n": "Relentless Hunt", "t": "P", "c": 2, "p": ["disch"], "e": "Critical hits grant 1 extra Thrill stack.", "x": 747, "y": 529}, {"id": "cwind", "n": "Counterattack - Windscreamer", "t": "P", "c": 2, "p": ["wblade"], "e": "Windscreamer becomes available after a successful Parry.", "x": 979, "y": 529}, {"id": "aslice", "n": "Airslice", "t": "P", "c": 2, "p": ["wblade"], "e": "Flurry's second attack fires a Wind Blade.", "x": 1131, "y": 529}, {"id": "skick", "n": "Spinning Kick", "t": "S", "c": 1, "e": "Spinning kick that deals damage, staggers and breaks guard.", "x": 207, "y": 604}, {"id": "dhs", "n": "Double Hatchet Strike", "t": "S", "c": 1, "p": ["skick"], "e": "Two-handed strike that staggers.", "x": 362, "y": 604}, {"id": "rthunder", "n": "Rebounding Thunder", "t": "S", "c": 2, "p": ["rhunt"], "e": "Briefly available after Discharge. Adds Shock.", "x": 747, "y": 604}, {"id": "ripper", "n": "Ripper Edge", "t": "P", "c": 2, "p": ["cwind", "aslice"], "e": "After Bleed, Windscreamer hits 2 extra times.", "x": 1056, "y": 604}, {"id": "dmg70", "n": "Damage ↑ at HP ≥70%", "t": "T", "c": 10, "e": "+2.5% damage while your HP is at 70% or higher.", "x": 1442, "y": 604}, {"id": "stepb", "n": "Step Back", "t": "S", "c": 1, "p": ["skick", "dhs"], "e": "Kick, then leap back while throwing an axe. Brief evade.", "x": 362, "y": 679}, {"id": "latk", "n": "Lightning ATK", "t": "T", "c": 1, "p": ["rthunder"], "e": "+20 Lightning ATK.", "x": 747, "y": 679}, {"id": "bloody", "n": "Bloodied Edge", "t": "P", "c": 2, "p": ["ripper"], "e": "Ripper Edge always triggers Windscreamer on targets at 40% HP or less.", "x": 1056, "y": 679}, {"id": "wpatk", "n": "Weapon Physical ATK ↑", "t": "T", "c": 5, "p": ["dmg70"], "e": "+10% weapon Physical ATK.", "x": 1366, "y": 679}, {"id": "wmatk", "n": "Weapon Magic ATK ↑", "t": "T", "c": 5, "p": ["dmg70"], "e": "+10% weapon Magic ATK.", "x": 1519, "y": 679}, {"id": "athrow", "n": "Axe Throw", "t": "S", "c": 1, "p": ["skick", "stepb"], "e": "Two axe hits. The second one staggers.", "x": 362, "y": 754}, {"id": "shkick", "n": "Shocking Kick", "t": "S", "c": 2, "p": ["latk"], "e": "Briefly available after Discharge. Adds Shock.", "x": 747, "y": 754}, {"id": "sburst", "n": "Stormburst", "t": "P", "c": 2, "p": ["bloody"], "e": "Stormsplitter fires three lightning bolts that add Shock.", "x": 979, "y": 754}, {"id": "eye", "n": "Eye of the Storm", "t": "P", "c": 2, "p": ["bloody"], "e": "Stormsplitter briefly boosts your damage, crit and Stagger power.", "x": 1131, "y": 754}, {"id": "dmgh", "n": "Damage ↑ vs HP ≥70%", "t": "T", "c": 5, "p": ["dmg70"], "e": "+5% damage against targets at 70% HP or higher.", "x": 1366, "y": 754}, {"id": "dmgl", "n": "Damage ↑ vs HP ≤40%", "t": "T", "c": 5, "p": ["dmg70"], "e": "+5% damage against targets at 40% HP or less.", "x": 1519, "y": 754}, {"id": "parry", "n": "Parry", "t": "S", "c": 1, "e": "Short defensive stance that parries blockable attacks.", "x": 207, "y": 828}, {"id": "ttrail", "n": "Thunder Trail", "t": "S", "c": 3, "p": ["shkick"], "e": "A charge window after Rebounding Thunder or Shocking Kick lands.", "x": 671, "y": 828}, {"id": "overload", "n": "Overload", "t": "P", "c": 3, "p": ["shkick"], "e": "Stagger-immune during Lunge, and Lunge triggers Discharge. 5 s cooldown.", "x": 824, "y": 828}, {"id": "gale", "n": "Gale Sever", "t": "S", "c": 3, "p": ["sburst", "eye"], "e": "After Windcleaver: 3 strikes and 3 Wind Blades that heal you.", "x": 1056, "y": 828}, {"id": "ecurr", "n": "Electric Current", "t": "S", "c": 2, "p": ["ttrail"], "e": "Thunder Trail can be reused within its window.", "x": 671, "y": 901}, {"id": "tslash", "n": "Thunder Slash", "t": "S", "c": 2, "p": ["overload"], "e": "Combos from Shocking Kick, knocks back, and evades.", "x": 824, "y": 901}, {"id": "schase", "n": "Storm Chaser", "t": "P", "c": 2, "p": ["gale"], "e": "A Wind Blade crit lets you use Stormsplitter for no SP.", "x": 1056, "y": 901}, {"id": "lrush", "n": "Lightning Rush", "t": "S", "c": 3, "p": ["ecurr", "tslash"], "e": "Staggering charge that evades while you move.", "x": 747, "y": 975}, {"id": "evade", "n": "Evade", "t": "S", "c": 1, "e": "Quick dodge in the chosen direction.", "x": 207, "y": 1050}], "presets": [{"name": "Storm Hatchet (RaidDex skills)", "note": "RaidDex names the skills (Overload, Relentless Hunt, Shocking Kick, Thunder Slash, Lightning Rush, Gale Sever). The order and the Airslice pick are mine. Airslice avoids depending on Parry [me].", "order": ["prof", "flurry", "lunge", "aflurry", "ssplit", "wscream", "thrill", "shadow", "skm", "moment", "disch", "rhunt", "rthunder", "latk", "shkick", "overload", "tslash", "eff", "astorm", "wcleave", "wblade", "aslice", "ripper", "bloody", "eye", "gale", "lrush", "evade"]}], "groups": [{"x": 362, "y": 112, "text": "Skills"}]}, "rotation": {"title": "Storm Hatchet rotation", "intro": "Combined from RaidDex's Storm Hatchet build and the node effects in the tree [ok]. Swap weapons with {Q}.", "steps": [{"t": "Open with the Longbow", "d": "Aimed Shot, then Scarlet Arrow. Scarlet Arrow costs HP, so skip it when you're low."}, {"t": "Swap and Lunge in", "d": "Lunge, then Shocking Kick, then Thunder Slash. With Overload, Lunge is stagger-immune and sets off Discharge."}, {"t": "Keep the Shock loop going", "d": "Rebounding Thunder and Shocking Kick open after Discharge. Relentless Hunt crits feed Thrill, which restores SP."}, {"t": "Axe Flurry into Stormsplitter", "d": "Axe Flurry is free with Effortless Flurry. Stormsplitter adds Shock and cuts the damage you take."}, {"t": "Lightning Rush to reposition", "d": "A staggering charge that evades while you move. Use it to chase kiting targets."}, {"t": "Execute below 40% HP", "d": "Flurry, Windscreamer, Windcleaver, then Gale Sever, which also heals you."}], "after": "Use Shadowcatch (no SP) to get behind a boss's swing. If your SP runs dry, Rapid Throw costs nothing too."}, "split": {"main": "Hatchets", "alt": "Longbow", "mainMin": 49, "intro": "Trait points come from <b>Raeven's Coilstones<\/b> near powerful bosses [ok]. RaidDex's Storm Hatchet splits points about evenly. Its Thunder Hunt build goes 53 / 47, and its Ember Arrow longbow build goes 41 / 59.", "presets": [{"label": "Storm Hatchet, adjusted (49 / 43)", "m": 49, "a": 43}, {"label": "Thunder Hunt as written (53 / 47)", "m": 53, "a": 47}, {"label": "Ember Arrow longbow (33 / 59)", "m": 33, "a": 59}]}, "disputes": [["Stat order", "RaidDex: AGI and Talent first, then CON and END. DeityVengy (Nov 9): END, then Talent, then INT, and calls AGI and crit worthless right now.", "Follow RaidDex while leveling. Stats respec free, so try END-heavy if your crits feel weak."], ["Is the Longbow worth it?", "RaidDex and Kybuza use it as an opener, and AOEAH rates it 8/10 for PvE. DeityVengy calls it \"a dead weapon\" in Early Access.", "Use it only as the opener. Swap the split toward Hatchets if it underperforms."], ["Talent target", "RaidDex pages give 12, 18, 20, 29 and 35.", "Match your weapon's Talent requirement."], ["Hatchet stats", "Centurion's Hatchet had wrong Temper stats until the Nov 10 fix.", "Ignore Hatchet numbers from before Nov 10."]], "sources": [{"t": "Wikily: Hatchet skill tree (55 nodes)", "u": "https://wikily.gg/archeage-chronicles/weapons/hatchet"}, {"t": "ArcheAge Builds: Ranger", "u": "https://archeagebuilds.com/classes/ranger/"}, {"t": "ArcheAge Builds: all builds (Storm Hatchet, Thunder Hunt, Ember Arrow)", "u": "https://archeagebuilds.com/builds/"}, {"t": "ArcheAge Builds: Ranger builds", "u": "https://archeagebuilds.com/builds/ranger/"}, {"t": "RaidDex builds", "u": "https://raiddex.com/en/archeage-chronicles/builds", "n": "the site blocked direct reading, so I took its details from ArcheAge Builds' summary"}, {"t": "Games.gg: ranged build for beginners", "u": "https://games.gg/archeage-chronicles/guides/best-archeage-chronicles-ranged-build-for-beginners/"}, {"t": "AOEAH tier list (Nov 4, 2026)", "u": "https://www.aoeah.com/news/4897--archeage-chronicles-best-classesweaponsbuilds-tier-list-pve--pvp"}], "footer": "Sources checked November 12, 2026, during Early Access. Recheck after the December update."}, LINKS=[{"id": "berserker-wh", "cls": "Berserker", "build": "Warhammer", "url": "berserker-warhammer.html"}, {"id": "ranger-sh", "cls": "Ranger", "build": "Storm Hatchets", "url": "ranger-storm-hatchet.html"}, {"id": "mage-tb", "cls": "Mage", "build": "Thunderbolt Staff", "url": "mage-thunderbolt.html"}];
+function boot(){
+document.getElementById('classnav').innerHTML='<span class="eyebrow">Class builds</span>'+LINKS.map(c=>c.id===D.id?`<span class="cls on" aria-current="page"><b>${c.cls}</b><small>${c.build}</small></span>`:`<a class="cls" href="${c.url}"><b>${c.cls}</b><small>${c.build}</small></a>`).join('');
+const TAGS={ok:'<span class="tag t-ok">2+ sources</span>',one:'<span class="tag t-one">1 source</span>',me:'<span class="tag t-me">inferred</span>'};
+const fmt=s=>String(s).replace(/\[(ok|one|me)\]/g,(m,k)=>TAGS[k]).replace(/\{(.+?)\}/g,'<kbd>$1</kbd>');
+const $=id=>document.getElementById(id);
+const store={get(k){try{return JSON.parse(localStorage.getItem('aac-'+D.id+'-'+k))}catch(e){return null}},set(k,v){try{localStorage.setItem('aac-'+D.id+'-'+k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* header */
+$('hdr').innerHTML=`<span class="eyebrow">${D.eyebrow}</span><h1>${D.h1}</h1><p class="lede">${fmt(D.lede)}</p>
+<div class="notice" role="note"><strong>${D.notice.title}</strong><p>${fmt(D.notice.text)}</p></div>
+<div class="legend"><span>${TAGS.ok} guides agree</span><span>${TAGS.one} only one guide says so</span><span>${TAGS.me} my reasoning, not from a guide</span></div>`;
+
+/* stages */
+let cur=store.get('tab')||D.stages[0].id; if(!D.stages.some(s=>s.id===cur))cur=D.stages[0].id;
+const checks=store.get('checks')||{};
+const li=a=>'<ul class="clean">'+a.map(x=>'<li>'+fmt(x)+'</li>').join('')+'</ul>';
+function renderStage(){
+  $('tabs').innerHTML=D.stages.map(s=>`<button class="tab" role="tab" id="tab-${s.id}" aria-selected="${s.id===cur}" tabindex="${s.id===cur?0:-1}" data-id="${s.id}">${s.name}<small>${s.sub}</small></button>`).join('');
+  const s=D.stages.find(x=>x.id===cur), done=s.check.filter((_,i)=>checks[s.id+i]).length;
+  $('stage').setAttribute('aria-labelledby','tab-'+s.id);
+  $('stage').innerHTML=`<div class="stage-head"><span class="eyebrow">${s.sub}</span><h3>${s.name}</h3><p>${fmt(s.goal)}</p></div>
+  <div class="grid">
+    <div class="block"><h4>Weapons</h4>${li(s.weapons)}</div>
+    <div class="block"><h4>Key skills</h4>${li(s.skills)}</div>
+    <div class="block"><h4>Traits</h4>${li(s.traits)}</div>
+    <div class="block"><h4>Stat priority</h4><div class="statbar">${s.stats.map(([n,w,v])=>`<div class="stat"><span>${n}</span><span class="bar"><i style="width:${w}%"></i></span><span class="val">${v}</span></div>`).join('')}</div></div>
+    <div class="block"><h4>Gear and notes</h4>${li(s.gear)}</div>
+  </div>
+  <div class="checklist"><div class="progress">${done} / ${s.check.length} done · saved in this browser</div>
+  ${s.check.map((c,i)=>`<label><input type="checkbox" id="ck-${s.id}-${i}" data-k="${s.id+i}" ${checks[s.id+i]?'checked':''}><span>${esc(c)}</span></label>`).join('')}</div>`;
+}
+function goTab(id){cur=id;store.set('tab',cur);renderStage();$('tab-'+cur).focus()}
+$('tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(b)goTab(b.dataset.id)});
+$('tabs').addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight'].includes(e.key))return;const i=D.stages.findIndex(s=>s.id===cur);goTab(D.stages[(i+(e.key==='ArrowRight'?1:-1)+D.stages.length)%D.stages.length].id)});
+$('stage').addEventListener('change',e=>{const k=e.target.dataset.k;if(!k)return;checks[k]=e.target.checked;store.set('checks',checks);renderStage();const el=$(e.target.id);if(el)el.focus()});
+renderStage();
+
+/* trait tree */
+const TR=D.tree, NODES=TR.nodes, BY={};
+NODES.forEach(n=>{n.p=n.p||[];n.kids=[];BY[n.id]=n});
+NODES.forEach(n=>n.p.forEach(p=>BY[p].kids.push(n.id)));
+const TYPE={S:'Skill',P:'Passive',T:'Stat'};
+$('tree-h').textContent='Trait tree: '+TR.weapon;
+$('tree-intro').innerHTML=fmt(TR.intro);
+$('tsvg').setAttribute('aria-label',TR.weapon+' trait tree');
+if(NODES.some(n=>n.x==null)){
+  const rows={},GAP=150,ROWH=104;
+  NODES.forEach((n,i)=>{n._i=i;(rows[n.r]=rows[n.r]||[]).push(n)});
+  Object.keys(rows).map(Number).sort((a,b)=>a-b).forEach(r=>{
+    const L=rows[r];
+    L.forEach((n,i)=>{const px=n.p.map(id=>BY[id]).filter(q=>q.x!=null).map(q=>q.x);n._k=px.length?px.reduce((a,b)=>a+b,0)/px.length:(i-(L.length-1)/2)*GAP});
+    L.sort((a,b)=>a._k-b._k||a._i-b._i);
+    L.forEach((n,i)=>{n.x=(i-(L.length-1)/2)*GAP;n.y=r*ROWH});
+  });
+}
+const PAD=TR.pad||90;
+const xs=NODES.map(n=>n.x), ys=NODES.map(n=>n.y);
+const vb=[Math.min(...xs)-PAD,Math.min(...ys)-46,Math.max(...xs)-Math.min(...xs)+PAD*2,Math.max(...ys)-Math.min(...ys)+46+66];
+const svg=$('tsvg'); svg.setAttribute('viewBox',vb.join(' ')); svg.style.minWidth=Math.round(vb[2]*0.82)+'px';
+const NS='http://www.w3.org/2000/svg';
+const mk=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const gE=mk('g',{},svg), gL=mk('g',{},svg), gN=mk('g',{},svg);
+(TR.groups||[]).forEach(g=>{const t=mk('text',{x:g.x,y:g.y,class:'glabel','text-anchor':'middle'},gL);t.textContent=g.text});
+const edges=[];
+NODES.forEach(n=>n.p.forEach(pid=>{const p=BY[pid];edges.push({a:pid,b:n.id,el:mk('line',{x1:p.x,y1:p.y,x2:n.x,y2:n.y,class:'edge'},gE)})}));
+function wrapLabel(t,max){if(!max||t.length<=max)return[t];const w=t.split(' ');const out=[''];w.forEach(x=>{const c=out[out.length-1];if(c&&(c+' '+x).length>max)out.push(x);else out[out.length-1]=c?c+' '+x:x});return out.slice(0,2)}
+NODES.forEach(n=>{
+  const g=mk('g',{class:'node',transform:`translate(${n.x},${n.y})`,tabindex:0,role:'button','data-id':n.id},gN);
+  n.el=g;
+  if(n.t==='T'){mk('circle',{r:31,class:'ring'},g);mk('circle',{r:20,class:'shape'},g)}
+  else{mk('rect',{x:-23,y:-23,width:46,height:46,transform:'rotate(45)',class:'ring'},g);mk('rect',{x:-17,y:-17,width:34,height:34,transform:'rotate(45)',class:'shape'},g);
+    if(n.t==='S')mk('rect',{x:-12,y:-12,width:24,height:24,transform:'rotate(45)',class:'inner'},g)}
+  const c=mk('text',{class:'cost',y:5},g);c.textContent=n.c;
+  const lines=wrapLabel(n.n,TR.wrap);const lab=mk('text',{class:'label',y:40},g);
+  lines.forEach((l,i)=>{const s=mk('tspan',{x:0,dy:i?13:0},lab);s.textContent=l});
+  const ti=mk('title',{},g);ti.textContent=`${n.n} (${TYPE[n.t]}, ${n.c} pt)`;
+});
+const saved=store.get('tree')||{};
+let unlocked=new Set((saved.u||[]).filter(id=>BY[id]));
+let sel=null;
+let presetIdx=Math.min(saved.preset||0,TR.presets.length-1);
+const ptsIn=$('tpts'); ptsIn.value=saved.pts!=null?saved.pts:TR.defaultPoints;
+$('tpreset').innerHTML=TR.presets.map((p,i)=>`<option value="${i}">${esc(p.name)} · ${p.order.reduce((a,id)=>a+BY[id].c,0)} pts</option>`).join('');
+$('tpreset').value=presetIdx;
+const isOpen=(id,set=unlocked)=>BY[id].p.length===0||BY[id].p.some(p=>set.has(p));
+function validSet(s){const ok=new Set();let ch=true;while(ch){ch=false;s.forEach(id=>{if(!ok.has(id)&&(BY[id].p.length===0||BY[id].p.some(p=>ok.has(p)))){ok.add(id);ch=true}})}return ok.size===s.size}
+function blockers(id){const s=new Set(unlocked);s.delete(id);if(validSet(s))return[];return BY[id].kids.filter(k=>unlocked.has(k)&&!BY[k].p.some(p=>p!==id&&unlocked.has(p)))}
+const spent=()=>[...unlocked].reduce((a,id)=>a+BY[id].c,0);
+function save(){store.set('tree',{u:[...unlocked],pts:+ptsIn.value,preset:presetIdx})}
+function toggle(id){
+  if(unlocked.has(id)){if(blockers(id).length)return;unlocked.delete(id)}
+  else{if(!isOpen(id))return;unlocked.add(id)}
+  save();renderTree();
+}
+function select(id){sel=id;renderTree()}
+function renderTree(){
+  const P=TR.presets[presetIdx], inP=new Set(P.order), have=Math.max(0,+ptsIn.value||0), sp=spent();
+  NODES.forEach(n=>{const on=unlocked.has(n.id);n.el.setAttribute('class','node '+(on?'on':isOpen(n.id)?'open':'locked')+(inP.has(n.id)&&!on?' rec':'')+(sel===n.id?' sel':''));n.el.setAttribute('aria-pressed',on);n.el.setAttribute('aria-label',`${n.n}, ${TYPE[n.t]}, ${n.c} points, ${on?'unlocked':isOpen(n.id)?'can unlock':'locked'}`)});
+  edges.forEach(e=>e.el.setAttribute('class','edge'+(unlocked.has(e.a)&&unlocked.has(e.b)?' on':'')));
+  const over=sp>have;
+  $('tbar').className='meterbar'+(over?' over':'');$('tbari').style.width=Math.min(100,have?sp/have*100:(sp?100:0))+'%';
+  $('tmtxt').className='mtxt'+(over?' over':'');
+  $('tmtxt').textContent=`${sp} of ${have} points spent · ${over?(sp-have)+' over budget':(have-sp)+' left'} · full path costs ${P.order.reduce((a,id)=>a+BY[id].c,0)}`;
+  // panel
+  const pn=$('tpanel');
+  if(!sel){pn.innerHTML=`<span class="eyebrow">How to use</span><h3>Pick a node</h3><p>${fmt(TR.help)}</p>`;}
+  else{
+    const n=BY[sel],on=unlocked.has(sel),op=isOpen(sel),bl=on?blockers(sel):[],step=P.order.indexOf(sel);
+    const req=n.p.length?(n.p.length>1?'Needs any one of: ':'Needs: ')+n.p.map(p=>BY[p].n).join(', '):'Starting node, no prerequisite';
+    let st,cls,btn,dis=false;
+    if(on){cls='s-on';st=bl.length?'Unlocked. Remove '+bl.map(k=>BY[k].n).join(', ')+' first to refund it.':'Unlocked.';btn=`Remove (refund ${n.c})`;dis=!!bl.length}
+    else if(op){cls='s-open';st=(sp+n.c>have?`Can unlock, but it puts you ${sp+n.c-have} over your points.`:'Can unlock now.');btn=`Unlock for ${n.c} pt${n.c>1?'s':''}`}
+    else{cls='s-locked';st='Locked. Unlock a node it needs first.';btn='Locked';dis=true}
+    pn.innerHTML=`<span class="eyebrow">${TYPE[n.t]} · ${n.c} pt${n.c>1?'s':''}${step>=0?' · step '+(step+1)+' of path':''}</span><h3>${esc(n.n)}</h3>
+    <p class="req">${esc(req)}</p><p>${esc(n.e)}</p><div class="state ${cls}">${st}</div>
+    <button class="btn primary" id="ttoggle" type="button" ${dis?'disabled':''}>${btn}</button>`;
+    $('ttoggle').onclick=()=>toggle(sel);
+  }
+  // steps
+  let run=0,nextMarked=false;
+  $('steps-h').textContent='Trait order: '+P.name;
+  $('steps-sub').innerHTML=fmt(P.note||'');
+  $('tsteps').innerHTML=P.order.map(id=>{const n=BY[id];run+=n.c;const d=unlocked.has(id);let c=d?'done':'';if(!d&&!nextMarked){c='next';nextMarked=true}
+    return `<li class="${c}" data-id="${id}"><span class="nm">${esc(n.n)}</span><span class="pts">+${n.c} → ${run}</span></li>`}).join('');
+}
+gN.addEventListener('click',e=>{const g=e.target.closest('.node');if(g)select(g.dataset.id)});
+gN.addEventListener('dblclick',e=>{const g=e.target.closest('.node');if(g)toggle(g.dataset.id)});
+gN.addEventListener('keydown',e=>{const g=e.target.closest('.node');if(!g)return;if(e.key==='Enter'){e.preventDefault();select(g.dataset.id)}else if(e.key===' '){e.preventDefault();sel=g.dataset.id;toggle(g.dataset.id)}});
+$('tsteps').addEventListener('click',e=>{const l=e.target.closest('li');if(!l)return;select(l.dataset.id);BY[l.dataset.id].el.scrollIntoView({block:'center',inline:'center',behavior:'smooth'})});
+$('tpreset').addEventListener('change',e=>{presetIdx=+e.target.value;save();renderTree()});
+ptsIn.addEventListener('input',()=>{save();renderTree()});
+$('tfill').onclick=()=>{const have=Math.max(0,+ptsIn.value||0);unlocked=new Set();let s=0;for(const id of TR.presets[presetIdx].order){if(s+BY[id].c>have)break;s+=BY[id].c;unlocked.add(id)}save();renderTree()};
+$('tall').onclick=()=>{unlocked=new Set(TR.presets[presetIdx].order);save();renderTree()};
+$('treset').onclick=()=>{unlocked=new Set();save();renderTree()};
+renderTree();
+
+/* rotation */
+$('rot-h').textContent=D.rotation.title;
+$('rot-intro').innerHTML=fmt(D.rotation.intro);
+$('rot').innerHTML=D.rotation.steps.map(s=>`<li><div><b>${s.t}</b>${s.d?'<br>'+fmt(s.d):''}${s.k?'<div class="keys">'+s.k.map(k=>'<kbd>'+k+'</kbd>').join('')+'</div>':''}</div></li>`).join('');
+$('rot-after').innerHTML=fmt(D.rotation.after);
+
+/* split planner */
+const SP=D.split, sh=$('sh'), sa=$('sa'), av=$('avail');
+$('plan-intro').innerHTML=fmt(SP.intro);
+$('lh').textContent=SP.main;$('la').textContent=SP.alt;
+sh.value=SP.presets[0].m;sa.value=SP.presets[0].a;
+$('splitpresets').innerHTML=SP.presets.map((p,i)=>`<button class="btn" type="button" data-i="${i}">${esc(p.label)}</button>`).join('');
+$('splitpresets').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const p=SP.presets[+b.dataset.i];sh.value=p.m;sa.value=p.a;plan()});
+function plan(){
+  const h=+sh.value,a=+sa.value,A=Math.max(0,Math.min(120,+av.value||0)),used=h+a,over=Math.max(0,used-A),scale=Math.max(A,used)||1;
+  $('oh').value=h;$('oa').value=a;
+  $('bh').style.width=(Math.min(h,A)/scale*100)+'%';$('ba').style.width=(Math.max(0,Math.min(a,A-h))/scale*100)+'%';$('bo').style.width=(over/scale*100)+'%';
+  $('ptxt').textContent=`${used} spent · ${Math.max(0,A-used)} left · ${A} available`;
+  let c,m;
+  if(over>0){c='v-bad';m=`You're ${over} points over what you have. Take them out of ${SP.alt} first, because ${SP.main} carries the build.`}
+  else if(h>=SP.mainMin){c='v-ok';m=`${SP.main} has enough for the full path (${SP.mainMin} points). ${A-used>0?`${A-used} unspent. RaidDex suggests holding spares until more Coilstone regions open.`:'Every point you have is spent.'}`}
+  else{c='v-warn';m=`${SP.main} is below the ${SP.mainMin} points the full path in the tree above costs. That's fine while leveling. Follow the trait order and add points as you find Coilstones.`}
+  const v=$('verdict');v.className='verdict '+c;v.textContent=m;
+}
+[sh,sa,av].forEach(x=>x.addEventListener('input',plan));plan();
+
+/* disputes, sources, footer */
+$('dis').innerHTML=D.disputes.map(r=>'<tr>'+r.map(c=>'<td>'+fmt(c)+'</td>').join('')+'</tr>').join('');
+$('src').innerHTML=D.sources.map(s=>`<li><a href="${s.u}" target="_blank" rel="noopener">${esc(s.t)}</a>${s.n?': '+esc(s.n):''}</li>`).join('');
+$('foot').innerHTML=fmt(D.footer);
+}
+boot();
+</script>
+
+</html>

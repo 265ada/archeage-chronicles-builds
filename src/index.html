@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ArcheAge Class Builds</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{--bg:#eef0f3;--surface:#fff;--line:#cdd3db;--fg:#1b2027;--muted:#58616d;--ember:#c24e12;--volt:#2a5fd6;
+  --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;--body:"Inter",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#13161b;--surface:#1b1f26;--line:#323946;--fg:#e8ebf0;--muted:#9aa3b1;--ember:#ff8a4c;--volt:#7aa5ff;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 var(--body);padding:40px max(16px,env(safe-area-inset-right,0px)) 64px max(16px,env(safe-area-inset-left,0px))}
+.wrap{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+.eyebrow{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font:700 clamp(40px,7vw,64px)/1 var(--display);text-transform:uppercase;margin:6px 0 10px}
+h1 span{color:var(--ember)}
+p{margin:0;max-width:66ch;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+a.card{display:flex;flex-direction:column;gap:6px;padding:20px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--fg);text-decoration:none}
+a.card:hover,a.card:focus-visible{border-color:var(--fg);outline:none}
+a.card b{font:700 28px var(--display);text-transform:uppercase;letter-spacing:.03em}
+a.card .w{color:var(--volt);font-weight:600}
+footer{font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="eyebrow">ArcheAge Chronicles · Early Access</span>
+    <h1>Class <span>Builds</span></h1>
+    <p>Start-to-endgame builds for three classes. Each page has an interactive trait tree, a rotation, a weapon point planner and checklists, and every claim is tagged by how many guides back it up. None of these builds have been verified in-game.</p>
+  </header>
+  <nav class="cards" aria-label="Class builds">
+    <a class="card" href="berserker-warhammer.html"><span class="eyebrow">Berserker</span><b>Fire &amp; Thunder Warhammer</b><span>Level with <span class="w">Axe &amp; Shield</span>, finish with the RaidDex Thunderclap build. Trait tree matches the in-game screen.</span></a>
+    <a class="card" href="ranger-storm-hatchet.html"><span class="eyebrow">Ranger</span><b>Storm Hatchets</b><span>Lightning <span class="w">Hatchets</span> with a Longbow opener. Trait tree matches the in-game screen.</span></a>
+    <a class="card" href="mage-thunderbolt.html"><span class="eyebrow">Mage</span><b>Fire to Thunderbolt Staff</b><span>Level with fire on the <span class="w">Elemental Staff</span>, then respec into lightning for endgame.</span></a>
+  </nav>
+  <footer>Sources checked November 12, 2026. Each page lists its sources. Fan-made, not affiliated with XLGAMES or Kakao Games.</footer>
+</div>
+</body>
+</html>
