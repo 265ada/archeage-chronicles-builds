@@ -16,7 +16,7 @@ body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 var(--body);pa
 h1{font:700 clamp(40px,7vw,64px)/1 var(--display);text-transform:uppercase;margin:6px 0 10px}
 h1 span{color:var(--ember)}
 p{margin:0;max-width:66ch;color:var(--muted)}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
 a.card{display:flex;flex-direction:column;gap:6px;padding:20px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--fg);text-decoration:none}
 a.card:hover,a.card:focus-visible{border-color:var(--fg);outline:none}
 a.card b{font:700 28px var(--display);text-transform:uppercase;letter-spacing:.03em}
@@ -29,9 +29,10 @@ footer{font-size:13px;color:var(--muted)}
   <header>
     <span class="eyebrow">ArcheAge Chronicles · Early Access</span>
     <h1>Class <span>Builds</span></h1>
-    <p>Start-to-endgame builds for three classes. Each page has an interactive trait tree, a rotation, a weapon point planner and checklists, and every claim is tagged by how many guides back it up. None of these builds have been verified in-game.</p>
+    <p>Start-to-endgame builds for all four classes. Each page has an interactive trait tree, a rotation, a weapon point planner and checklists, and every claim is tagged by how many guides back it up. None of these builds have been verified in-game.</p>
   </header>
   <nav class="cards" aria-label="Class builds">
+    <a class="card" href="warrior-frostbreaker.html"><span class="eyebrow">Warrior</span><b>Frostbreaker Greatsword</b><span>Shields and Freeze on the <span class="w">Greatsword</span>, with the Longsword as a healing swap.</span></a>
     <a class="card" href="berserker-warhammer.html"><span class="eyebrow">Berserker</span><b>Fire &amp; Thunder Warhammer</b><span>Level with <span class="w">Axe &amp; Shield</span>, finish with the RaidDex Thunderclap build. Trait tree matches the in-game screen.</span></a>
     <a class="card" href="ranger-storm-hatchet.html"><span class="eyebrow">Ranger</span><b>Storm Hatchets</b><span>Lightning <span class="w">Hatchets</span> with a Longbow opener. Trait tree matches the in-game screen.</span></a>
     <a class="card" href="mage-thunderbolt.html"><span class="eyebrow">Mage</span><b>Fire to Thunderbolt Staff</b><span>Level with fire on the <span class="w">Elemental Staff</span>, then respec into lightning for endgame.</span></a>

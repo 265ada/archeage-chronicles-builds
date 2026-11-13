@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}[hidden]{display:none!important}</style>
+<title>Warrior Frostbreaker Build</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: one column; stage switcher, then a trait tree that mirrors the in-game Traits screen with a side panel, then rotation, split planner, disputes, sources. */
+:root{
+  --bg:#eef0f3; --surface:#ffffff; --surface-2:#e3e7ec; --line:#cdd3db;
+  --fg:#1b2027; --muted:#58616d;
+  --ember:#c24e12; --ember-soft:#fbe6da;
+  --volt:#2a5fd6; --volt-soft:#dfe8fb;
+  --ok:#23824a; --ok-soft:#dcf1e4; --warn:#a46a00; --warn-soft:#fbefd2; --bad:#b3261e; --bad-soft:#f9dedb;
+  --on-accent:#ffffff;
+  --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#13161b; --surface:#1b1f26; --surface-2:#232832; --line:#323946;
+  --fg:#e8ebf0; --muted:#9aa3b1;
+  --ember:#ff8a4c; --ember-soft:#3a2216; --volt:#7aa5ff; --volt-soft:#1c2a47;
+  --ok:#5fd08d; --ok-soft:#173826; --warn:#f0b543; --warn-soft:#3a2d10; --bad:#ff8a80; --bad-soft:#3d1a18;
+  --on-accent:#1b1209;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#13161b; --surface:#1b1f26; --surface-2:#232832; --line:#323946;
+  --fg:#e8ebf0; --muted:#9aa3b1;
+  --ember:#ff8a4c; --ember-soft:#3a2216; --volt:#7aa5ff; --volt-soft:#1c2a47;
+  --ok:#5fd08d; --ok-soft:#173826; --warn:#f0b543; --warn-soft:#3a2d10; --bad:#ff8a80; --bad-soft:#3d1a18;
+  --on-accent:#1b1209;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px}
+.wrap{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:44px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.05}
+h1{font-size:clamp(40px,7vw,64px);font-weight:700;letter-spacing:.01em;text-transform:uppercase}
+h1 .hot{color:var(--ember)} h1 .zap{color:var(--volt)}
+h2{font-size:30px;font-weight:600;text-transform:uppercase;letter-spacing:.02em}
+h3{font-size:20px;font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+p{margin:0;max-width:72ch}
+a{color:var(--volt)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:16px}
+header{display:flex;flex-direction:column;gap:14px}
+.lede{font-size:17px;color:var(--muted)}
+.notice{border:1px solid var(--warn);background:var(--warn-soft);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.notice strong{color:var(--warn)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--muted)}
+.tag{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;
+  padding:2px 7px;border-radius:4px;white-space:nowrap;vertical-align:1px}
+.t-ok{background:var(--ok-soft);color:var(--ok)} .t-one{background:var(--warn-soft);color:var(--warn)} .t-me{background:var(--volt-soft);color:var(--volt)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{font:600 17px var(--display);text-transform:uppercase;letter-spacing:.04em;padding:10px 16px;border-radius:6px;border:1px solid var(--line);
+  background:var(--surface);color:var(--fg);cursor:pointer;display:flex;flex-direction:column;align-items:flex-start}
+.tab small{font:500 11px var(--mono);color:var(--muted);letter-spacing:.04em}
+.tab[aria-selected="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.tab[aria-selected="true"] small{color:var(--bg);opacity:.75}
+.tab:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--volt);outline-offset:2px}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:22px}
+.stage-head{display:flex;flex-direction:column;gap:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.block{display:flex;flex-direction:column;gap:8px;min-width:0}
+.block h4{margin:0;font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+ul.clean{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+ul.clean li{display:block}
+.w-main{color:var(--ember);font-weight:600} .w-alt{color:var(--volt);font-weight:600}
+.statbar{display:flex;flex-direction:column;gap:6px}
+.stat{display:grid;grid-template-columns:110px 1fr 56px;gap:10px;align-items:center;font-size:14px}
+.stat .bar{height:8px;background:var(--surface-2);border-radius:4px;overflow:hidden}
+.stat .bar i{display:block;height:100%;background:var(--ember)}
+.stat .val{font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;text-align:right}
+.checklist{display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--line);padding-top:16px}
+.checklist label{display:flex;gap:10px;align-items:flex-start;padding:6px 4px;border-radius:5px;cursor:pointer}
+.checklist label:hover{background:var(--surface-2)}
+.checklist input{margin-top:4px;accent-color:var(--ember);width:16px;height:16px;flex:none}
+.checklist input:checked + span{color:var(--muted);text-decoration:line-through}
+.progress{font-family:var(--mono);font-size:12px;color:var(--muted)}
+kbd{font:500 12px var(--mono);background:var(--surface-2);border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:1px 7px;color:var(--fg)}
+/* trait tree */
+.treebox{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:16px}
+.tree-controls{display:flex;flex-direction:column;gap:12px}
+.row{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.avail{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.avail input{width:76px;font:500 15px var(--mono);padding:6px 8px;border-radius:5px;border:1px solid var(--line);background:var(--surface-2);color:var(--fg)}
+select{font:500 14px var(--body);padding:7px 10px;border-radius:6px;border:1px solid var(--line);background:var(--surface-2);color:var(--fg);max-width:100%}
+.btn{font:600 14px var(--body);padding:8px 14px;border-radius:6px;border:1px solid var(--line);background:var(--surface-2);color:var(--fg);cursor:pointer}
+.btn:hover{border-color:var(--fg)}
+.btn.primary{background:var(--ember);border-color:var(--ember);color:var(--on-accent)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.meter{display:flex;flex-direction:column;gap:6px}
+.meterbar{height:10px;border-radius:5px;background:var(--surface-2);overflow:hidden;border:1px solid var(--line)}
+.meterbar i{display:block;height:100%;background:var(--ember)}
+.meterbar.over i{background:var(--bad)}
+.mtxt{font:500 13px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.mtxt.over{color:var(--bad)}
+.tlegend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--muted);align-items:center}
+.tlegend svg{vertical-align:middle;margin-right:4px}
+.treegrid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:16px;align-items:start}
+.tree-scroll{overflow:auto;border:1px solid var(--line);border-radius:8px;background:var(--bg);max-height:900px;min-width:0}
+#tsvg{display:block;width:100%;height:auto}
+.edge{stroke:var(--line);stroke-width:2}
+.edge.on{stroke:var(--ember);stroke-width:3}
+.node{cursor:pointer;outline:none}
+.node .shape{fill:var(--surface);stroke:var(--muted);stroke-width:1.5}
+.node .inner{fill:none;stroke:var(--muted);stroke-width:1}
+.node .cost{font:600 13px var(--mono);fill:var(--fg);text-anchor:middle}
+.node .label{font:500 11.5px var(--body);fill:var(--fg);text-anchor:middle}
+.node .ring{fill:none;stroke:none}
+.node.locked .shape,.node.locked .inner{stroke:var(--line)}
+.node.locked .cost,.node.locked .label{fill:var(--muted)}
+.node.open .shape{stroke:var(--fg);stroke-width:2}
+.node.on .shape{fill:var(--ember);stroke:var(--ember)}
+.node.on .inner{stroke:var(--on-accent)}
+.node.on .cost{fill:var(--on-accent)}
+.node.rec .ring{stroke:var(--volt);stroke-width:2;stroke-dasharray:5 4}
+.node.sel .shape{stroke:var(--volt);stroke-width:3.5}
+.node:focus-visible .shape{stroke:var(--volt);stroke-width:3.5}
+.node.free .shape{fill:var(--volt-soft);stroke:var(--volt)}
+.node.free .inner{stroke:var(--volt)}
+.node.free .cost{fill:var(--volt)}
+.state.s-free{color:var(--volt);background:var(--volt-soft)}
+.wbtn[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.wbtn[aria-pressed="true"] small{color:var(--bg);opacity:.75}
+.glabel{font:500 11px var(--mono);fill:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.tpanel{position:sticky;top:12px;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.tpanel h3{font-size:22px}
+.tpanel .req{font-size:13px;color:var(--muted)}
+.tpanel .state{font-size:13px;padding:8px 10px;border-radius:6px;background:var(--surface)}
+.state.s-on{color:var(--ok);background:var(--ok-soft)} .state.s-open{color:var(--volt);background:var(--volt-soft)} .state.s-locked{color:var(--warn);background:var(--warn-soft)}
+ol.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:4px 16px;counter-reset:s}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:28px 1fr auto;gap:8px;align-items:baseline;padding:6px 8px;border-radius:5px;cursor:pointer;font-size:14px}
+ol.steps li::before{content:counter(s);font:500 12px var(--mono);color:var(--muted)}
+ol.steps li:hover{background:var(--surface-2)}
+ol.steps li.done{color:var(--muted)}
+ol.steps li.done .nm{text-decoration:line-through}
+ol.steps li.next{background:var(--ember-soft)}
+ol.steps .pts{font:500 12px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+/* rotation */
+ol.rot{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;counter-reset:r}
+ol.rot li{counter-increment:r;display:grid;grid-template-columns:44px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+ol.rot li::before{content:counter(r);font:700 30px var(--display);color:var(--ember);line-height:1}
+ol.rot li:last-child{border-bottom:0}
+.keys{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+/* split planner */
+.planner{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:18px}
+.slider{display:grid;grid-template-columns:150px 1fr 56px;gap:12px;align-items:center}
+.slider input[type=range]{width:100%;accent-color:var(--ember)}
+.slider.alt input[type=range]{accent-color:var(--volt)}
+.slider output{font:500 16px var(--mono);text-align:right;font-variant-numeric:tabular-nums}
+.poolbar{display:flex;height:22px;border-radius:5px;overflow:hidden;background:var(--surface-2);border:1px solid var(--line)}
+.poolbar .h{background:var(--ember)} .poolbar .a{background:var(--volt)} .poolbar .over{background:repeating-linear-gradient(45deg,var(--bad) 0 6px,transparent 6px 12px)}
+.verdict{padding:12px 14px;border-radius:7px;font-size:14px}
+.v-ok{background:var(--ok-soft);color:var(--ok)} .v-warn{background:var(--warn-soft);color:var(--warn)} .v-bad{background:var(--bad-soft);color:var(--bad)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:600px;font-size:14px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted);background:var(--surface-2)}
+tr:last-child td{border-bottom:0}
+.sources{display:flex;flex-direction:column;gap:6px;font-size:14px;padding-left:18px;margin:0}
+.classnav{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.classnav .eyebrow{margin-right:6px}
+.cls{display:flex;flex-direction:column;padding:8px 14px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--fg);text-decoration:none;line-height:1.2}
+.cls b{font:600 18px var(--display);text-transform:uppercase;letter-spacing:.04em}
+.cls small{font:500 11px var(--mono);color:var(--muted)}
+a.cls:hover{border-color:var(--fg)}
+a.cls:focus-visible{outline:2px solid var(--volt);outline-offset:2px}
+.cls.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.cls.on small{color:var(--bg);opacity:.75}
+footer{font-size:13px;color:var(--muted)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:860px){
+  .treegrid{grid-template-columns:1fr}
+  .tpanel{position:sticky;top:auto;bottom:max(8px,env(safe-area-inset-bottom,0px));max-height:42vh;overflow:auto;box-shadow:0 -4px 18px rgba(0,0,0,.18);order:2}
+  .tree-scroll{max-height:none}
+}
+@media (max-width:520px){
+  .stage,.planner,.treebox{padding:14px}
+  .slider{grid-template-columns:1fr 48px}.slider label{grid-column:1/-1}
+  .stat{grid-template-columns:96px 1fr 48px}
+}
+@media (prefers-reduced-motion:no-preference){.poolbar div,.meterbar i{transition:width .2s ease}}
+</style>
+
+<div class="wrap">
+<nav class="classnav" id="classnav" aria-label="Class builds"></nav>
+<header id="hdr"></header>
+
+<section aria-labelledby="stages-h">
+  <h2 id="stages-h">The build, stage by stage</h2>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div id="stage" class="stage" role="tabpanel"></div>
+</section>
+
+<section aria-labelledby="tree-h">
+  <h2 id="tree-h"></h2>
+  <div class="tabs" id="wswitch" aria-label="Weapon"></div>
+  <p id="tree-intro"></p>
+  <div class="treebox">
+    <div class="tree-controls">
+      <div class="row">
+        <div class="avail"><label for="tpts">Trait points you have</label><input id="tpts" type="number" min="0" max="120"></div>
+        <label for="tpreset" class="sr">Build path</label><select id="tpreset"></select>
+      </div>
+      <div class="row">
+        <button class="btn primary" id="tfill" type="button">Fill with my points</button>
+        <button class="btn" id="tall" type="button">Show the full path</button>
+        <button class="btn" id="treset" type="button">Clear tree</button>
+      </div>
+      <div class="meter"><div class="meterbar" id="tbar"><i id="tbari"></i></div><div class="mtxt" id="tmtxt"></div></div>
+      <div class="tlegend">
+        <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="var(--ember)"/></svg>Unlocked</span>
+        <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="var(--surface)" stroke="var(--fg)" stroke-width="2"/></svg>Can unlock now</span>
+        <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="none" stroke="var(--volt)" stroke-width="2" stroke-dasharray="3 2"/></svg>On the build path</span>
+        <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="none" stroke="var(--muted)"/><rect x="-3" y="-3" width="6" height="6" transform="rotate(45)" fill="none" stroke="var(--muted)"/></svg>Skill</span>
+        <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="none" stroke="var(--muted)"/></svg>Passive</span>
+        <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><circle r="7" fill="none" stroke="var(--muted)"/></svg>Stat</span>
+        <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="var(--volt-soft)" stroke="var(--volt)" stroke-width="2"/></svg>Granted free (✓)</span>
+        <span>Number inside = point cost</span>
+      </div>
+    </div>
+    <div class="treegrid">
+      <div class="tree-scroll" id="tscroll"><svg id="tsvg" role="group"></svg></div>
+      <aside class="tpanel" id="tpanel" aria-live="polite"></aside>
+    </div>
+    <div class="stage-head"><h3 id="steps-h">Trait order</h3><p class="progress" id="steps-sub"></p></div>
+    <ol class="steps" id="tsteps"></ol>
+  </div>
+</section>
+
+<section aria-labelledby="rot-h">
+  <h2 id="rot-h"></h2>
+  <p id="rot-intro"></p>
+  <ol class="rot" id="rot"></ol>
+  <p id="rot-after"></p>
+</section>
+
+<section aria-labelledby="plan-h">
+  <h2 id="plan-h">Weapon point split</h2>
+  <p id="plan-intro"></p>
+  <div class="planner">
+    <div class="avail"><label for="avail">Coilstone points you have</label><input id="avail" type="number" min="0" max="120" value="92"><span>EA regions hold 92 by most counts</span></div>
+    <div class="row" id="splitpresets"></div>
+    <div class="slider"><label for="sh" class="w-main" id="lh"></label><input id="sh" type="range" min="0" max="100"><output id="oh">0</output></div>
+    <div class="slider alt"><label for="sa" class="w-alt" id="la"></label><input id="sa" type="range" min="0" max="100"><output id="oa">0</output></div>
+    <div class="poolbar" aria-hidden="true"><div class="h" id="bh"></div><div class="a" id="ba"></div><div class="over" id="bo"></div></div>
+    <div class="mtxt" id="ptxt"></div>
+    <div class="verdict" id="verdict" aria-live="polite"></div>
+  </div>
+</section>
+
+<section aria-labelledby="dis-h">
+  <h2 id="dis-h">Where the guides disagree</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Question</th><th>What sources say</th><th>What this build does</th></tr></thead>
+    <tbody id="dis"></tbody>
+  </table></div>
+</section>
+
+<section aria-labelledby="src-h">
+  <h2 id="src-h">Sources</h2>
+  <ol class="sources" id="src"></ol>
+</section>
+<footer id="foot"></footer>
+</div>
+
+<script>
+const D={"id": "warrior-fb", "title": "Warrior Frostbreaker Build", "out": "warrior-frostbreaker.html", "eyebrow": "ArcheAge Chronicles · Warrior · Early Access", "h1": "<span class='zap'>Frost<\/span><span class='hot'>breaker<\/span> Greatsword", "lede": "A Greatsword build from level 1 to endgame, based on RaidDex's Frostbreaker and its Greatsword leveling route. Shields from Pommel Strike and Brace keep you upright, Freeze sets up big vertical hits, and you swap to the Longsword to heal.", "notice": {"title": "Not verified in-game yet.", "text": "Early Access opened on November 3, 2026. I cross-checked every Warrior guide I could find and tagged each claim by how well it's supported. Both trait trees are built from Wikily's node lists (Greatsword 55, Longsword 60). The layouts are approximate until I have a screenshot of your Warrior trait screens."}, "stages": [{"id": "level", "name": "Leveling", "sub": "Lv 1 → 40", "goal": "Level on the Greatsword. Arc, Chain and Sweeping Slash clear packs, and Demolishing Strike into Fatal Cleave handles tough enemies.", "weapons": ["<span class='w-main'>Greatsword<\/span> as your main weapon [ok]", "<span class='w-alt'>Longsword<\/span> on {Q} when you need to heal [one]"], "skills": ["Arc, Chain, Vertical, Rising and Final Cleave are granted free [me]", "Pommel Strike gives a long shield that scales with Max HP [ok]", "Demolishing Strike counters after a Blade Guard block. With Expert it costs no SP [one]"], "traits": ["Greatsword only until about 22 points, then add the Longsword for healing [one]", "Follow the Greatsword trait order below [me]"], "stats": [["Strength", 100, "54"], ["Constitution", 85, "45"], ["Endurance", 30, "15"], ["Talent", 0, "later"], ["Agility", 0, "—"], ["Intelligence", 0, "none"]], "gear": ["Lv 15: Covenant Greatsword [one]", "RaidDex's spreads (STR/CON/END): Lv 15 at 24/16/2, Lv 30 at 42/32/10 plus 3 Talent, Lv 40 at 54/45/15 [one]"], "check": ["Put Greatsword and Longsword on Q swap", "Unlock Pommel Strike and Demolishing Strike", "Pick up every Raeven's Coilstone you pass", "Reach Fatal Cleave in the trait order"]}, {"id": "mid", "name": "Gearing", "sub": "Lv 30–40", "goal": "Add the Freeze and shield lines, and start the Longsword healing kit.", "weapons": ["<span class='w-main'>Fallen Margrave<\/span> greatsword [ok]", "<span class='w-alt'>Twisted Fate Blade<\/span> longsword [one]"], "skills": ["Cross Slash → Rain Cleave → Downpour Slash hit harder while you're shielded [one]", "Frosted Gleam: Sweeping Slash builds Freeze and briefly enables Final Cleave [one]", "Lifeflame (Longsword) heals on Closing Slash [one]"], "traits": ["Greatsword trait order steps 12 to 22 [me]", "Longsword: Whirlwind Slash → Lifeflame → Heavy Kick first [me]"], "stats": [["Strength", 100, "1st"], ["Constitution", 85, "2nd"], ["Endurance", 30, "3rd"], ["Talent", 50, "→ 23"], ["Agility", 0, "—"], ["Intelligence", 0, "none"]], "gear": ["Raise Talent toward 23 for the endgame weapons [ok]"], "check": ["Get Fallen Margrave", "Get Twisted Fate Blade", "Unlock Cross Slash", "Unlock Frosted Gleam"]}, {"id": "end", "name": "Endgame", "sub": "Frostbreaker", "goal": "Shield up, freeze the target, then cash in with Final Cleave and Rampage.", "weapons": ["<span class='w-main'>Scattered Mist<\/span> greatsword [ok]", "<span class='w-alt'>Wrathful Tyrant's Horn<\/span> longsword [ok]"], "skills": ["Rampage: Unbridled Might on Final Cleave adds a free charged Final Cleave [ok]", "Frostfang grants Resolve on Freeze [one]", "Bloodforge and Crimson Surge on the Longsword for healing [one]"], "traits": ["56 Greatsword and 36 Longsword uses all 92 Early Access points [me]", "RaidDex lists 56 / 44 [one]"], "stats": [["Strength", 100, "rest"], ["Constitution", 80, "plenty"], ["Talent", 65, "23"], ["Endurance", 30, "some"], ["Agility", 0, "—"], ["Intelligence", 0, "none"]], "gear": ["Talent 23 for both endgame weapons [ok]"], "check": ["Get Scattered Mist", "Get Wrathful Tyrant's Horn", "Raise Talent to 23", "Finish the Greatsword path", "Land Rampage in a boss fight"]}], "trees": [{"file": "greatsword", "weapon": "Greatsword", "role": "Main weapon", "key": "greatsword", "defaultPoints": 10, "wrap": 16, "pad": 95, "intro": "All 55 Greatsword nodes from Wikily. The layout is approximate: granted skills are grouped on the left, as in-game [me]. Nodes marked ✓ are granted free: Proficiency plus every skill that doesn't branch from it. They aren't counted in your points or in the path totals [ok].", "presets": [{"name": "Frostbreaker (RaidDex)", "note": "RaidDex names the skills: Pommel Strike, Cross Slash, Rain Cleave, Downpour Slash, Final Cleave, Rampage, Demolishing Strike, Fatal Cleave, Frosted Gleam and Frostfang. Granted skills are left out. The order follows the leveling route (defense first) and is mine [me].", "order": ["sweeping-slash", "pommel-strike", "retaliate", "demolishing-strike", "demolishing-strike-expert", "demolishing-strike-freeze", "fatal-cleave", "unbridled-might", "frozen-veins", "frozen-veins-ii", "iron-balance", "swift-cut", "heavyweight-upgrade", "physical-pen", "swift-cut-freeze", "crisis-response", "fortified-shields", "cross-slash", "rain-cleave", "downpour-slash", "armor-break", "greatsword-mastery", "frosted-gleam", "chain-slash-combo", "brawl", "clean-sweep", "clean-cut", "turning-strike", "momentum-lock", "rampage", "frostfang"]}], "nodes": [{"id": "greatsword-proficiency", "r": 1, "n": "Greatsword Proficiency", "t": "P", "c": 1, "e": "Lets you equip greatswords.", "p": [], "f": 1}, {"id": "arc-slash", "r": 2, "n": "Arc Slash", "t": "S", "c": 1, "e": "Wide arc attack. Stronger when fully charged.", "p": [], "f": 1}, {"id": "chain-slash", "r": 2, "n": "Chain Slash", "t": "S", "c": 1, "e": "Follow-up wide arc. Stronger when fully charged.", "p": ["arc-slash"], "f": 1}, {"id": "sunder", "r": 2, "n": "Sunder", "t": "S", "c": 1, "e": "Diagonal slash. Take less damage while charging.", "p": ["chain-slash"], "f": 1}, {"id": "sweeping-slash", "r": 2, "n": "Sweeping Slash", "t": "S", "c": 1, "e": "Two-hit combo with a short shield.", "p": ["greatsword-proficiency"]}, {"id": "pommel-strike", "r": 2, "n": "Pommel Strike", "t": "S", "c": 1, "e": "On hit, grants a long-lasting shield that scales with Max HP.", "p": ["greatsword-proficiency"]}, {"id": "leaping-strike", "r": 3, "n": "Leaping Strike", "t": "S", "c": 1, "e": "Stagger-immune leap attack that combos into Vertical Slash.", "p": ["arc-slash"], "f": 1}, {"id": "unbridled-might", "r": 3, "n": "Unbridled Might", "t": "P", "c": 1, "e": "Arc, Chain and Sunder build Resolve on hit.", "p": ["sweeping-slash"]}, {"id": "retaliate", "r": 3, "n": "Retaliate", "t": "P", "c": 1, "e": "A stronger, longer Pommel Strike shield after Blade Guard.", "p": ["pommel-strike"]}, {"id": "descending-slash", "r": 4, "n": "Descending Slash", "t": "S", "c": 1, "e": "Downward strike while airborne.", "p": ["arc-slash"], "f": 1}, {"id": "armor-break", "r": 4, "n": "Armor Break", "t": "P", "c": 1, "e": "Heavy-skill Unbridled Might briefly boosts Stagger power.", "p": ["unbridled-might"]}, {"id": "frozen-veins", "r": 4, "n": "Frozen Veins", "t": "P", "c": 1, "e": "Arc and Chain Unbridled Might deal extra damage and build Freeze.", "p": ["unbridled-might"]}, {"id": "demolishing-strike", "r": 4, "n": "Demolishing Strike", "t": "S", "c": 1, "e": "Staggering counterattack after a Blade Guard block.", "p": ["retaliate"]}, {"id": "armor-break-ii", "r": 5, "n": "Armor Break II", "t": "P", "c": 1, "e": "2 s damage boost after heavy-skill Unbridled Might.", "p": ["armor-break"]}, {"id": "frozen-veins-ii", "r": 5, "n": "Frozen Veins II", "t": "P", "c": 1, "e": "Arc and Chain Unbridled Might add an attack.", "p": ["frozen-veins"]}, {"id": "demolishing-strike-freeze", "r": 5, "n": "Demolishing Strike - Freeze", "t": "P", "c": 2, "e": "Demolishing Strike builds Freeze.", "p": ["demolishing-strike"]}, {"id": "demolishing-strike-expert", "r": 5, "n": "Demolishing Strike - Expert", "t": "P", "c": 2, "e": "Demolishing Strike costs no SP.", "p": ["demolishing-strike"]}, {"id": "vertical-slash", "r": 6, "n": "Vertical Slash", "t": "S", "c": 1, "e": "Long vertical slash that breaks guard.", "p": [], "f": 1}, {"id": "rising-slash", "r": 6, "n": "Rising Slash", "t": "S", "c": 1, "e": "Guard-breaking vertical slash. Stronger when charged.", "p": ["vertical-slash"], "f": 1}, {"id": "final-cleave", "r": 6, "n": "Final Cleave", "t": "S", "c": 1, "e": "Long vertical slash that breaks guard.", "p": ["rising-slash"], "f": 1}, {"id": "iron-balance", "r": 6, "n": "Iron Balance", "t": "P", "c": 1, "e": "Successful vertical hits can stack Resolve.", "p": ["armor-break-ii", "frozen-veins-ii"]}, {"id": "fatal-cleave", "r": 6, "n": "Fatal Cleave", "t": "S", "c": 3, "e": "Strips shields, cuts damage taken, and grants Stagger immunity.", "p": ["demolishing-strike-freeze", "demolishing-strike-expert"]}, {"id": "riposte", "r": 7, "n": "Riposte", "t": "S", "c": 1, "e": "Quick staggering follow-up during Vertical Slash.", "p": ["vertical-slash"], "f": 1}, {"id": "shove-kick", "r": 7, "n": "Shove Kick", "t": "S", "c": 1, "e": "Staggering kick with brief Stagger immunity.", "p": ["riposte"], "f": 1}, {"id": "greatsword-mastery", "r": 7, "n": "Greatsword Mastery", "t": "P", "c": 2, "e": "Faster Arc and Chain Slash.", "p": ["iron-balance"]}, {"id": "uncontrollable-power", "r": 7, "n": "Uncontrollable Power", "t": "P", "c": 2, "e": "Vertical Slash charges faster.", "p": ["iron-balance"]}, {"id": "swift-cut", "r": 7, "n": "Swift Cut", "t": "S", "c": 2, "e": "Follows Demolishing Strike and builds Exhaust.", "p": ["fatal-cleave"]}, {"id": "frosted-gleam", "r": 8, "n": "Frosted Gleam", "t": "P", "c": 3, "e": "Sweeping Slash builds Freeze and briefly enables Final Cleave.", "p": ["greatsword-mastery", "uncontrollable-power"]}, {"id": "lightweight-upgrade", "r": 8, "n": "Lightweight Upgrade", "t": "P", "c": 1, "e": "Shield at the start of Blade Guard if you have no Brace shield.", "p": ["swift-cut"]}, {"id": "heavyweight-upgrade", "r": 8, "n": "Heavyweight Upgrade", "t": "P", "c": 1, "e": "Stronger Brace shield.", "p": ["swift-cut"]}, {"id": "blade-guard", "r": 9, "n": "Blade Guard", "t": "S", "c": 1, "e": "Block frontal attacks while moving slowly. Not Fatal Attacks.", "p": [], "f": 1}, {"id": "chain-slash-combo", "r": 9, "n": "Chain Slash Combo", "t": "P", "c": 1, "e": "After Colossal Thrust, a light attack leads into Chain Slash.", "p": ["frosted-gleam"]}, {"id": "physical-pen", "r": 9, "n": "Physical PEN", "t": "T", "c": 1, "e": "+12 Physical PEN.", "p": ["lightweight-upgrade", "heavyweight-upgrade"]}, {"id": "brawl", "r": 10, "n": "Brawl", "t": "P", "c": 3, "e": "Colossal Thrust, Leaping Strike and Sunder build Resolve.", "p": ["chain-slash-combo"]}, {"id": "swift-cut-freeze", "r": 10, "n": "Swift Cut - Freeze", "t": "P", "c": 2, "e": "Swift Cut builds Freeze.", "p": ["physical-pen"]}, {"id": "swift-cut-neutralize", "r": 10, "n": "Swift Cut - Neutralize", "t": "P", "c": 2, "e": "Extra Swift Cut hit that hits Exhausted targets harder.", "p": ["physical-pen"]}, {"id": "evade", "r": 11, "n": "Evade", "t": "S", "c": 1, "e": "Quick dodge in the chosen direction.", "p": [], "f": 1}, {"id": "colossal-thrust", "r": 11, "n": "Colossal Thrust", "t": "S", "c": 1, "e": "Thrust after a dodge.", "p": ["evade"], "f": 1}, {"id": "carve-up", "r": 11, "n": "Carve Up", "t": "P", "c": 2, "e": "Extra Vertical Slash hit that may grant Resolve.", "p": ["brawl"]}, {"id": "clean-sweep", "r": 11, "n": "Clean Sweep", "t": "P", "c": 2, "e": "Spend extra SP to repeat the Sweeping Slash combo.", "p": ["brawl"]}, {"id": "crisis-response", "r": 11, "n": "Crisis Response", "t": "P", "c": 2, "e": "Below 50% HP, a stronger Retaliate shield.", "p": ["swift-cut-freeze", "swift-cut-neutralize"]}, {"id": "clean-cut", "r": 12, "n": "Clean Cut", "t": "P", "c": 2, "e": "Fully charged vertical skills hit Frozen enemies harder.", "p": ["carve-up", "clean-sweep"]}, {"id": "fortified-shields", "r": 12, "n": "Fortified Shields", "t": "P", "c": 1, "e": "Stronger shields overall.", "p": ["crisis-response"]}, {"id": "brace", "r": 13, "n": "Brace", "t": "P", "c": 1, "e": "Stagger-immune when hit under a shield. Arc, Sunder and Vertical Slash grant shields.", "p": [], "f": 1}, {"id": "turning-strike", "r": 13, "n": "Turning Strike", "t": "S", "c": 3, "e": "Counterstrike after Sunder with a brief guard stance.", "p": ["clean-cut"]}, {"id": "cross-slash", "r": 13, "n": "Cross Slash", "t": "S", "c": 3, "e": "Combos from Arc Slash. More damage while shielded.", "p": ["fortified-shields"]}, {"id": "momentum-lock", "r": 14, "n": "Momentum Lock", "t": "P", "c": 2, "e": "Unbridled Might spends only 3 Resolve.", "p": ["turning-strike"]}, {"id": "rain-cleave", "r": 14, "n": "Rain Cleave", "t": "S", "c": 2, "e": "Breaks guard and knocks down. More damage while shielded.", "p": ["cross-slash"]}, {"id": "rampage", "r": 15, "n": "Rampage", "t": "P", "c": 3, "e": "Unbridled Might on Final Cleave adds a free charged Final Cleave.", "p": ["momentum-lock"]}, {"id": "cleaving-art", "r": 15, "n": "Cleaving Art", "t": "P", "c": 2, "e": "Fatal Cleave spends HP for more damage and grants Immortal.", "p": ["rain-cleave"]}, {"id": "downpour-slash", "r": 15, "n": "Downpour Slash", "t": "S", "c": 2, "e": "Rain Cleave gets one extra use.", "p": ["rain-cleave"]}, {"id": "warrior-s-cry", "r": 16, "n": "Warrior's Cry", "t": "S", "c": 3, "e": "Spend HP on a wide attack, then go Berserk.", "p": ["rampage"]}, {"id": "frostfang", "r": 16, "n": "Frostfang", "t": "P", "c": 3, "e": "Rising Slash adds a long-range hit. Freezing grants Resolve.", "p": ["rampage"]}, {"id": "vengeful-rush", "r": 16, "n": "Vengeful Rush", "t": "S", "c": 3, "e": "Charging knockdown with damage reduction. 30 s cooldown.", "p": ["cleaving-art"]}, {"id": "waterspout", "r": 16, "n": "Waterspout", "t": "P", "c": 3, "e": "Rain Cleave builds Freeze, and Rising Slash briefly fully charges.", "p": ["downpour-slash"]}]}, {"file": "longsword", "weapon": "Longsword", "role": "Swap weapon", "key": "longsword", "defaultPoints": 36, "wrap": 16, "pad": 95, "intro": "All 60 Longsword nodes from Wikily. The layout is approximate [me]. Nodes marked ✓ are granted free and aren't counted in your points [ok].", "presets": [{"name": "Blood healing swap (36 points)", "note": "The guides swap to the Longsword to heal. This path takes the blood line (Lifeflame, Bloodstorm, Frenzy, Hemorrhage, Bloodforge, Crimson Surge) from RaidDex's Crimson Blade. The order is mine [me].", "order": ["whirlwind-slash", "lifeflame", "heavy-kick", "annihilating-slash", "bloodstorm", "whirlwind-slash-mastery", "whirlwind-slash-mastery-ii", "bloodstorm-mastery", "bloodstorm-mastery-ii", "whirlwind-slash-lightning-speed", "frenzy", "wind-atk", "resurgence", "hemorrhage", "bloodforge", "swift-flurry", "sharpwake", "pursuit-root", "bloodthirst", "bloodforge-annihilating-slash", "crimson-surge"]}], "nodes": [{"id": "longsword-proficiency", "r": 1, "n": "Longsword Proficiency", "t": "P", "c": 1, "e": "Lets you equip longswords.", "p": [], "f": 1}, {"id": "triple-slash", "r": 2, "n": "Triple Slash", "t": "S", "c": 1, "e": "Up to 3 sword attacks that stagger.", "p": [], "f": 1}, {"id": "closing-slash", "r": 2, "n": "Closing Slash", "t": "S", "c": 1, "e": "Knockback that grants Foresight for 6 s.", "p": ["triple-slash"], "f": 1}, {"id": "whirlwind-slash", "r": 2, "n": "Whirlwind Slash", "t": "S", "c": 1, "e": "Side strikes during Foresight, with damage reduction and Stagger immunity.", "p": ["longsword-proficiency"]}, {"id": "pursuit-root", "r": 2, "n": "Pursuit - Root", "t": "P", "c": 1, "e": "Pursuit roots the target for 3 s.", "p": ["longsword-proficiency"]}, {"id": "swift-flurry", "r": 2, "n": "Swift Flurry", "t": "S", "c": 1, "e": "Dash and strike twice after Diagonal Slash. Crits grant Foresight.", "p": ["longsword-proficiency"]}, {"id": "damage-at-hp-70", "r": 2, "n": "Damage ↑ at HP ≥70%", "t": "T", "c": 10, "e": "+2.5% damage while your HP is at 70% or higher.", "p": [], "sc": 1}, {"id": "lifeflame", "r": 3, "n": "Lifeflame", "t": "P", "c": 1, "e": "Closing Slash heals you based on damage dealt.", "p": ["whirlwind-slash"]}, {"id": "sharpwake", "r": 3, "n": "Sharpwake", "t": "P", "c": 1, "e": "Parry grants up to 3 stacks of crit and damage for 20 s.", "p": ["swift-flurry"]}, {"id": "weapon-physical-atk", "r": 3, "n": "Weapon Physical ATK ↑", "t": "T", "c": 5, "e": "+10% weapon Physical ATK.", "p": ["damage-at-hp-70"], "sc": 1}, {"id": "weapon-magic-atk", "r": 3, "n": "Weapon Magic ATK ↑", "t": "T", "c": 5, "e": "+10% weapon Magic ATK.", "p": ["damage-at-hp-70"], "sc": 1}, {"id": "heavy-kick", "r": 4, "n": "Heavy Kick", "t": "S", "c": 1, "e": "Knockback that builds Stun, with damage reduction. 12 s cooldown.", "p": ["lifeflame"]}, {"id": "twin-slash", "r": 4, "n": "Twin Slash", "t": "S", "c": 1, "e": "Combos from Charge with knockback.", "p": ["sharpwake"]}, {"id": "damage-vs-hp-70", "r": 4, "n": "Damage ↑ vs HP ≥70%", "t": "T", "c": 5, "e": "+5% damage against targets at 70% HP or higher.", "p": ["damage-at-hp-70"], "sc": 1}, {"id": "damage-vs-hp-40", "r": 4, "n": "Damage ↑ vs HP ≤40%", "t": "T", "c": 5, "e": "+5% damage against targets at 40% HP or less.", "p": ["damage-at-hp-70"], "sc": 1}, {"id": "annihilating-slash", "r": 5, "n": "Annihilating Slash", "t": "S", "c": 2, "e": "Area attack after Whirlwind Slashes that uses Foresight and builds Bleed.", "p": ["heavy-kick"]}, {"id": "slaughter", "r": 5, "n": "Slaughter", "t": "S", "c": 1, "e": "Grants 3 Sharpwake on downed enemies. 30 s cooldown.", "p": ["twin-slash"]}, {"id": "horizontal-slash", "r": 6, "n": "Horizontal Slash", "t": "S", "c": 1, "e": "Guard-breaking dash strike.", "p": [], "f": 1}, {"id": "earthcleaver", "r": 6, "n": "Earthcleaver", "t": "S", "c": 1, "e": "Jump and strike down.", "p": ["triple-slash", "horizontal-slash"], "f": 1}, {"id": "bloodstorm", "r": 6, "n": "Bloodstorm", "t": "S", "c": 3, "e": "Area attack with knockback and Bleed. Costs HP instead of SP.", "p": ["annihilating-slash"]}, {"id": "closing-slash-combo", "r": 6, "n": "Closing Slash Combo", "t": "P", "c": 1, "e": "Closing Slash is briefly available after Counterattack hits.", "p": ["slaughter"]}, {"id": "double-strike", "r": 7, "n": "Double Strike", "t": "S", "c": 1, "e": "Combos into a heavy attack.", "p": ["horizontal-slash"], "f": 1}, {"id": "whirlwind-slash-mastery", "r": 7, "n": "Whirlwind Slash Mastery", "t": "P", "c": 1, "e": "Critical Whirlwind hits add a healing hit.", "p": ["bloodstorm"]}, {"id": "bloodstorm-mastery", "r": 7, "n": "Bloodstorm Mastery", "t": "P", "c": 1, "e": "Bloodstorm costs less HP.", "p": ["bloodstorm"]}, {"id": "breakthrough", "r": 7, "n": "Breakthrough", "t": "P", "c": 2, "e": "Twin Slash spends all Sharpwake for a stronger extra hit.", "p": ["closing-slash-combo"]}, {"id": "charge", "r": 8, "n": "Charge", "t": "S", "c": 1, "e": "Stagger-immune dash strike.", "p": ["horizontal-slash"], "f": 1}, {"id": "pursuit", "r": 8, "n": "Pursuit", "t": "S", "c": 1, "e": "Staggering stab after Charge that grants Foresight. 15 s cooldown.", "p": ["charge"], "f": 1}, {"id": "whirlwind-slash-mastery-ii", "r": 8, "n": "Whirlwind Slash Mastery II", "t": "P", "c": 2, "e": "Whirlwind grants Swift stacks (up to 4).", "p": ["whirlwind-slash-mastery"]}, {"id": "bloodstorm-mastery-ii", "r": 8, "n": "Bloodstorm Mastery II", "t": "P", "c": 2, "e": "More Bloodstorm damage at 50% HP or higher.", "p": ["bloodstorm-mastery"]}, {"id": "swift-flurry-mastery", "r": 8, "n": "Swift Flurry Mastery", "t": "P", "c": 2, "e": "Swift Flurry evades attacks for 1 s.", "p": ["breakthrough"]}, {"id": "counterattack-mastery", "r": 8, "n": "Counterattack Mastery", "t": "P", "c": 2, "e": "Counterattack hits harder and builds Stun.", "p": ["breakthrough"]}, {"id": "longsword-thrust", "r": 9, "n": "Longsword Thrust", "t": "S", "c": 1, "e": "During Foresight, breaks guard and staggers.", "p": ["horizontal-slash"], "f": 1}, {"id": "quick-slash", "r": 9, "n": "Quick Slash", "t": "S", "c": 1, "e": "During Foresight, a staggering flurry.", "p": ["longsword-thrust"], "f": 1}, {"id": "cleave-down", "r": 9, "n": "Cleave Down", "t": "S", "c": 1, "e": "During Foresight, a flurry with knockdown that builds Stun.", "p": ["quick-slash"], "f": 1}, {"id": "whirlwind-slash-lightning-speed", "r": 9, "n": "Whirlwind Slash - Lightning Speed", "t": "P", "c": 2, "e": "Horizontal Slash triggers Whirlwind without Foresight. 3 s cooldown.", "p": ["whirlwind-slash-mastery-ii", "bloodstorm-mastery-ii"]}, {"id": "bladeburst", "r": 9, "n": "Bladeburst", "t": "S", "c": 3, "e": "Stationary staggering attacks. Immune while active. 60 s cooldown.", "p": ["swift-flurry-mastery", "counterattack-mastery"]}, {"id": "eye-of-the-storm", "r": 10, "n": "Eye of the Storm", "t": "P", "c": 2, "e": "Heavy Kick grants Foresight.", "p": ["whirlwind-slash-lightning-speed"]}, {"id": "frenzy", "r": 10, "n": "Frenzy", "t": "P", "c": 2, "e": "Heavy Kick combos into Bloodstorm with no HP cost.", "p": ["whirlwind-slash-lightning-speed"]}, {"id": "physical-amplification", "r": 10, "n": "Physical Amplification", "t": "T", "c": 1, "e": "+25 Physical Amplification.", "p": ["bladeburst"]}, {"id": "parry", "r": 11, "n": "Parry", "t": "S", "c": 1, "e": "Parry blockable attacks.", "p": [], "f": 1}, {"id": "counterattack", "r": 11, "n": "Counterattack", "t": "S", "c": 1, "e": "A successful Parry briefly enables a counterattack.", "p": ["parry"], "f": 1}, {"id": "wind-atk", "r": 11, "n": "Wind ATK", "t": "T", "c": 1, "e": "+20 Wind ATK.", "p": ["eye-of-the-storm", "frenzy"]}, {"id": "perfect-foresight", "r": 11, "n": "Perfect Foresight", "t": "P", "c": 3, "e": "Critical Thrust, Quick Slash or Cleave Down grants Sharpwake.", "p": ["physical-amplification"]}, {"id": "resurgence", "r": 12, "n": "Resurgence", "t": "P", "c": 2, "e": "Lifeflame heals more below 50% HP.", "p": ["wind-atk"]}, {"id": "hemorrhage", "r": 12, "n": "Hemorrhage", "t": "S", "c": 2, "e": "Reuse Bloodstorm for an HP cost.", "p": ["wind-atk"]}, {"id": "ultimate-slash", "r": 12, "n": "Ultimate Slash", "t": "S", "c": 2, "e": "Quick Slash gets up to 2 extra uses.", "p": ["perfect-foresight"]}, {"id": "onslaught", "r": 12, "n": "Onslaught", "t": "P", "c": 2, "e": "Cleave Down hits harder without Foresight.", "p": ["perfect-foresight"]}, {"id": "evade", "r": 13, "n": "Evade", "t": "S", "c": 1, "e": "Dodge in the chosen direction.", "p": [], "f": 1}, {"id": "diagonal-slash", "r": 13, "n": "Diagonal Slash", "t": "S", "c": 1, "e": "Dash at the enemy while evading.", "p": ["evade"], "f": 1}, {"id": "bloodforge", "r": 13, "n": "Bloodforge", "t": "P", "c": 3, "e": "Bloodstorm grants Bloodforge for 15 s, making skills heal. Lost on weapon swap.", "p": ["resurgence", "hemorrhage"]}, {"id": "ultimate-slash-ii", "r": 13, "n": "Ultimate Slash II", "t": "P", "c": 2, "e": "A critical Quick Slash adds an attack.", "p": ["ultimate-slash"]}, {"id": "onslaught-ii", "r": 13, "n": "Onslaught II", "t": "P", "c": 2, "e": "After Foresight ends, all skills hit harder for 3 s.", "p": ["onslaught"]}, {"id": "bloodforge-annihilating-slash", "r": 14, "n": "Bloodforge - Annihilating Slash", "t": "P", "c": 2, "e": "Spend Bloodforge to reuse Annihilating Slash.", "p": ["bloodforge"]}, {"id": "bloodthirst", "r": 14, "n": "Bloodthirst", "t": "P", "c": 2, "e": "Bloodforge stacks up to 2, with more healing per stack.", "p": ["bloodforge"]}, {"id": "mind-s-eye", "r": 14, "n": "Mind's Eye", "t": "P", "c": 3, "e": "Breakthrough with 3 Sharpwake resets Bladeburst.", "p": ["ultimate-slash-ii", "onslaught-ii"]}, {"id": "crimson-surge", "r": 15, "n": "Crimson Surge", "t": "S", "c": 3, "e": "Big HP cost for area damage, knockback and Bleed, with Stagger immunity.", "p": ["bloodforge-annihilating-slash", "bloodthirst"]}, {"id": "blade-wind", "r": 15, "n": "Blade Wind", "t": "S", "c": 2, "e": "Staggering flurry that blocks frontal attacks and combos into Cleave Down.", "p": ["mind-s-eye"]}, {"id": "worthy-sacrifice", "r": 16, "n": "Worthy Sacrifice", "t": "P", "c": 2, "e": "After a Fatal Strike, reuse Crimson Surge with no HP cost.", "p": ["crimson-surge"]}, {"id": "crimson-covenant", "r": 16, "n": "Crimson Covenant", "t": "S", "c": 2, "e": "Self-Bleed. With Block, free Crimson Surge for 5 s. 100 s cooldown.", "p": ["crimson-surge"]}, {"id": "suppress", "r": 16, "n": "Suppress", "t": "S", "c": 3, "e": "After you Stun a target, an evasive knockdown. Resets on kill.", "p": ["blade-wind"]}]}], "treeHelp": "Click a node to read it. Double-click it, or press Space, to unlock or refund it. Nodes marked ✓ are granted free: default skills that cost no trait points. <b>Fill with my points<\/b> buys the build path in order until your points run out. Each weapon's tree is saved in this browser.", "rotation": {"title": "Frostbreaker rotation", "intro": "RaidDex's Frostbreaker chain [one]. Swap weapons with {Q}.", "steps": [{"t": "Pommel Strike for a shield", "d": "A long shield that scales with Max HP. Brace (free) makes you stagger-immune while it holds."}, {"t": "Arc Slash → Cross Slash", "d": "Cross Slash combos from Arc Slash and hits harder while you're shielded."}, {"t": "Rain Cleave → Downpour Slash", "d": "Breaks guard and knocks down. Downpour gives Rain Cleave one more use."}, {"t": "Vertical → Rising Slash → Final Cleave", "d": "With Unbridled Might up, Rampage adds a free charged Final Cleave."}, {"t": "Loop Arc, Chain and Sweeping Slash", "d": "Sweeping Slash builds Freeze with Frosted Gleam, which re-opens Final Cleave."}, {"t": "Block, then Demolishing Strike → Fatal Cleave", "d": "Use Blade Guard while shielded, counter with Demolishing Strike, then Fatal Cleave to strip shields."}], "after": "When SP runs low or you're missing health, swap to the Longsword with {Q} for Lifeflame and Bloodstorm healing."}, "split": {"main": "Greatsword", "alt": "Longsword", "mainMin": 56, "intro": "Trait points come from <b>Raeven's Coilstones<\/b> near powerful bosses [ok]. RaidDex's Frostbreaker goes 56 / 44 and Crimson Blade goes 43 / 57.", "presets": [{"label": "Frostbreaker, adjusted (56 / 36)", "m": 56, "a": 36}, {"label": "Frostbreaker as written (56 / 44)", "m": 56, "a": 44}, {"label": "Crimson Blade, longsword-led (35 / 57)", "m": 35, "a": 57}]}, "disputes": [["Greatsword or Longsword for PvE?", "A creator tier list gives the Longsword C for PvE. AOEAH rates it 7/10 for PvE and 10/10 for PvP. Kybuza, Nerd Bird and Theory Forge favor the Greatsword for PvE.", "Greatsword main, Longsword as the healing swap."], ["Stat order", "RaidDex: STR, then CON (plenty), then Talent. Kybuza: STR, then AGI, adding CON and END only as needed.", "Follow RaidDex. Stats respec free, so try Kybuza's spread if you want more crit."], ["Class rating", "Destructoid rates the Warrior S. ArcheAge Builds places it at A for PvP.", "Both are strong. Pick it if you like it."], ["Granted skills", "None of the guides say which skills are free. ArcheAge World's planner says the default \"white\" skills cost nothing.", "Skills that don't branch from Proficiency are free here, matching the Berserker and Ranger screens [me]."]], "sources": [{"t": "Wikily: Greatsword skill tree (55 nodes)", "u": "https://wikily.gg/archeage-chronicles/weapons/greatsword"}, {"t": "Wikily: Longsword skill tree (60 nodes)", "u": "https://wikily.gg/archeage-chronicles/weapons/longsword"}, {"t": "ArcheAge Builds: Warrior", "u": "https://archeagebuilds.com/classes/warrior/"}, {"t": "RaidDex builds (Frostbreaker, Crimson Blade, Greatsword leveling)", "u": "https://raiddex.com/en/archeage-chronicles/builds", "n": "the site blocked direct reading, so I took its details from ArcheAge Builds' summary"}, {"t": "ArcheAge World trait planner (default skills are free)", "u": "https://archeageworld.com/en/traits/"}, {"t": "AOEAH tier list (Nov 4, 2026)", "u": "https://www.aoeah.com/news/4897--archeage-chronicles-best-classesweaponsbuilds-tier-list-pve--pvp"}], "footer": "Sources checked November 12, 2026, during Early Access. The Gladius (third Warrior weapon) arrives in December. Recheck after that update."}, LINKS=[{"id": "warrior-fb", "cls": "Warrior", "build": "Frostbreaker Greatsword", "url": "warrior-frostbreaker.html"}, {"id": "berserker-wh", "cls": "Berserker", "build": "Warhammer", "url": "berserker-warhammer.html"}, {"id": "ranger-sh", "cls": "Ranger", "build": "Storm Hatchets", "url": "ranger-storm-hatchet.html"}, {"id": "mage-tb", "cls": "Mage", "build": "Thunderbolt Staff", "url": "mage-thunderbolt.html"}];
+function boot(){
+document.getElementById('classnav').innerHTML='<span class="eyebrow">Class builds</span>'+LINKS.map(c=>c.id===D.id?`<span class="cls on" aria-current="page"><b>${c.cls}</b><small>${c.build}</small></span>`:`<a class="cls" href="${c.url}"><b>${c.cls}</b><small>${c.build}</small></a>`).join('');
+const TAGS={ok:'<span class="tag t-ok">2+ sources</span>',one:'<span class="tag t-one">1 source</span>',me:'<span class="tag t-me">inferred</span>'};
+const fmt=s=>String(s).replace(/\[(ok|one|me)\]/g,(m,k)=>TAGS[k]).replace(/\{(.+?)\}/g,'<kbd>$1</kbd>');
+const $=id=>document.getElementById(id);
+const store={get(k){try{return JSON.parse(localStorage.getItem('aac-'+D.id+'-'+k))}catch(e){return null}},set(k,v){try{localStorage.setItem('aac-'+D.id+'-'+k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* header */
+$('hdr').innerHTML=`<span class="eyebrow">${D.eyebrow}</span><h1>${D.h1}</h1><p class="lede">${fmt(D.lede)}</p>
+<div class="notice" role="note"><strong>${D.notice.title}</strong><p>${fmt(D.notice.text)}</p></div>
+<div class="legend"><span>${TAGS.ok} guides agree</span><span>${TAGS.one} only one guide says so</span><span>${TAGS.me} my reasoning, not from a guide</span></div>`;
+
+/* stages */
+let cur=store.get('tab')||D.stages[0].id; if(!D.stages.some(s=>s.id===cur))cur=D.stages[0].id;
+const checks=store.get('checks')||{};
+const li=a=>'<ul class="clean">'+a.map(x=>'<li>'+fmt(x)+'</li>').join('')+'</ul>';
+function renderStage(){
+  $('tabs').innerHTML=D.stages.map(s=>`<button class="tab" role="tab" id="tab-${s.id}" aria-selected="${s.id===cur}" tabindex="${s.id===cur?0:-1}" data-id="${s.id}">${s.name}<small>${s.sub}</small></button>`).join('');
+  const s=D.stages.find(x=>x.id===cur), done=s.check.filter((_,i)=>checks[s.id+i]).length;
+  $('stage').setAttribute('aria-labelledby','tab-'+s.id);
+  $('stage').innerHTML=`<div class="stage-head"><span class="eyebrow">${s.sub}</span><h3>${s.name}</h3><p>${fmt(s.goal)}</p></div>
+  <div class="grid">
+    <div class="block"><h4>Weapons</h4>${li(s.weapons)}</div>
+    <div class="block"><h4>Key skills</h4>${li(s.skills)}</div>
+    <div class="block"><h4>Traits</h4>${li(s.traits)}</div>
+    <div class="block"><h4>Stat priority</h4><div class="statbar">${s.stats.map(([n,w,v])=>`<div class="stat"><span>${n}</span><span class="bar"><i style="width:${w}%"></i></span><span class="val">${v}</span></div>`).join('')}</div></div>
+    <div class="block"><h4>Gear and notes</h4>${li(s.gear)}</div>
+  </div>
+  <div class="checklist"><div class="progress">${done} / ${s.check.length} done · saved in this browser</div>
+  ${s.check.map((c,i)=>`<label><input type="checkbox" id="ck-${s.id}-${i}" data-k="${s.id+i}" ${checks[s.id+i]?'checked':''}><span>${esc(c)}</span></label>`).join('')}</div>`;
+}
+function goTab(id){cur=id;store.set('tab',cur);renderStage();$('tab-'+cur).focus()}
+$('tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(b)goTab(b.dataset.id)});
+$('tabs').addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight'].includes(e.key))return;const i=D.stages.findIndex(s=>s.id===cur);goTab(D.stages[(i+(e.key==='ArrowRight'?1:-1)+D.stages.length)%D.stages.length].id)});
+$('stage').addEventListener('change',e=>{const k=e.target.dataset.k;if(!k)return;checks[k]=e.target.checked;store.set('checks',checks);renderStage();const el=$(e.target.id);if(el)el.focus()});
+renderStage();
+
+/* trait tree */
+const TREES=D.trees, TYPE={S:'Skill',P:'Passive',T:'Stat'};
+let curTree=Math.min(+(store.get('wtree')||0),TREES.length-1);
+const NS='http://www.w3.org/2000/svg';
+const mk=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+function wrapLabel(t,max){if(!max||t.length<=max)return[t];const w=t.split(' ');const out=[''];w.forEach(x=>{const c=out[out.length-1];if(c&&(c+' '+x).length>max)out.push(x);else out[out.length-1]=c?c+' '+x:x});return out.slice(0,2)}
+function mountTree(ti){
+const TR=TREES[ti], NODES=TR.nodes, BY={};
+NODES.forEach(n=>{n.p=n.p||[];n.kids=[];BY[n.id]=n});
+NODES.forEach(n=>n.p.forEach(p=>BY[p].kids.push(n.id)));
+const FREE=NODES.filter(n=>n.f).map(n=>n.id);
+$('wswitch').hidden=TREES.length<2;
+$('wswitch').innerHTML=TREES.map((t,i)=>`<button type="button" class="tab wbtn" aria-pressed="${i===ti}" data-i="${i}">${esc(t.weapon)}<small>${esc(t.role||'')}</small></button>`).join('');
+$('wswitch').onclick=e=>{const b=e.target.closest('.wbtn');if(!b)return;curTree=+b.dataset.i;store.set('wtree',curTree);mountTree(curTree)};
+$('tree-h').textContent='Trait tree: '+TR.weapon;
+$('tree-intro').innerHTML=fmt(TR.intro);
+const svg=$('tsvg'); svg.innerHTML=''; svg.setAttribute('aria-label',TR.weapon+' trait tree');
+if(NODES.some(n=>n.x==null)){
+  const GAP=150,ROWH=104,rows={};
+  NODES.forEach((n,i)=>{n._i=i;(rows[n.r]=rows[n.r]||[]).push(n)});
+  const keys=Object.keys(rows).map(Number).sort((a,b)=>a-b);
+  keys.forEach(r=>{
+    const L=rows[r].filter(n=>!n.f&&!n.sc);
+    L.forEach((n,i)=>{const px=n.p.map(id=>BY[id]).filter(q=>q.x!=null&&!q.f&&!q.sc).map(q=>q.x);n._k=px.length?px.reduce((a,b)=>a+b,0)/px.length:(i-(L.length-1)/2)*GAP});
+    L.sort((a,b)=>a._k-b._k||a._i-b._i);
+    L.forEach((n,i)=>{n.x=(i-(L.length-1)/2)*GAP;n.y=r*ROWH});
+  });
+  const mid=NODES.filter(n=>!n.f&&!n.sc), minP=Math.min(...mid.map(n=>n.x)), maxP=Math.max(...mid.map(n=>n.x));
+  keys.forEach(r=>{
+    const F=rows[r].filter(n=>n.f), S=rows[r].filter(n=>n.sc);
+    F.forEach((n,i)=>{n.x=minP-190-(F.length-1-i)*GAP;n.y=r*ROWH});
+    S.forEach((n,i)=>{n.x=maxP+190+i*GAP;n.y=r*ROWH});
+  });
+}
+const PAD=TR.pad||90, xs=NODES.map(n=>n.x), ys=NODES.map(n=>n.y);
+const vb=[Math.min(...xs)-PAD,Math.min(...ys)-46,Math.max(...xs)-Math.min(...xs)+PAD*2,Math.max(...ys)-Math.min(...ys)+46+66];
+svg.setAttribute('viewBox',vb.join(' ')); svg.style.minWidth=Math.round(vb[2]*0.82)+'px';
+const gE=mk('g',{},svg), gL=mk('g',{},svg), gN=mk('g',{},svg);
+const groups=TR.groups||(TR.auto!==false&&FREE.length>1?[{x:Math.min(...NODES.filter(n=>n.f&&!/Proficiency$/.test(n.n)).map(n=>n.x)),y:Math.min(...ys)-16,text:'Granted skills'}]:[]);
+groups.forEach(g=>{const t=mk('text',{x:g.x,y:g.y,class:'glabel','text-anchor':'middle'},gL);t.textContent=g.text});
+const edges=[];
+NODES.forEach(n=>n.p.forEach(pid=>{const p=BY[pid];edges.push({a:pid,b:n.id,el:mk('line',{x1:p.x,y1:p.y,x2:n.x,y2:n.y,class:'edge'},gE)})}));
+NODES.forEach(n=>{
+  const g=mk('g',{class:'node',transform:`translate(${n.x},${n.y})`,tabindex:0,role:'button','data-id':n.id},gN);
+  n.el=g;
+  if(n.t==='T'){mk('circle',{r:31,class:'ring'},g);mk('circle',{r:20,class:'shape'},g)}
+  else{mk('rect',{x:-23,y:-23,width:46,height:46,transform:'rotate(45)',class:'ring'},g);mk('rect',{x:-17,y:-17,width:34,height:34,transform:'rotate(45)',class:'shape'},g);
+    if(n.t==='S')mk('rect',{x:-12,y:-12,width:24,height:24,transform:'rotate(45)',class:'inner'},g)}
+  const c=mk('text',{class:'cost',y:5},g);c.textContent=n.f?'✓':n.c;
+  const lab=mk('text',{class:'label',y:40},g);
+  wrapLabel(n.n,TR.wrap).forEach((l,i)=>{const s=mk('tspan',{x:0,dy:i?13:0},lab);s.textContent=l});
+  mk('title',{},g).textContent=n.f?`${n.n} (${TYPE[n.t]}, granted free)`:`${n.n} (${TYPE[n.t]}, ${n.c} pt)`;
+});
+const KEY='tree-'+(TR.key||ti), saved=store.get(KEY)||{};
+let unlocked=new Set([...FREE,...(saved.u||[]).filter(id=>BY[id])]);
+let sel=null, presetIdx=Math.min(saved.preset||0,TR.presets.length-1);
+const ptsIn=$('tpts'); ptsIn.value=saved.pts!=null?saved.pts:TR.defaultPoints;
+const pathCost=P=>P.order.reduce((a,id)=>a+BY[id].c,0);
+$('tpreset').innerHTML=TR.presets.map((p,i)=>`<option value="${i}">${esc(p.name)} · ${pathCost(p)} pts</option>`).join('');
+$('tpreset').value=presetIdx;
+const isOpen=id=>BY[id].p.length===0||BY[id].p.some(p=>unlocked.has(p));
+function validSet(s){const ok=new Set();let ch=true;while(ch){ch=false;s.forEach(id=>{if(!ok.has(id)&&(BY[id].p.length===0||BY[id].p.some(p=>ok.has(p)))){ok.add(id);ch=true}})}return ok.size===s.size}
+function blockers(id){const s=new Set(unlocked);s.delete(id);if(validSet(s))return[];return BY[id].kids.filter(k=>unlocked.has(k)&&!BY[k].p.some(p=>p!==id&&unlocked.has(p)))}
+const spent=()=>[...unlocked].reduce((a,id)=>a+(BY[id].f?0:BY[id].c),0);
+const save=()=>store.set(KEY,{u:[...unlocked].filter(id=>!BY[id].f),pts:+ptsIn.value,preset:presetIdx});
+function toggle(id){
+  if(BY[id].f)return;
+  if(unlocked.has(id)){if(blockers(id).length)return;unlocked.delete(id)}
+  else{if(!isOpen(id))return;unlocked.add(id)}
+  save();renderTree();
+}
+function select(id){sel=id;renderTree()}
+function renderTree(){
+  const P=TR.presets[presetIdx], inP=new Set(P.order), have=Math.max(0,+ptsIn.value||0), sp=spent();
+  NODES.forEach(n=>{const on=unlocked.has(n.id);n.el.setAttribute('class','node '+(n.f?'on free':on?'on':isOpen(n.id)?'open':'locked')+(inP.has(n.id)&&!on?' rec':'')+(sel===n.id?' sel':''));
+    n.el.setAttribute('aria-pressed',on);n.el.setAttribute('aria-label',`${n.n}, ${TYPE[n.t]}, ${n.f?'granted free':n.c+' points, '+(on?'unlocked':isOpen(n.id)?'can unlock':'locked')}`)});
+  edges.forEach(e=>e.el.setAttribute('class','edge'+(unlocked.has(e.a)&&unlocked.has(e.b)&&!(BY[e.a].f&&BY[e.b].f)?' on':'')));
+  const over=sp>have;
+  $('tbar').className='meterbar'+(over?' over':'');$('tbari').style.width=Math.min(100,have?sp/have*100:(sp?100:0))+'%';
+  $('tmtxt').className='mtxt'+(over?' over':'');
+  $('tmtxt').textContent=`${sp} of ${have} points spent · ${over?(sp-have)+' over budget':(have-sp)+' left'} · path costs ${pathCost(P)} · ${FREE.length} skills granted free`;
+  const pn=$('tpanel');
+  if(!sel){pn.innerHTML=`<span class="eyebrow">How to use</span><h3>Pick a node</h3><p>${fmt(TR.help||D.treeHelp)}</p>`;}
+  else{
+    const n=BY[sel],on=unlocked.has(sel),op=isOpen(sel),bl=on&&!n.f?blockers(sel):[],step=P.order.indexOf(sel);
+    const req=n.p.length?(n.p.length>1?'Needs any one of: ':'Needs: ')+n.p.map(p=>BY[p].n).join(', '):'Starting node, no prerequisite';
+    let st,cls,btn,dis=false;
+    if(n.f){cls='s-free';st='Granted free. This is a default skill and costs no trait points.';btn='Granted';dis=true}
+    else if(on){cls='s-on';st=bl.length?'Unlocked. Remove '+bl.map(k=>BY[k].n).join(', ')+' first to refund it.':'Unlocked.';btn=`Remove (refund ${n.c})`;dis=!!bl.length}
+    else if(op){cls='s-open';st=(sp+n.c>have?`Can unlock, but it puts you ${sp+n.c-have} over your points.`:'Can unlock now.');btn=`Unlock for ${n.c} pt${n.c>1?'s':''}`}
+    else{cls='s-locked';st='Locked. Unlock a node it needs first.';btn='Locked';dis=true}
+    pn.innerHTML=`<span class="eyebrow">${TYPE[n.t]} · ${n.f?'free':n.c+' pt'+(n.c>1?'s':'')}${step>=0?' · step '+(step+1)+' of path':''}</span><h3>${esc(n.n)}</h3>
+    <p class="req">${esc(req)}</p><p>${esc(n.e)}</p><div class="state ${cls}">${st}</div>
+    <button class="btn primary" id="ttoggle" type="button" ${dis?'disabled':''}>${btn}</button>`;
+    $('ttoggle').onclick=()=>toggle(sel);
+  }
+  let run=0,nextMarked=false;
+  $('steps-h').textContent='Trait order: '+P.name;
+  $('steps-sub').innerHTML=fmt(P.note||'');
+  $('tsteps').innerHTML=P.order.map(id=>{const n=BY[id];run+=n.c;const d=unlocked.has(id);let c=d?'done':'';if(!d&&!nextMarked){c='next';nextMarked=true}
+    return `<li class="${c}" data-id="${id}"><span class="nm">${esc(n.n)}</span><span class="pts">+${n.c} → ${run}</span></li>`}).join('');
+}
+gN.addEventListener('click',e=>{const g=e.target.closest('.node');if(g)select(g.dataset.id)});
+gN.addEventListener('dblclick',e=>{const g=e.target.closest('.node');if(g)toggle(g.dataset.id)});
+gN.addEventListener('keydown',e=>{const g=e.target.closest('.node');if(!g)return;if(e.key==='Enter'){e.preventDefault();select(g.dataset.id)}else if(e.key===' '){e.preventDefault();sel=g.dataset.id;toggle(g.dataset.id)}});
+$('tsteps').onclick=e=>{const l=e.target.closest('li');if(!l)return;select(l.dataset.id);BY[l.dataset.id].el.scrollIntoView({block:'center',inline:'center',behavior:'smooth'})};
+$('tpreset').onchange=e=>{presetIdx=+e.target.value;save();renderTree()};
+ptsIn.oninput=()=>{save();renderTree()};
+$('tfill').onclick=()=>{const have=Math.max(0,+ptsIn.value||0);unlocked=new Set(FREE);let s=0;for(const id of TR.presets[presetIdx].order){if(s+BY[id].c>have)break;s+=BY[id].c;unlocked.add(id)}save();renderTree()};
+$('tall').onclick=()=>{unlocked=new Set([...FREE,...TR.presets[presetIdx].order]);save();renderTree()};
+$('treset').onclick=()=>{unlocked=new Set(FREE);save();renderTree()};
+renderTree();
+}
+mountTree(curTree);
+
+/* rotation */
+$('rot-h').textContent=D.rotation.title;
+$('rot-intro').innerHTML=fmt(D.rotation.intro);
+$('rot').innerHTML=D.rotation.steps.map(s=>`<li><div><b>${s.t}</b>${s.d?'<br>'+fmt(s.d):''}${s.k?'<div class="keys">'+s.k.map(k=>'<kbd>'+k+'</kbd>').join('')+'</div>':''}</div></li>`).join('');
+$('rot-after').innerHTML=fmt(D.rotation.after);
+
+/* split planner */
+const SP=D.split, sh=$('sh'), sa=$('sa'), av=$('avail');
+$('plan-intro').innerHTML=fmt(SP.intro);
+$('lh').textContent=SP.main;$('la').textContent=SP.alt;
+sh.value=SP.presets[0].m;sa.value=SP.presets[0].a;
+$('splitpresets').innerHTML=SP.presets.map((p,i)=>`<button class="btn" type="button" data-i="${i}">${esc(p.label)}</button>`).join('');
+$('splitpresets').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const p=SP.presets[+b.dataset.i];sh.value=p.m;sa.value=p.a;plan()});
+function plan(){
+  const h=+sh.value,a=+sa.value,A=Math.max(0,Math.min(120,+av.value||0)),used=h+a,over=Math.max(0,used-A),scale=Math.max(A,used)||1;
+  $('oh').value=h;$('oa').value=a;
+  $('bh').style.width=(Math.min(h,A)/scale*100)+'%';$('ba').style.width=(Math.max(0,Math.min(a,A-h))/scale*100)+'%';$('bo').style.width=(over/scale*100)+'%';
+  $('ptxt').textContent=`${used} spent · ${Math.max(0,A-used)} left · ${A} available`;
+  let c,m;
+  if(over>0){c='v-bad';m=`You're ${over} points over what you have. Take them out of ${SP.alt} first, because ${SP.main} carries the build.`}
+  else if(h>=SP.mainMin){c='v-ok';m=`${SP.main} has enough for the full path (${SP.mainMin} points). ${A-used>0?`${A-used} unspent. RaidDex suggests holding spares until more Coilstone regions open.`:'Every point you have is spent.'}`}
+  else{c='v-warn';m=`${SP.main} is below the ${SP.mainMin} points the full path in the tree above costs. That's fine while leveling. Follow the trait order and add points as you find Coilstones.`}
+  const v=$('verdict');v.className='verdict '+c;v.textContent=m;
+}
+[sh,sa,av].forEach(x=>x.addEventListener('input',plan));plan();
+
+/* disputes, sources, footer */
+$('dis').innerHTML=D.disputes.map(r=>'<tr>'+r.map(c=>'<td>'+fmt(c)+'</td>').join('')+'</tr>').join('');
+$('src').innerHTML=D.sources.map(s=>`<li><a href="${s.u}" target="_blank" rel="noopener">${esc(s.t)}</a>${s.n?': '+esc(s.n):''}</li>`).join('');
+$('foot').innerHTML=fmt(D.footer);
+}
+boot();
+</script>
+
+</html>

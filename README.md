@@ -8,13 +8,16 @@ Start-to-endgame build guides for ArcheAge Chronicles (Early Access, November 20
 - A weapon point-split planner
 - A table of where the guides disagree, plus sources
 
-| Class | Build | Trait tree |
+| Class | Build | Trait trees |
 |---|---|---|
-| [Berserker](docs/berserker-warhammer.html) | Fire & Thunder Warhammer (RaidDex Thunderclap) | Matches the in-game screen |
-| [Ranger](docs/ranger-storm-hatchet.html) | Storm Hatchets with a Longbow opener | Matches the in-game screen |
-| [Mage](docs/mage-thunderbolt.html) | Fire leveling to Thunderbolt Staff | Approximate layout |
+| [Warrior](docs/warrior-frostbreaker.html) | Frostbreaker Greatsword with a Longsword healing swap | Greatsword and Longsword (approximate layout) |
+| [Berserker](docs/berserker-warhammer.html) | Fire & Thunder Warhammer (RaidDex Thunderclap) | Warhammer (matches the in-game screen) and Axe & Shield |
+| [Ranger](docs/ranger-storm-hatchet.html) | Storm Hatchets with a Longbow opener | Hatchets (matches the in-game screen) and Longbow |
+| [Mage](docs/mage-thunderbolt.html) | Fire leveling to Thunderbolt Staff | Elemental Staff and Wavesword (approximate layout) |
 
-**These builds have not been verified in-game.** They combine fan guides (RaidDex, ArcheAge Builds, AOEAH, Wikily and others), and every claim on each page is tagged by how many sources back it up. Trait node names and costs come from Wikily.
+**Granted skills:** each weapon's default skills cost no trait points. That's Proficiency plus every skill that doesn't branch from it (the lit cluster on the left of the in-game Traits screen). They're marked ✓ and excluded from point totals.
+
+**These builds have not been verified in-game.** They combine fan guides (RaidDex, ArcheAge Builds, AOEAH, Wikily and others), and every claim on each page is tagged by how many sources back it up. Trait node names, costs and requirements for all 8 weapons come from Wikily. Plain-text tree data lives in `src/trees/`.
 
 ## Viewing
 

@@ -1,0 +1,56 @@
+# row|name|type|cost|parents|effect   — source: wikily.gg/archeage-chronicles/weapons/greatsword
+1|Greatsword Proficiency|P|1||Lets you equip greatswords.
+2|Arc Slash|S|1||Wide arc attack. Stronger when fully charged.
+2|Chain Slash|S|1|Arc Slash|Follow-up wide arc. Stronger when fully charged.
+2|Sunder|S|1|Chain Slash|Diagonal slash. Take less damage while charging.
+2|Sweeping Slash|S|1|Greatsword Proficiency|Two-hit combo with a short shield.
+2|Pommel Strike|S|1|Greatsword Proficiency|On hit, grants a long-lasting shield that scales with Max HP.
+3|Leaping Strike|S|1|Arc Slash|Stagger-immune leap attack that combos into Vertical Slash.
+3|Unbridled Might|P|1|Sweeping Slash|Arc, Chain and Sunder build Resolve on hit.
+3|Retaliate|P|1|Pommel Strike|A stronger, longer Pommel Strike shield after Blade Guard.
+4|Descending Slash|S|1|Arc Slash|Downward strike while airborne.
+4|Armor Break|P|1|Unbridled Might|Heavy-skill Unbridled Might briefly boosts Stagger power.
+4|Frozen Veins|P|1|Unbridled Might|Arc and Chain Unbridled Might deal extra damage and build Freeze.
+4|Demolishing Strike|S|1|Retaliate|Staggering counterattack after a Blade Guard block.
+5|Armor Break II|P|1|Armor Break|2 s damage boost after heavy-skill Unbridled Might.
+5|Frozen Veins II|P|1|Frozen Veins|Arc and Chain Unbridled Might add an attack.
+5|Demolishing Strike - Freeze|P|2|Demolishing Strike|Demolishing Strike builds Freeze.
+5|Demolishing Strike - Expert|P|2|Demolishing Strike|Demolishing Strike costs no SP.
+6|Vertical Slash|S|1||Long vertical slash that breaks guard.
+6|Rising Slash|S|1|Vertical Slash|Guard-breaking vertical slash. Stronger when charged.
+6|Final Cleave|S|1|Rising Slash|Long vertical slash that breaks guard.
+6|Iron Balance|P|1|Armor Break II;Frozen Veins II|Successful vertical hits can stack Resolve.
+6|Fatal Cleave|S|3|Demolishing Strike - Freeze;Demolishing Strike - Expert|Strips shields, cuts damage taken, and grants Stagger immunity.
+7|Riposte|S|1|Vertical Slash|Quick staggering follow-up during Vertical Slash.
+7|Shove Kick|S|1|Riposte|Staggering kick with brief Stagger immunity.
+7|Greatsword Mastery|P|2|Iron Balance|Faster Arc and Chain Slash.
+7|Uncontrollable Power|P|2|Iron Balance|Vertical Slash charges faster.
+7|Swift Cut|S|2|Fatal Cleave|Follows Demolishing Strike and builds Exhaust.
+8|Frosted Gleam|P|3|Greatsword Mastery;Uncontrollable Power|Sweeping Slash builds Freeze and briefly enables Final Cleave.
+8|Lightweight Upgrade|P|1|Swift Cut|Shield at the start of Blade Guard if you have no Brace shield.
+8|Heavyweight Upgrade|P|1|Swift Cut|Stronger Brace shield.
+9|Blade Guard|S|1||Block frontal attacks while moving slowly. Not Fatal Attacks.
+9|Chain Slash Combo|P|1|Frosted Gleam|After Colossal Thrust, a light attack leads into Chain Slash.
+9|Physical PEN|T|1|Lightweight Upgrade;Heavyweight Upgrade|+12 Physical PEN.
+10|Brawl|P|3|Chain Slash Combo|Colossal Thrust, Leaping Strike and Sunder build Resolve.
+10|Swift Cut - Freeze|P|2|Physical PEN|Swift Cut builds Freeze.
+10|Swift Cut - Neutralize|P|2|Physical PEN|Extra Swift Cut hit that hits Exhausted targets harder.
+11|Evade|S|1||Quick dodge in the chosen direction.
+11|Colossal Thrust|S|1|Evade|Thrust after a dodge.
+11|Carve Up|P|2|Brawl|Extra Vertical Slash hit that may grant Resolve.
+11|Clean Sweep|P|2|Brawl|Spend extra SP to repeat the Sweeping Slash combo.
+11|Crisis Response|P|2|Swift Cut - Freeze;Swift Cut - Neutralize|Below 50% HP, a stronger Retaliate shield.
+12|Clean Cut|P|2|Carve Up;Clean Sweep|Fully charged vertical skills hit Frozen enemies harder.
+12|Fortified Shields|P|1|Crisis Response|Stronger shields overall.
+13|Brace|P|1||Stagger-immune when hit under a shield. Arc, Sunder and Vertical Slash grant shields.
+13|Turning Strike|S|3|Clean Cut|Counterstrike after Sunder with a brief guard stance.
+13|Cross Slash|S|3|Fortified Shields|Combos from Arc Slash. More damage while shielded.
+14|Momentum Lock|P|2|Turning Strike|Unbridled Might spends only 3 Resolve.
+14|Rain Cleave|S|2|Cross Slash|Breaks guard and knocks down. More damage while shielded.
+15|Rampage|P|3|Momentum Lock|Unbridled Might on Final Cleave adds a free charged Final Cleave.
+15|Cleaving Art|P|2|Rain Cleave|Fatal Cleave spends HP for more damage and grants Immortal.
+15|Downpour Slash|S|2|Rain Cleave|Rain Cleave gets one extra use.
+16|Warrior's Cry|S|3|Rampage|Spend HP on a wide attack, then go Berserk.
+16|Frostfang|P|3|Rampage|Rising Slash adds a long-range hit. Freezing grants Resolve.
+16|Vengeful Rush|S|3|Cleaving Art|Charging knockdown with damage reduction. 30 s cooldown.
+16|Waterspout|P|3|Downpour Slash|Rain Cleave builds Freeze, and Rising Slash briefly fully charges.

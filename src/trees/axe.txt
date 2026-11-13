@@ -1,0 +1,53 @@
+# row|name|type S/P/T|cost|parents (; separated names)|effect   — source: wikily.gg/archeage-chronicles/weapons/axe
+1|Axe Proficiency|P|1||Lets you equip axes.
+2|Axe Smash|S|1||Three-hit light combo. Staggers, and the last hit knocks back.
+2|Giant's Bellow|P|1|Axe Proficiency|Battle Cry cuts damage taken and boosts Physical Amplification for 8 s.
+2|Death Ward|S|1|Axe Proficiency|15 s of immortality and Stagger immunity. 300 s cooldown.
+2|Reckless Destroyer|S|1|Axe Proficiency|Three-hit combo after Axe Smash. Knocks back and builds Poison.
+2|Damage ↑ at HP ≥70%|T|10||+2.5% damage while your HP is at 70% or higher.
+3|Triumphant Cry|P|1|Giant's Bellow|Heavy Attack after Barbaric Strike's third hit casts Battle Cry.
+3|Overpower|S|1|Reckless Destroyer|Builds Overpower. At 12 stacks, Tremor Strike spends them on a heavy area knockdown.
+3|Weapon Physical ATK ↑|T|5|Damage ↑ at HP ≥70%|+10% weapon Physical ATK.
+3|Weapon Magic ATK ↑|T|5|Damage ↑ at HP ≥70%|+10% weapon Magic ATK.
+4|Barbaric Strike|S|1||Three-hit heavy combo. The third hit knocks down.
+4|Body Slam|S|1|Axe Smash;Barbaric Strike|Aerial crash with area damage.
+4|Rally|P|2|Triumphant Cry|Battle Cry raises your damage, and nearby party members', for 12 s.
+4|Brutality|P|2|Triumphant Cry|Battle Cry hits twice and deals more damage.
+4|Tempest|P|3|Overpower|Reckless Destroyer adds an area attack.
+4|Perseverance|P|3|Overpower|Reckless Destroyer cuts the damage you take for 3 s.
+4|Damage ↑ vs HP ≥70%|T|5|Damage ↑ at HP ≥70%|+5% damage against targets at 70% HP or higher.
+4|Damage ↑ vs HP ≤40%|T|5|Damage ↑ at HP ≥70%|+5% damage against targets at 40% HP or less.
+5|Forceful Lunge|S|1|Barbaric Strike|Leaping area slam with knockback. Stagger-immune during the leap.
+5|Resounding Roar|P|2|Rally;Brutality|More Battle Cry damage while your HP is at 70% or higher.
+5|Clash|P|2|Tempest;Perseverance|A critical Axe Smash turns your next light attack into Reckless Destroyer.
+6|Tremor Strike|S|1|Barbaric Strike|Area damage and Stagger that builds Stun.
+6|Shield Slam|S|3|Resounding Roar|Shield bash with knockback. High SP cost, partly refunded on hit.
+6|Heavy Hitter|S|3|Clash|Charge Barbaric Strike's third hit for more damage and Guard Break.
+7|Stomp|S|1|Barbaric Strike|Leaping stomp with area damage and knockback.
+7|Shield Slam - Stun|P|1|Shield Slam|Shield Slam after a block hits harder and builds Stun.
+7|Shield Crash|P|1|Shield Slam|Shield Slam after a block hits harder and knocks down.
+7|Battle Cry - Poison|P|1|Heavy Hitter|Battle Cry builds Poison.
+8|Twin Pulse|P|3|Shield Slam - Stun;Shield Crash|Battle Cry grants Pulse. At 3 stacks you regenerate HP.
+8|Ruthless Force|P|2|Battle Cry - Poison|Below 50% HP, Reckless Destroyer hits harder and heals you.
+9|Shield Up|S|1||Block frontal attacks while you move. Can't block Fatal Attacks.
+9|Battle Cry|S|1|Shield Up|Heals you, knocks back, and gives Stagger immunity and damage reduction.
+9|Reel In|S|2|Twin Pulse|Hook and pull a human enemy, rooting them for 4 s. Not bosses. 15 s cooldown.
+9|Fog ATK|T|1|Ruthless Force|+20 Fog ATK.
+10|Physical Crit|T|1|Reel In|+25 Physical Amplification.
+10|Relentless Drive|P|2|Fog ATK|Axe knockback skills restore SP.
+11|Evade|S|1||Quick dodge in the chosen direction.
+11|Uppercut|S|1|Evade|Upward strike after a dodge, with knockback.
+11|Brutal Crash|S|2|Physical Crit|After Shield Slam, a staggering charge with knockback and Stagger immunity. 10 s cooldown.
+11|Dominance|P|2|Relentless Drive|More Stomp damage, and kills restore SP.
+11|Fervent Step|P|2|Relentless Drive|Forceful Lunge boosts Stagger power for 8 s.
+12|Steadfast|P|1|Brutal Crash|Battle Cry raises Stagger RES for 8 s.
+12|Rousing Call|P|1|Brutal Crash|Battle Cry lowers Burn, Freeze and Shock on you and your party.
+12|Assured Blow|P|2|Dominance;Fervent Step|Tremor Strike costs no SP.
+13|Fearsome Might|P|2|Steadfast;Rousing Call|Poisoning an enemy, or hitting a poisoned one, grants Twin Pulse.
+13|Final Act|P|2|Assured Blow|Barbaric Strike's third hit deals more to enemies below 50% HP.
+14|Battleborn|P|2|Fearsome Might|A critical first Barbaric Strike makes the next one start at the third hit.
+14|Unbound Might|P|3|Final Act|Tremor Strike always grants Overpower.
+14|Fierce Breakthrough|P|3|Final Act|Axe Smash becomes a Reckless Destroyer that can hit up to 5 times.
+15|Ridge Shatter|S|3|Battleborn|Spends Twin Pulse on an area knockdown, with damage reduction and Stagger immunity.
+15|Doombringer|S|2|Unbound Might|A fully charged Heavy Hitter third hit can repeat, each time triggering Overpower.
+15|Battle Echo|P|2|Fierce Breakthrough|A critical Reckless Destroyer grants a cheaper, repeatable Battle Cry for 3 s.

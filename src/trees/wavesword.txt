@@ -1,0 +1,41 @@
+# row|name|type|cost|parents|effect   — source: wikily.gg/archeage-chronicles/weapons/wavesword
+1|Wavesword Proficiency|P|1||Lets you equip waveswords.
+2|Wave Slash|S|1||Slash that deals damage and Stagger.
+2|Ethereal Thrust|S|1|Wave Slash|Two-hit thrust that staggers.
+3|Lunar Eclipse|P|1|Wavesword Proficiency|Builds up to 5 stacks. Ethereal Thrust and Cleave spend them on area hits.
+3|Frost Shard|S|1|Wavesword Proficiency|Heavy lunge. Free to use after you inflict Freeze.
+4|Tidal Slash|S|1||Leap. The first hit breaks guard and knocks back, the second staggers.
+4|Falling Petal|S|1|Wave Slash;Tidal Slash|Leap into a downward cleave.
+4|Rushing Tide|S|1|Lunar Eclipse|Two-hit combo, granted on a Lunar Eclipse crit. No SP.
+4|Swift Bloom|P|1|Frost Shard|Ice Crystal casts faster.
+4|Frost Blossom Flurry|S|1|Frost Shard|Granted by an Ethereal Cleave crit. Grants Ice Crystal and builds Freeze.
+5|Ethereal Cleave|S|1|Tidal Slash|Left-hand strike. The second hit gives Stagger immunity and knocks back.
+5|Tidal Rend|S|2|Rushing Tide|Three-strike dash that spends Lunar Eclipse on up to 3 area hits.
+5|Fortification|P|2|Swift Bloom|After an Ice Crystal block, take less damage for 15 s.
+5|Arcane Elevation|P|2|Frost Blossom Flurry|Ethereal Cleave and Thrust raise Magic Crit and damage for 20 s.
+6|Phantom Wave|S|3|Tidal Rend|Up to 3 Stagger-immune attacks. The third can combo into Frost Shard.
+6|Tidal ATK|T|1|Fortification;Arcane Elevation|+20 Tidal ATK.
+7|Ice Crystal|S|1||Defensive stance. A successful block grants a shield that scales with Max HP.
+7|Glacial Arc|S|1|Ice Crystal|Cancel Ice Crystal into a piercing energy blade.
+7|High Tide|P|1|Phantom Wave|A Tidal Slash crit grants 5 Lunar Eclipse stacks.
+7|Flowing Dew|S|1|Tidal ATK|Backstep while casting Ice Crystal. 15 s Stagger power buff.
+8|Raging Tidal Slash|S|1|Ice Crystal|Lunge and glacial blast that consumes Ice Crystal.
+8|Magic Amplification|T|1|High Tide|+25 Magic Amplification.
+8|Rapid Freeze|S|2|Flowing Dew|Glacial field with continuous damage and Freeze. 15 s cooldown.
+9|Raging Tide|P|2|Magic Amplification|Faster Wave Slash.
+9|Tidal Rush|S|2|Rapid Freeze|Several piercing blades that stagger and Freeze.
+10|Evade|S|1||Quick dodge in the chosen direction.
+10|Swift Slash|S|1|Evade|Lunge and carve two arcs.
+10|Tidal Slash II|P|2|Raging Tide|Tidal Slash combos from Wave Slash, costs no SP, and adds a hit.
+10|Tidal Stride|P|2|Raging Tide|Swift Slash costs no SP.
+10|Glacial Burst|S|3|Tidal Rush|Ice burst that staggers. Grants Ice Crystal during Flowing Dew.
+11|Aerial Wrath|P|3|Tidal Slash II;Tidal Stride|Lunar Eclipse cap rises from 5 to 10.
+11|Frost Shard - Siphon|P|2|Glacial Burst|Frost Shard heals you based on damage dealt.
+11|Frost Shard - Breakthrough|P|2|Glacial Burst|Frost Shard can be used again right away.
+12|Cruel Reckoning|P|2|Aerial Wrath|Lunar Eclipse hits harder and builds Freeze.
+12|Thundersnow|S|3|Frost Shard - Siphon;Frost Shard - Breakthrough|After an Ice Crystal block, a blizzard area attack. 40 s cooldown.
+13|Full Moon Cleave|S|3|Cruel Reckoning|Free area hit after two Lunar Eclipse crits, with Stagger immunity.
+13|Shatter|P|2|Thundersnow|Thundersnow has no cooldown for 6 s after you inflict Freeze.
+14|Frozen Oath|P|2|Full Moon Cleave|Phantom Wave triggers 4 Lunar Eclipse uses without spending stacks.
+14|Vengeful Resonance|P|2|Full Moon Cleave|Blocking or Frost Blossom Flurry grants 10 Lunar Eclipse stacks.
+14|Nebe's Might|P|3|Shatter|Evading during Ice Crystal gives 6 s of damage reduction and Stagger immunity.

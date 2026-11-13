@@ -116,6 +116,12 @@ select{font:500 14px var(--body);padding:7px 10px;border-radius:6px;border:1px s
 .node.rec .ring{stroke:var(--volt);stroke-width:2;stroke-dasharray:5 4}
 .node.sel .shape{stroke:var(--volt);stroke-width:3.5}
 .node:focus-visible .shape{stroke:var(--volt);stroke-width:3.5}
+.node.free .shape{fill:var(--volt-soft);stroke:var(--volt)}
+.node.free .inner{stroke:var(--volt)}
+.node.free .cost{fill:var(--volt)}
+.state.s-free{color:var(--volt);background:var(--volt-soft)}
+.wbtn[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.wbtn[aria-pressed="true"] small{color:var(--bg);opacity:.75}
 .glabel{font:500 11px var(--mono);fill:var(--muted);letter-spacing:.08em;text-transform:uppercase}
 .tpanel{position:sticky;top:12px;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
 .tpanel h3{font-size:22px}
@@ -188,6 +194,7 @@ footer{font-size:13px;color:var(--muted)}
 
 <section aria-labelledby="tree-h">
   <h2 id="tree-h"></h2>
+  <div class="tabs" id="wswitch" aria-label="Weapon"></div>
   <p id="tree-intro"></p>
   <div class="treebox">
     <div class="tree-controls">
@@ -208,6 +215,7 @@ footer{font-size:13px;color:var(--muted)}
         <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="none" stroke="var(--muted)"/><rect x="-3" y="-3" width="6" height="6" transform="rotate(45)" fill="none" stroke="var(--muted)"/></svg>Skill</span>
         <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="none" stroke="var(--muted)"/></svg>Passive</span>
         <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><circle r="7" fill="none" stroke="var(--muted)"/></svg>Stat</span>
+        <span><svg width="16" height="16" viewBox="-10 -10 20 20" aria-hidden="true"><rect x="-6" y="-6" width="12" height="12" transform="rotate(45)" fill="var(--volt-soft)" stroke="var(--volt)" stroke-width="2"/></svg>Granted free (✓)</span>
         <span>Number inside = point cost</span>
       </div>
     </div>
@@ -297,58 +305,72 @@ $('stage').addEventListener('change',e=>{const k=e.target.dataset.k;if(!k)return
 renderStage();
 
 /* trait tree */
-const TR=D.tree, NODES=TR.nodes, BY={};
+const TREES=D.trees, TYPE={S:'Skill',P:'Passive',T:'Stat'};
+let curTree=Math.min(+(store.get('wtree')||0),TREES.length-1);
+const NS='http://www.w3.org/2000/svg';
+const mk=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+function wrapLabel(t,max){if(!max||t.length<=max)return[t];const w=t.split(' ');const out=[''];w.forEach(x=>{const c=out[out.length-1];if(c&&(c+' '+x).length>max)out.push(x);else out[out.length-1]=c?c+' '+x:x});return out.slice(0,2)}
+function mountTree(ti){
+const TR=TREES[ti], NODES=TR.nodes, BY={};
 NODES.forEach(n=>{n.p=n.p||[];n.kids=[];BY[n.id]=n});
 NODES.forEach(n=>n.p.forEach(p=>BY[p].kids.push(n.id)));
-const TYPE={S:'Skill',P:'Passive',T:'Stat'};
+const FREE=NODES.filter(n=>n.f).map(n=>n.id);
+$('wswitch').hidden=TREES.length<2;
+$('wswitch').innerHTML=TREES.map((t,i)=>`<button type="button" class="tab wbtn" aria-pressed="${i===ti}" data-i="${i}">${esc(t.weapon)}<small>${esc(t.role||'')}</small></button>`).join('');
+$('wswitch').onclick=e=>{const b=e.target.closest('.wbtn');if(!b)return;curTree=+b.dataset.i;store.set('wtree',curTree);mountTree(curTree)};
 $('tree-h').textContent='Trait tree: '+TR.weapon;
 $('tree-intro').innerHTML=fmt(TR.intro);
-$('tsvg').setAttribute('aria-label',TR.weapon+' trait tree');
+const svg=$('tsvg'); svg.innerHTML=''; svg.setAttribute('aria-label',TR.weapon+' trait tree');
 if(NODES.some(n=>n.x==null)){
-  const rows={},GAP=150,ROWH=104;
+  const GAP=150,ROWH=104,rows={};
   NODES.forEach((n,i)=>{n._i=i;(rows[n.r]=rows[n.r]||[]).push(n)});
-  Object.keys(rows).map(Number).sort((a,b)=>a-b).forEach(r=>{
-    const L=rows[r];
-    L.forEach((n,i)=>{const px=n.p.map(id=>BY[id]).filter(q=>q.x!=null).map(q=>q.x);n._k=px.length?px.reduce((a,b)=>a+b,0)/px.length:(i-(L.length-1)/2)*GAP});
+  const keys=Object.keys(rows).map(Number).sort((a,b)=>a-b);
+  keys.forEach(r=>{
+    const L=rows[r].filter(n=>!n.f&&!n.sc);
+    L.forEach((n,i)=>{const px=n.p.map(id=>BY[id]).filter(q=>q.x!=null&&!q.f&&!q.sc).map(q=>q.x);n._k=px.length?px.reduce((a,b)=>a+b,0)/px.length:(i-(L.length-1)/2)*GAP});
     L.sort((a,b)=>a._k-b._k||a._i-b._i);
     L.forEach((n,i)=>{n.x=(i-(L.length-1)/2)*GAP;n.y=r*ROWH});
   });
+  const mid=NODES.filter(n=>!n.f&&!n.sc), minP=Math.min(...mid.map(n=>n.x)), maxP=Math.max(...mid.map(n=>n.x));
+  keys.forEach(r=>{
+    const F=rows[r].filter(n=>n.f), S=rows[r].filter(n=>n.sc);
+    F.forEach((n,i)=>{n.x=minP-190-(F.length-1-i)*GAP;n.y=r*ROWH});
+    S.forEach((n,i)=>{n.x=maxP+190+i*GAP;n.y=r*ROWH});
+  });
 }
-const PAD=TR.pad||90;
-const xs=NODES.map(n=>n.x), ys=NODES.map(n=>n.y);
+const PAD=TR.pad||90, xs=NODES.map(n=>n.x), ys=NODES.map(n=>n.y);
 const vb=[Math.min(...xs)-PAD,Math.min(...ys)-46,Math.max(...xs)-Math.min(...xs)+PAD*2,Math.max(...ys)-Math.min(...ys)+46+66];
-const svg=$('tsvg'); svg.setAttribute('viewBox',vb.join(' ')); svg.style.minWidth=Math.round(vb[2]*0.82)+'px';
-const NS='http://www.w3.org/2000/svg';
-const mk=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+svg.setAttribute('viewBox',vb.join(' ')); svg.style.minWidth=Math.round(vb[2]*0.82)+'px';
 const gE=mk('g',{},svg), gL=mk('g',{},svg), gN=mk('g',{},svg);
-(TR.groups||[]).forEach(g=>{const t=mk('text',{x:g.x,y:g.y,class:'glabel','text-anchor':'middle'},gL);t.textContent=g.text});
+const groups=TR.groups||(TR.auto!==false&&FREE.length>1?[{x:Math.min(...NODES.filter(n=>n.f&&!/Proficiency$/.test(n.n)).map(n=>n.x)),y:Math.min(...ys)-16,text:'Granted skills'}]:[]);
+groups.forEach(g=>{const t=mk('text',{x:g.x,y:g.y,class:'glabel','text-anchor':'middle'},gL);t.textContent=g.text});
 const edges=[];
 NODES.forEach(n=>n.p.forEach(pid=>{const p=BY[pid];edges.push({a:pid,b:n.id,el:mk('line',{x1:p.x,y1:p.y,x2:n.x,y2:n.y,class:'edge'},gE)})}));
-function wrapLabel(t,max){if(!max||t.length<=max)return[t];const w=t.split(' ');const out=[''];w.forEach(x=>{const c=out[out.length-1];if(c&&(c+' '+x).length>max)out.push(x);else out[out.length-1]=c?c+' '+x:x});return out.slice(0,2)}
 NODES.forEach(n=>{
   const g=mk('g',{class:'node',transform:`translate(${n.x},${n.y})`,tabindex:0,role:'button','data-id':n.id},gN);
   n.el=g;
   if(n.t==='T'){mk('circle',{r:31,class:'ring'},g);mk('circle',{r:20,class:'shape'},g)}
   else{mk('rect',{x:-23,y:-23,width:46,height:46,transform:'rotate(45)',class:'ring'},g);mk('rect',{x:-17,y:-17,width:34,height:34,transform:'rotate(45)',class:'shape'},g);
     if(n.t==='S')mk('rect',{x:-12,y:-12,width:24,height:24,transform:'rotate(45)',class:'inner'},g)}
-  const c=mk('text',{class:'cost',y:5},g);c.textContent=n.c;
-  const lines=wrapLabel(n.n,TR.wrap);const lab=mk('text',{class:'label',y:40},g);
-  lines.forEach((l,i)=>{const s=mk('tspan',{x:0,dy:i?13:0},lab);s.textContent=l});
-  const ti=mk('title',{},g);ti.textContent=`${n.n} (${TYPE[n.t]}, ${n.c} pt)`;
+  const c=mk('text',{class:'cost',y:5},g);c.textContent=n.f?'✓':n.c;
+  const lab=mk('text',{class:'label',y:40},g);
+  wrapLabel(n.n,TR.wrap).forEach((l,i)=>{const s=mk('tspan',{x:0,dy:i?13:0},lab);s.textContent=l});
+  mk('title',{},g).textContent=n.f?`${n.n} (${TYPE[n.t]}, granted free)`:`${n.n} (${TYPE[n.t]}, ${n.c} pt)`;
 });
-const saved=store.get('tree')||{};
-let unlocked=new Set((saved.u||[]).filter(id=>BY[id]));
-let sel=null;
-let presetIdx=Math.min(saved.preset||0,TR.presets.length-1);
+const KEY='tree-'+(TR.key||ti), saved=store.get(KEY)||{};
+let unlocked=new Set([...FREE,...(saved.u||[]).filter(id=>BY[id])]);
+let sel=null, presetIdx=Math.min(saved.preset||0,TR.presets.length-1);
 const ptsIn=$('tpts'); ptsIn.value=saved.pts!=null?saved.pts:TR.defaultPoints;
-$('tpreset').innerHTML=TR.presets.map((p,i)=>`<option value="${i}">${esc(p.name)} · ${p.order.reduce((a,id)=>a+BY[id].c,0)} pts</option>`).join('');
+const pathCost=P=>P.order.reduce((a,id)=>a+BY[id].c,0);
+$('tpreset').innerHTML=TR.presets.map((p,i)=>`<option value="${i}">${esc(p.name)} · ${pathCost(p)} pts</option>`).join('');
 $('tpreset').value=presetIdx;
-const isOpen=(id,set=unlocked)=>BY[id].p.length===0||BY[id].p.some(p=>set.has(p));
+const isOpen=id=>BY[id].p.length===0||BY[id].p.some(p=>unlocked.has(p));
 function validSet(s){const ok=new Set();let ch=true;while(ch){ch=false;s.forEach(id=>{if(!ok.has(id)&&(BY[id].p.length===0||BY[id].p.some(p=>ok.has(p)))){ok.add(id);ch=true}})}return ok.size===s.size}
 function blockers(id){const s=new Set(unlocked);s.delete(id);if(validSet(s))return[];return BY[id].kids.filter(k=>unlocked.has(k)&&!BY[k].p.some(p=>p!==id&&unlocked.has(p)))}
-const spent=()=>[...unlocked].reduce((a,id)=>a+BY[id].c,0);
-function save(){store.set('tree',{u:[...unlocked],pts:+ptsIn.value,preset:presetIdx})}
+const spent=()=>[...unlocked].reduce((a,id)=>a+(BY[id].f?0:BY[id].c),0);
+const save=()=>store.set(KEY,{u:[...unlocked].filter(id=>!BY[id].f),pts:+ptsIn.value,preset:presetIdx});
 function toggle(id){
+  if(BY[id].f)return;
   if(unlocked.has(id)){if(blockers(id).length)return;unlocked.delete(id)}
   else{if(!isOpen(id))return;unlocked.add(id)}
   save();renderTree();
@@ -356,28 +378,28 @@ function toggle(id){
 function select(id){sel=id;renderTree()}
 function renderTree(){
   const P=TR.presets[presetIdx], inP=new Set(P.order), have=Math.max(0,+ptsIn.value||0), sp=spent();
-  NODES.forEach(n=>{const on=unlocked.has(n.id);n.el.setAttribute('class','node '+(on?'on':isOpen(n.id)?'open':'locked')+(inP.has(n.id)&&!on?' rec':'')+(sel===n.id?' sel':''));n.el.setAttribute('aria-pressed',on);n.el.setAttribute('aria-label',`${n.n}, ${TYPE[n.t]}, ${n.c} points, ${on?'unlocked':isOpen(n.id)?'can unlock':'locked'}`)});
-  edges.forEach(e=>e.el.setAttribute('class','edge'+(unlocked.has(e.a)&&unlocked.has(e.b)?' on':'')));
+  NODES.forEach(n=>{const on=unlocked.has(n.id);n.el.setAttribute('class','node '+(n.f?'on free':on?'on':isOpen(n.id)?'open':'locked')+(inP.has(n.id)&&!on?' rec':'')+(sel===n.id?' sel':''));
+    n.el.setAttribute('aria-pressed',on);n.el.setAttribute('aria-label',`${n.n}, ${TYPE[n.t]}, ${n.f?'granted free':n.c+' points, '+(on?'unlocked':isOpen(n.id)?'can unlock':'locked')}`)});
+  edges.forEach(e=>e.el.setAttribute('class','edge'+(unlocked.has(e.a)&&unlocked.has(e.b)&&!(BY[e.a].f&&BY[e.b].f)?' on':'')));
   const over=sp>have;
   $('tbar').className='meterbar'+(over?' over':'');$('tbari').style.width=Math.min(100,have?sp/have*100:(sp?100:0))+'%';
   $('tmtxt').className='mtxt'+(over?' over':'');
-  $('tmtxt').textContent=`${sp} of ${have} points spent · ${over?(sp-have)+' over budget':(have-sp)+' left'} · full path costs ${P.order.reduce((a,id)=>a+BY[id].c,0)}`;
-  // panel
+  $('tmtxt').textContent=`${sp} of ${have} points spent · ${over?(sp-have)+' over budget':(have-sp)+' left'} · path costs ${pathCost(P)} · ${FREE.length} skills granted free`;
   const pn=$('tpanel');
-  if(!sel){pn.innerHTML=`<span class="eyebrow">How to use</span><h3>Pick a node</h3><p>${fmt(TR.help)}</p>`;}
+  if(!sel){pn.innerHTML=`<span class="eyebrow">How to use</span><h3>Pick a node</h3><p>${fmt(TR.help||D.treeHelp)}</p>`;}
   else{
-    const n=BY[sel],on=unlocked.has(sel),op=isOpen(sel),bl=on?blockers(sel):[],step=P.order.indexOf(sel);
+    const n=BY[sel],on=unlocked.has(sel),op=isOpen(sel),bl=on&&!n.f?blockers(sel):[],step=P.order.indexOf(sel);
     const req=n.p.length?(n.p.length>1?'Needs any one of: ':'Needs: ')+n.p.map(p=>BY[p].n).join(', '):'Starting node, no prerequisite';
     let st,cls,btn,dis=false;
-    if(on){cls='s-on';st=bl.length?'Unlocked. Remove '+bl.map(k=>BY[k].n).join(', ')+' first to refund it.':'Unlocked.';btn=`Remove (refund ${n.c})`;dis=!!bl.length}
+    if(n.f){cls='s-free';st='Granted free. This is a default skill and costs no trait points.';btn='Granted';dis=true}
+    else if(on){cls='s-on';st=bl.length?'Unlocked. Remove '+bl.map(k=>BY[k].n).join(', ')+' first to refund it.':'Unlocked.';btn=`Remove (refund ${n.c})`;dis=!!bl.length}
     else if(op){cls='s-open';st=(sp+n.c>have?`Can unlock, but it puts you ${sp+n.c-have} over your points.`:'Can unlock now.');btn=`Unlock for ${n.c} pt${n.c>1?'s':''}`}
     else{cls='s-locked';st='Locked. Unlock a node it needs first.';btn='Locked';dis=true}
-    pn.innerHTML=`<span class="eyebrow">${TYPE[n.t]} · ${n.c} pt${n.c>1?'s':''}${step>=0?' · step '+(step+1)+' of path':''}</span><h3>${esc(n.n)}</h3>
+    pn.innerHTML=`<span class="eyebrow">${TYPE[n.t]} · ${n.f?'free':n.c+' pt'+(n.c>1?'s':'')}${step>=0?' · step '+(step+1)+' of path':''}</span><h3>${esc(n.n)}</h3>
     <p class="req">${esc(req)}</p><p>${esc(n.e)}</p><div class="state ${cls}">${st}</div>
     <button class="btn primary" id="ttoggle" type="button" ${dis?'disabled':''}>${btn}</button>`;
     $('ttoggle').onclick=()=>toggle(sel);
   }
-  // steps
   let run=0,nextMarked=false;
   $('steps-h').textContent='Trait order: '+P.name;
   $('steps-sub').innerHTML=fmt(P.note||'');
@@ -387,13 +409,15 @@ function renderTree(){
 gN.addEventListener('click',e=>{const g=e.target.closest('.node');if(g)select(g.dataset.id)});
 gN.addEventListener('dblclick',e=>{const g=e.target.closest('.node');if(g)toggle(g.dataset.id)});
 gN.addEventListener('keydown',e=>{const g=e.target.closest('.node');if(!g)return;if(e.key==='Enter'){e.preventDefault();select(g.dataset.id)}else if(e.key===' '){e.preventDefault();sel=g.dataset.id;toggle(g.dataset.id)}});
-$('tsteps').addEventListener('click',e=>{const l=e.target.closest('li');if(!l)return;select(l.dataset.id);BY[l.dataset.id].el.scrollIntoView({block:'center',inline:'center',behavior:'smooth'})});
-$('tpreset').addEventListener('change',e=>{presetIdx=+e.target.value;save();renderTree()});
-ptsIn.addEventListener('input',()=>{save();renderTree()});
-$('tfill').onclick=()=>{const have=Math.max(0,+ptsIn.value||0);unlocked=new Set();let s=0;for(const id of TR.presets[presetIdx].order){if(s+BY[id].c>have)break;s+=BY[id].c;unlocked.add(id)}save();renderTree()};
-$('tall').onclick=()=>{unlocked=new Set(TR.presets[presetIdx].order);save();renderTree()};
-$('treset').onclick=()=>{unlocked=new Set();save();renderTree()};
+$('tsteps').onclick=e=>{const l=e.target.closest('li');if(!l)return;select(l.dataset.id);BY[l.dataset.id].el.scrollIntoView({block:'center',inline:'center',behavior:'smooth'})};
+$('tpreset').onchange=e=>{presetIdx=+e.target.value;save();renderTree()};
+ptsIn.oninput=()=>{save();renderTree()};
+$('tfill').onclick=()=>{const have=Math.max(0,+ptsIn.value||0);unlocked=new Set(FREE);let s=0;for(const id of TR.presets[presetIdx].order){if(s+BY[id].c>have)break;s+=BY[id].c;unlocked.add(id)}save();renderTree()};
+$('tall').onclick=()=>{unlocked=new Set([...FREE,...TR.presets[presetIdx].order]);save();renderTree()};
+$('treset').onclick=()=>{unlocked=new Set(FREE);save();renderTree()};
 renderTree();
+}
+mountTree(curTree);
 
 /* rotation */
 $('rot-h').textContent=D.rotation.title;

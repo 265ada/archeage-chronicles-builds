@@ -1,0 +1,61 @@
+# row|name|type|cost|parents|effect   — source: wikily.gg/archeage-chronicles/weapons/longsword
+1|Longsword Proficiency|P|1||Lets you equip longswords.
+2|Triple Slash|S|1||Up to 3 sword attacks that stagger.
+2|Closing Slash|S|1|Triple Slash|Knockback that grants Foresight for 6 s.
+2|Whirlwind Slash|S|1|Longsword Proficiency|Side strikes during Foresight, with damage reduction and Stagger immunity.
+2|Pursuit - Root|P|1|Longsword Proficiency|Pursuit roots the target for 3 s.
+2|Swift Flurry|S|1|Longsword Proficiency|Dash and strike twice after Diagonal Slash. Crits grant Foresight.
+2|Damage ↑ at HP ≥70%|T|10||+2.5% damage while your HP is at 70% or higher.
+3|Lifeflame|P|1|Whirlwind Slash|Closing Slash heals you based on damage dealt.
+3|Sharpwake|P|1|Swift Flurry|Parry grants up to 3 stacks of crit and damage for 20 s.
+3|Weapon Physical ATK ↑|T|5|Damage ↑ at HP ≥70%|+10% weapon Physical ATK.
+3|Weapon Magic ATK ↑|T|5|Damage ↑ at HP ≥70%|+10% weapon Magic ATK.
+4|Heavy Kick|S|1|Lifeflame|Knockback that builds Stun, with damage reduction. 12 s cooldown.
+4|Twin Slash|S|1|Sharpwake|Combos from Charge with knockback.
+4|Damage ↑ vs HP ≥70%|T|5|Damage ↑ at HP ≥70%|+5% damage against targets at 70% HP or higher.
+4|Damage ↑ vs HP ≤40%|T|5|Damage ↑ at HP ≥70%|+5% damage against targets at 40% HP or less.
+5|Annihilating Slash|S|2|Heavy Kick|Area attack after Whirlwind Slashes that uses Foresight and builds Bleed.
+5|Slaughter|S|1|Twin Slash|Grants 3 Sharpwake on downed enemies. 30 s cooldown.
+6|Horizontal Slash|S|1||Guard-breaking dash strike.
+6|Earthcleaver|S|1|Triple Slash;Horizontal Slash|Jump and strike down.
+6|Bloodstorm|S|3|Annihilating Slash|Area attack with knockback and Bleed. Costs HP instead of SP.
+6|Closing Slash Combo|P|1|Slaughter|Closing Slash is briefly available after Counterattack hits.
+7|Double Strike|S|1|Horizontal Slash|Combos into a heavy attack.
+7|Whirlwind Slash Mastery|P|1|Bloodstorm|Critical Whirlwind hits add a healing hit.
+7|Bloodstorm Mastery|P|1|Bloodstorm|Bloodstorm costs less HP.
+7|Breakthrough|P|2|Closing Slash Combo|Twin Slash spends all Sharpwake for a stronger extra hit.
+8|Charge|S|1|Horizontal Slash|Stagger-immune dash strike.
+8|Pursuit|S|1|Charge|Staggering stab after Charge that grants Foresight. 15 s cooldown.
+8|Whirlwind Slash Mastery II|P|2|Whirlwind Slash Mastery|Whirlwind grants Swift stacks (up to 4).
+8|Bloodstorm Mastery II|P|2|Bloodstorm Mastery|More Bloodstorm damage at 50% HP or higher.
+8|Swift Flurry Mastery|P|2|Breakthrough|Swift Flurry evades attacks for 1 s.
+8|Counterattack Mastery|P|2|Breakthrough|Counterattack hits harder and builds Stun.
+9|Longsword Thrust|S|1|Horizontal Slash|During Foresight, breaks guard and staggers.
+9|Quick Slash|S|1|Longsword Thrust|During Foresight, a staggering flurry.
+9|Cleave Down|S|1|Quick Slash|During Foresight, a flurry with knockdown that builds Stun.
+9|Whirlwind Slash - Lightning Speed|P|2|Whirlwind Slash Mastery II;Bloodstorm Mastery II|Horizontal Slash triggers Whirlwind without Foresight. 3 s cooldown.
+9|Bladeburst|S|3|Swift Flurry Mastery;Counterattack Mastery|Stationary staggering attacks. Immune while active. 60 s cooldown.
+10|Eye of the Storm|P|2|Whirlwind Slash - Lightning Speed|Heavy Kick grants Foresight.
+10|Frenzy|P|2|Whirlwind Slash - Lightning Speed|Heavy Kick combos into Bloodstorm with no HP cost.
+10|Physical Amplification|T|1|Bladeburst|+25 Physical Amplification.
+11|Parry|S|1||Parry blockable attacks.
+11|Counterattack|S|1|Parry|A successful Parry briefly enables a counterattack.
+11|Wind ATK|T|1|Eye of the Storm;Frenzy|+20 Wind ATK.
+11|Perfect Foresight|P|3|Physical Amplification|Critical Thrust, Quick Slash or Cleave Down grants Sharpwake.
+12|Resurgence|P|2|Wind ATK|Lifeflame heals more below 50% HP.
+12|Hemorrhage|S|2|Wind ATK|Reuse Bloodstorm for an HP cost.
+12|Ultimate Slash|S|2|Perfect Foresight|Quick Slash gets up to 2 extra uses.
+12|Onslaught|P|2|Perfect Foresight|Cleave Down hits harder without Foresight.
+13|Evade|S|1||Dodge in the chosen direction.
+13|Diagonal Slash|S|1|Evade|Dash at the enemy while evading.
+13|Bloodforge|P|3|Resurgence;Hemorrhage|Bloodstorm grants Bloodforge for 15 s, making skills heal. Lost on weapon swap.
+13|Ultimate Slash II|P|2|Ultimate Slash|A critical Quick Slash adds an attack.
+13|Onslaught II|P|2|Onslaught|After Foresight ends, all skills hit harder for 3 s.
+14|Bloodforge - Annihilating Slash|P|2|Bloodforge|Spend Bloodforge to reuse Annihilating Slash.
+14|Bloodthirst|P|2|Bloodforge|Bloodforge stacks up to 2, with more healing per stack.
+14|Mind's Eye|P|3|Ultimate Slash II;Onslaught II|Breakthrough with 3 Sharpwake resets Bladeburst.
+15|Crimson Surge|S|3|Bloodforge - Annihilating Slash;Bloodthirst|Big HP cost for area damage, knockback and Bleed, with Stagger immunity.
+15|Blade Wind|S|2|Mind's Eye|Staggering flurry that blocks frontal attacks and combos into Cleave Down.
+16|Worthy Sacrifice|P|2|Crimson Surge|After a Fatal Strike, reuse Crimson Surge with no HP cost.
+16|Crimson Covenant|S|2|Crimson Surge|Self-Bleed. With Block, free Crimson Surge for 5 s. 100 s cooldown.
+16|Suppress|S|3|Blade Wind|After you Stun a target, an evasive knockdown. Resets on kill.

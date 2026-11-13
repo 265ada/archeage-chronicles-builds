@@ -1,0 +1,59 @@
+# row|name|type|cost|parents|effect   — source: wikily.gg/archeage-chronicles/weapons/longbow
+1|Longbow Proficiency|P|1||Lets you equip longbows.
+2|Rapid Shot|S|1||A volley you can fire on the move, ending in a stationary shot that knocks back.
+2|Abdominal Kick|S|1|Rapid Shot|Close-range kick after Rapid Shot's second hit.
+2|Rapid Fire|S|1|Longbow Proficiency|Builds Primed stacks and opens a short Rapid Fire window.
+2|Arrow Stab|S|1|Longbow Proficiency|Dash-in attack that chains into Withdrawing Shot.
+2|Balanced Aim|P|1|Longbow Proficiency|Aimed Shot charges to Lv. 1 faster.
+3|Withdrawing Shot|S|1|Rapid Shot|Retreating shot with a brief evade.
+3|Deft Hands|S|2|Rapid Fire|Piercing Shot gets an extra attack.
+3|Arrow Stab - Bleed|P|2|Arrow Stab|Arrow Stab builds Bleed.
+3|Ice Arrow|S|1|Balanced Aim|Ice arrows that scale with Tidal ATK.
+4|Fire Arrow|S|3|Deft Hands|Homing arrow that explodes. 60 s cooldown.
+4|Counterattack Maneuver|S|2|Arrow Stab - Bleed|Two counterattacks after a Defensive Maneuver block.
+4|Crashing Waves|P|2|Ice Arrow|A charged Aimed Shot with Ice Arrow deals area damage.
+5|Piercing Shot|S|1||Stationary double arrow that staggers.
+5|Piercing Strike|S|1|Rapid Shot;Piercing Shot|Aerial arrow strike.
+5|Rapid Shot Mastery|P|1|Fire Arrow|Rapid Shot's third attack fires an extra arrow.
+5|Withdrawing Shot Mastery|P|1|Fire Arrow|Withdrawing Shot costs no SP.
+5|Abdominal Kick Mastery|S|1|Fire Arrow|Blocking while you evade chains into Abdominal Kick.
+5|Crescent Kick|S|3|Counterattack Maneuver|Adds a Counterattack Maneuver hit.
+5|Tidal ATK|T|1|Crashing Waves|+20 Tidal ATK.
+6|Focus Fire|S|1|Piercing Shot|Rapid Shot's third hit fires a knockback arrow.
+6|Rapid Shot Mastery II|P|1|Rapid Shot Mastery|Rapid Shot's third attack costs no SP.
+6|Withdrawing Shot Mastery II|P|1|Withdrawing Shot Mastery|Leaping Shot boosts Physical Amplification.
+6|Abdominal Kick Mastery II|P|1|Abdominal Kick Mastery|Abdominal Kick gets an extra hit.
+6|Hidden Blade|P|1|Crescent Kick|Stronger kicks that build Bleed.
+6|Quickdraw|S|3|Tidal ATK|Instant Lv. 1 Aimed Shot at close range. 8 s cooldown.
+6|Sniper|P|3|Tidal ATK|More Lv. 2 Aimed Shot damage, especially against non-Elites.
+7|Flip Kick|S|1|Piercing Shot|Knockback kick after Abdominal Kick.
+7|Rapid Shot Mastery III|P|3|Rapid Shot Mastery II|A critical third Rapid Shot can be reused briefly.
+7|Leaping Shot Mastery|P|3|Withdrawing Shot Mastery II|Leaping Shot fires 4 arrows.
+7|Flip Kick Mastery|P|3|Abdominal Kick Mastery II|A critical Flip Kick adds a knockdown hit.
+7|Hawk Talon|P|3|Hidden Blade|Stronger Crescent Kick that heals on damage.
+7|Flash Freeze|P|2|Quickdraw|Quickdraw's Aimed Shot gains Ice Arrow.
+7|Barbed Arrowhead|P|2|Quickdraw|Lv. 1 Aimed Shot builds Bleed and hits Bleeding enemies harder.
+7|Preemptive Strike|P|2|Sniper|Lv. 2 Aimed Shot hits harder against full-HP enemies.
+7|Enhanced Deterrence|P|2|Sniper|A critical Lv. 2 Aimed Shot adds a knockdown hit.
+8|Leaping Shot|S|1|Piercing Shot|Extra arrow after Withdrawing Shot, with a brief evade.
+8|Fire ATK|T|1|Rapid Shot Mastery III;Leaping Shot Mastery;Flip Kick Mastery|+20 Fire ATK.
+8|Acrobatic Momentum|P|3|Hawk Talon|Slide Dodge costs no SP.
+8|Physical ATK|T|1|Flash Freeze;Barbed Arrowhead;Preemptive Strike;Enhanced Deterrence|+20 Physical ATK.
+9|Reflecting Shot|S|1|Piercing Shot|Fire while evading, chaining into Withdrawing Shot.
+9|Scarlet Arrow|S|3|Fire ATK|Piercing arrow that costs HP and builds Burn. 20 s cooldown.
+9|Predatory Poise|P|2|Physical ATK|Aimed Shot grants Composure stacks (Tidal ATK).
+9|Beastly Fervor|P|2|Physical ATK|Aimed Shot grants Fervor stacks (Physical Crit).
+10|Aimed Shot|S|1||Charged precise shot. Lv. 2 knocks back.
+10|Withdrawing Shot Combo|S|2|Scarlet Arrow|Piercing Shot chains into Withdrawing Shot.
+10|Abdominal Kick Combo|S|2|Scarlet Arrow|Piercing Shot chains into Abdominal Kick.
+10|Predatory Poise II|P|2|Predatory Poise|Composure cap rises from 3 to 5.
+10|Beastly Fervor II|P|2|Beastly Fervor|Fervor cap rises from 3 to 5.
+11|Deadly Opening|P|2|Withdrawing Shot Combo;Abdominal Kick Combo|A critical Focus Fire grants Rapid Fire.
+11|Marksman|P|3|Predatory Poise II;Beastly Fervor II|Aimed Shot (and Quickdraw) fires an extra arrow.
+12|Evade|S|1||Directional dodge.
+12|Slide Dodge|S|1|Evade|Slide while you evade.
+12|Friction|P|3|Deadly Opening|Rapid Fire builds Burn and restores SP when it triggers Burn.
+13|Rapid Fire - Burst|P|2|Friction|A critical Rapid Fire adds a hit.
+13|Rapid Fire - Knock Back|P|2|Friction|A critical Rapid Fire knocks back.
+14|Defensive Maneuver|P|1||Block attacks during Maneuvers (not Fatal Attacks).
+14|Tahyang's Raging Flames|P|3|Rapid Fire - Burst;Rapid Fire - Knock Back|Critical Rapid Fires build stacks that reset Fire Arrow's cooldown.
