@@ -1,27 +1,710 @@
 {
  "_note": "Node positions read from in-game Traits screenshots (pixel coordinates of the screenshot). Scaled by fx/fy in build.py.",
- "greatsword": {"fx": 1.8, "fy": 1.9, "groups": [{"x": 233, "y": 112, "text": "Granted skills"}], "pos": {
-  "Arc Slash": [123,150], "Chain Slash": [233,150], "Sunder": [343,150], "Leaping Strike": [233,205], "Descending Slash": [233,260],
-  "Vertical Slash": [123,370], "Rising Slash": [233,370], "Final Cleave": [343,370], "Riposte": [233,425], "Shove Kick": [343,425],
-  "Blade Guard": [123,536], "Evade": [123,646], "Colossal Thrust": [233,646], "Brace": [123,757],
-  "Greatsword Proficiency": [620,95],
-  "Sweeping Slash": [509,150], "Unbridled Might": [509,205], "Armor Break": [454,260], "Frozen Veins": [564,260], "Armor Break II": [454,315], "Frozen Veins II": [564,315],
-  "Iron Balance": [509,370], "Greatsword Mastery": [454,425], "Uncontrollable Power": [564,425], "Frosted Gleam": [509,480], "Chain Slash Combo": [509,536], "Brawl": [509,591],
-  "Carve Up": [454,646], "Clean Sweep": [564,646], "Clean Cut": [509,701], "Turning Strike": [509,757], "Momentum Lock": [509,812], "Rampage": [509,866], "Warrior's Cry": [454,922], "Frostfang": [564,922],
-  "Pommel Strike": [730,150], "Retaliate": [730,205], "Demolishing Strike": [730,260], "Demolishing Strike - Freeze": [676,315], "Demolishing Strike - Expert": [786,315],
-  "Fatal Cleave": [730,370], "Swift Cut": [730,425], "Lightweight Upgrade": [676,480], "Heavyweight Upgrade": [786,480], "Physical PEN": [730,536],
-  "Swift Cut - Freeze": [676,591], "Swift Cut - Neutralize": [786,591], "Crisis Response": [730,646], "Fortified Shields": [730,701], "Cross Slash": [730,757], "Rain Cleave": [730,812],
-  "Cleaving Art": [676,866], "Downpour Slash": [786,866], "Vengeful Rush": [676,922], "Waterspout": [786,922]}},
- "longsword": {"fx": 1.8, "fy": 1.9, "groups": [{"x": 551, "y": 152, "text": "Granted skills"}], "pos": {
-  "Triple Slash": [440,190], "Closing Slash": [551,190], "Horizontal Slash": [440,411], "Earthcleaver": [551,411], "Double Strike": [551,466], "Charge": [551,521], "Pursuit": [661,521],
-  "Longsword Thrust": [440,577], "Quick Slash": [551,577], "Cleave Down": [661,577], "Parry": [440,687], "Counterattack": [551,687], "Evade": [440,798], "Diagonal Slash": [551,798],
-  "Longsword Proficiency": [938,135], "Pursuit - Root": [938,190],
-  "Whirlwind Slash": [826,190], "Lifeflame": [826,246], "Heavy Kick": [826,300], "Annihilating Slash": [826,356], "Bloodstorm": [826,411],
-  "Whirlwind Slash Mastery": [771,466], "Bloodstorm Mastery": [882,466], "Whirlwind Slash Mastery II": [771,521], "Bloodstorm Mastery II": [882,521],
-  "Whirlwind Slash - Lightning Speed": [826,577], "Eye of the Storm": [771,632], "Frenzy": [882,632], "Wind ATK": [826,687], "Resurgence": [771,743], "Hemorrhage": [882,743],
-  "Bloodforge": [826,798], "Bloodforge - Annihilating Slash": [771,853], "Bloodthirst": [882,853], "Crimson Surge": [826,908], "Worthy Sacrifice": [771,963], "Crimson Covenant": [882,963],
-  "Swift Flurry": [1047,190], "Sharpwake": [1047,246], "Twin Slash": [1047,300], "Slaughter": [1047,356], "Closing Slash Combo": [1047,411], "Breakthrough": [1047,466],
-  "Swift Flurry Mastery": [992,521], "Counterattack Mastery": [1102,521], "Bladeburst": [1047,577], "Physical Amplification": [1047,632], "Perfect Foresight": [1047,687],
-  "Ultimate Slash": [992,743], "Onslaught": [1102,743], "Ultimate Slash II": [992,798], "Onslaught II": [1102,798], "Mind's Eye": [1047,853], "Blade Wind": [1047,908], "Suppress": [1047,963],
-  "Damage ↑ at HP ≥70%": [1268,190], "Weapon Physical ATK ↑": [1213,246], "Weapon Magic ATK ↑": [1323,246], "Damage ↑ vs HP ≥70%": [1213,300], "Damage ↑ vs HP ≤40%": [1323,300]}}
+ "greatsword": {
+  "fx": 1.8,
+  "fy": 1.9,
+  "groups": [
+   {
+    "x": 233,
+    "y": 112,
+    "text": "Granted skills"
+   }
+  ],
+  "pos": {
+   "Arc Slash": [
+    123,
+    150
+   ],
+   "Chain Slash": [
+    233,
+    150
+   ],
+   "Sunder": [
+    343,
+    150
+   ],
+   "Leaping Strike": [
+    233,
+    205
+   ],
+   "Descending Slash": [
+    233,
+    260
+   ],
+   "Vertical Slash": [
+    123,
+    370
+   ],
+   "Rising Slash": [
+    233,
+    370
+   ],
+   "Final Cleave": [
+    343,
+    370
+   ],
+   "Riposte": [
+    233,
+    425
+   ],
+   "Shove Kick": [
+    343,
+    425
+   ],
+   "Blade Guard": [
+    123,
+    536
+   ],
+   "Evade": [
+    123,
+    646
+   ],
+   "Colossal Thrust": [
+    233,
+    646
+   ],
+   "Brace": [
+    123,
+    757
+   ],
+   "Greatsword Proficiency": [
+    620,
+    95
+   ],
+   "Sweeping Slash": [
+    509,
+    150
+   ],
+   "Unbridled Might": [
+    509,
+    205
+   ],
+   "Armor Break": [
+    454,
+    260
+   ],
+   "Frozen Veins": [
+    564,
+    260
+   ],
+   "Armor Break II": [
+    454,
+    315
+   ],
+   "Frozen Veins II": [
+    564,
+    315
+   ],
+   "Iron Balance": [
+    509,
+    370
+   ],
+   "Greatsword Mastery": [
+    454,
+    425
+   ],
+   "Uncontrollable Power": [
+    564,
+    425
+   ],
+   "Frosted Gleam": [
+    509,
+    480
+   ],
+   "Chain Slash Combo": [
+    509,
+    536
+   ],
+   "Brawl": [
+    509,
+    591
+   ],
+   "Carve Up": [
+    454,
+    646
+   ],
+   "Clean Sweep": [
+    564,
+    646
+   ],
+   "Clean Cut": [
+    509,
+    701
+   ],
+   "Turning Strike": [
+    509,
+    757
+   ],
+   "Momentum Lock": [
+    509,
+    812
+   ],
+   "Rampage": [
+    509,
+    866
+   ],
+   "Warrior's Cry": [
+    454,
+    922
+   ],
+   "Frostfang": [
+    564,
+    922
+   ],
+   "Pommel Strike": [
+    730,
+    150
+   ],
+   "Retaliate": [
+    730,
+    205
+   ],
+   "Demolishing Strike": [
+    730,
+    260
+   ],
+   "Demolishing Strike - Freeze": [
+    676,
+    315
+   ],
+   "Demolishing Strike - Expert": [
+    786,
+    315
+   ],
+   "Fatal Cleave": [
+    730,
+    370
+   ],
+   "Swift Cut": [
+    730,
+    425
+   ],
+   "Lightweight Upgrade": [
+    676,
+    480
+   ],
+   "Heavyweight Upgrade": [
+    786,
+    480
+   ],
+   "Physical PEN": [
+    730,
+    536
+   ],
+   "Swift Cut - Freeze": [
+    676,
+    591
+   ],
+   "Swift Cut - Neutralize": [
+    786,
+    591
+   ],
+   "Crisis Response": [
+    730,
+    646
+   ],
+   "Fortified Shields": [
+    730,
+    701
+   ],
+   "Cross Slash": [
+    730,
+    757
+   ],
+   "Rain Cleave": [
+    730,
+    812
+   ],
+   "Cleaving Art": [
+    676,
+    866
+   ],
+   "Downpour Slash": [
+    786,
+    866
+   ],
+   "Vengeful Rush": [
+    676,
+    922
+   ],
+   "Waterspout": [
+    786,
+    922
+   ]
+  }
+ },
+ "longsword": {
+  "fx": 1.8,
+  "fy": 1.9,
+  "groups": [
+   {
+    "x": 551,
+    "y": 152,
+    "text": "Granted skills"
+   }
+  ],
+  "pos": {
+   "Triple Slash": [
+    440,
+    190
+   ],
+   "Closing Slash": [
+    551,
+    190
+   ],
+   "Horizontal Slash": [
+    440,
+    411
+   ],
+   "Earthcleaver": [
+    551,
+    411
+   ],
+   "Double Strike": [
+    551,
+    466
+   ],
+   "Charge": [
+    551,
+    521
+   ],
+   "Pursuit": [
+    661,
+    521
+   ],
+   "Longsword Thrust": [
+    440,
+    577
+   ],
+   "Quick Slash": [
+    551,
+    577
+   ],
+   "Cleave Down": [
+    661,
+    577
+   ],
+   "Parry": [
+    440,
+    687
+   ],
+   "Counterattack": [
+    551,
+    687
+   ],
+   "Evade": [
+    440,
+    798
+   ],
+   "Diagonal Slash": [
+    551,
+    798
+   ],
+   "Longsword Proficiency": [
+    938,
+    135
+   ],
+   "Pursuit - Root": [
+    938,
+    190
+   ],
+   "Whirlwind Slash": [
+    826,
+    190
+   ],
+   "Lifeflame": [
+    826,
+    246
+   ],
+   "Heavy Kick": [
+    826,
+    300
+   ],
+   "Annihilating Slash": [
+    826,
+    356
+   ],
+   "Bloodstorm": [
+    826,
+    411
+   ],
+   "Whirlwind Slash Mastery": [
+    771,
+    466
+   ],
+   "Bloodstorm Mastery": [
+    882,
+    466
+   ],
+   "Whirlwind Slash Mastery II": [
+    771,
+    521
+   ],
+   "Bloodstorm Mastery II": [
+    882,
+    521
+   ],
+   "Whirlwind Slash - Lightning Speed": [
+    826,
+    577
+   ],
+   "Eye of the Storm": [
+    771,
+    632
+   ],
+   "Frenzy": [
+    882,
+    632
+   ],
+   "Wind ATK": [
+    826,
+    687
+   ],
+   "Resurgence": [
+    771,
+    743
+   ],
+   "Hemorrhage": [
+    882,
+    743
+   ],
+   "Bloodforge": [
+    826,
+    798
+   ],
+   "Bloodforge - Annihilating Slash": [
+    771,
+    853
+   ],
+   "Bloodthirst": [
+    882,
+    853
+   ],
+   "Crimson Surge": [
+    826,
+    908
+   ],
+   "Worthy Sacrifice": [
+    771,
+    963
+   ],
+   "Crimson Covenant": [
+    882,
+    963
+   ],
+   "Swift Flurry": [
+    1047,
+    190
+   ],
+   "Sharpwake": [
+    1047,
+    246
+   ],
+   "Twin Slash": [
+    1047,
+    300
+   ],
+   "Slaughter": [
+    1047,
+    356
+   ],
+   "Closing Slash Combo": [
+    1047,
+    411
+   ],
+   "Breakthrough": [
+    1047,
+    466
+   ],
+   "Swift Flurry Mastery": [
+    992,
+    521
+   ],
+   "Counterattack Mastery": [
+    1102,
+    521
+   ],
+   "Bladeburst": [
+    1047,
+    577
+   ],
+   "Physical Amplification": [
+    1047,
+    632
+   ],
+   "Perfect Foresight": [
+    1047,
+    687
+   ],
+   "Ultimate Slash": [
+    992,
+    743
+   ],
+   "Onslaught": [
+    1102,
+    743
+   ],
+   "Ultimate Slash II": [
+    992,
+    798
+   ],
+   "Onslaught II": [
+    1102,
+    798
+   ],
+   "Mind's Eye": [
+    1047,
+    853
+   ],
+   "Blade Wind": [
+    1047,
+    908
+   ],
+   "Suppress": [
+    1047,
+    963
+   ],
+   "Damage ↑ at HP ≥70%": [
+    1268,
+    190
+   ],
+   "Weapon Physical ATK ↑": [
+    1213,
+    246
+   ],
+   "Weapon Magic ATK ↑": [
+    1323,
+    246
+   ],
+   "Damage ↑ vs HP ≥70%": [
+    1213,
+    300
+   ],
+   "Damage ↑ vs HP ≤40%": [
+    1323,
+    300
+   ]
+  }
+ },
+ "axe": {
+  "fx": 1.8,
+  "fy": 1.55,
+  "groups": [
+   {
+    "x": 910,
+    "y": 222,
+    "text": "Granted skills"
+   }
+  ],
+  "pos": {
+   "Axe Smash": [
+    843,
+    268
+   ],
+   "Barbaric Strike": [
+    843,
+    403
+   ],
+   "Body Slam": [
+    978,
+    403
+   ],
+   "Forceful Lunge": [
+    978,
+    469
+   ],
+   "Tremor Strike": [
+    978,
+    537
+   ],
+   "Stomp": [
+    978,
+    604
+   ],
+   "Shield Up": [
+    843,
+    739
+   ],
+   "Battle Cry": [
+    978,
+    739
+   ],
+   "Evade": [
+    843,
+    873
+   ],
+   "Uppercut": [
+    978,
+    873
+   ],
+   "Axe Proficiency": [
+    1313,
+    200
+   ],
+   "Death Ward": [
+    1313,
+    268
+   ],
+   "Giant's Bellow": [
+    1180,
+    268
+   ],
+   "Triumphant Cry": [
+    1180,
+    336
+   ],
+   "Rally": [
+    1113,
+    403
+   ],
+   "Brutality": [
+    1247,
+    403
+   ],
+   "Resounding Roar": [
+    1180,
+    469
+   ],
+   "Shield Slam": [
+    1180,
+    537
+   ],
+   "Shield Slam - Stun": [
+    1113,
+    604
+   ],
+   "Shield Crash": [
+    1247,
+    604
+   ],
+   "Twin Pulse": [
+    1180,
+    672
+   ],
+   "Reel In": [
+    1180,
+    739
+   ],
+   "Physical Crit": [
+    1180,
+    805
+   ],
+   "Brutal Crash": [
+    1180,
+    873
+   ],
+   "Steadfast": [
+    1113,
+    940
+   ],
+   "Rousing Call": [
+    1247,
+    940
+   ],
+   "Fearsome Might": [
+    1180,
+    1007
+   ],
+   "Battleborn": [
+    1180,
+    1073
+   ],
+   "Ridge Shatter": [
+    1180,
+    1140
+   ],
+   "Reckless Destroyer": [
+    1448,
+    268
+   ],
+   "Overpower": [
+    1448,
+    336
+   ],
+   "Tempest": [
+    1381,
+    403
+   ],
+   "Perseverance": [
+    1515,
+    403
+   ],
+   "Clash": [
+    1448,
+    469
+   ],
+   "Heavy Hitter": [
+    1448,
+    537
+   ],
+   "Battle Cry - Poison": [
+    1448,
+    604
+   ],
+   "Ruthless Force": [
+    1448,
+    672
+   ],
+   "Fog ATK": [
+    1448,
+    739
+   ],
+   "Relentless Drive": [
+    1448,
+    805
+   ],
+   "Dominance": [
+    1381,
+    873
+   ],
+   "Fervent Step": [
+    1515,
+    873
+   ],
+   "Assured Blow": [
+    1448,
+    940
+   ],
+   "Final Act": [
+    1448,
+    1007
+   ],
+   "Unbound Might": [
+    1381,
+    1073
+   ],
+   "Fierce Breakthrough": [
+    1515,
+    1073
+   ],
+   "Doombringer": [
+    1381,
+    1140
+   ],
+   "Battle Echo": [
+    1515,
+    1140
+   ],
+   "Damage ↑ at HP ≥70%": [
+    1717,
+    268
+   ],
+   "Weapon Physical ATK ↑": [
+    1650,
+    336
+   ],
+   "Weapon Magic ATK ↑": [
+    1785,
+    336
+   ],
+   "Damage ↑ vs HP ≥70%": [
+    1650,
+    403
+   ],
+   "Damage ↑ vs HP ≤40%": [
+    1785,
+    403
+   ]
+  }
+ }
 }

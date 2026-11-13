@@ -7,7 +7,7 @@
  "lede": "A build from level 1 to 40. You level on Axe & Shield (the Berserker's default weapon), add the Warhammer in Gylden Ruins, and finish with both trees complete.",
  "notice": {
   "title": "Checked against your Traits screen. Not tested in-game.",
-  "text": "The Warhammer tree matches your Traits screen node for node. Costs follow the in-game markers: \"3\" nodes cost 3, all others 1, and granted skills (✓) are free. Where branches split and rejoin you take one side, and the other turns red [me]. The plan spends 93 of the 94 Early Access points. Build choices and stat numbers are my recommendations, tagged as such."
+  "text": "Both trees match your Warhammer and Axe screens node for node (41 and 52 nodes). Costs follow the in-game markers: \"3\" nodes cost 3, all others 1, and granted skills (✓) are free. Where branches split and rejoin you take one side, and the other turns red [me]. The plan spends 93 of the 94 Early Access points. Build choices and stat numbers are my recommendations, tagged as such."
  },
  "stages": [
   {
@@ -830,13 +830,13 @@
    "defaultPoints": 43,
    "wrap": 16,
    "pad": 95,
-   "intro": "All 52 Axe nodes from Wikily. The layout is approximate: granted skills on the left, the stat cluster on the right [me]. Costs follow the in-game markers: \"3\" nodes cost 3, all others 1, and granted skills (✓) are free. Where branches split and rejoin you take one side, and the other turns red [me]. The stat cluster keeps Wikily's 10 and 5 point costs, which aren't confirmed in-game.",
+   "intro": "Matches your Axe screen: 10 granted skills on the left (Axe Smash and Barbaric Strike lead into Body Slam, Forceful Lunge, Tremor Strike and Stomp, plus Shield Up → Battle Cry and Evade → Uppercut), Proficiency with Death Ward under it, a 17-node Battle Cry/Shield branch, an 18-node Reckless Destroyer branch, and the stat cluster on the right. Costs follow the in-game markers: the 8 \"3\" nodes cost 3, all others 1, and the ✓ skills are free. Forks: Rally or Brutality, Tempest or Perseverance, Shield Slam - Stun or Shield Crash, Dominance or Fervent Step, Steadfast or Rousing Call. Full tree with choices made: 45 points. The stat cluster keeps Wikily's 10 and 5 point costs, which aren't confirmed in-game [me].",
    "short": "Axe"
   }
  ],
  "treeHelp": "Click a node to read it. Double-click it, or press Space, to unlock or refund it. ✓ = granted free. Red = locked because you took the other side of that fork. <b>Fill with my points</b> follows the leveling plan across both weapons until your points run out. Saved in this browser.",
  "budgetIntro": "Early Access has 47 Raeven's Coilstones at 2 trait points each, 94 in total [one]. Region counts are RaidDex's [one] and level bands are archeagechroniclesdata's [one]. You only reach these totals if you take every Coilstone as you go. Both weapons spend from the same pool.",
- "defaultPoints": 4,
+ "defaultPoints": 12,
  "weaponGuide": {
   "intro": "Every Berserker starts with Axe & Shield, the class's default weapon [ok]. Start your trait points there. It keeps you alive while you level, and the Warhammer's core combo (Pulverize, Power Surge, Tempered and Devastating Blow) is already free.",
   "items": [
@@ -873,7 +873,7 @@
  },
  "plans": [
   {
-   "name": "Axe first, Warhammer second",
+   "name": "Axe first, Warhammer second (recommended)",
    "note": "93 of 94 points. Steps 1–16 are Diamond Shores (all Axe). The Warhammer starts in Gylden Ruins. The last 20 points go into the Axe stat cluster at Wikily's listed cost [me].",
    "steps": [
     [
@@ -1035,6 +1035,212 @@
     [
      0,
      "Thundering Hurl"
+    ],
+    [
+     1,
+     "Ridge Shatter"
+    ],
+    [
+     1,
+     "Assured Blow"
+    ],
+    [
+     1,
+     "Final Act"
+    ],
+    [
+     1,
+     "Unbound Might"
+    ],
+    [
+     1,
+     "Doombringer"
+    ],
+    [
+     1,
+     "Fierce Breakthrough"
+    ],
+    [
+     1,
+     "Battle Echo"
+    ],
+    [
+     1,
+     "Damage ↑ at HP ≥70%"
+    ],
+    [
+     1,
+     "Weapon Physical ATK ↑"
+    ],
+    [
+     1,
+     "Damage ↑ vs HP ≤40%"
+    ]
+   ]
+  },
+  {
+   "name": "Warhammer first (as on your screen)",
+   "note": "For when you've already put points into the Warhammer, as on your screen (10 points). The Warhammer's first 22 points take it through Reconstruction, then Axe sustain comes in Gylden Ruins. Same 93-point end state as the recommended plan [me].",
+   "steps": [
+    [
+     0,
+     "Meteor Hammer"
+    ],
+    [
+     0,
+     "Meteor Hammer II"
+    ],
+    [
+     0,
+     "Evasive Assault"
+    ],
+    [
+     0,
+     "Fire ATK"
+    ],
+    [
+     0,
+     "Masterpiece"
+    ],
+    [
+     0,
+     "Unstoppable Force"
+    ],
+    [
+     0,
+     "Unstoppable Force II"
+    ],
+    [
+     0,
+     "Galactic Impact"
+    ],
+    [
+     0,
+     "Lightning Collision"
+    ],
+    [
+     0,
+     "Resonating Strike"
+    ],
+    [
+     0,
+     "Tough Skin"
+    ],
+    [
+     0,
+     "Electric Cluster"
+    ],
+    [
+     0,
+     "Compression"
+    ],
+    [
+     0,
+     "Reconstruction"
+    ],
+    [
+     1,
+     "Death Ward"
+    ],
+    [
+     1,
+     "Giant's Bellow"
+    ],
+    [
+     1,
+     "Triumphant Cry"
+    ],
+    [
+     1,
+     "Brutality"
+    ],
+    [
+     1,
+     "Resounding Roar"
+    ],
+    [
+     1,
+     "Shield Slam"
+    ],
+    [
+     1,
+     "Shield Crash"
+    ],
+    [
+     1,
+     "Twin Pulse"
+    ],
+    [
+     1,
+     "Reel In"
+    ],
+    [
+     1,
+     "Physical Crit"
+    ],
+    [
+     1,
+     "Brutal Crash"
+    ],
+    [
+     1,
+     "Steadfast"
+    ],
+    [
+     0,
+     "Assured Ruin"
+    ],
+    [
+     0,
+     "Thundering Hurl"
+    ],
+    [
+     1,
+     "Reckless Destroyer"
+    ],
+    [
+     1,
+     "Overpower"
+    ],
+    [
+     1,
+     "Perseverance"
+    ],
+    [
+     1,
+     "Clash"
+    ],
+    [
+     1,
+     "Heavy Hitter"
+    ],
+    [
+     1,
+     "Battle Cry - Poison"
+    ],
+    [
+     1,
+     "Ruthless Force"
+    ],
+    [
+     1,
+     "Fog ATK"
+    ],
+    [
+     1,
+     "Relentless Drive"
+    ],
+    [
+     1,
+     "Fearsome Might"
+    ],
+    [
+     1,
+     "Battleborn"
+    ],
+    [
+     1,
+     "Dominance"
     ],
     [
      1,

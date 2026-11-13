@@ -11,7 +11,7 @@ Start-to-endgame build guides for ArcheAge Chronicles (Early Access, November 20
 | Class | Build | Trait trees |
 |---|---|---|
 | [Warrior](docs/warrior-frostbreaker.html) | Frostbreaker Greatsword with a Longsword healing swap | Greatsword and Longsword (both match the in-game screens) |
-| [Berserker](docs/berserker-warhammer.html) | Fire & Thunder Warhammer (RaidDex Thunderclap) | Warhammer (matches the in-game screen) and Axe & Shield |
+| [Berserker](docs/berserker-warhammer.html) | Fire & Thunder Warhammer (RaidDex Thunderclap) | Warhammer and Axe & Shield (both match the in-game screens) |
 | [Ranger](docs/ranger-storm-hatchet.html) | Storm Hatchets with a Longbow opener | Hatchets (matches the in-game screen) and Longbow |
 | [Mage](docs/mage-thunderbolt.html) | Fire leveling to Thunderbolt Staff | Elemental Staff and Wavesword (approximate layout) |
 
