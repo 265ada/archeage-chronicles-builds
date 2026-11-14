@@ -1,5 +1,7 @@
 # ArcheAge Chronicles Class Builds
 
+**[Open the guides](https://265ada.github.io/archeage-chronicles-builds/)**: free to view, no GitHub or Claude account needed.
+
 Start-to-endgame build guides for ArcheAge Chronicles (Early Access, November 2026). Each page includes:
 
 - A stage-by-stage build (leveling, gearing, endgame) covering weapons, skills, traits, stat priority and gear, with checklists
@@ -10,10 +12,10 @@ Start-to-endgame build guides for ArcheAge Chronicles (Early Access, November 20
 
 | Class | Build | Trait trees |
 |---|---|---|
-| [Warrior](docs/warrior-frostbreaker.html) | Frostbreaker Greatsword with a Longsword healing swap | Greatsword and Longsword (both match the in-game screens) |
-| [Berserker](docs/berserker-warhammer.html) | Fire & Thunder Warhammer (RaidDex Thunderclap) | Warhammer and Axe & Shield (both match the in-game screens) |
-| [Ranger](docs/ranger-storm-hatchet.html) | Storm Hatchets with a Longbow opener | Hatchets (matches the in-game screen) and Longbow |
-| [Mage](docs/mage-thunderbolt.html) | Fire leveling to Thunderbolt Staff | Elemental Staff and Wavesword (approximate layout) |
+| [Warrior](https://265ada.github.io/archeage-chronicles-builds/warrior-frostbreaker.html) | Frostbreaker Greatsword with a Longsword healing swap | Greatsword and Longsword (both match the in-game screens) |
+| [Berserker](https://265ada.github.io/archeage-chronicles-builds/berserker-warhammer.html) | Fire & Thunder Warhammer (RaidDex Thunderclap) | Warhammer and Axe & Shield (both match the in-game screens) |
+| [Ranger](https://265ada.github.io/archeage-chronicles-builds/ranger-storm-hatchet.html) | Storm Hatchets with a Longbow opener | Hatchets (matches the in-game screen) and Longbow |
+| [Mage](https://265ada.github.io/archeage-chronicles-builds/mage-thunderbolt.html) | Fire leveling to Thunderbolt Staff | Elemental Staff and Wavesword (approximate layout) |
 
 **Trait rules used** (inferred from in-game Traits screens):
 - 47 Raeven's Coilstones × 2 points = **94 trait points** in Early Access, shared by both weapons: 22 in Diamond Shores (Lv ~7–20), 50 by the end of Gylden Ruins (~21–35), and 94 in Astron Plains (~36–40).
@@ -27,7 +29,7 @@ Start-to-endgame build guides for ArcheAge Chronicles (Early Access, November 20
 
 ## Viewing
 
-Open `docs/index.html` in a browser, or enable GitHub Pages for the `docs/` folder.
+Live site: https://265ada.github.io/archeage-chronicles-builds/ (GitHub Pages, served from `docs/`). You can also open `docs/index.html` locally.
 
 ## Editing
 
