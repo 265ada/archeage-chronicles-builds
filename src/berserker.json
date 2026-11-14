@@ -4,7 +4,7 @@
  "out": "berserker-warhammer.html",
  "eyebrow": "ArcheAge Chronicles · Berserker · Early Access",
  "h1": "<span class='hot'>Fire</span> &amp; <span class='zap'>Thunder</span> Warhammer",
- "lede": "A build from level 1 to 40. You level on Axe & Shield (the Berserker's default weapon), add the Warhammer in Gylden Ruins, and finish with both trees complete.",
+ "lede": "A build from level 1 to 40. You level on Axe & Shield (the Berserker's default weapon) and put points into both trees from the start: 2 points of Meteor Hammer make the free Warhammer combo useful right away. Both trees finish by Lv 40.",
  "notice": {
   "title": "Checked against your Traits screen. Not tested in-game.",
   "text": "Both trees match your Warhammer and Axe screens node for node (41 and 52 nodes). Costs follow the in-game markers: \"3\" nodes cost 3, all others 1, and granted skills (✓) are free. Where branches split and rejoin you take one side, and the other turns red [me]. The plan spends 93 of the 94 Early Access points. Build choices and stat numbers are my recommendations, tagged as such."
@@ -14,7 +14,7 @@
    "id": "level",
    "name": "Leveling",
    "sub": "Lv 1 → 20 · Diamond Shores",
-   "goal": "Level quickly and safely with Axe &amp; Shield. Carry the Warhammer so you can practice its charge timing on armored mobs.",
+   "goal": "Level quickly and safely with Axe &amp; Shield, and build the Warhammer alongside it (12 of your 22 points) for armored mobs and its charge combo.",
    "weapons": [
     "<span class='w-alt'>Axe &amp; Shield</span> as your main weapon [ok]",
     "<span class='w-main'>Warhammer</span> on {Q} for armored targets [ok]"

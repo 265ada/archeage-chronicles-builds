@@ -15,7 +15,7 @@
    "id": "level",
    "name": "Leveling",
    "sub": "Lv 1 → 20 · Diamond Shores",
-   "goal": "You start with the Longsword. Switch to the Greatsword as soon as you get one, and put all 22 Diamond Shores points into it.",
+   "goal": "You start with the Longsword. Spend your first 2 points on the Longsword (Whirlwind → Lifeflame for healing), then switch to the Greatsword as soon as you get one and put the other 20 Diamond Shores points into it.",
    "weapons": [
     "<span class='w-main'>Greatsword</span> as soon as you have one (RaidDex's route has a Covenant Greatsword by Lv 15) [one]",
     "<span class='w-alt'>Longsword</span> until then, since it's the default weapon [one]"
