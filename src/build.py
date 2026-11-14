@@ -107,7 +107,8 @@ for k, *_ in CLASSES:
         have = [{n["id"] for n in t["nodes"] if n.get("f")} for t in trees]
         steps, run, marks = [], 0, []
         per = [0] * len(trees)
-        for ti, name in plan["steps"]:
+        for st in plan["steps"]:
+            ti, name = st[0], st[1]; why = st[2] if len(st) > 2 else ""
             t = trees[ti]; byn = {n["n"]: n for n in t["nodes"]}
             n = byn.get(name)
             if not n: err(f"{plan['name']}: unknown node {name!r} in {t['weapon']}"); continue
@@ -118,7 +119,10 @@ for k, *_ in CLASSES:
             for A, B in t["ex"]:
                 if (i in A and have[ti] & set(B)) or (i in B and have[ti] & set(A)):
                     err(f"{plan['name']}: {name} breaks a fork choice in {t['weapon']}")
-            have[ti].add(i); run += n["c"]; per[ti] += n["c"]; steps.append([ti, i])
+            have[ti].add(i); run += n["c"]; per[ti] += n["c"]; steps.append([ti, i, why] if why else [ti, i])
+            for m in MILESTONES:
+                if run - n["c"] < m["pts"] and run > m["pts"]: err(f"{plan['name']}: {name} straddles the {m['pts']}-point checkpoint")
+            if run in (22, 50): print(f"    at {run}: " + " / ".join(f"{t['weapon']} {v}" for t, v in zip(trees, per)))
             for m in MILESTONES:
                 if run - n["c"] < m["pts"] <= run - 0 and run > m["pts"]:
                     marks.append(f"crosses {m['pts']} at {name}")

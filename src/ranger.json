@@ -26,7 +26,7 @@
     "Thrill of the Hunt restores SP at 10 stacks [one]"
    ],
    "traits": [
-    "Diamond Shores has 11 Coilstones = 22 points. All 22 go to Hatchets: Thrill → Discharge → Overload → Lightning Rush, then Stormguard [me]",
+    "Diamond Shores has 11 Coilstones = 22 points: Hatchets get 20 (Stormguard shield, Discharge → Overload), Longbow gets 2 (faster free Aimed Shot) [me]",
     "Flurry, Lunge, Axe Flurry, Windscreamer, Spinning Kick and Parry are granted free [ok]"
    ],
    "stats": [
@@ -87,7 +87,7 @@
     "Thunder Slash combos from Shocking Kick [ok]"
    ],
    "traits": [
-    "Gylden Ruins has 14 Coilstones = +28, for 50 total. Hatchets finish at 39, and the Longbow gets its Fire Arrow opener line (11) [me]"
+    "Gylden Ruins has 14 Coilstones = +28, for 50 total: Lightning Rush and Gale Sever on the Hatchets, Fire Arrow → Scarlet Arrow on the Longbow [me]"
    ],
    "stats": [
     [
@@ -1003,7 +1003,7 @@
    },
    {
     "weapon": "Longbow",
-    "when": "Second · from Gylden Ruins",
+    "when": "Second · 2 points early, Fire Arrow in Gylden Ruins",
     "pros": [
      "Opens fights from range: Aimed Shot, then Scarlet Arrow [ok]",
      "Fire Arrow and Friction add Burn and SP [one]",
@@ -1019,238 +1019,343 @@
  },
  "plans": [
   {
-   "name": "Storm Hatchets, then Longbow",
-   "note": "89 of 94 points. Hatchets fill first (Diamond Shores and most of Gylden Ruins) and finish at 39. The Longbow gets 50 [me].",
+   "name": "Storm Hatchets, Longbow opener early (recommended)",
+   "note": "89 of 94 points. 5 are left over because the only node they could buy costs 10 [me].",
+   "route": [
+    [
+     "Diamond Shores (22):",
+     "Thrill (SP back), Stormsplitter → Stormguard (shield), then straight down the lightning line through Discharge to Overload. Add 2 Longbow points (Balanced Aim, Rapid Fire) so your free Aimed Shot opener charges faster [me]."
+    ],
+    [
+     "Gylden Ruins (+28 → 50):",
+     "Lightning Rush, Windcleaver and the wind line to Gale Sever (heal). On the Longbow: Fire Arrow and the Rapid Shot line to Scarlet Arrow [me]."
+    ],
+    [
+     "Astron Plains (+44 → 94):",
+     "Battle Tonic, then the Longbow crit line (Sniper → Marksman), Friction, and the kick line [me]."
+    ]
+   ],
    "steps": [
     [
      0,
-     "Thrill of the Hunt"
+     "Thrill of the Hunt",
+     "10 stacks refill SP"
     ],
     [
      0,
-     "Shadowcatch"
+     "Shadowcatch",
+     "Free dodge behind the target"
     ],
     [
      0,
-     "Spinning Kick Mastery"
+     "Stormsplitter",
+     "Shock, knockback, damage reduction"
     ],
     [
      0,
-     "Momentum"
+     "Storm's Wake",
+     ""
     ],
     [
      0,
-     "Discharge"
+     "Stormguard",
+     "5 s shield from Stormsplitter"
     ],
     [
      0,
-     "Relentless Hunt"
+     "Spinning Kick Mastery",
+     ""
     ],
     [
      0,
-     "Rebounding Thunder"
+     "Momentum",
+     ""
     ],
     [
      0,
-     "Lightning ATK"
+     "Discharge",
+     "Thrill triggers deal area damage and Shock"
     ],
     [
      0,
-     "Shocking Kick"
+     "Relentless Hunt",
+     ""
     ],
     [
      0,
-     "Overload"
+     "Rebounding Thunder",
+     ""
     ],
     [
      0,
-     "Thunder Slash"
+     "Lightning ATK",
+     ""
     ],
     [
      0,
-     "Lightning Rush"
+     "Shocking Kick",
+     ""
     ],
     [
      0,
-     "Stormsplitter"
+     "Overload",
+     "Lunge is stagger-immune and triggers Discharge"
+    ],
+    [
+     1,
+     "Balanced Aim",
+     "Free Aimed Shot opener charges faster"
+    ],
+    [
+     1,
+     "Rapid Fire",
+     ""
     ],
     [
      0,
-     "Storm's Wake"
+     "Thunder Slash",
+     ""
     ],
     [
      0,
-     "Stormguard"
+     "Rapid Throw",
+     "Ranged poke, 0 SP with Shock"
     ],
     [
      0,
-     "Rapid Throw"
+     "Rapid Throw - Shock",
+     ""
     ],
     [
      0,
-     "Windcleaver"
+     "Lightning Rush",
+     ""
     ],
     [
      0,
-     "Wind Blade"
+     "Windcleaver",
+     ""
+    ],
+    [
+     1,
+     "Deft Hands",
+     ""
+    ],
+    [
+     1,
+     "Fire Arrow",
+     "Homing explosive opener"
     ],
     [
      0,
-     "Airslice"
+     "Wind Blade",
+     ""
     ],
     [
      0,
-     "Ripper Edge"
+     "Airslice",
+     ""
     ],
     [
      0,
-     "Bloodied Edge"
+     "Ripper Edge",
+     ""
     ],
     [
      0,
-     "Eye of the Storm"
+     "Bloodied Edge",
+     ""
     ],
     [
      0,
-     "Gale Sever"
+     "Eye of the Storm",
+     ""
     ],
     [
      0,
-     "Storm Chaser"
+     "Gale Sever",
+     "Execute that heals"
+    ],
+    [
+     1,
+     "Rapid Shot Mastery",
+     ""
+    ],
+    [
+     1,
+     "Rapid Shot Mastery II",
+     ""
+    ],
+    [
+     1,
+     "Rapid Shot Mastery III",
+     ""
+    ],
+    [
+     1,
+     "Fire ATK",
+     ""
+    ],
+    [
+     1,
+     "Scarlet Arrow",
+     "RaidDex's opener"
     ],
     [
      0,
-     "Rapid Throw - Shock"
+     "Storm Chaser",
+     ""
     ],
     [
      0,
-     "Battle Tonic"
+     "Battle Tonic",
+     "Heal after Axe Throw"
     ],
     [
      0,
-     "Flurry of Axes Combo"
+     "Flurry of Axes Combo",
+     ""
     ],
     [
      1,
-     "Rapid Fire"
+     "Ice Arrow",
+     ""
     ],
     [
      1,
-     "Deft Hands"
+     "Crashing Waves",
+     ""
     ],
     [
      1,
-     "Fire Arrow"
+     "Tidal ATK",
+     ""
     ],
     [
      1,
-     "Rapid Shot Mastery"
+     "Sniper",
+     ""
     ],
     [
      1,
-     "Rapid Shot Mastery II"
+     "Preemptive Strike",
+     ""
     ],
     [
      1,
-     "Rapid Shot Mastery III"
+     "Physical ATK",
+     ""
     ],
     [
      1,
-     "Fire ATK"
+     "Beastly Fervor",
+     ""
     ],
     [
      1,
-     "Scarlet Arrow"
+     "Beastly Fervor II",
+     ""
     ],
     [
      1,
-     "Balanced Aim"
+     "Marksman",
+     ""
     ],
     [
      1,
-     "Ice Arrow"
+     "Withdrawing Shot Combo",
+     ""
     ],
     [
      1,
-     "Crashing Waves"
+     "Deadly Opening",
+     ""
     ],
     [
      1,
-     "Tidal ATK"
+     "Friction",
+     ""
     ],
     [
      1,
-     "Sniper"
+     "Rapid Fire - Burst",
+     ""
     ],
     [
      1,
-     "Preemptive Strike"
+     "Tahyang's Raging Flames",
+     ""
     ],
     [
      1,
-     "Physical ATK"
+     "Arrow Stab",
+     ""
     ],
     [
      1,
-     "Beastly Fervor"
+     "Arrow Stab - Bleed",
+     ""
     ],
     [
      1,
-     "Beastly Fervor II"
+     "Counterattack Maneuver",
+     ""
     ],
     [
      1,
-     "Marksman"
+     "Crescent Kick",
+     ""
     ],
     [
      1,
-     "Withdrawing Shot Combo"
+     "Hidden Blade",
+     ""
     ],
     [
      1,
-     "Deadly Opening"
+     "Hawk Talon",
+     ""
     ],
     [
      1,
-     "Friction"
-    ],
-    [
-     1,
-     "Rapid Fire - Burst"
-    ],
-    [
-     1,
-     "Tahyang's Raging Flames"
-    ],
-    [
-     1,
-     "Arrow Stab"
-    ],
-    [
-     1,
-     "Arrow Stab - Bleed"
-    ],
-    [
-     1,
-     "Counterattack Maneuver"
-    ],
-    [
-     1,
-     "Crescent Kick"
-    ],
-    [
-     1,
-     "Hidden Blade"
-    ],
-    [
-     1,
-     "Hawk Talon"
-    ],
-    [
-     1,
-     "Acrobatic Momentum"
+     "Acrobatic Momentum",
+     ""
     ]
    ]
   }
- ]
+ ],
+ "carry": {
+  "intro": "Each weapon has its own tree, but both spend from one shared point pool [ok]. Below, I sort every effect by what its node text actually says. <b>Ends on swap</b> means the text says so. <b>Only that weapon</b> covers nodes that change that weapon's own skills or say \"equipped weapon\". <b>Unconfirmed</b> means the text doesn't say either way, so I'm not guessing. One creator video reports a global cooldown when you swap mid-combo [one].",
+  "cols": [
+   {
+    "kind": "ends",
+    "label": "Ends on swap (node text says so)",
+    "items": [
+     "No Hatchet or Longbow node says it ends on swap. That doesn't mean they all persist (see Unconfirmed) [ok]"
+    ]
+   },
+   {
+    "kind": "only",
+    "label": "Only that weapon",
+    "items": [
+     "Skill upgrades only change that weapon's own skills: Overload (Lunge), Storm's Wake (Stormsplitter), Sniper (Aimed Shot), and so on [ok]",
+     "Hatchet stat cluster: Weapon Physical / Magic ATK ↑ say \"weapon ATK\". The plan skips them [ok]"
+    ]
+   },
+   {
+    "kind": "test",
+    "label": "Unconfirmed: test before relying on it",
+    "items": [
+     "Stormguard shield and Eye of the Storm buff after swapping to the Longbow [me]",
+     "Composure and Fervor stacks from Aimed Shot after swapping to Hatchets [me]",
+     "Stat nodes: Hatchet Lightning ATK +20, Longbow Fire / Tidal / Physical ATK +20 [me]"
+    ]
+   }
+  ],
+  "test": [
+   "<b>Stat nodes:</b> open the Character screen with the weapon whose tree has the node (for example, Warhammer for its Fire ATK +20) and note the value. Press {Q}, then reopen the screen. If the number didn't change, the node counts for both weapons.",
+   "<b>Shields and buffs:</b> start the effect (a shield or timed buff), press {Q} right away, and watch the buff bar or shield. If the icon stays, it carries over.",
+   "Tell me what you see and I'll update the page. Until then, those rows stay marked as unconfirmed."
+  ]
+ }
 }

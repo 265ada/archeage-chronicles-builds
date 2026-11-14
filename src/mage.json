@@ -26,8 +26,8 @@
     "XLGAMES cut Wall of Fire's damage for launch [one]"
    ],
    "traits": [
-    "Diamond Shores has 11 Coilstones = 22 points. All 22 go to the Staff on the fire side of each fork: Retain → Wall of Fire → Elemental Overload → Blossom line → Arcane Fount [me]",
-    "Ignition, Fire/Lightning Incantation, Flaming Blossom, Flamethrower, Fire Blast, Lightning Pillar, Spear, Blast, Mana Blast and Blink are granted free [ok]"
+    "Diamond Shores has 11 Coilstones = 22 points: 19 on the Staff (Retain → Wall of Fire → Arcane Fount → Overload) and 3 on the Wavesword for a faster Ice Crystal shield with damage reduction [me]",
+    "Most Staff spells and Ice Crystal are granted free [ok]"
    ],
    "stats": [
     [
@@ -87,8 +87,8 @@
     "Elemental Celerity makes you stagger-immune while casting incantations [one]"
    ],
    "traits": [
-    "Gylden Ruins has 14 Coilstones = +28, for 50 total. The Staff reaches 40 (Shooting Star, Flame Shower, Untouchable Veil, Hellfire) and the Wavesword gets its Ice Crystal defense line (10) [me]",
-    "Switching to Thunderbolt means a trait reset. The cost is unknown, so check in-game [me]"
+    "Gylden Ruins has 14 Coilstones = +28, for 50 total: Shooting Star, Elemental Celerity, Untouchable Veil, and the Wavesword Freeze line [me]",
+    "Switching to Thunderbolt means a trait reset, and the cost is unknown [me]"
    ],
    "stats": [
     [
@@ -978,7 +978,7 @@
    },
    {
     "weapon": "Wavesword",
-    "when": "Second · from Gylden Ruins",
+    "when": "Second · 3 points early (Ice Crystal defense)",
     "pros": [
      "Ice Crystal (free) is an emergency shield that scales with Max HP [ok]",
      "Freeze control: Rapid Freeze, Thundersnow [one]",
@@ -994,472 +994,649 @@
  },
  "plans": [
   {
-   "name": "Fire (leveling and endgame)",
-   "note": "Exactly 94 points. The Staff fills first on the fire side of each fork, the Wavesword joins at about 40 points, and the last 10 buy the Staff's Damage ↑ stat node [me].",
+   "name": "Fire, with early Ice Crystal defense (recommended for leveling)",
+   "note": "Exactly 94 points [me].",
+   "route": [
+    [
+     "Diamond Shores (22):",
+     "Retain → Wall of Fire → Elemental Overload, then 3 Wavesword points (Frost Shard, Swift Bloom, Fortification). Those make your free Ice Crystal shield faster and add damage reduction. Then down the Staff to Arcane Fount and the Overload line [me]."
+    ],
+    [
+     "Gylden Ruins (+28 → 50):",
+     "Shooting Star, Elemental Celerity (no more interrupted casts) and Untouchable Veil, plus the Wavesword's Freeze line to Glacial Burst [me]."
+    ],
+    [
+     "Astron Plains (+44 → 94):",
+     "Thundersnow and Nebe's Might on the Wavesword, Staff capstones, the Lunar Eclipse line, and the 10-point stat node last [me]."
+    ]
+   ],
    "steps": [
     [
      0,
-     "Retain"
+     "Retain",
+     "Recast spells, build Energy Cores"
     ],
     [
      0,
-     "Wall of Fire"
+     "Wall of Fire",
+     ""
     ],
     [
      0,
-     "Elemental Overload"
-    ],
-    [
-     0,
-     "Bolt Sequence"
-    ],
-    [
-     0,
-     "Dual Resonance"
-    ],
-    [
-     0,
-     "Lightning Surge"
-    ],
-    [
-     0,
-     "Molten Fireball"
-    ],
-    [
-     0,
-     "Fire ATK"
-    ],
-    [
-     0,
-     "Flaming Blossom - Channel"
-    ],
-    [
-     0,
-     "Piercing Blaze"
-    ],
-    [
-     0,
-     "Arcane Fount"
-    ],
-    [
-     0,
-     "Rekindled Ember"
-    ],
-    [
-     0,
-     "Control - Wall of Fire"
-    ],
-    [
-     0,
-     "Overload - Flamethrower"
-    ],
-    [
-     0,
-     "Magic Amplification"
-    ],
-    [
-     0,
-     "Volatile Flame"
-    ],
-    [
-     0,
-     "Swift Thunder"
-    ],
-    [
-     0,
-     "Infernal Cross"
-    ],
-    [
-     0,
-     "Shooting Star"
-    ],
-    [
-     0,
-     "Titan Thunder"
-    ],
-    [
-     0,
-     "Elemental Celerity"
-    ],
-    [
-     0,
-     "Lightning Volley"
-    ],
-    [
-     0,
-     "Flame Shower"
-    ],
-    [
-     0,
-     "Untouchable Veil"
-    ],
-    [
-     0,
-     "Ashes to Ashes"
-    ],
-    [
-     0,
-     "Blazing Thunderstorm"
-    ],
-    [
-     0,
-     "Immolation"
-    ],
-    [
-     0,
-     "Hellfire"
+     "Elemental Overload",
+     ""
     ],
     [
      1,
-     "Frost Shard"
+     "Frost Shard",
+     ""
     ],
     [
      1,
-     "Swift Bloom"
+     "Swift Bloom",
+     "Faster free Ice Crystal shield"
     ],
     [
      1,
-     "Fortification"
-    ],
-    [
-     1,
-     "Tidal ATK"
-    ],
-    [
-     1,
-     "Flowing Dew"
-    ],
-    [
-     1,
-     "Rapid Freeze"
-    ],
-    [
-     1,
-     "Tidal Rush"
-    ],
-    [
-     1,
-     "Glacial Burst"
-    ],
-    [
-     1,
-     "Frost Shard - Siphon"
-    ],
-    [
-     1,
-     "Thundersnow"
-    ],
-    [
-     1,
-     "Shatter"
-    ],
-    [
-     1,
-     "Nebe's Might"
+     "Fortification",
+     "Damage reduction after an Ice Crystal block"
     ],
     [
      0,
-     "Lightning Speed"
+     "Bolt Sequence",
+     ""
     ],
     [
      0,
-     "Thunderflash"
+     "Dual Resonance",
+     ""
     ],
     [
      0,
-     "Overcharged Mana Blast"
+     "Lightning Surge",
+     ""
     ],
     [
      0,
-     "Trigger Signal"
-    ],
-    [
-     1,
-     "Lunar Eclipse"
-    ],
-    [
-     1,
-     "Rushing Tide"
-    ],
-    [
-     1,
-     "Tidal Rend"
-    ],
-    [
-     1,
-     "Phantom Wave"
-    ],
-    [
-     1,
-     "High Tide"
-    ],
-    [
-     1,
-     "Magic Amplification"
-    ],
-    [
-     1,
-     "Raging Tide"
-    ],
-    [
-     1,
-     "Tidal Slash II"
-    ],
-    [
-     1,
-     "Aerial Wrath"
-    ],
-    [
-     1,
-     "Cruel Reckoning"
-    ],
-    [
-     1,
-     "Full Moon Cleave"
-    ],
-    [
-     1,
-     "Frozen Oath"
+     "Molten Fireball",
+     ""
     ],
     [
      0,
-     "Damage ↑ at HP ≥70%"
+     "Fire ATK",
+     ""
+    ],
+    [
+     0,
+     "Flaming Blossom - Channel",
+     ""
+    ],
+    [
+     0,
+     "Piercing Blaze",
+     ""
+    ],
+    [
+     0,
+     "Arcane Fount",
+     "SP refill on Burn or Shock"
+    ],
+    [
+     0,
+     "Rekindled Ember",
+     ""
+    ],
+    [
+     0,
+     "Control - Wall of Fire",
+     ""
+    ],
+    [
+     0,
+     "Overload - Flamethrower",
+     ""
+    ],
+    [
+     0,
+     "Magic Amplification",
+     ""
+    ],
+    [
+     0,
+     "Volatile Flame",
+     ""
+    ],
+    [
+     0,
+     "Swift Thunder",
+     ""
+    ],
+    [
+     0,
+     "Shooting Star",
+     ""
+    ],
+    [
+     0,
+     "Infernal Cross",
+     ""
+    ],
+    [
+     0,
+     "Titan Thunder",
+     ""
+    ],
+    [
+     0,
+     "Elemental Celerity",
+     "Stagger-immune while casting"
+    ],
+    [
+     0,
+     "Lightning Volley",
+     ""
+    ],
+    [
+     0,
+     "Flame Shower",
+     ""
+    ],
+    [
+     0,
+     "Untouchable Veil",
+     "Ends on weapon swap"
+    ],
+    [
+     1,
+     "Tidal ATK",
+     ""
+    ],
+    [
+     1,
+     "Flowing Dew",
+     ""
+    ],
+    [
+     1,
+     "Rapid Freeze",
+     ""
+    ],
+    [
+     1,
+     "Tidal Rush",
+     ""
+    ],
+    [
+     1,
+     "Glacial Burst",
+     ""
+    ],
+    [
+     0,
+     "Ashes to Ashes",
+     ""
+    ],
+    [
+     0,
+     "Blazing Thunderstorm",
+     ""
+    ],
+    [
+     0,
+     "Immolation",
+     ""
+    ],
+    [
+     1,
+     "Frost Shard - Siphon",
+     "Frost Shard heals"
+    ],
+    [
+     1,
+     "Lunar Eclipse",
+     ""
+    ],
+    [
+     1,
+     "Rushing Tide",
+     ""
+    ],
+    [
+     0,
+     "Hellfire",
+     ""
+    ],
+    [
+     1,
+     "Thundersnow",
+     ""
+    ],
+    [
+     1,
+     "Shatter",
+     ""
+    ],
+    [
+     1,
+     "Nebe's Might",
+     ""
+    ],
+    [
+     0,
+     "Lightning Speed",
+     ""
+    ],
+    [
+     0,
+     "Thunderflash",
+     ""
+    ],
+    [
+     0,
+     "Overcharged Mana Blast",
+     ""
+    ],
+    [
+     0,
+     "Trigger Signal",
+     ""
+    ],
+    [
+     1,
+     "Tidal Rend",
+     ""
+    ],
+    [
+     1,
+     "Phantom Wave",
+     ""
+    ],
+    [
+     1,
+     "High Tide",
+     ""
+    ],
+    [
+     1,
+     "Magic Amplification",
+     ""
+    ],
+    [
+     1,
+     "Raging Tide",
+     ""
+    ],
+    [
+     1,
+     "Tidal Slash II",
+     ""
+    ],
+    [
+     1,
+     "Aerial Wrath",
+     ""
+    ],
+    [
+     1,
+     "Cruel Reckoning",
+     ""
+    ],
+    [
+     1,
+     "Full Moon Cleave",
+     ""
+    ],
+    [
+     1,
+     "Frozen Oath",
+     ""
+    ],
+    [
+     0,
+     "Damage ↑ at HP ≥70%",
+     "Last: unconfirmed whether it helps the Wavesword"
     ]
    ]
   },
   {
-   "name": "Thunderbolt (lightning endgame)",
-   "note": "Exactly 94 points, taking the lightning side of all three forks (RaidDex's Thunderbolt). Switching from Fire means resetting the Staff tree [me].",
+   "name": "Thunderbolt (lightning), same structure",
+   "note": "Exactly 94 points. Switching from Fire means resetting the Staff tree [me].",
+   "route": [
+    [
+     "Diamond Shores (22):",
+     "Retain → Lightning Storm → Elemental Overload, then 3 Wavesword points (Frost Shard, Swift Bloom, Fortification). Those make your free Ice Crystal shield faster and add damage reduction. Then down the Staff to Arcane Fount and the Overload line [me]."
+    ],
+    [
+     "Gylden Ruins (+28 → 50):",
+     "Shooting Star, Elemental Celerity (no more interrupted casts) and Untouchable Veil, plus the Wavesword's Freeze line to Glacial Burst [me]."
+    ],
+    [
+     "Astron Plains (+44 → 94):",
+     "Thundersnow and Nebe's Might on the Wavesword, Staff capstones, the Lunar Eclipse line, and the 10-point stat node last [me]."
+    ]
+   ],
    "steps": [
     [
      0,
-     "Retain"
+     "Retain",
+     "Recast spells, build Energy Cores"
     ],
     [
      0,
-     "Lightning Storm"
+     "Lightning Storm",
+     ""
     ],
     [
      0,
-     "Elemental Overload"
-    ],
-    [
-     0,
-     "Bolt Sequence"
-    ],
-    [
-     0,
-     "Dual Resonance"
-    ],
-    [
-     0,
-     "Lightning Surge"
-    ],
-    [
-     0,
-     "Molten Fireball"
-    ],
-    [
-     0,
-     "Fire ATK"
-    ],
-    [
-     0,
-     "Lightning Pillar - Flurry"
-    ],
-    [
-     0,
-     "Lightning Pillar - Amplify"
-    ],
-    [
-     0,
-     "Arcane Fount"
-    ],
-    [
-     0,
-     "Rekindled Ember"
-    ],
-    [
-     0,
-     "Control - Lightning Storm"
-    ],
-    [
-     0,
-     "Overload - Lightning Spear"
-    ],
-    [
-     0,
-     "Magic Amplification"
-    ],
-    [
-     0,
-     "Volatile Flame"
-    ],
-    [
-     0,
-     "Swift Thunder"
-    ],
-    [
-     0,
-     "Infernal Cross"
-    ],
-    [
-     0,
-     "Shooting Star"
-    ],
-    [
-     0,
-     "Titan Thunder"
-    ],
-    [
-     0,
-     "Elemental Celerity"
-    ],
-    [
-     0,
-     "Lightning Volley"
-    ],
-    [
-     0,
-     "Ashes to Ashes"
-    ],
-    [
-     0,
-     "Blazing Thunderstorm"
-    ],
-    [
-     0,
-     "Lightning Speed"
-    ],
-    [
-     0,
-     "Thunderflash"
-    ],
-    [
-     0,
-     "Flame Shower"
-    ],
-    [
-     0,
-     "Untouchable Veil"
+     "Elemental Overload",
+     ""
     ],
     [
      1,
-     "Frost Shard"
+     "Frost Shard",
+     ""
     ],
     [
      1,
-     "Swift Bloom"
+     "Swift Bloom",
+     "Faster free Ice Crystal shield"
     ],
     [
      1,
-     "Fortification"
-    ],
-    [
-     1,
-     "Tidal ATK"
-    ],
-    [
-     1,
-     "Flowing Dew"
-    ],
-    [
-     1,
-     "Rapid Freeze"
-    ],
-    [
-     1,
-     "Tidal Rush"
-    ],
-    [
-     1,
-     "Glacial Burst"
-    ],
-    [
-     1,
-     "Frost Shard - Siphon"
-    ],
-    [
-     1,
-     "Thundersnow"
-    ],
-    [
-     1,
-     "Shatter"
-    ],
-    [
-     1,
-     "Nebe's Might"
+     "Fortification",
+     "Damage reduction after an Ice Crystal block"
     ],
     [
      0,
-     "Immolation"
+     "Bolt Sequence",
+     ""
     ],
     [
      0,
-     "Hellfire"
+     "Dual Resonance",
+     ""
     ],
     [
      0,
-     "Overcharged Mana Blast"
+     "Lightning Surge",
+     ""
     ],
     [
      0,
-     "Trigger Signal"
-    ],
-    [
-     1,
-     "Lunar Eclipse"
-    ],
-    [
-     1,
-     "Rushing Tide"
-    ],
-    [
-     1,
-     "Tidal Rend"
-    ],
-    [
-     1,
-     "Phantom Wave"
-    ],
-    [
-     1,
-     "High Tide"
-    ],
-    [
-     1,
-     "Magic Amplification"
-    ],
-    [
-     1,
-     "Raging Tide"
-    ],
-    [
-     1,
-     "Tidal Slash II"
-    ],
-    [
-     1,
-     "Aerial Wrath"
-    ],
-    [
-     1,
-     "Cruel Reckoning"
-    ],
-    [
-     1,
-     "Full Moon Cleave"
-    ],
-    [
-     1,
-     "Frozen Oath"
+     "Molten Fireball",
+     ""
     ],
     [
      0,
-     "Damage ↑ at HP ≥70%"
+     "Fire ATK",
+     ""
+    ],
+    [
+     0,
+     "Lightning Pillar - Flurry",
+     ""
+    ],
+    [
+     0,
+     "Lightning Pillar - Amplify",
+     ""
+    ],
+    [
+     0,
+     "Arcane Fount",
+     "SP refill on Burn or Shock"
+    ],
+    [
+     0,
+     "Rekindled Ember",
+     ""
+    ],
+    [
+     0,
+     "Control - Lightning Storm",
+     ""
+    ],
+    [
+     0,
+     "Overload - Lightning Spear",
+     "Homing Lightning Spear"
+    ],
+    [
+     0,
+     "Magic Amplification",
+     ""
+    ],
+    [
+     0,
+     "Volatile Flame",
+     ""
+    ],
+    [
+     0,
+     "Swift Thunder",
+     ""
+    ],
+    [
+     0,
+     "Shooting Star",
+     ""
+    ],
+    [
+     0,
+     "Infernal Cross",
+     ""
+    ],
+    [
+     0,
+     "Titan Thunder",
+     ""
+    ],
+    [
+     0,
+     "Elemental Celerity",
+     "Stagger-immune while casting"
+    ],
+    [
+     0,
+     "Ashes to Ashes",
+     ""
+    ],
+    [
+     0,
+     "Blazing Thunderstorm",
+     ""
+    ],
+    [
+     0,
+     "Lightning Speed",
+     ""
+    ],
+    [
+     0,
+     "Thunderflash",
+     ""
+    ],
+    [
+     1,
+     "Tidal ATK",
+     ""
+    ],
+    [
+     1,
+     "Flowing Dew",
+     ""
+    ],
+    [
+     1,
+     "Rapid Freeze",
+     ""
+    ],
+    [
+     1,
+     "Tidal Rush",
+     ""
+    ],
+    [
+     1,
+     "Glacial Burst",
+     ""
+    ],
+    [
+     0,
+     "Lightning Volley",
+     ""
+    ],
+    [
+     0,
+     "Flame Shower",
+     ""
+    ],
+    [
+     0,
+     "Untouchable Veil",
+     "Ends on weapon swap"
+    ],
+    [
+     1,
+     "Frost Shard - Siphon",
+     "Frost Shard heals"
+    ],
+    [
+     1,
+     "Thundersnow",
+     ""
+    ],
+    [
+     1,
+     "Shatter",
+     ""
+    ],
+    [
+     1,
+     "Nebe's Might",
+     ""
+    ],
+    [
+     0,
+     "Immolation",
+     ""
+    ],
+    [
+     0,
+     "Hellfire",
+     ""
+    ],
+    [
+     0,
+     "Overcharged Mana Blast",
+     ""
+    ],
+    [
+     0,
+     "Trigger Signal",
+     ""
+    ],
+    [
+     1,
+     "Lunar Eclipse",
+     ""
+    ],
+    [
+     1,
+     "Rushing Tide",
+     ""
+    ],
+    [
+     1,
+     "Tidal Rend",
+     ""
+    ],
+    [
+     1,
+     "Phantom Wave",
+     ""
+    ],
+    [
+     1,
+     "High Tide",
+     ""
+    ],
+    [
+     1,
+     "Magic Amplification",
+     ""
+    ],
+    [
+     1,
+     "Raging Tide",
+     ""
+    ],
+    [
+     1,
+     "Tidal Slash II",
+     ""
+    ],
+    [
+     1,
+     "Aerial Wrath",
+     ""
+    ],
+    [
+     1,
+     "Cruel Reckoning",
+     ""
+    ],
+    [
+     1,
+     "Full Moon Cleave",
+     ""
+    ],
+    [
+     1,
+     "Frozen Oath",
+     ""
+    ],
+    [
+     0,
+     "Damage ↑ at HP ≥70%",
+     "Last: unconfirmed whether it helps the Wavesword"
     ]
    ]
   }
- ]
+ ],
+ "carry": {
+  "intro": "Each weapon has its own tree, but both spend from one shared point pool [ok]. Below, I sort every effect by what its node text actually says. <b>Ends on swap</b> means the text says so. <b>Only that weapon</b> covers nodes that change that weapon's own skills or say \"equipped weapon\". <b>Unconfirmed</b> means the text doesn't say either way, so I'm not guessing. One creator video reports a global cooldown when you swap mid-combo [one].",
+  "cols": [
+   {
+    "kind": "ends",
+    "label": "Ends on swap (node text says so)",
+    "items": [
+     "<b>Untouchable Veil</b> (Staff): \"ends on weapon swap\" [ok]",
+     "<b>Ice Crystal</b> (Wavesword): one guide says swapping removes it immediately [one]"
+    ]
+   },
+   {
+    "kind": "only",
+    "label": "Only that weapon",
+    "items": [
+     "Skill upgrades only change that weapon's own skills: Retain, Overloads, Frost Shard upgrades, and so on [ok]",
+     "Staff stat cluster: Weapon Physical / Magic ATK ↑ say \"weapon ATK\". The plan skips them [ok]"
+    ]
+   },
+   {
+    "kind": "test",
+    "label": "Unconfirmed: test before relying on it",
+    "items": [
+     "Fortification's 15 s damage reduction after an Ice Crystal block: does it stay when you swap back to the Staff? [me]",
+     "Stat nodes: Staff Magic Amplification +50 and Fire ATK +20, Wavesword Tidal ATK +20 and Magic Amplification +25 [me]",
+     "Damage ↑ at HP ≥70% (+2.5% damage) doesn't say \"weapon\". The plan buys it last for that reason [me]"
+    ]
+   }
+  ],
+  "test": [
+   "<b>Stat nodes:</b> open the Character screen with the weapon whose tree has the node (for example, Warhammer for its Fire ATK +20) and note the value. Press {Q}, then reopen the screen. If the number didn't change, the node counts for both weapons.",
+   "<b>Shields and buffs:</b> start the effect (a shield or timed buff), press {Q} right away, and watch the buff bar or shield. If the icon stays, it carries over.",
+   "Tell me what you see and I'll update the page. Until then, those rows stay marked as unconfirmed."
+  ]
+ }
 }

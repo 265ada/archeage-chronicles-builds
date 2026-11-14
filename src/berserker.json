@@ -26,8 +26,8 @@
     "On the hammer: Power Surge, then Tempered Blow (hold block, then release) [ok]"
    ],
    "traits": [
-    "Diamond Shores has 11 Coilstones = 22 points. All 22 go to Axe & Shield: Death Ward, Battle Cry upgrades, Shield Slam, Twin Pulse, Reel In, Brutal Crash [me]",
-    "Pulverize, Power Surge, Tempered and Devastating Blow are granted free on the Warhammer, so you can practice it with 0 points [ok]"
+    "Diamond Shores has 11 Coilstones = 22 points: Axe 10 (Death Ward, Battle Cry line to Shield Slam) and Warhammer 12 (Meteor Hammer to Galactic Impact) [me]",
+    "Pulverize, Power Surge, Tempered and Devastating Blow are free on the Warhammer, so 2 points of Meteor Hammer make it useful right away [ok]"
    ],
    "stats": [
     [
@@ -67,9 +67,9 @@
    ],
    "check": [
     "Put Axe & Shield and Warhammer on Q swap",
-    "Unlock Death Ward and Shield Slam",
+    "Unlock Death Ward, then Meteor Hammer and Meteor Hammer II",
     "Get all 11 Diamond Shores Coilstones (22 points)",
-    "Reach Brutal Crash and Steadfast"
+    "Reach Shield Slam and Galactic Impact"
    ]
   },
   {
@@ -87,8 +87,7 @@
     "Pulverize → Unstoppable Force refreshes Lv. 3 [ok]"
    ],
    "traits": [
-    "Gylden Ruins has 14 Coilstones = +28, for 50 total. The Warhammer gets 18 (Meteor Hammer → Galactic Impact → Lightning Collision) and Axe & Shield 10 more [me]",
-    "Fork picks: the Meteor Hammer line, Unstoppable Force, Lightning Collision [me]"
+    "Gylden Ruins has 14 Coilstones = +28, for 50 total: Axe sustain (Twin Pulse, Reel In, Brutal Crash), Lightning Collision → Tough Skin on the Warhammer, then Perseverance and Heavy Hitter [me]"
    ],
    "stats": [
     [
@@ -856,7 +855,7 @@
    },
    {
     "weapon": "Warhammer",
-    "when": "Second · from Gylden Ruins",
+    "when": "Second · 2 points early (Meteor Hammer)",
     "pros": [
      "The biggest burst: Galactic Impact, Lightning Collision, Thundering Hurl [ok]",
      "Damage reduction and stagger immunity while charging Power Surge [ok]",
@@ -873,208 +872,272 @@
  },
  "plans": [
   {
-   "name": "Axe first, Warhammer second (recommended)",
-   "note": "93 of 94 points. Steps 1–16 are Diamond Shores (all Axe). The Warhammer starts in Gylden Ruins. The last 20 points go into the Axe stat cluster at Wikily's listed cost [me].",
+   "name": "Balanced: both weapons from the start (recommended)",
+   "note": "93 of 94 points. Meteor Hammer comes in at points 2–3 because it upgrades a combo you already own [me].",
+   "route": [
+    [
+     "Diamond Shores (22):",
+     "Death Ward first, then Meteor Hammer and Meteor Hammer II (2 points). Those upgrade the Warhammer combo you already have for free. Then the Battle Cry line to Shield Slam on the Axe, and the Warhammer core down to Galactic Impact [me]."
+    ],
+    [
+     "Gylden Ruins (+28 → 50):",
+     "Axe sustain (Twin Pulse, Reel In, Brutal Crash), Lightning Collision and the Thunder line on the Warhammer, then the Axe's Reckless Destroyer side [me]."
+    ],
+    [
+     "Astron Plains (+44 → 94):",
+     "Assured Ruin and Thundering Hurl, the Axe capstones, then the Axe stat cluster last. It only boosts the Axe while it's out [me]."
+    ]
+   ],
    "steps": [
     [
      1,
-     "Death Ward"
-    ],
-    [
-     1,
-     "Giant's Bellow"
-    ],
-    [
-     1,
-     "Triumphant Cry"
-    ],
-    [
-     1,
-     "Brutality"
-    ],
-    [
-     1,
-     "Resounding Roar"
-    ],
-    [
-     1,
-     "Shield Slam"
-    ],
-    [
-     1,
-     "Shield Crash"
-    ],
-    [
-     1,
-     "Twin Pulse"
-    ],
-    [
-     1,
-     "Reel In"
-    ],
-    [
-     1,
-     "Physical Crit"
-    ],
-    [
-     1,
-     "Brutal Crash"
-    ],
-    [
-     1,
-     "Reckless Destroyer"
-    ],
-    [
-     1,
-     "Overpower"
-    ],
-    [
-     1,
-     "Perseverance"
-    ],
-    [
-     1,
-     "Clash"
-    ],
-    [
-     1,
-     "Steadfast"
+     "Death Ward",
+     "15 s immortal. Best panic button for 1 point"
     ],
     [
      0,
-     "Meteor Hammer"
+     "Meteor Hammer",
+     "Upgrades the free Tempered Blow"
     ],
     [
      0,
-     "Meteor Hammer II"
+     "Meteor Hammer II",
+     ""
+    ],
+    [
+     1,
+     "Giant's Bellow",
+     "Battle Cry (free) also cuts damage taken"
+    ],
+    [
+     1,
+     "Triumphant Cry",
+     ""
+    ],
+    [
+     1,
+     "Brutality",
+     "Battle Cry hits twice"
+    ],
+    [
+     1,
+     "Resounding Roar",
+     ""
+    ],
+    [
+     1,
+     "Shield Slam",
+     "Knockback, partial SP refund"
     ],
     [
      0,
-     "Evasive Assault"
+     "Evasive Assault",
+     ""
     ],
     [
      0,
-     "Fire ATK"
+     "Fire ATK",
+     ""
     ],
     [
      0,
-     "Masterpiece"
+     "Masterpiece",
+     "Meteor Hammer reaches Lv. 3"
     ],
     [
      0,
-     "Unstoppable Force"
+     "Unstoppable Force",
+     ""
     ],
     [
      0,
-     "Unstoppable Force II"
+     "Unstoppable Force II",
+     "Pulverize (free) gives a shield"
     ],
     [
      0,
-     "Galactic Impact"
+     "Galactic Impact",
+     "Big burst"
+    ],
+    [
+     1,
+     "Shield Crash",
+     ""
+    ],
+    [
+     1,
+     "Reckless Destroyer",
+     ""
+    ],
+    [
+     1,
+     "Twin Pulse",
+     "HP regen from Battle Cry"
+    ],
+    [
+     1,
+     "Reel In",
+     ""
+    ],
+    [
+     1,
+     "Physical Crit",
+     ""
+    ],
+    [
+     1,
+     "Brutal Crash",
+     ""
+    ],
+    [
+     1,
+     "Steadfast",
+     ""
     ],
     [
      0,
-     "Lightning Collision"
+     "Lightning Collision",
+     ""
     ],
     [
      0,
-     "Resonating Strike"
+     "Resonating Strike",
+     ""
     ],
     [
      0,
-     "Tough Skin"
+     "Tough Skin",
+     "Shock raises your defense"
     ],
     [
      0,
-     "Electric Cluster"
+     "Electric Cluster",
+     ""
     ],
     [
      1,
-     "Heavy Hitter"
+     "Overpower",
+     ""
     ],
     [
      1,
-     "Battle Cry - Poison"
+     "Perseverance",
+     "Reckless Destroyer cuts damage taken"
     ],
     [
      1,
-     "Ruthless Force"
+     "Clash",
+     ""
     ],
     [
      1,
-     "Fog ATK"
-    ],
-    [
-     1,
-     "Relentless Drive"
-    ],
-    [
-     1,
-     "Fearsome Might"
-    ],
-    [
-     1,
-     "Battleborn"
-    ],
-    [
-     1,
-     "Dominance"
+     "Heavy Hitter",
+     ""
     ],
     [
      0,
-     "Compression"
+     "Compression",
+     ""
     ],
     [
      0,
-     "Reconstruction"
+     "Reconstruction",
+     "Heal while holding Power Surge at low HP"
+    ],
+    [
+     1,
+     "Battle Cry - Poison",
+     ""
+    ],
+    [
+     1,
+     "Ruthless Force",
+     ""
+    ],
+    [
+     1,
+     "Fog ATK",
+     ""
     ],
     [
      0,
-     "Assured Ruin"
+     "Assured Ruin",
+     ""
     ],
     [
      0,
-     "Thundering Hurl"
+     "Thundering Hurl",
+     ""
     ],
     [
      1,
-     "Ridge Shatter"
+     "Fearsome Might",
+     ""
     ],
     [
      1,
-     "Assured Blow"
+     "Battleborn",
+     ""
     ],
     [
      1,
-     "Final Act"
+     "Ridge Shatter",
+     ""
     ],
     [
      1,
-     "Unbound Might"
+     "Relentless Drive",
+     ""
     ],
     [
      1,
-     "Doombringer"
+     "Dominance",
+     ""
     ],
     [
      1,
-     "Fierce Breakthrough"
+     "Assured Blow",
+     ""
     ],
     [
      1,
-     "Battle Echo"
+     "Final Act",
+     ""
     ],
     [
      1,
-     "Damage ↑ at HP ≥70%"
+     "Unbound Might",
+     ""
     ],
     [
      1,
-     "Weapon Physical ATK ↑"
+     "Doombringer",
+     ""
     ],
     [
      1,
-     "Damage ↑ vs HP ≤40%"
+     "Fierce Breakthrough",
+     ""
+    ],
+    [
+     1,
+     "Battle Echo",
+     ""
+    ],
+    [
+     1,
+     "Damage ↑ at HP ≥70%",
+     "Last: unconfirmed whether it helps the Warhammer"
+    ],
+    [
+     1,
+     "Weapon Physical ATK ↑",
+     "Axe only (\"weapon ATK\")"
+    ],
+    [
+     1,
+     "Damage ↑ vs HP ≤40%",
+     ""
     ]
    ]
   },
@@ -1284,5 +1347,39 @@
     ]
    ]
   }
- ]
+ ],
+ "carry": {
+  "intro": "Each weapon has its own tree, but both spend from one shared point pool [ok]. Below, I sort every effect by what its node text actually says. <b>Ends on swap</b> means the text says so. <b>Only that weapon</b> covers nodes that change that weapon's own skills or say \"equipped weapon\". <b>Unconfirmed</b> means the text doesn't say either way, so I'm not guessing. One creator video reports a global cooldown when you swap mid-combo [one].",
+  "cols": [
+   {
+    "kind": "ends",
+    "label": "Ends on swap (node text says so)",
+    "items": [
+     "<b>Meteor Hammer</b> (Warhammer): \"lost on sprint or weapon swap\". Spend it with Resonating Strike before you swap [ok]"
+    ]
+   },
+   {
+    "kind": "only",
+    "label": "Only that weapon",
+    "items": [
+     "Skill upgrades only change that weapon's own skills: Giant's Bellow and Brutality (Battle Cry), Unstoppable Force (Pulverize), Compression (Power Surge), and so on [ok]",
+     "Axe stat cluster: Weapon Physical / Magic ATK ↑ say \"weapon ATK\", so they apply only while the Axe is out. That's why the plan buys them last [ok]"
+    ]
+   },
+   {
+    "kind": "test",
+    "label": "Unconfirmed: test before relying on it",
+    "items": [
+     "Rally / Brutality Battle Cry damage buff (12 s) and Twin Pulse regen: does Battle Cry → swap → Warhammer burst keep the buff? Untested [me]",
+     "Death Ward's 15 s immortality and the Unstoppable Force II shield [me]",
+     "Stat nodes: Warhammer Fire ATK +20, Axe Fog ATK +20 and Physical Crit +25 [me]"
+    ]
+   }
+  ],
+  "test": [
+   "<b>Stat nodes:</b> open the Character screen with the weapon whose tree has the node (for example, Warhammer for its Fire ATK +20) and note the value. Press {Q}, then reopen the screen. If the number didn't change, the node counts for both weapons.",
+   "<b>Shields and buffs:</b> start the effect (a shield or timed buff), press {Q} right away, and watch the buff bar or shield. If the icon stays, it carries over.",
+   "Tell me what you see and I'll update the page. Until then, those rows stay marked as unconfirmed."
+  ]
+ }
 }

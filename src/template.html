@@ -138,6 +138,16 @@ ol.steps li{grid-template-columns:28px auto 1fr auto}
 .skip{border-top:1px solid var(--line);padding-top:10px}
 td.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
 @media (max-width:520px){.wcols{grid-template-columns:1fr}}
+.cogrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.cocard{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--muted);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.cocard.ends{border-top-color:var(--bad)} .cocard.only{border-top-color:var(--volt)} .cocard.test{border-top-color:var(--warn)}
+.cotest{background:var(--warn-soft);border:1px solid var(--warn);border-radius:8px;padding:14px 16px}
+.cotest h3{font-size:17px;margin-bottom:6px}
+.cotest ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:14px}
+ul.route{list-style:none;margin:6px 0 4px;padding:0;display:flex;flex-direction:column;gap:6px;font-size:14px;max-width:80ch}
+ul.route b{font-family:var(--display);text-transform:uppercase;letter-spacing:.04em;margin-right:4px}
+.why{display:block;font-size:12px;color:var(--muted);text-decoration:none}
+ol.steps li.done .why{text-decoration:none}
 .glabel{font:500 11px var(--mono);fill:var(--muted);letter-spacing:.08em;text-transform:uppercase}
 .tpanel{position:sticky;top:12px;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
 .tpanel h3{font-size:22px}
@@ -214,6 +224,13 @@ footer{font-size:13px;color:var(--muted)}
   <div class="wgrid" id="wg"></div>
 </section>
 
+<section aria-labelledby="co-h">
+  <h2 id="co-h">What carries over when you swap</h2>
+  <p id="co-intro"></p>
+  <div class="cogrid" id="co"></div>
+  <div class="cotest"><h3>Test it in 1 minute</h3><ol id="co-test"></ol></div>
+</section>
+
 <section aria-labelledby="tree-h">
   <h2 id="tree-h"></h2>
   <div class="tabs" id="wswitch" aria-label="Weapon"></div>
@@ -246,7 +263,7 @@ footer{font-size:13px;color:var(--muted)}
       <div class="tree-scroll" id="tscroll"><svg id="tsvg" role="group"></svg></div>
       <aside class="tpanel" id="tpanel" aria-live="polite"></aside>
     </div>
-    <div class="stage-head"><h3 id="steps-h">Leveling plan</h3><p class="progress" id="steps-sub"></p></div>
+    <div class="stage-head"><h3 id="steps-h">Leveling plan</h3><p class="progress" id="steps-sub"></p><ul class="route" id="route"></ul></div>
     <ol class="steps" id="tsteps"></ol>
   </div>
 </section>
@@ -406,12 +423,12 @@ function renderTree(){
     $('ttoggle').onclick=()=>toggle(sel[0],sel[1]);
   }
   let run=0,m=0,nextMarked=false,html='';
-  $('steps-h').textContent='Leveling plan: '+P.name;$('steps-sub').innerHTML=fmt(P.note||'');
+  $('steps-h').textContent='Leveling plan: '+P.name;$('steps-sub').innerHTML=fmt(P.note||'');$('route').innerHTML=(P.route||[]).map(r=>`<li><b>${esc(r[0])}</b> ${fmt(r[1])}</li>`).join('');
   html+=`<li class="ms">${esc(MS[0].region)} · ${esc(MS[0].levels)} · up to ${MS[0].pts} pts</li>`;
-  P.steps.forEach(([ti,id])=>{const n=TS[ti].BY[id];
+  P.steps.forEach(([ti,id,why])=>{const n=TS[ti].BY[id];
     while(m<MS.length-1&&run+n.c>MS[m].pts){m++;html+=`<li class="ms">${esc(MS[m].region)} · ${esc(MS[m].levels)} · up to ${MS[m].pts} pts</li>`}
     run+=n.c;const d=TS[ti].u.has(id);let c=d?'done':'';if(!d&&!nextMarked){c='next';nextMarked=true}
-    html+=`<li class="${c}" data-t="${ti}" data-id="${id}"><span class="wchip w${ti}">${esc(short(ti))}</span><span class="nm">${esc(n.n)}</span><span class="pts">+${n.c} → ${run}</span></li>`});
+    html+=`<li class="${c}" data-t="${ti}" data-id="${id}"><span class="wchip w${ti}">${esc(short(ti))}</span><span class="nm">${esc(n.n)}${why?`<small class="why">${esc(why)}</small>`:''}</span><span class="pts">+${n.c} → ${run}</span></li>`});
   $('tsteps').innerHTML=html;
 }
 $('tsteps').onclick=e=>{const l=e.target.closest('li[data-id]');if(!l)return;const ti=+l.dataset.t;sel=[ti,l.dataset.id];if(ti!==curT)mountTree(ti);else renderTree();const n=TS[ti].BY[l.dataset.id];n.el.scrollIntoView({block:'center',inline:'center',behavior:'smooth'})};
@@ -426,6 +443,11 @@ mountTree(curT);
 $('wg-intro').innerHTML=fmt(D.weaponGuide.intro);
 $('wg').innerHTML=D.weaponGuide.items.map(w=>`<article class="wcard"><span class="eyebrow">${esc(w.when)}</span><h3>${esc(w.weapon)}</h3>
 <div class="wcols"><div><h4>Pros</h4>${li(w.pros)}</div><div><h4>Cons</h4>${li(w.cons)}</div></div><div class="skip"><h4>If you skip it</h4><p>${fmt(w.skip)}</p></div></article>`).join('');
+
+/* carry-over */
+$('co-intro').innerHTML=fmt(D.carry.intro);
+$('co').innerHTML=D.carry.cols.map(c=>`<article class="cocard ${c.kind}"><span class="eyebrow">${esc(c.label)}</span>${li(c.items)}</article>`).join('');
+$('co-test').innerHTML=D.carry.test.map(t=>`<li>${fmt(t)}</li>`).join('');
 
 /* point budget by region, from the first plan */
 (()=>{const P=PLANS[0];let run=0;const per=MS.map(()=>TREES.map(()=>0));

@@ -1,95 +1,1041 @@
 {
-"id":"warrior-fb",
-"title":"Warrior Frostbreaker Build",
-"out":"warrior-frostbreaker.html",
-"eyebrow":"ArcheAge Chronicles · Warrior · Early Access",
-"h1":"<span class='zap'>Frost</span><span class='hot'>breaker</span> Greatsword",
-"lede":"A Greatsword build from level 1 to 40 that spends every one of Early Access's 94 trait points. Shields from Pommel Strike and Brace keep you upright, Freeze sets up big vertical hits, and the Longsword is your healing swap.",
-"notice":{"title":"Checked against your Traits screens. Not tested in-game.","text":"Both trait trees match your Greatsword and Longsword screens node for node (55 and 60 nodes). Costs follow the in-game markers: nodes marked \"3\" cost 3, everything else costs 1, and granted skills are free. Where two branches split and rejoin you pick one side, as your Hatchet screen shows. The plan spends exactly 94 points: 47 Coilstones at 2 each. Build choices and stat numbers are my recommendations, tagged as such."},
-"defaultPoints":8,
-"stages":[
- {"id":"level","name":"Leveling","sub":"Lv 1 → 20 · Diamond Shores",
-  "goal":"You start with the Longsword. Switch to the Greatsword as soon as you get one, and put all 22 Diamond Shores points into it.",
-  "weapons":["<span class='w-main'>Greatsword</span> as soon as you have one (RaidDex's route has a Covenant Greatsword by Lv 15) [one]","<span class='w-alt'>Longsword</span> until then, since it's the default weapon [one]"],
-  "skills":["Arc, Chain, Sunder, Vertical, Rising, Final Cleave, Blade Guard and Brace are granted free [ok]","Pommel Strike gives a long shield. While shielded, Brace makes you stagger-immune [ok]","Demolishing Strike counters after a Blade Guard block, and Expert makes it cost no SP [one]"],
-  "traits":["Diamond Shores has 11 Coilstones = 22 points. All 22 go to the Greatsword: plan steps 1–20 [me]","Trait points only come from Coilstones (2 each), not from levels [ok]"],
-  "stats":[["Strength",100,"+28"],["Endurance",60,"+17"],["Constitution",43,"+12"],["Talent",0,"later"],["Agility",0,"—"],["Intelligence",0,"—"]],
-  "gear":["Lv 15: Covenant Greatsword [one]","At Lv 20 you have 57 stat points (3 per level) [ok]"],
-  "check":["Pick up the Greatsword and put it on Q swap","Unlock Pommel Strike → Fatal Cleave","Get all 11 Diamond Shores Coilstones (22 points)","Reach Frosted Gleam and Fortified Shields"]},
- {"id":"mid","name":"Gearing","sub":"Lv 21 → 35 · Gylden Ruins",
-  "goal":"Add Cross Slash, Brawl and Rampage to the Greatsword, and build the Longsword's healing core.",
-  "weapons":["<span class='w-main'>Fallen Margrave</span> greatsword [ok]","<span class='w-alt'>Twisted Fate Blade</span> longsword [one]"],
-  "skills":["Cross Slash → Rain Cleave → Downpour Slash hit harder while you're shielded [ok]","Rampage adds a free charged Final Cleave on Unbridled Might [ok]","Longsword Lifeflame heals on Closing Slash, and Bloodstorm costs HP instead of SP [ok]"],
-  "traits":["Gylden Ruins has 14 Coilstones = +28, for 50 total. Greatsword reaches 40 and Longsword 10 [me]"],
-  "stats":[["Strength",100,"+44"],["Endurance",68,"+30"],["Constitution",36,"+16"],["Talent",27,"+12 → 23"],["Agility",0,"—"],["Intelligence",0,"—"]],
-  "gear":["Raise Talent to 23 total for the endgame weapons. It also adds defense [ok]"],
-  "check":["Get Fallen Margrave","Get Twisted Fate Blade","Unlock Rampage","Unlock Bloodstorm on the Longsword"]},
- {"id":"end","name":"Endgame","sub":"Lv 36 → 40 · Astron Plains",
-  "goal":"Finish the Greatsword at 53 points, then spend the rest on the Longsword.",
-  "weapons":["<span class='w-main'>Scattered Mist</span> greatsword [ok]","<span class='w-alt'>Wrathful Tyrant's Horn</span> longsword [ok]"],
-  "skills":["Frostfang: Freeze grants Resolve, and Rising Slash adds a long-range hit [ok]","Bloodforge + Bloodthirst turn Longsword skills into heals [ok]","Bladeburst: stationary, immune while it hits. 60 s cooldown [ok]"],
-  "traits":["Astron Plains has 22 Coilstones = +44, for 94. Greatsword finishes at 53 (its maximum) and Longsword gets 41 of its 46 [me]","RaidDex's 56 / 44 assumed 100 points and Wikily's 2-point costs [me]"],
-  "stats":[["Strength",100,"+50"],["Endurance",70,"+35"],["Constitution",40,"+20"],["Talent",24,"+12 → 23"],["Agility",0,"—"],["Intelligence",0,"—"]],
-  "gear":["117 stat points at Lv 40. RaidDex's 54 STR / 45 CON / 15 END spends most of its defense on HP. This page shifts it toward Endurance [me]"],
-  "check":["Get Scattered Mist and Wrathful Tyrant's Horn","Talent at 23","Spend all 94 trait points","Land Rampage in a boss fight"]}
-],
-"weaponGuide":{
- "intro":"Every Warrior starts with the Longsword, the class's default weapon [ok]. The Greatsword comes later (RaidDex has one by Lv 15) [one]. Start your trait points on the <b>Greatsword</b>. It's the safer leveling weapon, and the Longsword's free skills already cover you until you get it.",
- "items":[
-  {"weapon":"Greatsword","when":"Main · first 22 points","pros":["Pommel Strike and Brace shields make you stagger-immune, so you can trade hits while you level [ok]","Arc, Chain and Sweeping Slash clear packs, and all three are free [ok]","Rated higher for PvE: AOEAH 9/10, a creator tier list A. Kybuza, Nerd Bird and Theory Forge favor it [ok]","The Freeze line multiplies vertical-slash damage (Clean Cut, Frostfang) [one]"],
-   "cons":["Slow and heavy, with little mobility. Bad at chasing [one]","Heavy swings eat SP, so it needs Endurance [ok]","No self-heal anywhere in the tree [ok]"],
-   "skip":"Leveling on the Longsword alone means no shields and more deaths. One Early Access player died more on the Longsword than the Greatsword [one], and the Longsword's PvE rating is C or 7/10 [ok]."},
-  {"weapon":"Longsword","when":"Swap · from Gylden Ruins","pros":["The only Warrior healing: Lifeflame, Bloodstorm, Bloodforge [ok]","Best duelist: AOEAH 10/10 for PvP, a creator tier list S for PvP [ok]","Parry, Counterattack, Charge and Pursuit are free, so it works with 0 points [ok]"],
-   "cons":["PvE rated C (creator) or 7/10 (AOEAH) [ok]","Parry timing is unforgiving, and the blood skills cost HP [ok]","Bloodforge ends when you swap weapons [ok]"],
-   "skip":"With no healing swap, you lean on your five potions per fight [one], and you give up the class's best PvP weapon."}
- ]},
-"budgetIntro":"Early Access has 47 Raeven's Coilstones at 2 trait points each, 94 in total [one]. Region counts are RaidDex's [one] and level bands are archeagechroniclesdata's [one]. You only reach these totals if you take every Coilstone as you go. Both weapons spend from the same pool, which is why your Longsword screen shows \"Available Points: 4/8\" after 4 went into the Greatsword.",
-"treeHelp":"Click a node to read it. Double-click it, or press Space, to unlock or refund it. ✓ = granted free. Red = locked because you took the other side of that fork. <b>Fill with my points</b> follows the leveling plan across both weapons until your points run out. Saved in this browser.",
-"trees":[
- {"file":"greatsword","weapon":"Greatsword","short":"GS","role":"Main weapon","key":"greatsword",
-  "intro":"Matches your Greatsword screen: 14 granted skills on the left, Proficiency at the top, and two 20-node branches. Ten nodes carry the \"3\" marker. Forks: Armor Break or Frozen Veins, Freeze or Expert, Mastery or Uncontrollable Power, Lightweight or Heavyweight, Swift Cut Freeze or Neutralize, Carve Up or Clean Sweep. Full tree with choices made: 53 points [me]."},
- {"file":"longsword","weapon":"Longsword","short":"LS","role":"Swap weapon","key":"longsword",
-  "intro":"Matches your Longsword screen: 14 granted skills, Pursuit - Root on its own, a 21-node blood branch, an 18-node Foresight branch, and a stat cluster on the right. Full tree with choices made: 46 points, not counting the stat cluster [me]."}
-],
-"plans":[
- {"name":"Frostbreaker (Frozen Veins)","note":"All 94 points. Steps 1–20 are the 22 Diamond Shores points, all Greatsword. The Longsword starts in Gylden Ruins. Greatsword ends at 53 (full) and Longsword at 41 [me].",
-  "steps":[[0,"Pommel Strike"],[0,"Retaliate"],[0,"Demolishing Strike"],[0,"Demolishing Strike - Expert"],[0,"Fatal Cleave"],[0,"Sweeping Slash"],[0,"Unbridled Might"],[0,"Frozen Veins"],[0,"Frozen Veins II"],[0,"Iron Balance"],[0,"Greatsword Mastery"],[0,"Frosted Gleam"],[0,"Swift Cut"],[0,"Heavyweight Upgrade"],[0,"Physical PEN"],[0,"Swift Cut - Freeze"],[0,"Crisis Response"],[0,"Fortified Shields"],
-   [1,"Whirlwind Slash"],[1,"Lifeflame"],[1,"Heavy Kick"],[0,"Cross Slash"],[0,"Rain Cleave"],[0,"Downpour Slash"],[0,"Chain Slash Combo"],[0,"Brawl"],[0,"Clean Sweep"],[0,"Clean Cut"],[1,"Annihilating Slash"],[1,"Bloodstorm"],[0,"Turning Strike"],[0,"Momentum Lock"],[0,"Rampage"],[1,"Whirlwind Slash Mastery"],[1,"Whirlwind Slash Mastery II"],[1,"Whirlwind Slash - Lightning Speed"],
-   [0,"Frostfang"],[1,"Frenzy"],[1,"Wind ATK"],[1,"Resurgence"],[1,"Bloodforge"],[1,"Bloodthirst"],[1,"Crimson Surge"],[1,"Worthy Sacrifice"],[0,"Cleaving Art"],[0,"Vengeful Rush"],[0,"Waterspout"],[0,"Warrior's Cry"],[1,"Pursuit - Root"],[1,"Swift Flurry"],[1,"Sharpwake"],[1,"Twin Slash"],[1,"Slaughter"],[1,"Closing Slash Combo"],[1,"Breakthrough"],[1,"Counterattack Mastery"],[1,"Bladeburst"],[1,"Physical Amplification"],[1,"Perfect Foresight"],[1,"Ultimate Slash"],[1,"Ultimate Slash II"],[1,"Mind's Eye"]]},
- {"name":"Frostbreaker (Armor Break, as on your screen)","note":"The same plan with the Armor Break side of the first fork, which your screen already has. Same cost. You trade extra Freeze damage for Stagger power and a 2 s damage boost [me].",
-  "steps":[[0,"Pommel Strike"],[0,"Retaliate"],[0,"Demolishing Strike"],[0,"Demolishing Strike - Expert"],[0,"Fatal Cleave"],[0,"Sweeping Slash"],[0,"Unbridled Might"],[0,"Armor Break"],[0,"Armor Break II"],[0,"Iron Balance"],[0,"Greatsword Mastery"],[0,"Frosted Gleam"],[0,"Swift Cut"],[0,"Heavyweight Upgrade"],[0,"Physical PEN"],[0,"Swift Cut - Freeze"],[0,"Crisis Response"],[0,"Fortified Shields"],
-   [1,"Whirlwind Slash"],[1,"Lifeflame"],[1,"Heavy Kick"],[0,"Cross Slash"],[0,"Rain Cleave"],[0,"Downpour Slash"],[0,"Chain Slash Combo"],[0,"Brawl"],[0,"Clean Sweep"],[0,"Clean Cut"],[1,"Annihilating Slash"],[1,"Bloodstorm"],[0,"Turning Strike"],[0,"Momentum Lock"],[0,"Rampage"],[1,"Whirlwind Slash Mastery"],[1,"Whirlwind Slash Mastery II"],[1,"Whirlwind Slash - Lightning Speed"],
-   [0,"Frostfang"],[1,"Frenzy"],[1,"Wind ATK"],[1,"Resurgence"],[1,"Bloodforge"],[1,"Bloodthirst"],[1,"Crimson Surge"],[1,"Worthy Sacrifice"],[0,"Cleaving Art"],[0,"Vengeful Rush"],[0,"Waterspout"],[0,"Warrior's Cry"],[1,"Pursuit - Root"],[1,"Swift Flurry"],[1,"Sharpwake"],[1,"Twin Slash"],[1,"Slaughter"],[1,"Closing Slash Combo"],[1,"Breakthrough"],[1,"Counterattack Mastery"],[1,"Bladeburst"],[1,"Physical Amplification"],[1,"Perfect Foresight"],[1,"Ultimate Slash"],[1,"Ultimate Slash II"],[1,"Mind's Eye"]]}
-],
-"rotation":{
- "title":"Frostbreaker rotation",
- "intro":"RaidDex's Frostbreaker chain [one]. Swap weapons with {Q}.",
- "steps":[
-  {"t":"Pommel Strike for a shield","d":"A long shield that scales with Max HP. With Brace (free), you're stagger-immune while it holds."},
-  {"t":"Arc Slash → Cross Slash","d":"Cross Slash combos from Arc Slash and hits harder while you're shielded."},
-  {"t":"Rain Cleave → Downpour Slash","d":"Breaks guard and knocks down. Downpour gives Rain Cleave one more use."},
-  {"t":"Vertical → Rising Slash → Final Cleave","d":"With Unbridled Might up, Rampage adds a free charged Final Cleave."},
-  {"t":"Loop Arc, Chain and Sweeping Slash","d":"Clean Sweep spends extra SP to repeat Sweeping Slash. Frosted Gleam re-opens Final Cleave."},
-  {"t":"Block, then Demolishing Strike → Fatal Cleave","d":"Blade Guard while shielded, counter with Demolishing Strike (free with Expert), then Fatal Cleave strips shields."}
+ "id": "warrior-fb",
+ "title": "Warrior Frostbreaker Build",
+ "out": "warrior-frostbreaker.html",
+ "eyebrow": "ArcheAge Chronicles · Warrior · Early Access",
+ "h1": "<span class='zap'>Frost</span><span class='hot'>breaker</span> Greatsword",
+ "lede": "A Greatsword build from level 1 to 40 that spends every one of Early Access's 94 trait points. Shields from Pommel Strike and Brace keep you upright, Freeze sets up big vertical hits, and the Longsword is your healing swap.",
+ "notice": {
+  "title": "Checked against your Traits screens. Not tested in-game.",
+  "text": "Both trait trees match your Greatsword and Longsword screens node for node (55 and 60 nodes). Costs follow the in-game markers: nodes marked \"3\" cost 3, everything else costs 1, and granted skills are free. Where two branches split and rejoin you pick one side, as your Hatchet screen shows. The plan spends exactly 94 points: 47 Coilstones at 2 each. Build choices and stat numbers are my recommendations, tagged as such."
+ },
+ "defaultPoints": 8,
+ "stages": [
+  {
+   "id": "level",
+   "name": "Leveling",
+   "sub": "Lv 1 → 20 · Diamond Shores",
+   "goal": "You start with the Longsword. Switch to the Greatsword as soon as you get one, and put all 22 Diamond Shores points into it.",
+   "weapons": [
+    "<span class='w-main'>Greatsword</span> as soon as you have one (RaidDex's route has a Covenant Greatsword by Lv 15) [one]",
+    "<span class='w-alt'>Longsword</span> until then, since it's the default weapon [one]"
+   ],
+   "skills": [
+    "Arc, Chain, Sunder, Vertical, Rising, Final Cleave, Blade Guard and Brace are granted free [ok]",
+    "Pommel Strike gives a long shield. While shielded, Brace makes you stagger-immune [ok]",
+    "Demolishing Strike counters after a Blade Guard block, and Expert makes it cost no SP [one]"
+   ],
+   "traits": [
+    "Diamond Shores has 11 Coilstones = 22 points: 2 on the Longsword (Lifeflame healing) and 20 down the Greatsword shield line to Downpour Slash [me]",
+    "Trait points only come from Coilstones (2 each), not from levels [ok]"
+   ],
+   "stats": [
+    [
+     "Strength",
+     100,
+     "+28"
+    ],
+    [
+     "Endurance",
+     60,
+     "+17"
+    ],
+    [
+     "Constitution",
+     43,
+     "+12"
+    ],
+    [
+     "Talent",
+     0,
+     "later"
+    ],
+    [
+     "Agility",
+     0,
+     "—"
+    ],
+    [
+     "Intelligence",
+     0,
+     "—"
+    ]
+   ],
+   "gear": [
+    "Lv 15: Covenant Greatsword [one]",
+    "At Lv 20 you have 57 stat points (3 per level) [ok]"
+   ],
+   "check": [
+    "Spend your first 2 points on Whirlwind Slash → Lifeflame",
+    "Get a Greatsword and put it on Q swap",
+    "Unlock Pommel Strike → Fatal Cleave → Cross Slash",
+    "Get all 11 Diamond Shores Coilstones (22 points)"
+   ]
+  },
+  {
+   "id": "mid",
+   "name": "Gearing",
+   "sub": "Lv 21 → 35 · Gylden Ruins",
+   "goal": "Add Cross Slash, Brawl and Rampage to the Greatsword, and build the Longsword's healing core.",
+   "weapons": [
+    "<span class='w-main'>Fallen Margrave</span> greatsword [ok]",
+    "<span class='w-alt'>Twisted Fate Blade</span> longsword [one]"
+   ],
+   "skills": [
+    "Cross Slash → Rain Cleave → Downpour Slash hit harder while you're shielded [ok]",
+    "Rampage adds a free charged Final Cleave on Unbridled Might [ok]",
+    "Longsword Lifeflame heals on Closing Slash, and Bloodstorm costs HP instead of SP [ok]"
+   ],
+   "traits": [
+    "Gylden Ruins has 14 Coilstones = +28, for 50 total: Greatsword's Freeze line to Rampage, plus Heavy Kick and Bloodstorm on the Longsword [me]"
+   ],
+   "stats": [
+    [
+     "Strength",
+     100,
+     "+44"
+    ],
+    [
+     "Endurance",
+     68,
+     "+30"
+    ],
+    [
+     "Constitution",
+     36,
+     "+16"
+    ],
+    [
+     "Talent",
+     27,
+     "+12 → 23"
+    ],
+    [
+     "Agility",
+     0,
+     "—"
+    ],
+    [
+     "Intelligence",
+     0,
+     "—"
+    ]
+   ],
+   "gear": [
+    "Raise Talent to 23 total for the endgame weapons. It also adds defense [ok]"
+   ],
+   "check": [
+    "Get Fallen Margrave",
+    "Get Twisted Fate Blade",
+    "Unlock Rampage",
+    "Unlock Bloodstorm on the Longsword"
+   ]
+  },
+  {
+   "id": "end",
+   "name": "Endgame",
+   "sub": "Lv 36 → 40 · Astron Plains",
+   "goal": "Finish the Greatsword at 53 points, then spend the rest on the Longsword.",
+   "weapons": [
+    "<span class='w-main'>Scattered Mist</span> greatsword [ok]",
+    "<span class='w-alt'>Wrathful Tyrant's Horn</span> longsword [ok]"
+   ],
+   "skills": [
+    "Frostfang: Freeze grants Resolve, and Rising Slash adds a long-range hit [ok]",
+    "Bloodforge + Bloodthirst turn Longsword skills into heals [ok]",
+    "Bladeburst: stationary, immune while it hits. 60 s cooldown [ok]"
+   ],
+   "traits": [
+    "Astron Plains has 22 Coilstones = +44, for 94. Greatsword finishes at 53 (its maximum) and Longsword gets 41 of its 46 [me]",
+    "RaidDex's 56 / 44 assumed 100 points and Wikily's 2-point costs [me]"
+   ],
+   "stats": [
+    [
+     "Strength",
+     100,
+     "+50"
+    ],
+    [
+     "Endurance",
+     70,
+     "+35"
+    ],
+    [
+     "Constitution",
+     40,
+     "+20"
+    ],
+    [
+     "Talent",
+     24,
+     "+12 → 23"
+    ],
+    [
+     "Agility",
+     0,
+     "—"
+    ],
+    [
+     "Intelligence",
+     0,
+     "—"
+    ]
+   ],
+   "gear": [
+    "117 stat points at Lv 40. RaidDex's 54 STR / 45 CON / 15 END spends most of its defense on HP. This page shifts it toward Endurance [me]"
+   ],
+   "check": [
+    "Get Scattered Mist and Wrathful Tyrant's Horn",
+    "Talent at 23",
+    "Spend all 94 trait points",
+    "Land Rampage in a boss fight"
+   ]
+  }
  ],
- "after":"When SP or health runs low, swap to the Longsword with {Q} for Lifeflame and Bloodstorm healing."
-},
-"disputes":[
- ["Trait point costs","Wikily lists many nodes at 2 points. The in-game screens only ever show a \"3\" marker.","Unmarked nodes cost 1. Your Berserker screen had 4 points pending on four of those nodes [me]."],
- ["Stat order","RaidDex: STR, then plenty of CON, then END. DeityVengy runs END first. AAC Tools' demo values per point: END +6.6 SP and +4.2 defense, CON +7.2 HP, Talent +0.8 defense.","STR first, Endurance second, CON third, and Talent to the weapon requirement [me]."],
- ["Greatsword or Longsword for PvE?","Creator tier list: Longsword C for PvE. AOEAH: Longsword 7/10 PvE, 10/10 PvP. Kybuza, Nerd Bird and Theory Forge favor the Greatsword.","Greatsword main, Longsword as the healing swap."],
- ["Total trait points","Older guides say 92 or 100. RaidDex's Coilstone list: 47 stones × 2 = 94.","94, split by region."]
-],
-"sources":[
- {"t":"Wikily: Greatsword skill tree (55 nodes)","u":"https://wikily.gg/archeage-chronicles/weapons/greatsword"},
- {"t":"Wikily: Longsword skill tree (60 nodes)","u":"https://wikily.gg/archeage-chronicles/weapons/longsword"},
- {"t":"RaidDex: Coilstones (47 × 2 points)","u":"https://raiddex.com/en/archeage-chronicles/collectibles","n":"read via search summary; the site blocks direct reading"},
- {"t":"archeagechroniclesdata: leveling (Lv 40 cap, region levels, 3 stat points per level)","u":"https://archeagechroniclesdata.com/leveling"},
- {"t":"AAC Tools: stat calculator (per-point values, demo)","u":"https://aac-tools.com/en/tools/stats/"},
- {"t":"ArcheAge Chronicles stats explainer","u":"https://archeage-chronicles.site/classes/stats"},
- {"t":"ArcheAge Builds: Warrior","u":"https://archeagebuilds.com/classes/warrior/"},
- {"t":"ArcheAge World trait planner (default skills are free)","u":"https://archeageworld.com/en/traits/"},
- {"t":"AOEAH tier list (Nov 4, 2026)","u":"https://www.aoeah.com/news/4897--archeage-chronicles-best-classesweaponsbuilds-tier-list-pve--pvp"}
-],
-"footer":"Sources checked November 13, 2026, during Early Access. The Gladius (third Warrior weapon) arrives in December and may add Coilstones. Recheck then."
+ "weaponGuide": {
+  "intro": "Every Warrior starts with the Longsword, the class's default weapon [ok]. Put your first 2 points there (Lifeflame healing), then build the <b>Greatsword</b> as soon as you have one. It's the safer leveling weapon. The Longsword's other skills (Parry, Counterattack, Charge, Pursuit) are free anyway.",
+  "items": [
+   {
+    "weapon": "Greatsword",
+    "when": "Main · first 22 points",
+    "pros": [
+     "Pommel Strike and Brace shields make you stagger-immune, so you can trade hits while you level [ok]",
+     "Arc, Chain and Sweeping Slash clear packs, and all three are free [ok]",
+     "Rated higher for PvE: AOEAH 9/10, a creator tier list A. Kybuza, Nerd Bird and Theory Forge favor it [ok]",
+     "The Freeze line multiplies vertical-slash damage (Clean Cut, Frostfang) [one]"
+    ],
+    "cons": [
+     "Slow and heavy, with little mobility. Bad at chasing [one]",
+     "Heavy swings eat SP, so it needs Endurance [ok]",
+     "No self-heal anywhere in the tree [ok]"
+    ],
+    "skip": "Leveling on the Longsword alone means no shields and more deaths. One Early Access player died more on the Longsword than the Greatsword [one], and the Longsword's PvE rating is C or 7/10 [ok]."
+   },
+   {
+    "weapon": "Longsword",
+    "when": "Swap · 2 points first, more from Gylden Ruins",
+    "pros": [
+     "The only Warrior healing: Lifeflame, Bloodstorm, Bloodforge [ok]",
+     "Best duelist: AOEAH 10/10 for PvP, a creator tier list S for PvP [ok]",
+     "Parry, Counterattack, Charge and Pursuit are free, so it works with 0 points [ok]"
+    ],
+    "cons": [
+     "PvE rated C (creator) or 7/10 (AOEAH) [ok]",
+     "Parry timing is unforgiving, and the blood skills cost HP [ok]",
+     "Bloodforge ends when you swap weapons [ok]"
+    ],
+    "skip": "With no healing swap, you lean on your five potions per fight [one], and you give up the class's best PvP weapon."
+   }
+  ]
+ },
+ "budgetIntro": "Early Access has 47 Raeven's Coilstones at 2 trait points each, 94 in total [one]. Region counts are RaidDex's [one] and level bands are archeagechroniclesdata's [one]. You only reach these totals if you take every Coilstone as you go. Both weapons spend from the same pool, which is why your Longsword screen shows \"Available Points: 4/8\" after 4 went into the Greatsword.",
+ "treeHelp": "Click a node to read it. Double-click it, or press Space, to unlock or refund it. ✓ = granted free. Red = locked because you took the other side of that fork. <b>Fill with my points</b> follows the leveling plan across both weapons until your points run out. Saved in this browser.",
+ "trees": [
+  {
+   "file": "greatsword",
+   "weapon": "Greatsword",
+   "short": "GS",
+   "role": "Main weapon",
+   "key": "greatsword",
+   "intro": "Matches your Greatsword screen: 14 granted skills on the left, Proficiency at the top, and two 20-node branches. Ten nodes carry the \"3\" marker. Forks: Armor Break or Frozen Veins, Freeze or Expert, Mastery or Uncontrollable Power, Lightweight or Heavyweight, Swift Cut Freeze or Neutralize, Carve Up or Clean Sweep. Full tree with choices made: 53 points [me]."
+  },
+  {
+   "file": "longsword",
+   "weapon": "Longsword",
+   "short": "LS",
+   "role": "Swap weapon",
+   "key": "longsword",
+   "intro": "Matches your Longsword screen: 14 granted skills, Pursuit - Root on its own, a 21-node blood branch, an 18-node Foresight branch, and a stat cluster on the right. Full tree with choices made: 46 points, not counting the stat cluster [me]."
+  }
+ ],
+ "plans": [
+  {
+   "name": "Frostbreaker: deep first (recommended)",
+   "note": "All 94 points. Go deep on the shield → Cross Slash line before filling sideways, and mix in Longsword healing early [me].",
+   "route": [
+    [
+     "Diamond Shores (22):",
+     "Your first 2 points go to the Longsword, which you start with: Whirlwind Slash → Lifeflame, so Closing Slash heals. Once you have a Greatsword, go straight down the shield line: Pommel Strike → Demolishing Strike → Fatal Cleave → Swift Cut → Cross Slash → Rain Cleave → Downpour Slash. That's RaidDex's whole opener, done by about Lv 20. Only then add Sweeping Slash and Unbridled Might [me]."
+    ],
+    [
+     "Gylden Ruins (+28 → 50):",
+     "Heavy Kick and Bloodstorm on the Longsword for healing and bursts, then the Greatsword's left side: Frozen Veins → Frosted Gleam → Brawl → Rampage [me]."
+    ],
+    [
+     "Astron Plains (+44 → 94):",
+     "Greatsword capstones (Frostfang, Warrior's Cry, Vengeful Rush, Waterspout), then the Longsword's Bloodforge and Foresight lines [me]."
+    ]
+   ],
+   "steps": [
+    [
+     1,
+     "Whirlwind Slash",
+     "Needed for Lifeflame. Damage reduction while it hits"
+    ],
+    [
+     1,
+     "Lifeflame",
+     "Closing Slash (free) now heals: early sustain"
+    ],
+    [
+     0,
+     "Pommel Strike",
+     "Long shield. With Brace (free) you're stagger-immune"
+    ],
+    [
+     0,
+     "Retaliate",
+     "Stronger shield after Blade Guard"
+    ],
+    [
+     0,
+     "Demolishing Strike",
+     "Counter after a block"
+    ],
+    [
+     0,
+     "Demolishing Strike - Expert",
+     "Counter costs no SP"
+    ],
+    [
+     0,
+     "Fatal Cleave",
+     "Strips shields, damage reduction, stagger immunity"
+    ],
+    [
+     0,
+     "Swift Cut",
+     ""
+    ],
+    [
+     0,
+     "Heavyweight Upgrade",
+     "Stronger Brace shield"
+    ],
+    [
+     0,
+     "Physical PEN",
+     ""
+    ],
+    [
+     0,
+     "Swift Cut - Freeze",
+     ""
+    ],
+    [
+     0,
+     "Crisis Response",
+     "Bigger shield below 50% HP"
+    ],
+    [
+     0,
+     "Fortified Shields",
+     "All shields stronger"
+    ],
+    [
+     0,
+     "Cross Slash",
+     "Opener damage, stronger while shielded"
+    ],
+    [
+     0,
+     "Rain Cleave",
+     "Guard break and knockdown"
+    ],
+    [
+     0,
+     "Downpour Slash",
+     "One more Rain Cleave"
+    ],
+    [
+     0,
+     "Sweeping Slash",
+     "Pack clear with a short shield"
+    ],
+    [
+     0,
+     "Unbridled Might",
+     "Resolve from Arc, Chain and Sunder"
+    ],
+    [
+     1,
+     "Heavy Kick",
+     "Stun and damage reduction on the swap"
+    ],
+    [
+     0,
+     "Frozen Veins",
+     ""
+    ],
+    [
+     0,
+     "Frozen Veins II",
+     ""
+    ],
+    [
+     0,
+     "Iron Balance",
+     ""
+    ],
+    [
+     0,
+     "Greatsword Mastery",
+     "Faster Arc and Chain Slash"
+    ],
+    [
+     0,
+     "Frosted Gleam",
+     "Freeze re-opens Final Cleave"
+    ],
+    [
+     1,
+     "Annihilating Slash",
+     ""
+    ],
+    [
+     1,
+     "Bloodstorm",
+     "HP-cost burst that heals with Lifeflame"
+    ],
+    [
+     0,
+     "Chain Slash Combo",
+     ""
+    ],
+    [
+     0,
+     "Brawl",
+     ""
+    ],
+    [
+     0,
+     "Clean Sweep",
+     "Repeat the Sweeping Slash combo"
+    ],
+    [
+     0,
+     "Clean Cut",
+     "More damage on Frozen targets"
+    ],
+    [
+     0,
+     "Turning Strike",
+     ""
+    ],
+    [
+     0,
+     "Momentum Lock",
+     ""
+    ],
+    [
+     0,
+     "Rampage",
+     "Free charged Final Cleave"
+    ],
+    [
+     1,
+     "Whirlwind Slash Mastery",
+     "Crit Whirlwind hits heal"
+    ],
+    [
+     1,
+     "Whirlwind Slash Mastery II",
+     ""
+    ],
+    [
+     1,
+     "Whirlwind Slash - Lightning Speed",
+     ""
+    ],
+    [
+     0,
+     "Frostfang",
+     ""
+    ],
+    [
+     1,
+     "Frenzy",
+     ""
+    ],
+    [
+     1,
+     "Wind ATK",
+     ""
+    ],
+    [
+     1,
+     "Resurgence",
+     "Lifeflame heals more below 50%"
+    ],
+    [
+     1,
+     "Bloodforge",
+     "Ends on weapon swap"
+    ],
+    [
+     1,
+     "Bloodthirst",
+     ""
+    ],
+    [
+     1,
+     "Crimson Surge",
+     ""
+    ],
+    [
+     1,
+     "Worthy Sacrifice",
+     ""
+    ],
+    [
+     0,
+     "Cleaving Art",
+     ""
+    ],
+    [
+     0,
+     "Vengeful Rush",
+     ""
+    ],
+    [
+     0,
+     "Waterspout",
+     ""
+    ],
+    [
+     0,
+     "Warrior's Cry",
+     ""
+    ],
+    [
+     1,
+     "Pursuit - Root",
+     ""
+    ],
+    [
+     1,
+     "Swift Flurry",
+     ""
+    ],
+    [
+     1,
+     "Sharpwake",
+     ""
+    ],
+    [
+     1,
+     "Twin Slash",
+     ""
+    ],
+    [
+     1,
+     "Slaughter",
+     ""
+    ],
+    [
+     1,
+     "Closing Slash Combo",
+     ""
+    ],
+    [
+     1,
+     "Breakthrough",
+     ""
+    ],
+    [
+     1,
+     "Counterattack Mastery",
+     ""
+    ],
+    [
+     1,
+     "Bladeburst",
+     ""
+    ],
+    [
+     1,
+     "Physical Amplification",
+     ""
+    ],
+    [
+     1,
+     "Perfect Foresight",
+     ""
+    ],
+    [
+     1,
+     "Ultimate Slash",
+     ""
+    ],
+    [
+     1,
+     "Ultimate Slash II",
+     ""
+    ],
+    [
+     1,
+     "Mind's Eye",
+     ""
+    ]
+   ]
+  },
+  {
+   "name": "Same, with Armor Break (as on your screen)",
+   "note": "Identical, but takes Armor Break instead of Frozen Veins at the first fork, matching your screen. Same cost [me].",
+   "route": [
+    [
+     "Diamond Shores (22):",
+     "Your first 2 points go to the Longsword, which you start with: Whirlwind Slash → Lifeflame, so Closing Slash heals. Once you have a Greatsword, go straight down the shield line: Pommel Strike → Demolishing Strike → Fatal Cleave → Swift Cut → Cross Slash → Rain Cleave → Downpour Slash. That's RaidDex's whole opener, done by about Lv 20. Only then add Sweeping Slash and Unbridled Might [me]."
+    ],
+    [
+     "Gylden Ruins (+28 → 50):",
+     "Heavy Kick and Bloodstorm on the Longsword for healing and bursts, then the Greatsword's left side: Frozen Veins → Frosted Gleam → Brawl → Rampage [me]."
+    ],
+    [
+     "Astron Plains (+44 → 94):",
+     "Greatsword capstones (Frostfang, Warrior's Cry, Vengeful Rush, Waterspout), then the Longsword's Bloodforge and Foresight lines [me]."
+    ]
+   ],
+   "steps": [
+    [
+     1,
+     "Whirlwind Slash",
+     "Needed for Lifeflame. Damage reduction while it hits"
+    ],
+    [
+     1,
+     "Lifeflame",
+     "Closing Slash (free) now heals: early sustain"
+    ],
+    [
+     0,
+     "Pommel Strike",
+     "Long shield. With Brace (free) you're stagger-immune"
+    ],
+    [
+     0,
+     "Retaliate",
+     "Stronger shield after Blade Guard"
+    ],
+    [
+     0,
+     "Demolishing Strike",
+     "Counter after a block"
+    ],
+    [
+     0,
+     "Demolishing Strike - Expert",
+     "Counter costs no SP"
+    ],
+    [
+     0,
+     "Fatal Cleave",
+     "Strips shields, damage reduction, stagger immunity"
+    ],
+    [
+     0,
+     "Swift Cut",
+     ""
+    ],
+    [
+     0,
+     "Heavyweight Upgrade",
+     "Stronger Brace shield"
+    ],
+    [
+     0,
+     "Physical PEN",
+     ""
+    ],
+    [
+     0,
+     "Swift Cut - Freeze",
+     ""
+    ],
+    [
+     0,
+     "Crisis Response",
+     "Bigger shield below 50% HP"
+    ],
+    [
+     0,
+     "Fortified Shields",
+     "All shields stronger"
+    ],
+    [
+     0,
+     "Cross Slash",
+     "Opener damage, stronger while shielded"
+    ],
+    [
+     0,
+     "Rain Cleave",
+     "Guard break and knockdown"
+    ],
+    [
+     0,
+     "Downpour Slash",
+     "One more Rain Cleave"
+    ],
+    [
+     0,
+     "Sweeping Slash",
+     "Pack clear with a short shield"
+    ],
+    [
+     0,
+     "Unbridled Might",
+     "Resolve from Arc, Chain and Sunder"
+    ],
+    [
+     1,
+     "Heavy Kick",
+     "Stun and damage reduction on the swap"
+    ],
+    [
+     0,
+     "Armor Break",
+     ""
+    ],
+    [
+     0,
+     "Armor Break II",
+     ""
+    ],
+    [
+     0,
+     "Iron Balance",
+     ""
+    ],
+    [
+     0,
+     "Greatsword Mastery",
+     "Faster Arc and Chain Slash"
+    ],
+    [
+     0,
+     "Frosted Gleam",
+     "Freeze re-opens Final Cleave"
+    ],
+    [
+     1,
+     "Annihilating Slash",
+     ""
+    ],
+    [
+     1,
+     "Bloodstorm",
+     "HP-cost burst that heals with Lifeflame"
+    ],
+    [
+     0,
+     "Chain Slash Combo",
+     ""
+    ],
+    [
+     0,
+     "Brawl",
+     ""
+    ],
+    [
+     0,
+     "Clean Sweep",
+     "Repeat the Sweeping Slash combo"
+    ],
+    [
+     0,
+     "Clean Cut",
+     "More damage on Frozen targets"
+    ],
+    [
+     0,
+     "Turning Strike",
+     ""
+    ],
+    [
+     0,
+     "Momentum Lock",
+     ""
+    ],
+    [
+     0,
+     "Rampage",
+     "Free charged Final Cleave"
+    ],
+    [
+     1,
+     "Whirlwind Slash Mastery",
+     "Crit Whirlwind hits heal"
+    ],
+    [
+     1,
+     "Whirlwind Slash Mastery II",
+     ""
+    ],
+    [
+     1,
+     "Whirlwind Slash - Lightning Speed",
+     ""
+    ],
+    [
+     0,
+     "Frostfang",
+     ""
+    ],
+    [
+     1,
+     "Frenzy",
+     ""
+    ],
+    [
+     1,
+     "Wind ATK",
+     ""
+    ],
+    [
+     1,
+     "Resurgence",
+     "Lifeflame heals more below 50%"
+    ],
+    [
+     1,
+     "Bloodforge",
+     "Ends on weapon swap"
+    ],
+    [
+     1,
+     "Bloodthirst",
+     ""
+    ],
+    [
+     1,
+     "Crimson Surge",
+     ""
+    ],
+    [
+     1,
+     "Worthy Sacrifice",
+     ""
+    ],
+    [
+     0,
+     "Cleaving Art",
+     ""
+    ],
+    [
+     0,
+     "Vengeful Rush",
+     ""
+    ],
+    [
+     0,
+     "Waterspout",
+     ""
+    ],
+    [
+     0,
+     "Warrior's Cry",
+     ""
+    ],
+    [
+     1,
+     "Pursuit - Root",
+     ""
+    ],
+    [
+     1,
+     "Swift Flurry",
+     ""
+    ],
+    [
+     1,
+     "Sharpwake",
+     ""
+    ],
+    [
+     1,
+     "Twin Slash",
+     ""
+    ],
+    [
+     1,
+     "Slaughter",
+     ""
+    ],
+    [
+     1,
+     "Closing Slash Combo",
+     ""
+    ],
+    [
+     1,
+     "Breakthrough",
+     ""
+    ],
+    [
+     1,
+     "Counterattack Mastery",
+     ""
+    ],
+    [
+     1,
+     "Bladeburst",
+     ""
+    ],
+    [
+     1,
+     "Physical Amplification",
+     ""
+    ],
+    [
+     1,
+     "Perfect Foresight",
+     ""
+    ],
+    [
+     1,
+     "Ultimate Slash",
+     ""
+    ],
+    [
+     1,
+     "Ultimate Slash II",
+     ""
+    ],
+    [
+     1,
+     "Mind's Eye",
+     ""
+    ]
+   ]
+  }
+ ],
+ "rotation": {
+  "title": "Frostbreaker rotation",
+  "intro": "RaidDex's Frostbreaker chain [one]. Swap weapons with {Q}.",
+  "steps": [
+   {
+    "t": "Pommel Strike for a shield",
+    "d": "A long shield that scales with Max HP. With Brace (free), you're stagger-immune while it holds."
+   },
+   {
+    "t": "Arc Slash → Cross Slash",
+    "d": "Cross Slash combos from Arc Slash and hits harder while you're shielded."
+   },
+   {
+    "t": "Rain Cleave → Downpour Slash",
+    "d": "Breaks guard and knocks down. Downpour gives Rain Cleave one more use."
+   },
+   {
+    "t": "Vertical → Rising Slash → Final Cleave",
+    "d": "With Unbridled Might up, Rampage adds a free charged Final Cleave."
+   },
+   {
+    "t": "Loop Arc, Chain and Sweeping Slash",
+    "d": "Clean Sweep spends extra SP to repeat Sweeping Slash. Frosted Gleam re-opens Final Cleave."
+   },
+   {
+    "t": "Block, then Demolishing Strike → Fatal Cleave",
+    "d": "Blade Guard while shielded, counter with Demolishing Strike (free with Expert), then Fatal Cleave strips shields."
+   }
+  ],
+  "after": "When SP or health runs low, swap to the Longsword with {Q} for Lifeflame and Bloodstorm healing."
+ },
+ "disputes": [
+  [
+   "Trait point costs",
+   "Wikily lists many nodes at 2 points. The in-game screens only ever show a \"3\" marker.",
+   "Unmarked nodes cost 1. Your Berserker screen had 4 points pending on four of those nodes [me]."
+  ],
+  [
+   "Stat order",
+   "RaidDex: STR, then plenty of CON, then END. DeityVengy runs END first. AAC Tools' demo values per point: END +6.6 SP and +4.2 defense, CON +7.2 HP, Talent +0.8 defense.",
+   "STR first, Endurance second, CON third, and Talent to the weapon requirement [me]."
+  ],
+  [
+   "Greatsword or Longsword for PvE?",
+   "Creator tier list: Longsword C for PvE. AOEAH: Longsword 7/10 PvE, 10/10 PvP. Kybuza, Nerd Bird and Theory Forge favor the Greatsword.",
+   "Greatsword main, Longsword as the healing swap."
+  ],
+  [
+   "Total trait points",
+   "Older guides say 92 or 100. RaidDex's Coilstone list: 47 stones × 2 = 94.",
+   "94, split by region."
+  ]
+ ],
+ "sources": [
+  {
+   "t": "Wikily: Greatsword skill tree (55 nodes)",
+   "u": "https://wikily.gg/archeage-chronicles/weapons/greatsword"
+  },
+  {
+   "t": "Wikily: Longsword skill tree (60 nodes)",
+   "u": "https://wikily.gg/archeage-chronicles/weapons/longsword"
+  },
+  {
+   "t": "RaidDex: Coilstones (47 × 2 points)",
+   "u": "https://raiddex.com/en/archeage-chronicles/collectibles",
+   "n": "read via search summary; the site blocks direct reading"
+  },
+  {
+   "t": "archeagechroniclesdata: leveling (Lv 40 cap, region levels, 3 stat points per level)",
+   "u": "https://archeagechroniclesdata.com/leveling"
+  },
+  {
+   "t": "AAC Tools: stat calculator (per-point values, demo)",
+   "u": "https://aac-tools.com/en/tools/stats/"
+  },
+  {
+   "t": "ArcheAge Chronicles stats explainer",
+   "u": "https://archeage-chronicles.site/classes/stats"
+  },
+  {
+   "t": "ArcheAge Builds: Warrior",
+   "u": "https://archeagebuilds.com/classes/warrior/"
+  },
+  {
+   "t": "ArcheAge World trait planner (default skills are free)",
+   "u": "https://archeageworld.com/en/traits/"
+  },
+  {
+   "t": "AOEAH tier list (Nov 4, 2026)",
+   "u": "https://www.aoeah.com/news/4897--archeage-chronicles-best-classesweaponsbuilds-tier-list-pve--pvp"
+  }
+ ],
+ "footer": "Sources checked November 13, 2026, during Early Access. The Gladius (third Warrior weapon) arrives in December and may add Coilstones. Recheck then.",
+ "carry": {
+  "intro": "Each weapon has its own tree, but both spend from one shared point pool [ok]. Below, I sort every effect by what its node text actually says. <b>Ends on swap</b> means the text says so. <b>Only that weapon</b> covers nodes that change that weapon's own skills or say \"equipped weapon\". <b>Unconfirmed</b> means the text doesn't say either way, so I'm not guessing. One creator video reports a global cooldown when you swap mid-combo [one].",
+  "cols": [
+   {
+    "kind": "ends",
+    "label": "Ends on swap (node text says so)",
+    "items": [
+     "<b>Bloodforge</b> (Longsword): \"removed on weapon swap\". Don't swap mid-Bloodforge [ok]"
+    ]
+   },
+   {
+    "kind": "only",
+    "label": "Only that weapon",
+    "items": [
+     "Skill upgrades only change that weapon's own skills: Demolishing Strike - Expert, Rampage, Clean Cut, the Whirlwind and Bloodstorm Masteries, and so on [ok]",
+     "Longsword stat cluster: Weapon Physical / Magic ATK ↑ say \"weapon ATK\", so they apply only while the Longsword is out [ok]",
+     "Lifeflame heals only when a Longsword Closing Slash lands [ok]"
+    ]
+   },
+   {
+    "kind": "test",
+    "label": "Unconfirmed: test before relying on it",
+    "items": [
+     "Pommel Strike, Retaliate and Brace shields: no node says they end on swap [me]",
+     "Stat nodes: Greatsword Physical PEN +12, Longsword Wind ATK +20 and Physical Amplification +25. No node says whether they count for the other weapon [me]",
+     "Sharpwake stacks (crit and damage for 20 s) [me]"
+    ]
+   }
+  ],
+  "test": [
+   "<b>Stat nodes:</b> open the Character screen with the weapon whose tree has the node (for example, Warhammer for its Fire ATK +20) and note the value. Press {Q}, then reopen the screen. If the number didn't change, the node counts for both weapons.",
+   "<b>Shields and buffs:</b> start the effect (a shield or timed buff), press {Q} right away, and watch the buff bar or shield. If the icon stays, it carries over.",
+   "Tell me what you see and I'll update the page. Until then, those rows stay marked as unconfirmed."
+  ]
+ }
 }
